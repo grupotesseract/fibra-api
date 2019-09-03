@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Empresa;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CreateEmpresaRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *

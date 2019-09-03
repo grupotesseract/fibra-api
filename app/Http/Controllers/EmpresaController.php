@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\EmpresaDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\EmpresaDataTable;
+use App\Repositories\EmpresaRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
-use App\Repositories\EmpresaRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class EmpresaController extends AppBaseController
 {
-    /** @var  EmpresaRepository */
+    /** @var EmpresaRepository */
     private $empresaRepository;
 
     public function __construct(EmpresaRepository $empresaRepo)

@@ -19,5 +19,4 @@ Route::middleware(['auth:api'])->group(function () {
 
 Route::post('/login', 'UsuarioAPIController@login');
 
-
 Route::resource('empresas', 'EmpresaAPIController');

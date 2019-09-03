@@ -12,7 +12,7 @@ class UsuarioApiTest extends TestCase
 {
     use ApiTestTrait, WithoutMiddleware, DatabaseTransactions;
 
-        /**
+    /**
      * @test
      */
     public function test_read_usuario()
@@ -43,5 +43,4 @@ class UsuarioApiTest extends TestCase
 
         $this->assertApiResponse($editedUsuario);
     }
-    
 }
