@@ -6,11 +6,9 @@ use App\Models\Empresa;
 use App\Repositories\BaseRepository;
 
 /**
- * Class EmpresaRepository
- * @package App\Repositories
+ * Class EmpresaRepository.
  * @version September 3, 2019, 4:23 pm -03
-*/
-
+ */
 class EmpresaRepository extends BaseRepository
 {
     /**
@@ -21,11 +19,11 @@ class EmpresaRepository extends BaseRepository
         'email',
         'telefone',
         'endereco',
-        'cidade_id'
+        'cidade_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -35,7 +33,7 @@ class EmpresaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Empresa;
+use Illuminate\Http\Request;
+use App\Repositories\EmpresaRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEmpresaAPIRequest;
 use App\Http\Requests\API\UpdateEmpresaAPIRequest;
-use App\Models\Empresa;
-use App\Repositories\EmpresaRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class EmpresaController
- * @package App\Http\Controllers\API
+ * Class EmpresaController.
  */
-
 class EmpresaAPIController extends AppBaseController
 {
-    /** @var  EmpresaRepository */
+    /** @var EmpresaRepository */
     private $empresaRepository;
 
     public function __construct(EmpresaRepository $empresaRepo)
@@ -27,7 +25,7 @@ class EmpresaAPIController extends AppBaseController
 
     /**
      * Display a listing of the Empresa.
-     * GET|HEAD /empresas
+     * GET|HEAD /empresas.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class EmpresaAPIController extends AppBaseController
 
     /**
      * Store a newly created Empresa in storage.
-     * POST /empresas
+     * POST /empresas.
      *
      * @param CreateEmpresaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class EmpresaAPIController extends AppBaseController
 
     /**
      * Display the specified Empresa.
-     * GET|HEAD /empresas/{id}
+     * GET|HEAD /empresas/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class EmpresaAPIController extends AppBaseController
 
     /**
      * Update the specified Empresa in storage.
-     * PUT/PATCH /empresas/{id}
+     * PUT/PATCH /empresas/{id}.
      *
      * @param int $id
      * @param UpdateEmpresaAPIRequest $request
@@ -107,7 +105,7 @@ class EmpresaAPIController extends AppBaseController
 
     /**
      * Remove the specified Empresa from storage.
-     * DELETE /empresas/{id}
+     * DELETE /empresas/{id}.
      *
      * @param int $id
      *

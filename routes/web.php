@@ -24,7 +24,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 
-
 Route::resource('empresas', 'EmpresaController');
 
 Route::resource('empresas', 'EmpresaController');

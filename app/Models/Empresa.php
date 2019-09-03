@@ -6,8 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Empresa
- * @package App\Models
+ * Class Empresa.
  * @version September 3, 2019, 4:23 pm -03
  *
  * @property \App\Models\Cidade cidade
@@ -15,24 +14,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string email
  * @property string telefone
  * @property string endereco
- * @property integer cidade_id
+ * @property int cidade_id
  */
 class Empresa extends Model
 {
     use SoftDeletes;
 
     public $table = 'empresas';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'nome',
         'email',
         'telefone',
         'endereco',
-        'cidade_id'
+        'cidade_id',
     ];
 
     /**
@@ -46,17 +43,17 @@ class Empresa extends Model
         'email' => 'string',
         'telefone' => 'string',
         'endereco' => 'string',
-        'cidade_id' => 'integer'
+        'cidade_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'nome' => 'required',
-        'email' => 'required'
+        'email' => 'required',
     ];
 
     /**

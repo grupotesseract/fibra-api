@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Empresa;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class EmpresaDataTable extends DataTable
 {
@@ -52,11 +52,10 @@ class EmpresaDataTable extends DataTable
                         ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'print', 'text' => '<i class="fa fa-download"></i> Imprimir', 'className' => 'btn btn-default btn-sm no-corner'],
-                        ['extend' => 'reload', 'text' => '<i class="fa fa-print"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],                        
+                        ['extend' => 'reload', 'text' => '<i class="fa fa-print"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],
                     ],
-                    'language' => 
-                    [
-                        'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json')
+                    'language' => [
+                        'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
                     ],
                 ]
             );
@@ -84,6 +83,6 @@ class EmpresaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'empresasdatatable_' . time();
+        return 'empresasdatatable_'.time();
     }
 }
