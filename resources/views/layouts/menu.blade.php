@@ -3,4 +3,4 @@
 </li>
 
 <li class="nav-item {{ Request::is('empresas*') ? 'active' : '' }}">
-    <a class="nav-link" href="{!! route('empresas.index') !!}"><i class="nav-icon icon-cursor"></i><span>Empresas</span></a>
+    <a class="nav-link" href="{!! route('empresas.index') !!}"><i class="fa fa-university"></i> &nbsp; <span>Empresas</span></a>

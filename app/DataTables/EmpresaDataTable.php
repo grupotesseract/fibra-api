@@ -74,7 +74,6 @@ class EmpresaDataTable extends DataTable
             'email',
             'telefone',
             'endereco',
-            'cidade_id'
         ];
     }
 

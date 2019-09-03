@@ -18,18 +18,36 @@
 
 <!-- Endereco Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('endereco', 'Endereco:') !!}
+    {!! Form::label('endereco', 'Endereço:') !!}
     {!! Form::text('endereco', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Cidade Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('cidade_id', 'Cidade Id:') !!}
-    {!! Form::text('cidade_id', null, ['class' => 'form-control']) !!}
-</div>
+@if (isset($empresa))
+
+    <div class="form-group col-sm-6">
+        @include('estados.select', [
+            'Model' => $empresa
+        ])
+    </div>
+    <div class="form-group col-sm-6">
+        @include('cidades.select', [
+            'Model' => $empresa
+        ])
+    </div>
+
+@else
+
+    <div class="form-group col-sm-6">
+        @include('estados.select')
+    </div>
+    <div class="form-group col-sm-6">
+        @include('cidades.select')
+    </div>
+
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('empresas.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('empresas.index') !!}" class="btn btn-default">Cancelar</a>
 </div>

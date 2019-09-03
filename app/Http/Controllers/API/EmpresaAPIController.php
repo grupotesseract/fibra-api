@@ -40,7 +40,7 @@ class EmpresaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($empresas->toArray(), 'Empresas retrieved successfully');
+        return $this->sendResponse($empresas->toArray(), 'Empresas listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class EmpresaAPIController extends AppBaseController
 
         $empresa = $this->empresaRepository->create($input);
 
-        return $this->sendResponse($empresa->toArray(), 'Empresa saved successfully');
+        return $this->sendResponse($empresa->toArray(), 'Empresa salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class EmpresaAPIController extends AppBaseController
         $empresa = $this->empresaRepository->find($id);
 
         if (empty($empresa)) {
-            return $this->sendError('Empresa not found');
+            return $this->sendError('Empresa não encontrada');
         }
 
-        return $this->sendResponse($empresa->toArray(), 'Empresa retrieved successfully');
+        return $this->sendResponse($empresa->toArray(), 'Empresa listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class EmpresaAPIController extends AppBaseController
         $empresa = $this->empresaRepository->find($id);
 
         if (empty($empresa)) {
-            return $this->sendError('Empresa not found');
+            return $this->sendError('Empresa não encontrada');
         }
 
         $empresa = $this->empresaRepository->update($input, $id);
 
-        return $this->sendResponse($empresa->toArray(), 'Empresa updated successfully');
+        return $this->sendResponse($empresa->toArray(), 'Empresa atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class EmpresaAPIController extends AppBaseController
         $empresa = $this->empresaRepository->find($id);
 
         if (empty($empresa)) {
-            return $this->sendError('Empresa not found');
+            return $this->sendError('Empresa não encontrada');
         }
 
         $empresa->delete();
 
-        return $this->sendResponse($id, 'Empresa deleted successfully');
+        return $this->sendResponse($id, 'Empresa excluída com sucesso');
     }
 }
