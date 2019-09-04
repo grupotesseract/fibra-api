@@ -55,7 +55,7 @@ class TipoMaterialController extends AppBaseController
 
         $tipoMaterial = $this->tipoMaterialRepository->create($input);
 
-        Flash::success('Tipo Material saved successfully.');
+        Flash::success('Tipo Material salvo com sucesso.');
 
         return redirect(route('tiposMateriais.index'));
     }
@@ -72,7 +72,7 @@ class TipoMaterialController extends AppBaseController
         $tipoMaterial = $this->tipoMaterialRepository->find($id);
 
         if (empty($tipoMaterial)) {
-            Flash::error('Tipo Material not found');
+            Flash::error('Tipo Material não encontrado');
 
             return redirect(route('tiposMateriais.index'));
         }
@@ -92,7 +92,7 @@ class TipoMaterialController extends AppBaseController
         $tipoMaterial = $this->tipoMaterialRepository->find($id);
 
         if (empty($tipoMaterial)) {
-            Flash::error('Tipo Material not found');
+            Flash::error('Tipo Material não encontrado');
 
             return redirect(route('tiposMateriais.index'));
         }
@@ -113,14 +113,14 @@ class TipoMaterialController extends AppBaseController
         $tipoMaterial = $this->tipoMaterialRepository->find($id);
 
         if (empty($tipoMaterial)) {
-            Flash::error('Tipo Material not found');
+            Flash::error('Tipo Material não encontrado');
 
             return redirect(route('tiposMateriais.index'));
         }
 
         $tipoMaterial = $this->tipoMaterialRepository->update($request->all(), $id);
 
-        Flash::success('Tipo Material updated successfully.');
+        Flash::success('Tipo Material atualizado com sucesso.');
 
         return redirect(route('tiposMateriais.index'));
     }
@@ -137,14 +137,14 @@ class TipoMaterialController extends AppBaseController
         $tipoMaterial = $this->tipoMaterialRepository->find($id);
 
         if (empty($tipoMaterial)) {
-            Flash::error('Tipo Material not found');
+            Flash::error('Tipo Material não encontrado');
 
             return redirect(route('tiposMateriais.index'));
         }
 
         $this->tipoMaterialRepository->delete($id);
 
-        Flash::success('Tipo Material deleted successfully.');
+        Flash::success('Tipo Material excluído com sucesso.');
 
         return redirect(route('tiposMateriais.index'));
     }

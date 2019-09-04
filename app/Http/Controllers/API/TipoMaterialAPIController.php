@@ -40,7 +40,7 @@ class TipoMaterialAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($tiposMateriais->toArray(), 'Tipos Materiais retrieved successfully');
+        return $this->sendResponse($tiposMateriais->toArray(), 'Tipos Materiais listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class TipoMaterialAPIController extends AppBaseController
 
         $tipoMaterial = $this->tipoMaterialRepository->create($input);
 
-        return $this->sendResponse($tipoMaterial->toArray(), 'Tipo Material saved successfully');
+        return $this->sendResponse($tipoMaterial->toArray(), 'Tipo Material salvo com sucesso');
     }
 
     /**
@@ -77,7 +77,7 @@ class TipoMaterialAPIController extends AppBaseController
             return $this->sendError('Tipo Material not found');
         }
 
-        return $this->sendResponse($tipoMaterial->toArray(), 'Tipo Material retrieved successfully');
+        return $this->sendResponse($tipoMaterial->toArray(), 'Tipo Material listado com sucesso');
     }
 
     /**
@@ -102,7 +102,7 @@ class TipoMaterialAPIController extends AppBaseController
 
         $tipoMaterial = $this->tipoMaterialRepository->update($input, $id);
 
-        return $this->sendResponse($tipoMaterial->toArray(), 'TipoMaterial updated successfully');
+        return $this->sendResponse($tipoMaterial->toArray(), 'Tipo Material atualizado com sucesso');
     }
 
     /**
@@ -126,6 +126,6 @@ class TipoMaterialAPIController extends AppBaseController
 
         $tipoMaterial->delete();
 
-        return $this->sendResponse($id, 'Tipo Material deleted successfully');
+        return $this->sendResponse($id, 'Tipo Material excluído com sucesso');
     }
 }
