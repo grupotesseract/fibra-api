@@ -26,21 +26,5 @@ class UsuarioApiTest extends TestCase
 
         $this->assertApiResponse($usuario->toArray());
     }
-
-    /**
-     * @test
-     */
-    public function test_update_usuario()
-    {
-        $usuario = factory(Usuario::class)->create();
-        $editedUsuario = factory(Usuario::class)->make()->toArray();
-
-        $this->response = $this->json(
-            'PUT',
-            '/api/usuarios/'.$usuario->id,
-            $editedUsuario
-        );
-
-        $this->assertApiResponse($editedUsuario);
-    }
+    
 }

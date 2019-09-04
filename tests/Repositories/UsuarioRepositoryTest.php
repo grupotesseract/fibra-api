@@ -28,9 +28,10 @@ class UsuarioRepositoryTest extends TestCase
      */
     public function test_create_usuario()
     {
-        $usuario = factory(Usuario::class)->make()->toArray();
+        $usuario = factory(Usuario::class)->make()->makeVisible('password')->toArray();
 
-        $createdUsuario = $this->usuarioRepo->create($usuario);
+        $createdUsuario = $this->usuarioRepo->create($usuario);        
+        $createdUsuario->makeVisible('password');
 
         $createdUsuario = $createdUsuario->toArray();
         $this->assertArrayHasKey('id', $createdUsuario);
