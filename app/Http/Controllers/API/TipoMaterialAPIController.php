@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateTipoMaterialAPIRequest;
-use App\Http\Requests\API\UpdateTipoMaterialAPIRequest;
+use Response;
 use App\Models\TipoMaterial;
-use App\Repositories\TipoMaterialRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
-use Response;
+use App\Repositories\TipoMaterialRepository;
+use App\Http\Requests\API\CreateTipoMaterialAPIRequest;
+use App\Http\Requests\API\UpdateTipoMaterialAPIRequest;
 
 /**
- * Class TipoMaterialController
- * @package App\Http\Controllers\API
+ * Class TipoMaterialController.
  */
-
 class TipoMaterialAPIController extends AppBaseController
 {
-    /** @var  TipoMaterialRepository */
+    /** @var TipoMaterialRepository */
     private $tipoMaterialRepository;
 
     public function __construct(TipoMaterialRepository $tipoMaterialRepo)
@@ -27,7 +25,7 @@ class TipoMaterialAPIController extends AppBaseController
 
     /**
      * Display a listing of the TipoMaterial.
-     * GET|HEAD /tiposMateriais
+     * GET|HEAD /tiposMateriais.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class TipoMaterialAPIController extends AppBaseController
 
     /**
      * Store a newly created TipoMaterial in storage.
-     * POST /tiposMateriais
+     * POST /tiposMateriais.
      *
      * @param CreateTipoMaterialAPIRequest $request
      *
@@ -62,7 +60,7 @@ class TipoMaterialAPIController extends AppBaseController
 
     /**
      * Display the specified TipoMaterial.
-     * GET|HEAD /tiposMateriais/{id}
+     * GET|HEAD /tiposMateriais/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class TipoMaterialAPIController extends AppBaseController
 
     /**
      * Update the specified TipoMaterial in storage.
-     * PUT/PATCH /tiposMateriais/{id}
+     * PUT/PATCH /tiposMateriais/{id}.
      *
      * @param int $id
      * @param UpdateTipoMaterialAPIRequest $request
@@ -107,7 +105,7 @@ class TipoMaterialAPIController extends AppBaseController
 
     /**
      * Remove the specified TipoMaterial from storage.
-     * DELETE /tiposMateriais/{id}
+     * DELETE /tiposMateriais/{id}.
      *
      * @param int $id
      *

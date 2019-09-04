@@ -6,8 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class TipoMaterial
- * @package App\Models
+ * Class TipoMaterial.
  * @version September 4, 2019, 3:51 pm -03
  *
  * @property string nome
@@ -17,13 +16,11 @@ class TipoMaterial extends Model
     use SoftDeletes;
 
     public $table = 'tipos_materiais';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
-        'nome'
+        'nome',
     ];
 
     /**
@@ -33,17 +30,15 @@ class TipoMaterial extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nome' => 'string'
+        'nome' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'nome' => 'required'
+        'nome' => 'required',
     ];
-
-    
 }
