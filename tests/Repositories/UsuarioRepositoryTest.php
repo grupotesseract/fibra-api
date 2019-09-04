@@ -30,7 +30,7 @@ class UsuarioRepositoryTest extends TestCase
     {
         $usuario = factory(Usuario::class)->make()->makeVisible('password')->toArray();
 
-        $createdUsuario = $this->usuarioRepo->create($usuario);        
+        $createdUsuario = $this->usuarioRepo->create($usuario);
         $createdUsuario->makeVisible('password');
 
         $createdUsuario = $createdUsuario->toArray();
