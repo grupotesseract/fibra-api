@@ -11,6 +11,6 @@ class TiposMateriaisTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\TipoMaterial::class, 50)->create();
     }
 }
