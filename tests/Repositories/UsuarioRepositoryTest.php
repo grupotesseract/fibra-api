@@ -32,7 +32,6 @@ class UsuarioRepositoryTest extends TestCase
 
         $createdUsuario = $this->usuarioRepo->create($usuario);
         $createdUsuario->makeVisible('password');
-
         $createdUsuario = $createdUsuario->toArray();
         $this->assertArrayHasKey('id', $createdUsuario);
         $this->assertNotNull($createdUsuario['id'], 'Created Usuario must have id specified');
