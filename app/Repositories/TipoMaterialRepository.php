@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\TipoMaterial;
+use App\Repositories\BaseRepository;
+
+/**
+ * Class TipoMaterialRepository
+ * @package App\Repositories
+ * @version September 4, 2019, 3:51 pm -03
+*/
+
+class TipoMaterialRepository extends BaseRepository
+{
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'nome'
+    ];
+
+    /**
+     * Return searchable fields
+     *
+     * @return array
+     */
+    public function getFieldsSearchable()
+    {
+        return $this->fieldSearchable;
+    }
+
+    /**
+     * Configure the Model
+     **/
+    public function model()
+    {
+        return TipoMaterial::class;
+    }
+}
