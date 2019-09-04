@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\TipoMaterial;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class TipoMaterialDataTable extends DataTable
 {
@@ -69,7 +69,7 @@ class TipoMaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome'
+            'nome',
         ];
     }
 
@@ -80,6 +80,6 @@ class TipoMaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'tipos_materiaisdatatable_' . time();
+        return 'tipos_materiaisdatatable_'.time();
     }
 }

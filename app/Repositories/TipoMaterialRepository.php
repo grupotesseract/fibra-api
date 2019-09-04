@@ -6,22 +6,20 @@ use App\Models\TipoMaterial;
 use App\Repositories\BaseRepository;
 
 /**
- * Class TipoMaterialRepository
- * @package App\Repositories
+ * Class TipoMaterialRepository.
  * @version September 4, 2019, 3:51 pm -03
-*/
-
+ */
 class TipoMaterialRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'nome'
+        'nome',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -31,7 +29,7 @@ class TipoMaterialRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
