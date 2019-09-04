@@ -3,5 +3,5 @@
 </li>
 
 <li class="nav-item {{ Request::is('tiposMateriais*') ? 'active' : '' }}">
-    <a class="nav-link" href="{!! route('tiposMateriais.index') !!}"><i class="nav-icon icon-cursor"></i><span>Tipos de Materiais</span></a>
+    <a class="nav-link" href="{!! route('tiposMateriais.index') !!}"><i class="fa fa-book"></i> &nbsp; <span>Tipos de Materiais</span></a>
 </li>
