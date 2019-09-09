@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             $this->call(AdminUserSeeder::class);
             $this->call(TiposMateriaisTableSeeder::class);
             $this->call(EmpresasTableSeeder::class);
+        \$this->call(PlantasTableSeeder::class);
         }
     }
 }
