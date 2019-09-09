@@ -55,7 +55,7 @@ class PlantaController extends AppBaseController
 
         $planta = $this->plantaRepository->create($input);
 
-        Flash::success('Planta saved successfully.');
+        Flash::success('Planta salva com sucesso.');
 
         return redirect(route('plantas.index'));
     }
@@ -72,7 +72,7 @@ class PlantaController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            Flash::error('Planta not found');
+            Flash::error('Planta não encontrada');
 
             return redirect(route('plantas.index'));
         }
@@ -92,7 +92,7 @@ class PlantaController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            Flash::error('Planta not found');
+            Flash::error('Planta não encontrada');
 
             return redirect(route('plantas.index'));
         }
@@ -113,14 +113,14 @@ class PlantaController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            Flash::error('Planta not found');
+            Flash::error('Planta não encontrada');
 
             return redirect(route('plantas.index'));
         }
 
         $planta = $this->plantaRepository->update($request->all(), $id);
 
-        Flash::success('Planta updated successfully.');
+        Flash::success('Planta atualizada com sucesso.');
 
         return redirect(route('plantas.index'));
     }
@@ -137,14 +137,14 @@ class PlantaController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            Flash::error('Planta not found');
+            Flash::error('Planta não encontrada');
 
             return redirect(route('plantas.index'));
         }
 
         $this->plantaRepository->delete($id);
 
-        Flash::success('Planta deleted successfully.');
+        Flash::success('Planta excluída com sucesso.');
 
         return redirect(route('plantas.index'));
     }

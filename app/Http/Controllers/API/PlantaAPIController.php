@@ -40,7 +40,7 @@ class PlantaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($plantas->toArray(), 'Plantas retrieved successfully');
+        return $this->sendResponse($plantas->toArray(), 'Plantas listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class PlantaAPIController extends AppBaseController
 
         $planta = $this->plantaRepository->create($input);
 
-        return $this->sendResponse($planta->toArray(), 'Planta saved successfully');
+        return $this->sendResponse($planta->toArray(), 'Planta salva com sucesso');
     }
 
     /**
@@ -77,7 +77,7 @@ class PlantaAPIController extends AppBaseController
             return $this->sendError('Planta not found');
         }
 
-        return $this->sendResponse($planta->toArray(), 'Planta retrieved successfully');
+        return $this->sendResponse($planta->toArray(), 'Planta listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class PlantaAPIController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            return $this->sendError('Planta not found');
+            return $this->sendError('Planta não encontrada');
         }
 
         $planta = $this->plantaRepository->update($input, $id);
 
-        return $this->sendResponse($planta->toArray(), 'Planta updated successfully');
+        return $this->sendResponse($planta->toArray(), 'Planta atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class PlantaAPIController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            return $this->sendError('Planta not found');
+            return $this->sendError('Planta não encontrada');
         }
 
         $planta->delete();
 
-        return $this->sendResponse($id, 'Planta deleted successfully');
+        return $this->sendResponse($id, 'Planta excluída com sucesso');
     }
 }
