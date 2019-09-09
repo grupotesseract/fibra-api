@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             $this->call(CidadesSQLSeeder::class);
             $this->call(LaratrustSeeder::class);
             $this->call(AdminUserSeeder::class);
+            $this->call(TiposMateriaisTableSeeder::class);
+            $this->call(EmpresasTableSeeder::class);
         }
     }
 }
