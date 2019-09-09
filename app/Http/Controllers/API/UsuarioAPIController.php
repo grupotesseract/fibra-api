@@ -38,7 +38,7 @@ class UsuarioAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($usuarios->toArray(), 'Usuarios retrieved successfully');
+        return $this->sendResponse($usuarios->toArray(), 'Usuarios listados com sucesso');
     }
 
     /**
@@ -55,7 +55,7 @@ class UsuarioAPIController extends AppBaseController
 
         $usuario = $this->usuarioRepository->create($input);
 
-        return $this->sendResponse($usuario->toArray(), 'Usuario saved successfully');
+        return $this->sendResponse($usuario->toArray(), 'Usuario salvo com sucesso');
     }
 
     /**
@@ -75,7 +75,7 @@ class UsuarioAPIController extends AppBaseController
             return $this->sendError('Usuario not found');
         }
 
-        return $this->sendResponse($usuario->toArray(), 'Usuario retrieved successfully');
+        return $this->sendResponse($usuario->toArray(), 'Usuario listados com sucesso');
     }
 
     /**
@@ -100,7 +100,7 @@ class UsuarioAPIController extends AppBaseController
 
         $usuario = $this->usuarioRepository->update($input, $id);
 
-        return $this->sendResponse($usuario->toArray(), 'Usuario updated successfully');
+        return $this->sendResponse($usuario->toArray(), 'Usuario atualizado com sucesso');
     }
 
     /**
@@ -124,7 +124,7 @@ class UsuarioAPIController extends AppBaseController
 
         $usuario->delete();
 
-        return $this->sendResponse($id, 'Usuario deleted successfully');
+        return $this->sendResponse($id, 'Usuario excluído com sucesso');
     }
 
     /**
@@ -166,9 +166,9 @@ class UsuarioAPIController extends AppBaseController
         $usuario = \Auth::user();
 
         if (empty($usuario)) {
-            return $this->sendError('Usuario not found');
+            return $this->sendError('Usuario não encontrado');
         }
 
-        return $this->sendResponse($usuario->toArray(), 'Usuario retrieved successfully');
+        return $this->sendResponse($usuario->toArray(), 'Usuario listado com sucesso');
     }
 }

@@ -19,3 +19,4 @@ Route::middleware(['auth:api'])->group(function () {
 
 Route::post('/login', 'UsuarioAPIController@login');
 Route::resource('tipos_materiais', 'TipoMaterialAPIController');
+Route::resource('empresas', 'EmpresaAPIController');

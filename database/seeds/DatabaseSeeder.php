@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             $this->call(LaratrustSeeder::class);
             $this->call(AdminUserSeeder::class);
             $this->call(TiposMateriaisTableSeeder::class);
+            $this->call(EmpresasTableSeeder::class);
         }
     }
 }
