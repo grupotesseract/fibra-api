@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
 use App\Models\Planta;
+use Tests\ApiTestTrait;
 use App\Repositories\PlantaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class PlantaRepositoryTest extends TestCase
 {

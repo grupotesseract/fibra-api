@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Planta;
+use Illuminate\Http\Request;
+use App\Repositories\PlantaRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreatePlantaAPIRequest;
 use App\Http\Requests\API\UpdatePlantaAPIRequest;
-use App\Models\Planta;
-use App\Repositories\PlantaRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class PlantaController
- * @package App\Http\Controllers\API
+ * Class PlantaController.
  */
-
 class PlantaAPIController extends AppBaseController
 {
-    /** @var  PlantaRepository */
+    /** @var PlantaRepository */
     private $plantaRepository;
 
     public function __construct(PlantaRepository $plantaRepo)
@@ -27,7 +25,7 @@ class PlantaAPIController extends AppBaseController
 
     /**
      * Display a listing of the Planta.
-     * GET|HEAD /plantas
+     * GET|HEAD /plantas.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class PlantaAPIController extends AppBaseController
 
     /**
      * Store a newly created Planta in storage.
-     * POST /plantas
+     * POST /plantas.
      *
      * @param CreatePlantaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class PlantaAPIController extends AppBaseController
 
     /**
      * Display the specified Planta.
-     * GET|HEAD /plantas/{id}
+     * GET|HEAD /plantas/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class PlantaAPIController extends AppBaseController
 
     /**
      * Update the specified Planta in storage.
-     * PUT/PATCH /plantas/{id}
+     * PUT/PATCH /plantas/{id}.
      *
      * @param int $id
      * @param UpdatePlantaAPIRequest $request
@@ -107,7 +105,7 @@ class PlantaAPIController extends AppBaseController
 
     /**
      * Remove the specified Planta from storage.
-     * DELETE /plantas/{id}
+     * DELETE /plantas/{id}.
      *
      * @param int $id
      *

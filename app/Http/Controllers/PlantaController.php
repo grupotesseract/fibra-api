@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PlantaDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\PlantaDataTable;
+use App\Repositories\PlantaRepository;
 use App\Http\Requests\CreatePlantaRequest;
 use App\Http\Requests\UpdatePlantaRequest;
-use App\Repositories\PlantaRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class PlantaController extends AppBaseController
 {
-    /** @var  PlantaRepository */
+    /** @var PlantaRepository */
     private $plantaRepository;
 
     public function __construct(PlantaRepository $plantaRepo)
