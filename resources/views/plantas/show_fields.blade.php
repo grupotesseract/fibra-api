@@ -18,8 +18,14 @@
 
 <!-- Cidade Id Field -->
 <div class="form-group">
-    {!! Form::label('cidade_id', 'Cidade:') !!}
+    {!! Form::label('cidade_id', 'Cidade') !!}
     <p>{!! $planta->cidade->nome !!}</p>
+</div>
+
+<!-- Cidade Id Field -->
+<div class="form-group">
+    {!! Form::label('cidade_id', 'Estado') !!}
+    <p>{!! $planta->cidade->estado->nome !!}</p>
 </div>
 
 <!-- Empresa Id Field -->

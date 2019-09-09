@@ -11,16 +11,46 @@
 </div>
 
 <!-- Cidade Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('cidade_id', 'Cidade') !!}
-    {!! Form::text('cidade_id', null, ['class' => 'form-control']) !!}
-</div>
+@if (isset($planta))
+
+    <div class="form-group col-sm-6">
+        @include('estados.select', [
+            'Model' => $planta
+        ])
+    </div>
+    <div class="form-group col-sm-6">
+        @include('cidades.select', [
+            'Model' => $planta
+        ])
+    </div>
+
+@else
+
+    <div class="form-group col-sm-6">
+        @include('estados.select')
+    </div>
+    <div class="form-group col-sm-6">
+        @include('cidades.select')
+    </div>
+
+@endif
 
 <!-- Empresa Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('empresa_id', 'Empresa') !!}
-    {!! Form::text('empresa_id', null, ['class' => 'form-control']) !!}
-</div>
+@if (isset($planta))
+
+    <div class="form-group col-sm-6">
+        @include('empresas.select', [
+            'Model' => $planta
+        ])
+    </div>    
+
+@else
+
+    <div class="form-group col-sm-6">
+        @include('empresas.select')
+    </div>    
+
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

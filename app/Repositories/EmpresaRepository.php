@@ -39,4 +39,14 @@ class EmpresaRepository extends BaseRepository
     {
         return Empresa::class;
     }
+
+    /**
+     * Retorna um array de Empresas no formato [id => 'nome'].
+     *
+     * @return array
+     */
+    public function getArrayParaSelect()
+    {
+        return $this->model()::pluck('nome', 'id')->all();
+    }
 }
