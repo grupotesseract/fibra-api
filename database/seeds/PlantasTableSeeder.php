@@ -11,6 +11,6 @@ class PlantasTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\Planta::class, 30)->create();
     }
 }
