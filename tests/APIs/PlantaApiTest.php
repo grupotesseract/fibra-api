@@ -1,10 +1,12 @@
-<?php namespace Tests\APIs;
+<?php
 
+namespace Tests\APIs;
+
+use Tests\TestCase;
+use App\Models\Planta;
+use Tests\ApiTestTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
-use App\Models\Planta;
 
 class PlantaApiTest extends TestCase
 {

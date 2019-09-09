@@ -3,10 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Planta;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
-class PlantaDataTable extends DataTable 
+class PlantaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -70,7 +70,7 @@ class PlantaDataTable extends DataTable
     {
         return [
             'nome',
-            'endereco',            
+            'endereco',
         ];
     }
 
@@ -81,6 +81,6 @@ class PlantaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'plantasdatatable_' . time();
+        return 'plantasdatatable_'.time();
     }
 }

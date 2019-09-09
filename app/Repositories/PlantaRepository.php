@@ -6,11 +6,9 @@ use App\Models\Planta;
 use App\Repositories\BaseRepository;
 
 /**
- * Class PlantaRepository
- * @package App\Repositories
+ * Class PlantaRepository.
  * @version September 9, 2019, 4:03 pm -03
-*/
-
+ */
 class PlantaRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class PlantaRepository extends BaseRepository
         'nome',
         'endereco',
         'cidade_id',
-        'empresa_id'
+        'empresa_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class PlantaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
