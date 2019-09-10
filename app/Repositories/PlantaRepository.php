@@ -2,24 +2,23 @@
 
 namespace App\Repositories;
 
-use App\Models\Empresa;
+use App\Models\Planta;
 use App\Repositories\BaseRepository;
 
 /**
- * Class EmpresaRepository.
- * @version September 3, 2019, 4:23 pm -03
+ * Class PlantaRepository.
+ * @version September 9, 2019, 4:03 pm -03
  */
-class EmpresaRepository extends BaseRepository
+class PlantaRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'nome',
-        'email',
-        'telefone',
         'endereco',
         'cidade_id',
+        'empresa_id',
     ];
 
     /**
@@ -37,16 +36,6 @@ class EmpresaRepository extends BaseRepository
      **/
     public function model()
     {
-        return Empresa::class;
-    }
-
-    /**
-     * Retorna um array de Empresas no formato [id => 'nome'].
-     *
-     * @return array
-     */
-    public function getArrayParaSelect()
-    {
-        return $this->model()::pluck('nome', 'id')->all();
+        return Planta::class;
     }
 }
