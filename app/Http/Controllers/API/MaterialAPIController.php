@@ -40,7 +40,7 @@ class MaterialAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($materiais->toArray(), 'Materiais retrieved successfully');
+        return $this->sendResponse($materiais->toArray(), 'Materiais listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class MaterialAPIController extends AppBaseController
 
         $material = $this->materialRepository->create($input);
 
-        return $this->sendResponse($material->toArray(), 'Material saved successfully');
+        return $this->sendResponse($material->toArray(), 'Material salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class MaterialAPIController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            return $this->sendError('Material not found');
+            return $this->sendError('Material não encontrado');
         }
 
-        return $this->sendResponse($material->toArray(), 'Material retrieved successfully');
+        return $this->sendResponse($material->toArray(), 'Material listado com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class MaterialAPIController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            return $this->sendError('Material not found');
+            return $this->sendError('Material não encontrado');
         }
 
         $material = $this->materialRepository->update($input, $id);
 
-        return $this->sendResponse($material->toArray(), 'Material updated successfully');
+        return $this->sendResponse($material->toArray(), 'Material atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class MaterialAPIController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            return $this->sendError('Material not found');
+            return $this->sendError('Material não encontrado');
         }
 
         $material->delete();
 
-        return $this->sendResponse($id, 'Material deleted successfully');
+        return $this->sendResponse($id, 'Material excluído com sucesso');
     }
 }

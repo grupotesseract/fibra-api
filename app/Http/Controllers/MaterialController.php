@@ -55,7 +55,7 @@ class MaterialController extends AppBaseController
 
         $material = $this->materialRepository->create($input);
 
-        Flash::success('Material saved successfully.');
+        Flash::success('Material salvo com sucesso.');
 
         return redirect(route('materiais.index'));
     }
@@ -72,7 +72,7 @@ class MaterialController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            Flash::error('Material not found');
+            Flash::error('Material não encontrado');
 
             return redirect(route('materiais.index'));
         }
@@ -92,7 +92,7 @@ class MaterialController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            Flash::error('Material not found');
+            Flash::error('Material não encontrado');
 
             return redirect(route('materiais.index'));
         }
@@ -113,14 +113,14 @@ class MaterialController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            Flash::error('Material not found');
+            Flash::error('Material não encontrado');
 
             return redirect(route('materiais.index'));
         }
 
         $material = $this->materialRepository->update($request->all(), $id);
 
-        Flash::success('Material updated successfully.');
+        Flash::success('Material atualizado com sucesso.');
 
         return redirect(route('materiais.index'));
     }
@@ -137,14 +137,14 @@ class MaterialController extends AppBaseController
         $material = $this->materialRepository->find($id);
 
         if (empty($material)) {
-            Flash::error('Material not found');
+            Flash::error('Material não encontrado');
 
             return redirect(route('materiais.index'));
         }
 
         $this->materialRepository->delete($id);
 
-        Flash::success('Material deleted successfully.');
+        Flash::success('Material excluído com sucesso.');
 
         return redirect(route('materiais.index'));
     }

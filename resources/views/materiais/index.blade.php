@@ -12,7 +12,7 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             materiais
+                             Materiais
                              <a class="pull-right" href="{!! route('materiais.create') !!}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                          <div class="card-body">

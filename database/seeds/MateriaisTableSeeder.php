@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class materiaisTableSeeder extends Seeder
+class MateriaisTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class materiaisTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\Material::class, 100)->create();
     }
 }
