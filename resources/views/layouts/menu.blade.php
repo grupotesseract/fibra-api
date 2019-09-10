@@ -9,4 +9,6 @@
     <a class="nav-link" href="{!! route('empresas.index') !!}"><i class="fa fa-university"></i> &nbsp; <span>Empresas</span></a>
 <li class="nav-item {{ Request::is('plantas*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('plantas.index') !!}"><i class="fa fa-map-o"></i> &nbsp; <span>Plantas</span></a>
+</li><li class="nav-item {{ Request::is('materiais*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('materiais.index') !!}"><i class="nav-icon icon-cursor"></i><span>materiais</span></a>
 </li>
