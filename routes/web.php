@@ -26,3 +26,4 @@ Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 
 Route::resource('tiposMateriais', 'TipoMaterialController');
 Route::resource('empresas', 'EmpresaController');
+Route::resource('plantas', 'PlantaController');
