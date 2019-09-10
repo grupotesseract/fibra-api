@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Planta::class, function (Faker $faker) {
     return [
-        'nome' => $faker->catchPhrase,
+        'nome' => $faker->address,
         'endereco' => $faker->address,
         'cidade_id' => Cidade::inRandomOrder()->first()->id,
         'empresa_id' => Empresa::inRandomOrder()->first()->id,
