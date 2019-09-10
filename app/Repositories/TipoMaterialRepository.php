@@ -35,4 +35,14 @@ class TipoMaterialRepository extends BaseRepository
     {
         return TipoMaterial::class;
     }
+
+    /**
+     * Retorna um array de Tipos de Materiais no formato [id => 'nome'].
+     *
+     * @return array
+     */
+    public function getArrayParaSelect()
+    {
+        return $this->model()::pluck('nome', 'id')->all();
+    }
 }
