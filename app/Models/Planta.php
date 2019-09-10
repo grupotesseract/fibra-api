@@ -53,7 +53,7 @@ class Planta extends Model
         'nome' => 'required',
         'cidade_id' => 'required',
         'empresa_id' => 'required',
-        'endereco' => 'required'
+        'endereco' => 'required',
     ];
 
     /**

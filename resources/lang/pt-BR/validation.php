@@ -146,7 +146,7 @@ return [
     */
 
     'attributes' => [
-        'tipo_material_id' => 'tipo de material'
+        'tipo_material_id' => 'tipo de material',
     ],
 
 ];

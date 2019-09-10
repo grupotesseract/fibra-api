@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
+use Tests\ApiTestTrait;
 use App\Models\Material;
 use App\Repositories\MaterialRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class MaterialRepositoryTest extends TestCase
 {

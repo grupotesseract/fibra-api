@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Material;
+use Illuminate\Http\Request;
+use App\Repositories\MaterialRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateMaterialAPIRequest;
 use App\Http\Requests\API\UpdateMaterialAPIRequest;
-use App\Models\Material;
-use App\Repositories\MaterialRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class MaterialController
- * @package App\Http\Controllers\API
+ * Class MaterialController.
  */
-
 class MaterialAPIController extends AppBaseController
 {
-    /** @var  MaterialRepository */
+    /** @var MaterialRepository */
     private $materialRepository;
 
     public function __construct(MaterialRepository $materialRepo)
@@ -27,7 +25,7 @@ class MaterialAPIController extends AppBaseController
 
     /**
      * Display a listing of the Material.
-     * GET|HEAD /materiais
+     * GET|HEAD /materiais.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class MaterialAPIController extends AppBaseController
 
     /**
      * Store a newly created Material in storage.
-     * POST /materiais
+     * POST /materiais.
      *
      * @param CreateMaterialAPIRequest $request
      *
@@ -62,7 +60,7 @@ class MaterialAPIController extends AppBaseController
 
     /**
      * Display the specified Material.
-     * GET|HEAD /materiais/{id}
+     * GET|HEAD /materiais/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class MaterialAPIController extends AppBaseController
 
     /**
      * Update the specified Material in storage.
-     * PUT/PATCH /materiais/{id}
+     * PUT/PATCH /materiais/{id}.
      *
      * @param int $id
      * @param UpdateMaterialAPIRequest $request
@@ -107,7 +105,7 @@ class MaterialAPIController extends AppBaseController
 
     /**
      * Remove the specified Material from storage.
-     * DELETE /materiais/{id}
+     * DELETE /materiais/{id}.
      *
      * @param int $id
      *
