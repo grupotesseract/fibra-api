@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Material;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class MaterialDataTable extends DataTable
 {
@@ -71,7 +71,7 @@ class MaterialDataTable extends DataTable
         return [
             'nome',
             'potencia',
-            'tensao',            
+            'tensao',
         ];
     }
 
@@ -82,6 +82,6 @@ class MaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'materiaisdatatable_' . time();
+        return 'materiaisdatatable_'.time();
     }
 }

@@ -22,5 +22,4 @@ Route::resource('tipos_materiais', 'TipoMaterialAPIController');
 Route::resource('empresas', 'EmpresaAPIController');
 Route::resource('plantas', 'PlantaAPIController');
 
-
 Route::resource('materiais', 'MaterialAPIController');

@@ -6,11 +6,9 @@ use App\Models\Material;
 use App\Repositories\BaseRepository;
 
 /**
- * Class MaterialRepository
- * @package App\Repositories
+ * Class MaterialRepository.
  * @version September 10, 2019, 4:11 pm -03
-*/
-
+ */
 class MaterialRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class MaterialRepository extends BaseRepository
         'nome',
         'potencia',
         'tensao',
-        'tipo_material_id'
+        'tipo_material_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class MaterialRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

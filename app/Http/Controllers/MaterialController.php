@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\MaterialDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\MaterialDataTable;
+use App\Repositories\MaterialRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateMaterialRequest;
 use App\Http\Requests\UpdateMaterialRequest;
-use App\Repositories\MaterialRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class MaterialController extends AppBaseController
 {
-    /** @var  MaterialRepository */
+    /** @var MaterialRepository */
     private $materialRepository;
 
     public function __construct(MaterialRepository $materialRepo)
