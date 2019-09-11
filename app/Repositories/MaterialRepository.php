@@ -2,20 +2,23 @@
 
 namespace App\Repositories;
 
-use App\Models\TipoMaterial;
+use App\Models\Material;
 use App\Repositories\BaseRepository;
 
 /**
- * Class TipoMaterialRepository.
- * @version September 4, 2019, 3:51 pm -03
+ * Class MaterialRepository.
+ * @version September 10, 2019, 4:11 pm -03
  */
-class TipoMaterialRepository extends BaseRepository
+class MaterialRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'nome',
+        'potencia',
+        'tensao',
+        'tipo_material_id',
     ];
 
     /**
@@ -33,16 +36,6 @@ class TipoMaterialRepository extends BaseRepository
      **/
     public function model()
     {
-        return TipoMaterial::class;
-    }
-
-    /**
-     * Retorna um array de Tipos de Materiais no formato [id => 'nome'].
-     *
-     * @return array
-     */
-    public function getArrayParaSelect()
-    {
-        return $this->model()::pluck('nome', 'id')->all();
+        return Material::class;
     }
 }
