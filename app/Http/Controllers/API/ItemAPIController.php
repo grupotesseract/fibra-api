@@ -40,7 +40,7 @@ class ItemAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($itens->toArray(), 'Itens retrieved successfully');
+        return $this->sendResponse($itens->toArray(), 'Itens listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class ItemAPIController extends AppBaseController
 
         $item = $this->itemRepository->create($input);
 
-        return $this->sendResponse($item->toArray(), 'Item saved successfully');
+        return $this->sendResponse($item->toArray(), 'Item salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class ItemAPIController extends AppBaseController
         $item = $this->itemRepository->find($id);
 
         if (empty($item)) {
-            return $this->sendError('Item not found');
+            return $this->sendError('Item não encontrado');
         }
 
-        return $this->sendResponse($item->toArray(), 'Item retrieved successfully');
+        return $this->sendResponse($item->toArray(), 'Item listado com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class ItemAPIController extends AppBaseController
         $item = $this->itemRepository->find($id);
 
         if (empty($item)) {
-            return $this->sendError('Item not found');
+            return $this->sendError('Item não encontrado');
         }
 
         $item = $this->itemRepository->update($input, $id);
 
-        return $this->sendResponse($item->toArray(), 'Item updated successfully');
+        return $this->sendResponse($item->toArray(), 'Item atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class ItemAPIController extends AppBaseController
         $item = $this->itemRepository->find($id);
 
         if (empty($item)) {
-            return $this->sendError('Item not found');
+            return $this->sendError('Item não encontrado');
         }
 
         $item->delete();
 
-        return $this->sendResponse($id, 'Item deleted successfully');
+        return $this->sendResponse($id, 'Item excluído com sucesso');
     }
 }

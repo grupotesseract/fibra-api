@@ -5,7 +5,7 @@
           <li class="breadcrumb-item">
              <a href="{!! route('itens.index') !!}">Item</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">Editar</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Item</strong>
+                              <strong>Editar Item</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($item, ['route' => ['itens.update', $item->id], 'method' => 'patch']) !!}
