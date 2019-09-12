@@ -16,3 +16,6 @@
 <li class="nav-item {{ Request::is('materiais*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('materiais.index') !!}"><i class="fa fa-lightbulb-o"></i> &nbsp;  &nbsp;<span>Materiais</span></a>
 </li>
+<li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('itens.index') !!}"><i class="nav-icon icon-cursor"></i><span>itens</span></a>
+</li>
