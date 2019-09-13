@@ -21,5 +21,5 @@ Route::post('/login', 'UsuarioAPIController@login');
 Route::resource('tipos_materiais', 'TipoMaterialAPIController');
 Route::resource('empresas', 'EmpresaAPIController');
 Route::resource('plantas', 'PlantaAPIController');
-
 Route::resource('materiais', 'MaterialAPIController');
+Route::resource('programacoes', 'ProgramacaoAPIController');
