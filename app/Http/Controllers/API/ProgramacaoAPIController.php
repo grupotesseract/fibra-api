@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateProgramacaoAPIRequest;
-use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
+use Response;
 use App\Models\Programacao;
-use App\Repositories\ProgramacaoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
-use Response;
+use App\Repositories\ProgramacaoRepository;
+use App\Http\Requests\API\CreateProgramacaoAPIRequest;
+use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
 
 /**
- * Class ProgramacaoController
- * @package App\Http\Controllers\API
+ * Class ProgramacaoController.
  */
-
 class ProgramacaoAPIController extends AppBaseController
 {
-    /** @var  ProgramacaoRepository */
+    /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
     public function __construct(ProgramacaoRepository $programacaoRepo)
@@ -27,7 +25,7 @@ class ProgramacaoAPIController extends AppBaseController
 
     /**
      * Display a listing of the Programacao.
-     * GET|HEAD /programacoes
+     * GET|HEAD /programacoes.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ProgramacaoAPIController extends AppBaseController
 
     /**
      * Store a newly created Programacao in storage.
-     * POST /programacoes
+     * POST /programacoes.
      *
      * @param CreateProgramacaoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ProgramacaoAPIController extends AppBaseController
 
     /**
      * Display the specified Programacao.
-     * GET|HEAD /programacoes/{id}
+     * GET|HEAD /programacoes/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ProgramacaoAPIController extends AppBaseController
 
     /**
      * Update the specified Programacao in storage.
-     * PUT/PATCH /programacoes/{id}
+     * PUT/PATCH /programacoes/{id}.
      *
      * @param int $id
      * @param UpdateProgramacaoAPIRequest $request
@@ -107,7 +105,7 @@ class ProgramacaoAPIController extends AppBaseController
 
     /**
      * Remove the specified Programacao from storage.
-     * DELETE /programacoes/{id}
+     * DELETE /programacoes/{id}.
      *
      * @param int $id
      *

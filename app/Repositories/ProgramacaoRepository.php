@@ -6,11 +6,9 @@ use App\Models\Programacao;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ProgramacaoRepository
- * @package App\Repositories
+ * Class ProgramacaoRepository.
  * @version September 13, 2019, 1:48 pm -03
-*/
-
+ */
 class ProgramacaoRepository extends BaseRepository
 {
     /**
@@ -21,11 +19,11 @@ class ProgramacaoRepository extends BaseRepository
         'data_fim_prevista',
         'data_inicio_real',
         'data_fim_real',
-        'planta_id'
+        'planta_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -35,7 +33,7 @@ class ProgramacaoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

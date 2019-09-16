@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ProgramacaoDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\ProgramacaoDataTable;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
-use App\Repositories\ProgramacaoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ProgramacaoController extends AppBaseController
 {
-    /** @var  ProgramacaoRepository */
+    /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
     public function __construct(ProgramacaoRepository $programacaoRepo)
