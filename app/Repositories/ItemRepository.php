@@ -6,11 +6,9 @@ use App\Models\Item;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ItemRepository
- * @package App\Repositories
+ * Class ItemRepository.
  * @version September 12, 2019, 4:33 pm -03
-*/
-
+ */
 class ItemRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class ItemRepository extends BaseRepository
         'nome',
         'qrcode',
         'circuito',
-        'planta_id'
+        'planta_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class ItemRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

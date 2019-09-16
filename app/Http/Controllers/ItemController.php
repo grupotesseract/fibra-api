@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ItemDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\ItemDataTable;
+use App\Repositories\ItemRepository;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
-use App\Repositories\ItemRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ItemController extends AppBaseController
 {
-    /** @var  ItemRepository */
+    /** @var ItemRepository */
     private $itemRepository;
 
     public function __construct(ItemRepository $itemRepo)

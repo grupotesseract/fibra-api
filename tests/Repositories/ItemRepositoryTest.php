@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
 use App\Models\Item;
+use Tests\ApiTestTrait;
 use App\Repositories\ItemRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class ItemRepositoryTest extends TestCase
 {

@@ -6,31 +6,28 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Item
- * @package App\Models
+ * Class Item.
  * @version September 12, 2019, 4:33 pm -03
  *
  * @property \App\Models\Planta planta
  * @property string nome
  * @property string qrcode
  * @property string circuito
- * @property integer planta_id
+ * @property int planta_id
  */
 class Item extends Model
 {
     use SoftDeletes;
 
     public $table = 'itens';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'nome',
         'qrcode',
         'circuito',
-        'planta_id'
+        'planta_id',
     ];
 
     /**
@@ -43,11 +40,11 @@ class Item extends Model
         'nome' => 'string',
         'qrcode' => 'string',
         'circuito' => 'string',
-        'planta_id' => 'integer'
+        'planta_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -55,7 +52,7 @@ class Item extends Model
         'nome' => 'required',
         'qrcode' => 'required',
         'circuito' => 'required',
-        'planta_id' => 'required'
+        'planta_id' => 'required',
     ];
 
     /**
