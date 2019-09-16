@@ -17,10 +17,22 @@
 </div>
 
 <!-- Planta Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('planta_id', 'Planta Id') !!}
-    {!! Form::text('planta_id', null, ['class' => 'form-control']) !!}
-</div>
+<!-- Empresa Id Field -->
+@if (isset($item))
+
+    <div class="form-group col-sm-6">
+        @include('plantas.select', [
+            'Model' => $item
+        ])
+    </div>    
+
+@else
+
+    <div class="form-group col-sm-6">
+        @include('plantas.select')
+    </div>    
+
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
