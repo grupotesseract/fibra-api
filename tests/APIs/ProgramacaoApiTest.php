@@ -1,10 +1,12 @@
-<?php namespace Tests\APIs;
+<?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+namespace Tests\APIs;
+
 use Tests\TestCase;
 use Tests\ApiTestTrait;
 use App\Models\Programacao;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProgramacaoApiTest extends TestCase
 {

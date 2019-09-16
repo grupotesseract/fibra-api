@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Programacao;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ProgramacaoDataTable extends DataTable
 {
@@ -72,7 +72,7 @@ class ProgramacaoDataTable extends DataTable
             'data_inicio_prevista',
             'data_fim_prevista',
             'data_inicio_real',
-            'data_fim_real'
+            'data_fim_real',
         ];
     }
 
@@ -83,6 +83,6 @@ class ProgramacaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'programacoesdatatable_' . time();
+        return 'programacoesdatatable_'.time();
     }
 }
