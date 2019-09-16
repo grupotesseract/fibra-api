@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Node\Stmt\TryCatch;
+use Collective\Html\Eloquent\FormAccessible;
+
 
 /**
  * Class Programacao
@@ -20,13 +21,17 @@ use PhpParser\Node\Stmt\TryCatch;
  */
 class Programacao extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, FormAccessible;
 
     public $table = 'programacoes';
     
 
     protected $dates = [
-        'deleted_at',         
+        'deleted_at',
+        'data_inicio_prevista',         
+        'data_fim_prevista',
+        'data_inicio_real',
+        'data_fim_real',
     ];
 
     public $fillable = [
@@ -77,7 +82,7 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m');
+            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
             $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
         }
@@ -93,7 +98,7 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m');
+            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
             $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
         }        
@@ -109,7 +114,7 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m');
+            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
             $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
         }
@@ -125,53 +130,53 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m');
+            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
             $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
         }
     }
 
     /**
-     * Acessor para Data Inicio Prevista
+     * Form Acessor para Data Inicio Prevista
      *
      * @param string $value
      * @return Carbon
      */
-    public function getDataInicioPrevistaAttribute($value)
+    public function formDataInicioPrevistaAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m');
     }
 
     /**
-     * Acessor para Data Fim Prevista
+     * Form Acessor para Data Fim Prevista
      *
      * @param string $value
      * @return Carbon
      */
-    public function getDataFimPrevistaAttribute($value)
+    public function formDataFimPrevistaAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
     }
 
     /**
-     * Acessor para Data Inicio Real
+     * Form Acessor para Data Inicio Real
      *
      * @param string $value
      * @return Carbon
      */
-    public function getDataInicioRealAttribute($value)
+    public function formDataInicioRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
     }
 
     /**
-     * Acessor para Data Fim Real
+     * Form Acessor para Data Fim Real
      *
      * @param string $value
      * @return Carbon
      */
-    public function getDataFimRealAttribute($value)
+    public function formDataFimRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
     }
 }
