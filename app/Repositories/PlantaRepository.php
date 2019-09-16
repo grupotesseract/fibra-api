@@ -38,4 +38,26 @@ class PlantaRepository extends BaseRepository
     {
         return Planta::class;
     }
+
+    /**
+     * Retorna um array de Plantas no formato [id => 'nome'].
+     *
+     * @param mixed $empresaId - Para obter o array de plantas de 1 empresa.
+     *
+     * @return array
+     */
+    public function getArrayParaSelect($empresaId = null)
+    {
+        //Se vier empresaId, filtrar antes do pluck
+        if ($empresaId) {
+            return $this->model()
+                ::where('empresa_id', $empresaId)
+                ->pluck('nome', 'id')
+                ->all();
+        }
+
+        return $this->model()
+            ::pluck('nome', 'id')
+            ->all();
+    }
 }
