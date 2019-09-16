@@ -55,7 +55,7 @@ class ProgramacaoController extends AppBaseController
 
         $programacao = $this->programacaoRepository->create($input);
 
-        Flash::success('Programacao saved successfully.');
+        Flash::success('Programação salva com sucesso.');
 
         return redirect(route('programacoes.index'));
     }
@@ -72,7 +72,7 @@ class ProgramacaoController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            Flash::error('Programacao not found');
+            Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
         }
@@ -92,7 +92,7 @@ class ProgramacaoController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            Flash::error('Programacao not found');
+            Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
         }
@@ -113,14 +113,14 @@ class ProgramacaoController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            Flash::error('Programacao not found');
+            Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
         }
 
         $programacao = $this->programacaoRepository->update($request->all(), $id);
 
-        Flash::success('Programacao updated successfully.');
+        Flash::success('Programação atualizada com sucesso.');
 
         return redirect(route('programacoes.index'));
     }
@@ -137,14 +137,14 @@ class ProgramacaoController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            Flash::error('Programacao not found');
+            Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
         }
 
         $this->programacaoRepository->delete($id);
 
-        Flash::success('Programacao deleted successfully.');
+        Flash::success('Programação excluída com sucesso');
 
         return redirect(route('programacoes.index'));
     }

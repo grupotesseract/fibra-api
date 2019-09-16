@@ -40,7 +40,7 @@ class ProgramacaoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($programacoes->toArray(), 'Programacoes retrieved successfully');
+        return $this->sendResponse($programacoes->toArray(), 'Programações listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProgramacaoAPIController extends AppBaseController
 
         $programacao = $this->programacaoRepository->create($input);
 
-        return $this->sendResponse($programacao->toArray(), 'Programacao saved successfully');
+        return $this->sendResponse($programacao->toArray(), 'Programação salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class ProgramacaoAPIController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            return $this->sendError('Programacao not found');
+            return $this->sendError('Programação não encontrada');
         }
 
-        return $this->sendResponse($programacao->toArray(), 'Programacao retrieved successfully');
+        return $this->sendResponse($programacao->toArray(), 'Programação listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class ProgramacaoAPIController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            return $this->sendError('Programacao not found');
+            return $this->sendError('Programação não encontrada');
         }
 
         $programacao = $this->programacaoRepository->update($input, $id);
 
-        return $this->sendResponse($programacao->toArray(), 'Programacao updated successfully');
+        return $this->sendResponse($programacao->toArray(), 'Programação atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class ProgramacaoAPIController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            return $this->sendError('Programacao not found');
+            return $this->sendError('Programação não encontrada');
         }
 
         $programacao->delete();
 
-        return $this->sendResponse($id, 'Programacao deleted successfully');
+        return $this->sendResponse($id, 'Programação excluída com sucesso');
     }
 }
