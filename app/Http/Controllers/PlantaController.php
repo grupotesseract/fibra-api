@@ -148,4 +148,16 @@ class PlantaController extends AppBaseController
 
         return redirect(route('plantas.index'));
     }
+
+    /**
+     * Metodo para retornar as plantas de uma empresa.
+     *
+     * @return JSON
+     */
+    public function getPorEmpresa($empresaId)
+    {
+        $plantas = $this->plantaRepository->getArrayParaSelect($empresaId);
+
+        return $this->sendResponse($plantas, 'Plantas por empresa');
+    }
 }
