@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Item;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ItemDataTable extends DataTable
 {
@@ -82,6 +82,6 @@ class ItemDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'itensdatatable_' . time();
+        return 'itensdatatable_'.time();
     }
 }

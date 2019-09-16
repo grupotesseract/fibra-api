@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Item;
+use Illuminate\Http\Request;
+use App\Repositories\ItemRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateItemAPIRequest;
 use App\Http\Requests\API\UpdateItemAPIRequest;
-use App\Models\Item;
-use App\Repositories\ItemRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class ItemController
- * @package App\Http\Controllers\API
+ * Class ItemController.
  */
-
 class ItemAPIController extends AppBaseController
 {
-    /** @var  ItemRepository */
+    /** @var ItemRepository */
     private $itemRepository;
 
     public function __construct(ItemRepository $itemRepo)
@@ -27,7 +25,7 @@ class ItemAPIController extends AppBaseController
 
     /**
      * Display a listing of the Item.
-     * GET|HEAD /itens
+     * GET|HEAD /itens.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ItemAPIController extends AppBaseController
 
     /**
      * Store a newly created Item in storage.
-     * POST /itens
+     * POST /itens.
      *
      * @param CreateItemAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ItemAPIController extends AppBaseController
 
     /**
      * Display the specified Item.
-     * GET|HEAD /itens/{id}
+     * GET|HEAD /itens/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ItemAPIController extends AppBaseController
 
     /**
      * Update the specified Item in storage.
-     * PUT/PATCH /itens/{id}
+     * PUT/PATCH /itens/{id}.
      *
      * @param int $id
      * @param UpdateItemAPIRequest $request
@@ -107,7 +105,7 @@ class ItemAPIController extends AppBaseController
 
     /**
      * Remove the specified Item from storage.
-     * DELETE /itens/{id}
+     * DELETE /itens/{id}.
      *
      * @param int $id
      *

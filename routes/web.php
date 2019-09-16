@@ -31,5 +31,4 @@ Route::resource('plantas', 'PlantaController');
 
 Route::resource('materiais', 'MaterialController');
 
-
 Route::resource('itens', 'ItemController');
