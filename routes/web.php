@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
+Route::get('/empresas/{id}/plantas', 'PlantaController@getPorEmpresa');
 
 Route::resource('tiposMateriais', 'TipoMaterialController');
 Route::resource('empresas', 'EmpresaController');
