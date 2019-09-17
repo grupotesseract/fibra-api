@@ -32,6 +32,10 @@ class Material extends Model
         'receptaculo_id',
     ];
 
+    public $appends = [
+        'receptaculoNome'
+    ];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -63,5 +67,53 @@ class Material extends Model
     public function tipoMaterial()
     {
         return $this->belongsTo(\App\Models\TipoMaterial::class, 'tipo_material_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function reator()
+    {
+        return $this->belongsTo(\App\Models\Material::class, 'reator_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function receptaculo()
+    {
+        return $this->belongsTo(\App\Models\Material::class, 'receptaculo_id');
+    }
+
+    /**
+     * Acessor para a informação de Tipo de Material
+     *
+     * @return integer
+     */
+    public function getTipoMaterialNomeAttribute()
+    {
+        return $this->tipoMaterial->nome;
+    }
+
+    /**
+     * Acessor para a informação de Reator
+     *
+     * @return integer
+     */
+    public function getReatorNomeAttribute()
+    {
+        return $this->reator->nome;
+    }
+
+    /**
+     * Acessor para a informação de Receptaculo
+     *
+     * @return integer
+     */
+    public function getReceptaculoNomeAttribute()
+    {
+        if ($this->receptaculo()->exists()) {
+            return $this->receptaculo->nome;
+        }
     }
 }
