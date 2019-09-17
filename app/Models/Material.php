@@ -28,6 +28,8 @@ class Material extends Model
         'potencia',
         'tensao',
         'tipo_material_id',
+        'reator_id',
+        'receptaculo_id',
     ];
 
     /**
@@ -41,6 +43,8 @@ class Material extends Model
         'potencia' => 'string',
         'tensao' => 'string',
         'tipo_material_id' => 'integer',
+        'reator_id'  => 'integer',
+        'receptaculo_id'  => 'integer',
     ];
 
     /**
