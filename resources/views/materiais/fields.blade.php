@@ -1,20 +1,3 @@
-<!-- Nome Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nome', 'Nome') !!}
-    {!! Form::text('nome', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Potencia Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('potencia', 'Potência') !!}
-    {!! Form::text('potencia', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Tensao Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tensao', 'Tensao') !!}
-    {!! Form::text('tensao', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Tipo Material Id Field -->
 @if (isset($material))
@@ -52,6 +35,24 @@
     </div>
 
 @endif
+
+<!-- Nome Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('nome', 'Nome') !!}
+    {!! Form::text('nome', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Potencia Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('potencia', 'Potência') !!}
+    {!! Form::text('potencia', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Tensao Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('tensao', 'Tensao') !!}
+    {!! Form::text('tensao', null, ['class' => 'form-control']) !!}
+</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

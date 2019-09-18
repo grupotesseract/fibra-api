@@ -33,7 +33,9 @@ class Material extends Model
     ];
 
     public $appends = [
-        'receptaculoNome'
+        'receptaculoNome',
+        'reatorNome',
+        'tipoMaterialNome',
     ];
 
     /**
@@ -57,8 +59,7 @@ class Material extends Model
      * @var array
      */
     public static $rules = [
-        'nome' => 'required',
-        'tipo_material_id' => 'required',
+        
     ];
 
     /**
@@ -92,7 +93,9 @@ class Material extends Model
      */
     public function getTipoMaterialNomeAttribute()
     {
-        return $this->tipoMaterial->nome;
+        if ($this->tipoMaterial()->exists()) {
+            return $this->tipoMaterial->nome;
+        }
     }
 
     /**
@@ -102,7 +105,9 @@ class Material extends Model
      */
     public function getReatorNomeAttribute()
     {
-        return $this->reator->nome;
+        if ($this->reator()->exists()) {
+            return $this->reator->nome;
+        }
     }
 
     /**

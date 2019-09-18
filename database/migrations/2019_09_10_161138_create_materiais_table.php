@@ -14,7 +14,7 @@ class CreateMateriaisTable extends Migration
     {
         Schema::create('materiais', function (Blueprint $table) {
             $table->bigInteger('id', true);
-            $table->string('nome');
+            $table->string('nome')->nullable();
             $table->string('potencia')->nullable();
             $table->string('tensao')->nullable();
             $table->integer('tipo_material_id')->unsigned()->nullable();
