@@ -16,3 +16,9 @@
 <li class="nav-item {{ Request::is('materiais*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('materiais.index') !!}"><i class="fa fa-lightbulb-o"></i> &nbsp;  &nbsp;<span>Materiais</span></a>
 </li>
+<li class="nav-item {{ Request::is('potencias*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('potencias.index') !!}">
+        <i class="fa fa-battery-full"></i>&nbsp;
+        <span>Potências</span>
+    </a>
+</li>
