@@ -33,3 +33,5 @@ Route::resource('materiais', 'MaterialController');
 
 
 Route::resource('potencias', 'PotenciaController');
+
+Route::resource('tensoes', 'TensaoController');

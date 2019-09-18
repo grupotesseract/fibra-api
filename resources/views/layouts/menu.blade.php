@@ -22,3 +22,9 @@
         <span>Potências</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('tensoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('tensoes.index') !!}">
+        <i class="fa fa-battery-full"></i>&nbsp;
+        <span>Tensões</span>
+    </a>
+</li>

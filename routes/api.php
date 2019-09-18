@@ -26,3 +26,5 @@ Route::resource('materiais', 'MaterialAPIController');
 
 
 Route::resource('potencias', 'PotenciaAPIController');
+
+Route::resource('tensoes', 'TensaoAPIController');
