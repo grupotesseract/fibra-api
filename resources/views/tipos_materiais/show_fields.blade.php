@@ -12,7 +12,7 @@
 
 <!-- abreviacao Field -->
 <div class="form-group">
-    {!! Form::label('abreviacao', 'Abreviacao') !!}
+    {!! Form::label('abreviacao', 'Abreviação') !!}
     <p>{!! $tipoMaterial->abreviacao !!}</p>
 </div>
 
