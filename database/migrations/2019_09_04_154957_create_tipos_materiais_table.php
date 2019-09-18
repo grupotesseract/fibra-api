@@ -15,6 +15,8 @@ class CreateTiposMateriaisTable extends Migration
         Schema::create('tipos_materiais', function (Blueprint $table) {
             $table->bigInteger('id', true);
             $table->string('nome');
+            $table->string('abreviacao');
+            $table->enum('tipo', ['Lâmpada', 'Reator']);
             $table->timestamps();
             $table->softDeletes();
         });
