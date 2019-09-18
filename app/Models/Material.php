@@ -59,7 +59,7 @@ class Material extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -75,7 +75,7 @@ class Material extends Model
      **/
     public function reator()
     {
-        return $this->belongsTo(\App\Models\Material::class, 'reator_id');
+        return $this->belongsTo(self::class, 'reator_id');
     }
 
     /**
@@ -83,13 +83,13 @@ class Material extends Model
      **/
     public function receptaculo()
     {
-        return $this->belongsTo(\App\Models\Material::class, 'receptaculo_id');
+        return $this->belongsTo(self::class, 'receptaculo_id');
     }
 
     /**
-     * Acessor para a informação de Tipo de Material
+     * Acessor para a informação de Tipo de Material.
      *
-     * @return integer
+     * @return int
      */
     public function getTipoMaterialNomeAttribute()
     {
@@ -99,9 +99,9 @@ class Material extends Model
     }
 
     /**
-     * Acessor para a informação de Reator
+     * Acessor para a informação de Reator.
      *
-     * @return integer
+     * @return int
      */
     public function getReatorNomeAttribute()
     {
@@ -111,9 +111,9 @@ class Material extends Model
     }
 
     /**
-     * Acessor para a informação de Receptaculo
+     * Acessor para a informação de Receptaculo.
      *
-     * @return integer
+     * @return int
      */
     public function getReceptaculoNomeAttribute()
     {
