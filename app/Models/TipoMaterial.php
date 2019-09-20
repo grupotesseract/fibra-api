@@ -21,6 +21,8 @@ class TipoMaterial extends Model
 
     public $fillable = [
         'nome',
+        'abreviacao',
+        'tipo',
     ];
 
     /**
@@ -31,6 +33,8 @@ class TipoMaterial extends Model
     protected $casts = [
         'id' => 'integer',
         'nome' => 'string',
+        'abreviacao' => 'string',
+        'tipo' => 'string',
     ];
 
     /**
@@ -40,5 +44,7 @@ class TipoMaterial extends Model
      */
     public static $rules = [
         'nome' => 'required',
+        'abreviacao' => 'required',
+        'tipo' => 'required',
     ];
 }
