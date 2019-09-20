@@ -5,7 +5,7 @@
 <!-- Select de empresas  -->
 <div class="form-group">
     {!! Form::label('tipos_materiais', 'Tipo de Material') !!} <br>
-    {!! Form::select('tipo_material_id', $tipos_materiais, $Model->tipoMaterial->id, ['class' => 'form-control']
+    {!! Form::select('tipo_material_id', $tipos_materiais, $Model->tipoMaterial->id, ['class' => 'form-control select2']
     ) !!}
 </div>
 
@@ -14,7 +14,7 @@
 <!-- Select de empresas  -->
 <div class="form-group">
     {!! Form::label('tipos_materiais', 'Tipo de Material') !!} <br>
-    {!! Form::select('tipo_material_id', [''=>'']+$tipos_materiais, null, ['class' => 'form-control']
+    {!! Form::select('tipo_material_id', [''=>'']+$tipos_materiais, null, ['class' => 'form-control select2']
     ) !!}
 </div>
 
