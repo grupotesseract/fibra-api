@@ -23,3 +23,5 @@ Route::resource('empresas', 'EmpresaAPIController');
 Route::resource('plantas', 'PlantaAPIController');
 
 Route::resource('materiais', 'MaterialAPIController');
+
+Route::resource('itens', 'ItemAPIController');
