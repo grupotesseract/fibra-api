@@ -3,5 +3,6 @@
     "/js/ajax-cidades.js": "/js/ajax-cidades.js",
     "/js/ajax-plantas.js": "/js/ajax-plantas.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/datepicker.js": "/js/datepicker.js"
 }
