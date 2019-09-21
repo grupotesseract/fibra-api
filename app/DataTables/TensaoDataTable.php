@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Tensao;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class TensaoDataTable extends DataTable
 {
@@ -69,7 +69,7 @@ class TensaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'valor'
+            'valor',
         ];
     }
 
@@ -80,6 +80,6 @@ class TensaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'tensoesdatatable_' . time();
+        return 'tensoesdatatable_'.time();
     }
 }

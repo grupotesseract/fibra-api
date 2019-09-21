@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\TensaoDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\TensaoDataTable;
+use App\Repositories\TensaoRepository;
 use App\Http\Requests\CreateTensaoRequest;
 use App\Http\Requests\UpdateTensaoRequest;
-use App\Repositories\TensaoRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class TensaoController extends AppBaseController
 {
-    /** @var  TensaoRepository */
+    /** @var TensaoRepository */
     private $tensaoRepository;
 
     public function __construct(TensaoRepository $tensaoRepo)

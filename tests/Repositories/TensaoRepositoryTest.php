@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
 use App\Models\Tensao;
+use Tests\ApiTestTrait;
 use App\Repositories\TensaoRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class TensaoRepositoryTest extends TestCase
 {

@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Tensao;
+use Illuminate\Http\Request;
+use App\Repositories\TensaoRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateTensaoAPIRequest;
 use App\Http\Requests\API\UpdateTensaoAPIRequest;
-use App\Models\Tensao;
-use App\Repositories\TensaoRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class TensaoController
- * @package App\Http\Controllers\API
+ * Class TensaoController.
  */
-
 class TensaoAPIController extends AppBaseController
 {
-    /** @var  TensaoRepository */
+    /** @var TensaoRepository */
     private $tensaoRepository;
 
     public function __construct(TensaoRepository $tensaoRepo)
@@ -27,7 +25,7 @@ class TensaoAPIController extends AppBaseController
 
     /**
      * Display a listing of the Tensao.
-     * GET|HEAD /tensoes
+     * GET|HEAD /tensoes.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class TensaoAPIController extends AppBaseController
 
     /**
      * Store a newly created Tensao in storage.
-     * POST /tensoes
+     * POST /tensoes.
      *
      * @param CreateTensaoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class TensaoAPIController extends AppBaseController
 
     /**
      * Display the specified Tensao.
-     * GET|HEAD /tensoes/{id}
+     * GET|HEAD /tensoes/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class TensaoAPIController extends AppBaseController
 
     /**
      * Update the specified Tensao in storage.
-     * PUT/PATCH /tensoes/{id}
+     * PUT/PATCH /tensoes/{id}.
      *
      * @param int $id
      * @param UpdateTensaoAPIRequest $request
@@ -107,7 +105,7 @@ class TensaoAPIController extends AppBaseController
 
     /**
      * Remove the specified Tensao from storage.
-     * DELETE /tensoes/{id}
+     * DELETE /tensoes/{id}.
      *
      * @param int $id
      *

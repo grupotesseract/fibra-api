@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Potencia;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class PotenciaDataTable extends DataTable
 {
@@ -14,7 +14,7 @@ class PotenciaDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query) 
+    public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
 
@@ -69,7 +69,7 @@ class PotenciaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'valor'
+            'valor',
         ];
     }
 
@@ -80,6 +80,6 @@ class PotenciaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'potenciasdatatable_' . time();
+        return 'potenciasdatatable_'.time();
     }
 }

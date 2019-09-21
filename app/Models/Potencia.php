@@ -6,24 +6,21 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Potencia
- * @package App\Models
+ * Class Potencia.
  * @version September 18, 2019, 3:48 pm -03
  *
- * @property integer valor
+ * @property int valor
  */
 class Potencia extends Model
 {
     use SoftDeletes;
 
     public $table = 'potencias';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
-        'valor'
+        'valor',
     ];
 
     /**
@@ -33,17 +30,15 @@ class Potencia extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'valor' => 'integer'
+        'valor' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'valor' => 'required'
+        'valor' => 'required',
     ];
-
-    
 }

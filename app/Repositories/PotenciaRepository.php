@@ -6,22 +6,20 @@ use App\Models\Potencia;
 use App\Repositories\BaseRepository;
 
 /**
- * Class PotenciaRepository
- * @package App\Repositories
+ * Class PotenciaRepository.
  * @version September 18, 2019, 3:48 pm -03
-*/
-
+ */
 class PotenciaRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'valor'
+        'valor',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -31,7 +29,7 @@ class PotenciaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

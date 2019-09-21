@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PotenciaDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\PotenciaDataTable;
+use App\Repositories\PotenciaRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreatePotenciaRequest;
 use App\Http\Requests\UpdatePotenciaRequest;
-use App\Repositories\PotenciaRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class PotenciaController extends AppBaseController
 {
-    /** @var  PotenciaRepository */
+    /** @var PotenciaRepository */
     private $potenciaRepository;
 
     public function __construct(PotenciaRepository $potenciaRepo)

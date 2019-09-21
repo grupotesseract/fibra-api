@@ -6,24 +6,21 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Tensao
- * @package App\Models
+ * Class Tensao.
  * @version September 18, 2019, 4:52 pm -03
  *
- * @property integer valor
+ * @property int valor
  */
 class Tensao extends Model
 {
     use SoftDeletes;
 
     public $table = 'tensoes';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
-        'valor'
+        'valor',
     ];
 
     /**
@@ -33,17 +30,15 @@ class Tensao extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'valor' => 'integer'
+        'valor' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'valor' => 'required'
+        'valor' => 'required',
     ];
-
-    
 }
