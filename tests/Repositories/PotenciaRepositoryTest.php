@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
+use Tests\ApiTestTrait;
 use App\Models\Potencia;
 use App\Repositories\PotenciaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class PotenciaRepositoryTest extends TestCase
 {

@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Potencia;
+use Illuminate\Http\Request;
+use App\Repositories\PotenciaRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreatePotenciaAPIRequest;
 use App\Http\Requests\API\UpdatePotenciaAPIRequest;
-use App\Models\Potencia;
-use App\Repositories\PotenciaRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class PotenciaController
- * @package App\Http\Controllers\API
+ * Class PotenciaController.
  */
-
 class PotenciaAPIController extends AppBaseController
 {
-    /** @var  PotenciaRepository */
+    /** @var PotenciaRepository */
     private $potenciaRepository;
 
     public function __construct(PotenciaRepository $potenciaRepo)
@@ -27,7 +25,7 @@ class PotenciaAPIController extends AppBaseController
 
     /**
      * Display a listing of the Potencia.
-     * GET|HEAD /potencias
+     * GET|HEAD /potencias.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class PotenciaAPIController extends AppBaseController
 
     /**
      * Store a newly created Potencia in storage.
-     * POST /potencias
+     * POST /potencias.
      *
      * @param CreatePotenciaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class PotenciaAPIController extends AppBaseController
 
     /**
      * Display the specified Potencia.
-     * GET|HEAD /potencias/{id}
+     * GET|HEAD /potencias/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class PotenciaAPIController extends AppBaseController
 
     /**
      * Update the specified Potencia in storage.
-     * PUT/PATCH /potencias/{id}
+     * PUT/PATCH /potencias/{id}.
      *
      * @param int $id
      * @param UpdatePotenciaAPIRequest $request
@@ -107,7 +105,7 @@ class PotenciaAPIController extends AppBaseController
 
     /**
      * Remove the specified Potencia from storage.
-     * DELETE /potencias/{id}
+     * DELETE /potencias/{id}.
      *
      * @param int $id
      *

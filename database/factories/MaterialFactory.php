@@ -1,10 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\Material;
-use App\Models\TipoMaterial;
-use App\Models\Potencia;
 use App\Models\Tensao;
+use App\Models\Material;
+use App\Models\Potencia;
+use App\Models\TipoMaterial;
 use Faker\Generator as Faker;
 
 $factory->define(Material::class, function (Faker $faker) {

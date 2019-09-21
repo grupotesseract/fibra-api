@@ -6,22 +6,20 @@ use App\Models\Tensao;
 use App\Repositories\BaseRepository;
 
 /**
- * Class TensaoRepository
- * @package App\Repositories
+ * Class TensaoRepository.
  * @version September 18, 2019, 4:52 pm -03
-*/
-
+ */
 class TensaoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'valor'
+        'valor',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -31,7 +29,7 @@ class TensaoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
