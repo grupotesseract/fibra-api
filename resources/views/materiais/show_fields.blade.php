@@ -10,23 +10,30 @@
     <p>{!! $material->nome !!}</p>
 </div>
 
-<!-- Potencia Field -->
-<div class="form-group">
-    {!! Form::label('potencia', 'Potência') !!}
-    <p>{!! $material->potencia !!}</p>
-</div>
+@if (isset($material) && $material->potencia)
+    <!-- Potencia Field -->
+    <div class="form-group">
+        {!! Form::label('potencia', 'Potência') !!}
+        <p>{!! $material->potencia->valor !!}</p>
+    </div>
+@endif
 
-<!-- Tensao Field -->
-<div class="form-group">
-    {!! Form::label('tensao', 'Tensão') !!}
-    <p>{!! $material->tensao !!}</p>
-</div>
+@if (isset($material) && $material->tensao)
+    <!-- tensao Field -->
+    <div class="form-group">
+        {!! Form::label('tensao', 'Tensão') !!}
+        <p>{!! $material->tensao->valor !!}</p>
+    </div>
+@endif
 
+
+@if (isset($material) && $material->tipoMaterial)
 <!-- Tipo Material Id Field -->
-<div class="form-group">
-    {!! Form::label('tipo_material_id', 'Tipo de Material') !!}
-    <p>{!! $material->tipoMaterial->nome !!}</p>
-</div>
+    <div class="form-group">
+        {!! Form::label('tipo_material_id', 'Tipo de Material') !!}
+        <p>{!! $material->tipoMaterial->nome !!}</p>
+    </div>
+@endif
 
 @if (isset($material) && $material->reator)
 <!-- Tipo Material Id Field -->

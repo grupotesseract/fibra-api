@@ -37,4 +37,14 @@ class PotenciaRepository extends BaseRepository
     {
         return Potencia::class;
     }
+
+    /**
+     * Retorna um array de Potências no formato [id => 'valor'].
+     *
+     * @return array
+     */
+    public function getArrayParaSelect()
+    {
+        return $this->model()::pluck('valor', 'id')->all();
+    }
 }
