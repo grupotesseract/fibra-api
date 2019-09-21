@@ -27,4 +27,8 @@
         <i class="fa fa-battery-full"></i>&nbsp;
         <span>Tensões</span>
     </a>
+<li class="nav-item {{ Request::is('programacoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('programacoes.index') !!}"><i class="fa fa-calendar"></i> &nbsp; <span>Programações</span></a>
+<li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('itens.index') !!}"><i class="fa fa-building"></i> &nbsp; <span>Itens</span></a>
 </li>

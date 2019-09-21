@@ -70,8 +70,11 @@ class MaterialDataTable extends DataTable
     {
         return [
             'nome',
+            'tipoMaterialNome' => ['data' => 'tipoMaterialNome', 'title' => 'Tipo de Material', 'searchable' => false],
             'potencia',
             'tensao',
+            'reatorNome' => ['data' => 'reatorNome', 'title' => 'Reator', 'searchable' => false],
+            'receptaculoNome' => ['data' => 'receptaculoNome', 'title' => 'Receptáculo', 'searchable' => false],
         ];
     }
 

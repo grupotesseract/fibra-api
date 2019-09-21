@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             $this->call(MateriaisTableSeeder::class);
             $this->call(PotenciasTableSeeder::class);
             $this->call(TensoesTableSeeder::class);
+            $this->call(ItensTableSeeder::class);
+            $this->call(ProgramacoesTableSeeder::class);
         }
     }
 }

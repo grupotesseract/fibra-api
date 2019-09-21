@@ -28,6 +28,14 @@ class Material extends Model
         'potencia',
         'tensao',
         'tipo_material_id',
+        'reator_id',
+        'receptaculo_id',
+    ];
+
+    public $appends = [
+        'receptaculoNome',
+        'reatorNome',
+        'tipoMaterialNome',
     ];
 
     /**
@@ -41,6 +49,8 @@ class Material extends Model
         'potencia' => 'string',
         'tensao' => 'string',
         'tipo_material_id' => 'integer',
+        'reator_id'  => 'integer',
+        'receptaculo_id'  => 'integer',
     ];
 
     /**
@@ -49,8 +59,7 @@ class Material extends Model
      * @var array
      */
     public static $rules = [
-        'nome' => 'required',
-        'tipo_material_id' => 'required',
+
     ];
 
     /**
@@ -59,5 +68,57 @@ class Material extends Model
     public function tipoMaterial()
     {
         return $this->belongsTo(\App\Models\TipoMaterial::class, 'tipo_material_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function reator()
+    {
+        return $this->belongsTo(self::class, 'reator_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function receptaculo()
+    {
+        return $this->belongsTo(self::class, 'receptaculo_id');
+    }
+
+    /**
+     * Acessor para a informação de Tipo de Material.
+     *
+     * @return int
+     */
+    public function getTipoMaterialNomeAttribute()
+    {
+        if ($this->tipoMaterial()->exists()) {
+            return $this->tipoMaterial->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Reator.
+     *
+     * @return int
+     */
+    public function getReatorNomeAttribute()
+    {
+        if ($this->reator()->exists()) {
+            return $this->reator->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Receptaculo.
+     *
+     * @return int
+     */
+    public function getReceptaculoNomeAttribute()
+    {
+        if ($this->receptaculo()->exists()) {
+            return $this->receptaculo->nome;
+        }
     }
 }

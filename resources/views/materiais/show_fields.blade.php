@@ -28,6 +28,24 @@
     <p>{!! $material->tipoMaterial->nome !!}</p>
 </div>
 
+@if (isset($material) && $material->reator)
+<!-- Tipo Material Id Field -->
+
+<div class="form-group">
+    {!! Form::label('reator_id', 'Reator') !!}
+    <p>{!! $material->reator->nome !!}</p>
+</div>
+
+@endif
+
+@if (isset($material) && $material->receptaculo)
+<!-- Tipo Material Id Field -->
+<div class="form-group">
+    {!! Form::label('receptaculo_id', 'Receptáculo') !!}
+    <p>{!! $material->receptaculo->nome !!}</p>
+</div>
+@endif
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Criado em') !!}
