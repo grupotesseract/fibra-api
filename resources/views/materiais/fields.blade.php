@@ -1,3 +1,41 @@
+
+<!-- Tipo Material Id Field -->
+@if (isset($material))
+
+    <div class="form-group col-sm-6">
+        @include('tipos_materiais.select', [
+            'Model' => $material
+        ])
+    </div>
+    
+    <div class="form-group col-sm-6">
+        @include('materiais.select_reatores', [
+            'Model' => $material
+        ])
+    </div>
+
+    <div class="form-group col-sm-6">
+        @include('materiais.select_receptaculos', [
+            'Model' => $material
+        ])
+    </div>
+
+@else
+
+    <div class="form-group col-sm-6">
+        @include('tipos_materiais.select')
+    </div>    
+
+    <div class="form-group col-sm-6">
+        @include('materiais.select_reatores')
+    </div>
+
+    <div class="form-group col-sm-6">
+        @include('materiais.select_receptaculos')
+    </div>
+
+@endif
+
 <!-- Nome Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nome', 'Nome') !!}
@@ -15,23 +53,6 @@
     {!! Form::label('tensao', 'Tensao') !!}
     {!! Form::text('tensao', null, ['class' => 'form-control']) !!}
 </div>
-
-<!-- Tipo Material Id Field -->
-@if (isset($tipos_materiais))
-
-    <div class="form-group col-sm-6">
-        @include('tipos_materiais.select', [
-            'Model' => $material
-        ])
-    </div>    
-
-@else
-
-    <div class="form-group col-sm-6">
-        @include('tipos_materiais.select')
-    </div>    
-
-@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -14,13 +14,17 @@ class CreateMateriaisTable extends Migration
     {
         Schema::create('materiais', function (Blueprint $table) {
             $table->bigInteger('id', true);
-            $table->string('nome');
+            $table->string('nome')->nullable();
             $table->string('potencia')->nullable();
             $table->string('tensao')->nullable();
-            $table->integer('tipo_material_id')->unsigned();
+            $table->integer('tipo_material_id')->unsigned()->nullable();
+            $table->integer('reator_id')->unsigned()->nullable();
+            $table->integer('receptaculo_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('tipo_material_id')->references('id')->on('tipos_materiais');
+            $table->foreign('reator_id')->references('id')->on('materiais');
+            $table->foreign('receptaculo_id')->references('id')->on('materiais');
         });
     }
 

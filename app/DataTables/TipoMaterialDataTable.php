@@ -70,6 +70,8 @@ class TipoMaterialDataTable extends DataTable
     {
         return [
             'nome',
+            'abreviacao' => ['title' => 'Abreviação'],
+            'tipo',
         ];
     }
 
