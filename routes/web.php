@@ -2,32 +2,35 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Rotas Livres
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-
+Auth::routes(['register' => false]);
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
 
-Route::group(['middleware' => ['auth']], function () {
+
+/*
+|--------------------------------------------------------------------------
+| Rotas Protegidas (Somente Logado & ROLE ADMIN)
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/home', 'HomeController@index');
+    Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
+    Route::get('/empresas/{id}/plantas', 'PlantaController@getPorEmpresa');
+
     Route::resource('usuarios', 'UsuarioController');
+    Route::resource('tiposMateriais', 'TipoMaterialController');
+    Route::resource('empresas', 'EmpresaController');
+    Route::resource('plantas', 'PlantaController');
+    Route::resource('materiais', 'MaterialController');
+    Route::resource('itens', 'ItemController');
+    Route::resource('programacoes', 'ProgramacaoController');
+
 });
 
-Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
-Route::get('/empresas/{id}/plantas', 'PlantaController@getPorEmpresa');
 
-Route::resource('tiposMateriais', 'TipoMaterialController');
-Route::resource('empresas', 'EmpresaController');
-Route::resource('plantas', 'PlantaController');
-Route::resource('materiais', 'MaterialController');
-Route::resource('itens', 'ItemController');
-Route::resource('programacoes', 'ProgramacaoController');
