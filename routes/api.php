@@ -13,6 +13,8 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::apiResource('plantas', 'PlantaAPIController');
     Route::apiResource('itens', 'ItemAPIController');
     Route::apiResource('programacoes', 'ProgramacaoAPIController');
+    Route::apiResource('potencias', 'PotenciaAPIController');
+    Route::apiResource('tensoes', 'TensaoAPIController');
 
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'store', 'update', 'destroy',
