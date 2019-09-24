@@ -25,8 +25,8 @@ class Material extends Model
 
     public $fillable = [
         'nome',
-        'potencia',
-        'tensao',
+        'potencia_id',
+        'tensao_id',
         'tipo_material_id',
         'reator_id',
         'receptaculo_id',
@@ -36,6 +36,8 @@ class Material extends Model
         'receptaculoNome',
         'reatorNome',
         'tipoMaterialNome',
+        'potenciaValor',
+        'tensaoValor',
     ];
 
     /**
@@ -51,6 +53,8 @@ class Material extends Model
         'tipo_material_id' => 'integer',
         'reator_id'  => 'integer',
         'receptaculo_id'  => 'integer',
+        'potencia_id'  => 'integer',
+        'tensao_id'  => 'integer',
     ];
 
     /**
@@ -87,6 +91,22 @@ class Material extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function potencia()
+    {
+        return $this->belongsTo(\App\Models\Potencia::class, 'potencia_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tensao()
+    {
+        return $this->belongsTo(\App\Models\Tensao::class, 'tensao_id');
+    }
+
+    /**
      * Acessor para a informação de Tipo de Material.
      *
      * @return int
@@ -119,6 +139,30 @@ class Material extends Model
     {
         if ($this->receptaculo()->exists()) {
             return $this->receptaculo->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Potencia.
+     *
+     * @return int
+     */
+    public function getPotenciaValorAttribute()
+    {
+        if ($this->potencia()->exists()) {
+            return $this->potencia->valor;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Tensão.
+     *
+     * @return int
+     */
+    public function getTensaoValorAttribute()
+    {
+        if ($this->tensao()->exists()) {
+            return $this->tensao->valor;
         }
     }
 }

@@ -29,5 +29,7 @@ Route::resource('tiposMateriais', 'TipoMaterialController');
 Route::resource('empresas', 'EmpresaController');
 Route::resource('plantas', 'PlantaController');
 Route::resource('materiais', 'MaterialController');
+Route::resource('potencias', 'PotenciaController');
+Route::resource('tensoes', 'TensaoController');
 Route::resource('itens', 'ItemController');
 Route::resource('programacoes', 'ProgramacaoController');

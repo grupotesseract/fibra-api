@@ -16,6 +16,17 @@
 <li class="nav-item {{ Request::is('materiais*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('materiais.index') !!}"><i class="fa fa-lightbulb-o"></i> &nbsp;  &nbsp;<span>Materiais</span></a>
 </li>
+<li class="nav-item {{ Request::is('potencias*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('potencias.index') !!}">
+        <i class="fa fa-battery-full"></i>&nbsp;
+        <span>Potências</span>
+    </a>
+</li>
+<li class="nav-item {{ Request::is('tensoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('tensoes.index') !!}">
+        <i class="fa fa-battery-full"></i>&nbsp;
+        <span>Tensões</span>
+    </a>
 <li class="nav-item {{ Request::is('programacoes*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('programacoes.index') !!}"><i class="fa fa-calendar"></i> &nbsp; <span>Programações</span></a>
 <li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
