@@ -196,13 +196,13 @@ return [
 
         'handlers' => [
             'abort' => [
-                'code' => 403
+                'code' => 403,
             ],
 
             'redirect' => [
                 'url' => '/api/acesso-negado',       // Change this to the route you need
-            ]
-        ]
+            ],
+        ],
 
     ],
 

@@ -15,7 +15,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::apiResource('programacoes', 'ProgramacaoAPIController');
 
     Route::apiResource('materiais', 'MaterialAPIController')->only([
-        'store', 'update', 'destroy'
+        'store', 'update', 'destroy',
     ]);
 });
 
@@ -25,13 +25,11 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => ['auth:api', 'role:admin|tecnico|cliente']], function () {
-
     Route::get('usuario', 'UsuarioAPIController@showAuthenticated');
 
     Route::apiResource('materiais', 'MaterialAPIController')->only([
-        'index', 'show'
+        'index', 'show',
     ]);
-
 });
 
 /*
@@ -41,21 +39,20 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico|cliente']], funct
 */
 Route::post('/login', 'UsuarioAPIController@login');
 
-/** Rota caso permissões insuficientes  **/
-Route::get('acesso-negado', function(){
+/* Rota caso permissões insuficientes  **/
+Route::get('acesso-negado', function () {
     return response()->json([
-        "success"=>false,
-        "data"=>[],
-        "message" => 'Usuário não possui as permissões necessárias.'
+        'success'=>false,
+        'data'=>[],
+        'message' => 'Usuário não possui as permissões necessárias.',
     ], 403);
 });
 
-/** Caso rota não encontrada **/
-Route::fallback(function() {
+/* Caso rota não encontrada **/
+Route::fallback(function () {
     return response()->json([
-        "success"=>false,
-        "data"=>[],
-        "message" => 'Rota não encontrada'
+        'success'=>false,
+        'data'=>[],
+        'message' => 'Rota não encontrada',
     ], 404);
 });
-

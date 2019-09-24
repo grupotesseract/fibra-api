@@ -10,8 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Rotas Protegidas (Somente Logado & ROLE ADMIN)
@@ -30,7 +28,4 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');
     Route::resource('programacoes', 'ProgramacaoController');
-
 });
-
-
