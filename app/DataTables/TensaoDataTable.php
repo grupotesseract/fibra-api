@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Material;
+use App\Models\Tensao;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class MaterialDataTable extends DataTable
+class TensaoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class MaterialDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'materiais.datatables_actions');
+        return $dataTable->addColumn('action', 'tensoes.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Material $model
+     * @param \App\Models\Tensao $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Material $model)
+    public function query(Tensao $model)
     {
         return $model->newQuery();
     }
@@ -69,12 +69,7 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
-            'tipoMaterialNome' => ['data' => 'tipoMaterialNome', 'title' => 'Tipo de Material', 'searchable' => false],
-            'potenciaValor' => ['data' => 'potenciaValor', 'title' => 'Potência', 'searchable' => false],
-            'tensaoValor' => ['data' => 'tensaoValor', 'title' => 'Potência', 'searchable' => false],
-            'reatorNome' => ['data' => 'reatorNome', 'title' => 'Reator', 'searchable' => false],
-            'receptaculoNome' => ['data' => 'receptaculoNome', 'title' => 'Receptáculo', 'searchable' => false],
+            'valor',
         ];
     }
 
@@ -85,6 +80,6 @@ class MaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'materiaisdatatable_'.time();
+        return 'tensoesdatatable_'.time();
     }
 }
