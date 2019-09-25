@@ -31,5 +31,3 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('tensoes', 'TensaoController');
     Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');
 });
-
-

@@ -6,11 +6,9 @@ use App\Models\LiberacaoDocumento;
 use App\Repositories\BaseRepository;
 
 /**
- * Class LiberacaoDocumentoRepository
- * @package App\Repositories
+ * Class LiberacaoDocumentoRepository.
  * @version September 25, 2019, 2:34 pm -03
-*/
-
+ */
 class LiberacaoDocumentoRepository extends BaseRepository
 {
     /**
@@ -18,11 +16,11 @@ class LiberacaoDocumentoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'programacao_id',
-        'data_hora'
+        'data_hora',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -32,7 +30,7 @@ class LiberacaoDocumentoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
