@@ -29,11 +29,11 @@ class Material extends Model
         'tensao_id',
         'tipo_material_id',
         'reator_id',
-        'receptaculo_id',
+        'base_id',
     ];
 
     public $appends = [
-        'receptaculoNome',
+        'baseNome',
         'reatorNome',
         'tipoMaterialNome',
         'potenciaValor',
@@ -52,7 +52,7 @@ class Material extends Model
         'tensao' => 'string',
         'tipo_material_id' => 'integer',
         'reator_id'  => 'integer',
-        'receptaculo_id'  => 'integer',
+        'base_id'  => 'integer',
         'potencia_id'  => 'integer',
         'tensao_id'  => 'integer',
     ];
@@ -85,9 +85,9 @@ class Material extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function receptaculo()
+    public function base()
     {
-        return $this->belongsTo(self::class, 'receptaculo_id');
+        return $this->belongsTo(self::class, 'base_id');
     }
 
     /**
@@ -131,14 +131,14 @@ class Material extends Model
     }
 
     /**
-     * Acessor para a informação de Receptaculo.
+     * Acessor para a informação de base.
      *
      * @return int
      */
-    public function getReceptaculoNomeAttribute()
+    public function getBaseNomeAttribute()
     {
-        if ($this->receptaculo()->exists()) {
-            return $this->receptaculo->nome;
+        if ($this->base()->exists()) {
+            return $this->base->nome;
         }
     }
 
