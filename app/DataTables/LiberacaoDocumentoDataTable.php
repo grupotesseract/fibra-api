@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\LiberacaoDocumento;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class LiberacaoDocumentoDataTable extends DataTable
 {
@@ -70,7 +70,7 @@ class LiberacaoDocumentoDataTable extends DataTable
     {
         return [
             'programacao_id',
-            'data_hora_formatada' => ['searchable' => 'false']
+            'data_hora_formatada' => ['searchable' => 'false'],
         ];
     }
 
@@ -81,6 +81,6 @@ class LiberacaoDocumentoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'liberacoes_documentosdatatable_' . time();
+        return 'liberacoes_documentosdatatable_'.time();
     }
 }

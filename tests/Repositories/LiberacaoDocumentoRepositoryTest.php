@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
+use Tests\ApiTestTrait;
 use App\Models\LiberacaoDocumento;
 use App\Repositories\LiberacaoDocumentoRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class LiberacaoDocumentoRepositoryTest extends TestCase
 {

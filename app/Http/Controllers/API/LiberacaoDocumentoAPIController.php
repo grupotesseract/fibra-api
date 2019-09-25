@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use Illuminate\Http\Request;
+use App\Models\LiberacaoDocumento;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\LiberacaoDocumentoRepository;
 use App\Http\Requests\API\CreateLiberacaoDocumentoAPIRequest;
 use App\Http\Requests\API\UpdateLiberacaoDocumentoAPIRequest;
-use App\Models\LiberacaoDocumento;
-use App\Repositories\LiberacaoDocumentoRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class LiberacaoDocumentoController
- * @package App\Http\Controllers\API
+ * Class LiberacaoDocumentoController.
  */
-
 class LiberacaoDocumentoAPIController extends AppBaseController
 {
-    /** @var  LiberacaoDocumentoRepository */
+    /** @var LiberacaoDocumentoRepository */
     private $liberacaoDocumentoRepository;
 
     public function __construct(LiberacaoDocumentoRepository $liberacaoDocumentoRepo)
@@ -27,7 +25,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
     /**
      * Display a listing of the LiberacaoDocumento.
-     * GET|HEAD /liberacoesDocumentos
+     * GET|HEAD /liberacoesDocumentos.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
     /**
      * Store a newly created LiberacaoDocumento in storage.
-     * POST /liberacoesDocumentos
+     * POST /liberacoesDocumentos.
      *
      * @param CreateLiberacaoDocumentoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
     /**
      * Display the specified LiberacaoDocumento.
-     * GET|HEAD /liberacoesDocumentos/{id}
+     * GET|HEAD /liberacoesDocumentos/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
     /**
      * Update the specified LiberacaoDocumento in storage.
-     * PUT/PATCH /liberacoesDocumentos/{id}
+     * PUT/PATCH /liberacoesDocumentos/{id}.
      *
      * @param int $id
      * @param UpdateLiberacaoDocumentoAPIRequest $request
@@ -107,7 +105,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
     /**
      * Remove the specified LiberacaoDocumento from storage.
-     * DELETE /liberacoesDocumentos/{id}
+     * DELETE /liberacoesDocumentos/{id}.
      *
      * @param int $id
      *

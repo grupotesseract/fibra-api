@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\LiberacaoDocumentoDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Http\Controllers\AppBaseController;
+use App\DataTables\LiberacaoDocumentoDataTable;
+use App\Repositories\LiberacaoDocumentoRepository;
 use App\Http\Requests\CreateLiberacaoDocumentoRequest;
 use App\Http\Requests\UpdateLiberacaoDocumentoRequest;
-use App\Repositories\LiberacaoDocumentoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class LiberacaoDocumentoController extends AppBaseController
 {
-    /** @var  LiberacaoDocumentoRepository */
+    /** @var LiberacaoDocumentoRepository */
     private $liberacaoDocumentoRepository;
 
     public function __construct(LiberacaoDocumentoRepository $liberacaoDocumentoRepo)

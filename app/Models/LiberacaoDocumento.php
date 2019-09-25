@@ -6,12 +6,11 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class LiberacaoDocumento
- * @package App\Models
+ * Class LiberacaoDocumento.
  * @version September 25, 2019, 2:34 pm -03
  *
  * @property \App\Models\Programacao programacao
- * @property integer programacao_id
+ * @property int programacao_id
  * @property string data_hora
  */
 class LiberacaoDocumento extends Model
@@ -19,14 +18,12 @@ class LiberacaoDocumento extends Model
     use SoftDeletes;
 
     public $table = 'liberacoes_documentos';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
         'programacao_id',
-        'data_hora'
+        'data_hora',
     ];
 
     protected $appends = ['data_hora_formatada'];
@@ -38,19 +35,19 @@ class LiberacaoDocumento extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'programacao_id' => 'integer'
+        'programacao_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'programacao_id' => 'required',
-        'data_hora' => 'required'
+        'data_hora' => 'required',
     ];
- 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -58,8 +55,7 @@ class LiberacaoDocumento extends Model
     {
         return $this->belongsTo(\App\Models\Programacao::class, 'programacao_id');
     }
-    
-    
+
     /**
      * Acessor para Data Hora.
      *
