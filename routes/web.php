@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('programacoes', 'ProgramacaoController');
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');
+    Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');
 });
 
 
-Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');

@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             $this->call(MateriaisTableSeeder::class);
             $this->call(ItensTableSeeder::class);
             $this->call(ProgramacoesTableSeeder::class);
-        \$this->call(LiberacoesDocumentosTableSeeder::class);
+            $this->call(LiberacoesDocumentosTableSeeder::class);
         }
     }
 }

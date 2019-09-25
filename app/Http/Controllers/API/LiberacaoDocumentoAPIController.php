@@ -40,7 +40,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($liberacoesDocumentos->toArray(), 'Liberacoes Documentos retrieved successfully');
+        return $this->sendResponse($liberacoesDocumentos->toArray(), 'Liberações de Documentos listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class LiberacaoDocumentoAPIController extends AppBaseController
 
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->create($input);
 
-        return $this->sendResponse($liberacaoDocumento->toArray(), 'Liberacao Documento saved successfully');
+        return $this->sendResponse($liberacaoDocumento->toArray(), 'Liberação de Documento salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class LiberacaoDocumentoAPIController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            return $this->sendError('Liberacao Documento not found');
+            return $this->sendError('Liberação de Documento não encontrada');
         }
 
-        return $this->sendResponse($liberacaoDocumento->toArray(), 'Liberacao Documento retrieved successfully');
+        return $this->sendResponse($liberacaoDocumento->toArray(), 'Liberação de Documento listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class LiberacaoDocumentoAPIController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            return $this->sendError('Liberacao Documento not found');
+            return $this->sendError('Liberação de Documento não encontrada');
         }
 
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->update($input, $id);
 
-        return $this->sendResponse($liberacaoDocumento->toArray(), 'LiberacaoDocumento updated successfully');
+        return $this->sendResponse($liberacaoDocumento->toArray(), 'Liberação de Documento atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class LiberacaoDocumentoAPIController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            return $this->sendError('Liberacao Documento not found');
+            return $this->sendError('Liberação de Documento não encontrada');
         }
 
         $liberacaoDocumento->delete();
 
-        return $this->sendResponse($id, 'Liberacao Documento deleted successfully');
+        return $this->sendResponse($id, 'Liberação de Documento excluída com sucesso');
     }
 }

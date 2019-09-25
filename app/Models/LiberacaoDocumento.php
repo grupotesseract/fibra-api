@@ -29,6 +29,8 @@ class LiberacaoDocumento extends Model
         'data_hora'
     ];
 
+    protected $appends = ['data_hora_formatada'];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -48,12 +50,24 @@ class LiberacaoDocumento extends Model
         'programacao_id' => 'required',
         'data_hora' => 'required'
     ];
-
+ 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function programacao()
     {
         return $this->belongsTo(\App\Models\Programacao::class, 'programacao_id');
+    }
+    
+    
+    /**
+     * Acessor para Data Hora.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataHoraFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_hora)->format('d/m/Y H:i:s');
     }
 }

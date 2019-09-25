@@ -34,7 +34,7 @@
 </li>
 <li class="nav-item {{ Request::is('liberacoesDocumentos*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('liberacoesDocumentos.index') !!}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Liberacoes Documentos</span>
+        <i class="fa fa-clock-o"></i>
+        &nbsp; <span>Liberações de Documentos</span>
     </a>
 </li>

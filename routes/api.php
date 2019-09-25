@@ -15,6 +15,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::apiResource('programacoes', 'ProgramacaoAPIController');
     Route::apiResource('potencias', 'PotenciaAPIController');
     Route::apiResource('tensoes', 'TensaoAPIController');
+    Route::apiResource('liberacoes_documentos', 'LiberacaoDocumentoAPIController');
 
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'store', 'update', 'destroy',
@@ -60,4 +61,3 @@ Route::fallback(function () {
 });
 
 
-Route::resource('liberacoes_documentos', 'LiberacaoDocumentoAPIController');

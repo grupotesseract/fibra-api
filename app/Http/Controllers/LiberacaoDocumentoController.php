@@ -55,7 +55,7 @@ class LiberacaoDocumentoController extends AppBaseController
 
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->create($input);
 
-        Flash::success('Liberacao Documento saved successfully.');
+        Flash::success('Liberação de Documento salva com sucesso');
 
         return redirect(route('liberacoesDocumentos.index'));
     }
@@ -72,7 +72,7 @@ class LiberacaoDocumentoController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            Flash::error('Liberacao Documento not found');
+            Flash::error('Liberação de Documento não encontrada');
 
             return redirect(route('liberacoesDocumentos.index'));
         }
@@ -92,7 +92,7 @@ class LiberacaoDocumentoController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            Flash::error('Liberacao Documento not found');
+            Flash::error('Liberação de Documento não encontrada');
 
             return redirect(route('liberacoesDocumentos.index'));
         }
@@ -113,14 +113,14 @@ class LiberacaoDocumentoController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            Flash::error('Liberacao Documento not found');
+            Flash::error('Liberação de Documento não encontrada');
 
             return redirect(route('liberacoesDocumentos.index'));
         }
 
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->update($request->all(), $id);
 
-        Flash::success('Liberacao Documento updated successfully.');
+        Flash::success('Liberação de Documento atualizada com sucesso');
 
         return redirect(route('liberacoesDocumentos.index'));
     }
@@ -137,14 +137,14 @@ class LiberacaoDocumentoController extends AppBaseController
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
-            Flash::error('Liberacao Documento not found');
+            Flash::error('Liberação de Documento não encontrada');
 
             return redirect(route('liberacoesDocumentos.index'));
         }
 
         $this->liberacaoDocumentoRepository->delete($id);
 
-        Flash::success('Liberacao Documento deleted successfully.');
+        Flash::success('Liberação de Documento excluída com sucesso');
 
         return redirect(route('liberacoesDocumentos.index'));
     }

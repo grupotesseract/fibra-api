@@ -11,6 +11,6 @@ class LiberacoesDocumentosTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\LiberacaoDocumento::class, 100)->create();
     }
 }
