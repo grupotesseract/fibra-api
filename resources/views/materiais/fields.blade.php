@@ -20,6 +20,18 @@
         ])
     </div>
 
+    <div class="form-group col-sm-6">
+        @include('potencias.select', [
+            'Model' => $material
+        ])
+    </div>
+
+    <div class="form-group col-sm-6">
+        @include('tensoes.select', [
+            'Model' => $material
+        ])
+    </div>
+
 @else
 
     <div class="form-group col-sm-6">
@@ -34,24 +46,20 @@
         @include('materiais.select_receptaculos')
     </div>
 
+    <div class="form-group col-sm-6">
+        @include('potencias.select')
+    </div>
+
+    <div class="form-group col-sm-6">
+        @include('tensoes.select')
+    </div>
+
 @endif
 
 <!-- Nome Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nome', 'Nome') !!}
     {!! Form::text('nome', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Potencia Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('potencia', 'Potência') !!}
-    {!! Form::text('potencia', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Tensao Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tensao', 'Tensao') !!}
-    {!! Form::text('tensao', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
