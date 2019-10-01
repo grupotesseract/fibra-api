@@ -15,7 +15,7 @@ abstract class BaseRepository
     /**
      * @var Application
      */
-    protected $app;    
+    protected $app;
 
     /**
      * @param Application $app
@@ -233,11 +233,10 @@ abstract class BaseRepository
      */
     public function with($relations)
     {
-        if (is_string($relations)) {        
+        if (is_string($relations)) {
             return explode(',', $relations);
         } else {
             return is_array($relations) ? $relations : [];
-        }       
-        
+        }
     }
 }
