@@ -63,4 +63,12 @@ class Empresa extends Model
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function plantas()
+    {
+        return $this->hasMany(\App\Models\Planta::class, 'empresa_id');
+    }
 }

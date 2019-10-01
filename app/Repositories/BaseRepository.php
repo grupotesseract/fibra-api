@@ -15,7 +15,7 @@ abstract class BaseRepository
     /**
      * @var Application
      */
-    protected $app;
+    protected $app;    
 
     /**
      * @param Application $app
@@ -82,7 +82,7 @@ abstract class BaseRepository
      * @param int|null $limit
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function allQuery($search = [], $skip = null, $limit = null)
+    public function allQuery($search = [], $skip = null, $limit = null, $with = null)
     {
         $query = $this->model->newQuery();
 
@@ -102,6 +102,10 @@ abstract class BaseRepository
             $query->limit($limit);
         }
 
+        if (! is_null($with)) {
+            $query->with($this->with($with));
+        }
+
         return $query;
     }
 
@@ -115,9 +119,9 @@ abstract class BaseRepository
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function all($search = [], $skip = null, $limit = null, $columns = ['*'])
+    public function all($search = [], $skip = null, $limit = null, $with = null, $columns = ['*'])
     {
-        $query = $this->allQuery($search, $skip, $limit);
+        $query = $this->allQuery($search, $skip, $limit, $with);
 
         return $query->get($columns);
     }
@@ -219,5 +223,21 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         return $model->delete();
+    }
+
+    /**
+     * Sets relations for eager loading.
+     *
+     * @param $relations
+     * @return $this
+     */
+    public function with($relations)
+    {
+        if (is_string($relations)) {        
+            return explode(',', $relations);
+        } else {
+            return is_array($relations) ? $relations : [];
+        }       
+        
     }
 }
