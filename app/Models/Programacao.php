@@ -25,7 +25,7 @@ class Programacao extends Model
 
     protected $dates = [
         'deleted_at',
-        'data_inicio_prevista',
+        //'data_inicio_prevista',
         'data_fim_prevista',
         'data_inicio_real',
         'data_fim_real',
@@ -78,9 +78,8 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
-            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
+            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
     }
 
@@ -94,9 +93,8 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
-            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
+            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
     }
 
@@ -110,9 +108,8 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
-            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
+            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
     }
 
@@ -126,9 +123,8 @@ class Programacao extends Model
     {
         try {
             \Carbon\Carbon::parse($value);
-            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('Y-m-d H:m:s');
         } catch (\Exception $e) {
-            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:m', $value);
+            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
     }
 
@@ -140,7 +136,7 @@ class Programacao extends Model
      */
     public function formDataInicioPrevistaAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
     }
 
     /**
@@ -151,7 +147,7 @@ class Programacao extends Model
      */
     public function formDataFimPrevistaAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
     }
 
     /**
@@ -162,7 +158,7 @@ class Programacao extends Model
      */
     public function formDataInicioRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
     }
 
     /**
@@ -173,6 +169,6 @@ class Programacao extends Model
      */
     public function formDataFimRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:m:s', $value)->format('d/m/Y H:m:s');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
     }
 }

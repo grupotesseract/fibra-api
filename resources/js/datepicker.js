@@ -3,7 +3,7 @@
  */
 $(function () {
   $('.datepicker').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm',
+    format: 'DD/MM/YYYY HH:mm:ss',
     locale: 'pt-br',
     useCurrent: true,
     icons: {
