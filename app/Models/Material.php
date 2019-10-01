@@ -27,10 +27,10 @@ class Material extends Model
         'nome',
         'potencia_id',
         'tensao_id',
-        'tipo_material_id',        
+        'tipo_material_id',
     ];
 
-    public $appends = [        
+    public $appends = [
         'tipoMaterialNome',
         'potenciaValor',
         'tensaoValor',
@@ -46,7 +46,7 @@ class Material extends Model
         'nome' => 'string',
         'potencia' => 'string',
         'tensao' => 'string',
-        'tipo_material_id' => 'integer',        
+        'tipo_material_id' => 'integer',
         'potencia_id'  => 'integer',
         'tensao_id'  => 'integer',
     ];
@@ -67,7 +67,6 @@ class Material extends Model
     {
         return $this->belongsTo(\App\Models\TipoMaterial::class, 'tipo_material_id');
     }
-    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -95,7 +94,7 @@ class Material extends Model
         if ($this->tipoMaterial()->exists()) {
             return $this->tipoMaterial->nome;
         }
-    }    
+    }
 
     /**
      * Acessor para a informação de Potencia.
