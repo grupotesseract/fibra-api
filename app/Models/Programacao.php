@@ -25,7 +25,7 @@ class Programacao extends Model
 
     protected $dates = [
         'deleted_at',
-        //'data_inicio_prevista',
+        'data_inicio_prevista',
         'data_fim_prevista',
         'data_inicio_real',
         'data_fim_real',
@@ -77,7 +77,7 @@ class Programacao extends Model
     public function setDataInicioPrevistaAttribute($value)
     {
         try {
-            \Carbon\Carbon::parse($value);
+            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::parse($value);
         } catch (\Exception $e) {
             $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
@@ -92,7 +92,7 @@ class Programacao extends Model
     public function setDataFimPrevistaAttribute($value)
     {
         try {
-            \Carbon\Carbon::parse($value);
+            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::parse($value);
         } catch (\Exception $e) {
             $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
@@ -107,7 +107,7 @@ class Programacao extends Model
     public function setDataInicioRealAttribute($value)
     {
         try {
-            \Carbon\Carbon::parse($value);
+            $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
         } catch (\Exception $e) {
             $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
@@ -122,7 +122,7 @@ class Programacao extends Model
     public function setDataFimRealAttribute($value)
     {
         try {
-            \Carbon\Carbon::parse($value);
+            $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
         } catch (\Exception $e) {
             $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
