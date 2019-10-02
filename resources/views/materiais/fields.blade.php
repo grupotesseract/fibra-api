@@ -6,19 +6,7 @@
         @include('tipos_materiais.select', [
             'Model' => $material
         ])
-    </div>
-    
-    <div class="form-group col-sm-6">
-        @include('materiais.select_reatores', [
-            'Model' => $material
-        ])
-    </div>
-
-    <div class="form-group col-sm-6">
-        @include('materiais.select_receptaculos', [
-            'Model' => $material
-        ])
-    </div>
+    </div>    
 
     <div class="form-group col-sm-6">
         @include('potencias.select', [

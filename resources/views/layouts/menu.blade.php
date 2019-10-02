@@ -32,3 +32,9 @@
 <li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('itens.index') !!}"><i class="fa fa-building"></i> &nbsp; <span>Itens</span></a>
 </li>
+<li class="nav-item {{ Request::is('liberacoesDocumentos*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('liberacoesDocumentos.index') !!}">
+        <i class="fa fa-clock-o"></i>
+        &nbsp; <span>Liberações de Documentos</span>
+    </a>
+</li>

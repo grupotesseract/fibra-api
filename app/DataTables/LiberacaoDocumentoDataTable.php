@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Material;
+use App\Models\LiberacaoDocumento;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class MaterialDataTable extends DataTable
+class LiberacaoDocumentoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class MaterialDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'materiais.datatables_actions');
+        return $dataTable->addColumn('action', 'liberacoes_documentos.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Material $model
+     * @param \App\Models\LiberacaoDocumento $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Material $model)
+    public function query(LiberacaoDocumento $model)
     {
         return $model->newQuery();
     }
@@ -69,10 +69,8 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
-            'tipoMaterialNome' => ['data' => 'tipoMaterialNome', 'title' => 'Tipo de Material', 'searchable' => false],
-            'potenciaValor' => ['data' => 'potenciaValor', 'title' => 'Potência', 'searchable' => false],
-            'tensaoValor' => ['data' => 'tensaoValor', 'title' => 'Potência', 'searchable' => false],
+            'programacao_id',
+            'data_hora_formatada' => ['searchable' => 'false'],
         ];
     }
 
@@ -83,6 +81,6 @@ class MaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'materiaisdatatable_'.time();
+        return 'liberacoes_documentosdatatable_'.time();
     }
 }
