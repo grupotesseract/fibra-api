@@ -35,7 +35,8 @@ class EmpresaAPIController extends AppBaseController
         $empresas = $this->empresaRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),
-            $request->get('limit')
+            $request->get('limit'),
+            'plantas'
         );
 
         return $this->sendResponse($empresas->toArray(), 'Empresas listadas com sucesso');
