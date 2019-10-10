@@ -10,6 +10,8 @@ use App\Repositories\ItemRepository;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Controllers\AppBaseController;
+use App\DataTables\MateriaisDoItemDataTable;
+use App\DataTables\Scopes\MateriaisDoItemScope;
 
 class ItemController extends AppBaseController
 {
@@ -67,7 +69,7 @@ class ItemController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(MateriaisDoItemDataTable $mateiriasDataTable, $id)
     {
         $item = $this->itemRepository->find($id);
 
@@ -77,7 +79,9 @@ class ItemController extends AppBaseController
             return redirect(route('itens.index'));
         }
 
-        return view('itens.show')->with('item', $item);
+        $mateiriasDataTable->itemID = $id;
+        return $mateiriasDataTable->addScope(new MateriaisDoItemScope($id))
+            ->render('itens.show', compact('item'));
     }
 
     /**
