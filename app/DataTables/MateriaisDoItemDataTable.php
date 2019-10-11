@@ -50,11 +50,11 @@ class MateriaisDoItemDataTable extends DataTable
             ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Quantidade'])
             ->parameters(
                 [
-                    'dom'       => 'frti',
+                    'dom'       => 'frtip',
                     'stateSave' => true,
                     'order'     => [[0, 'desc']],
                     'buttons'   => [
-                        ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Adicionar novo material', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner btnAtualizaDataTable'],
                     ],
                     'language' => [
                         'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),

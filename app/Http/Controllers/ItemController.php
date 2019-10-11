@@ -9,6 +9,7 @@ use App\DataTables\ItemDataTable;
 use App\Repositories\ItemRepository;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Http\Requests\AssociaMaterialItemRequest;
 use App\Http\Controllers\AppBaseController;
 use App\DataTables\MateriaisDoItemDataTable;
 use App\DataTables\Scopes\MateriaisDoItemScope;
@@ -152,4 +153,36 @@ class ItemController extends AppBaseController
 
         return redirect(route('itens.index'));
     }
+
+
+    /**
+     * Associa um material com determinada quantidade ao Item
+     *
+     * @param  int              $id
+     * @param UpdateItemRequest $request
+     *
+     * @return Response
+     */
+    public function postAssociarMaterial($id, AssociaMaterialItemRequest $request)
+    {
+        $item = $this->itemRepository->find($id);
+
+        if (empty($item)) {
+            Flash::error('Item não encontrado');
+            return redirect(route('itens.index'));
+        }
+
+        $fezUpdate = $item->materiais()->attach([
+            $request->material_id => [
+                'quantidade_instalada' => $request->qnt_instalada
+            ]
+        ]);
+
+        return $this->sendResponse($fezUpdate, 'Material adicionado');
+    }
+
+
+
+
+
 }
