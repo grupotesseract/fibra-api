@@ -50,7 +50,7 @@ class MateriaisDoItemDataTable extends DataTable
             ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Quantidade'])
             ->parameters(
                 [
-                    'dom'       => 'Bfrtip',
+                    'dom'       => 'frti',
                     'stateSave' => true,
                     'order'     => [[0, 'desc']],
                     'buttons'   => [

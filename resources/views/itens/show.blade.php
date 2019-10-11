@@ -30,6 +30,8 @@
                             <strong>Materiais do Item</strong>
                         </div>
                         <div class="card-body">
+                            @include('itens.partials.form_add_materiais', ['materiais' => [1,2,3]])
+                            <hr>
                             @include('itens.table')
                             <div class="pull-right mr-3">
 
