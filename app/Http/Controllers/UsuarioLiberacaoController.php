@@ -55,7 +55,7 @@ class UsuarioLiberacaoController extends AppBaseController
 
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->create($input);
 
-        Flash::success('Usuario Liberacao saved successfully.');
+        Flash::success('Colaborador salvo com sucesso');
 
         return redirect(route('usuariosLiberacoes.index'));
     }
@@ -72,7 +72,7 @@ class UsuarioLiberacaoController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            Flash::error('Usuario Liberacao not found');
+            Flash::error('Usuario_Liberação não encontrado');
 
             return redirect(route('usuariosLiberacoes.index'));
         }
@@ -92,7 +92,7 @@ class UsuarioLiberacaoController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            Flash::error('Usuario Liberacao not found');
+            Flash::error('Colaborador não encontrado');
 
             return redirect(route('usuariosLiberacoes.index'));
         }
@@ -113,14 +113,14 @@ class UsuarioLiberacaoController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            Flash::error('Usuario Liberacao not found');
+            Flash::error('Colaborador não encontrado');
 
             return redirect(route('usuariosLiberacoes.index'));
         }
 
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->update($request->all(), $id);
 
-        Flash::success('Usuario Liberacao updated successfully.');
+        Flash::success('Colaborador atualizado com sucesso');
 
         return redirect(route('usuariosLiberacoes.index'));
     }
@@ -137,14 +137,14 @@ class UsuarioLiberacaoController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            Flash::error('Usuario Liberacao not found');
+            Flash::error('Colaborador não encontrado');
 
             return redirect(route('usuariosLiberacoes.index'));
         }
 
         $this->usuarioLiberacaoRepository->delete($id);
 
-        Flash::success('Usuario Liberacao deleted successfully.');
+        Flash::success('Colaborador excluído com sucesso');
 
         return redirect(route('usuariosLiberacoes.index'));
     }

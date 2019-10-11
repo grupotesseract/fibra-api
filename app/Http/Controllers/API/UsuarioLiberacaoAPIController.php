@@ -40,7 +40,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($usuariosLiberacoes->toArray(), 'Usuarios Liberacoes retrieved successfully');
+        return $this->sendResponse($usuariosLiberacoes->toArray(), 'Colaboradores listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->create($input);
 
-        return $this->sendResponse($usuarioLiberacao->toArray(), 'Usuario Liberacao saved successfully');
+        return $this->sendResponse($usuarioLiberacao->toArray(), 'Colaborador salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class UsuarioLiberacaoAPIController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            return $this->sendError('Usuario Liberacao not found');
+            return $this->sendError('Colaborador não encontrado');
         }
 
-        return $this->sendResponse($usuarioLiberacao->toArray(), 'Usuario Liberacao retrieved successfully');
+        return $this->sendResponse($usuarioLiberacao->toArray(), 'Colaborador listado com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class UsuarioLiberacaoAPIController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            return $this->sendError('Usuario Liberacao not found');
+            return $this->sendError('Colaborador não encontrado');
         }
 
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->update($input, $id);
 
-        return $this->sendResponse($usuarioLiberacao->toArray(), 'UsuarioLiberacao updated successfully');
+        return $this->sendResponse($usuarioLiberacao->toArray(), 'Colaborador atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class UsuarioLiberacaoAPIController extends AppBaseController
         $usuarioLiberacao = $this->usuarioLiberacaoRepository->find($id);
 
         if (empty($usuarioLiberacao)) {
-            return $this->sendError('Usuario Liberacao not found');
+            return $this->sendError('Colaborador não encontrado');
         }
 
         $usuarioLiberacao->delete();
 
-        return $this->sendResponse($id, 'Usuario Liberacao deleted successfully');
+        return $this->sendResponse($id, 'Colaborador excluído com sucesso');
     }
 }
