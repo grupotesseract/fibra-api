@@ -40,7 +40,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($quantidadesMinimas->toArray(), 'Quantidades Minimas retrieved successfully');
+        return $this->sendResponse($quantidadesMinimas->toArray(), 'Quantidades Minimas listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
         $quantidadeMinima = $this->quantidadeMinimaRepository->create($input);
 
-        return $this->sendResponse($quantidadeMinima->toArray(), 'Quantidade Minima saved successfully');
+        return $this->sendResponse($quantidadeMinima->toArray(), 'Quantidade Minima salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class QuantidadeMinimaAPIController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            return $this->sendError('Quantidade Minima not found');
+            return $this->sendError('Quantidade Minima não encontrada');
         }
 
-        return $this->sendResponse($quantidadeMinima->toArray(), 'Quantidade Minima retrieved successfully');
+        return $this->sendResponse($quantidadeMinima->toArray(), 'Quantidade Minima listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class QuantidadeMinimaAPIController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            return $this->sendError('Quantidade Minima not found');
+            return $this->sendError('Quantidade Minima não encontrada');
         }
 
         $quantidadeMinima = $this->quantidadeMinimaRepository->update($input, $id);
 
-        return $this->sendResponse($quantidadeMinima->toArray(), 'QuantidadeMinima updated successfully');
+        return $this->sendResponse($quantidadeMinima->toArray(), 'Quantidade Minima atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class QuantidadeMinimaAPIController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            return $this->sendError('Quantidade Minima not found');
+            return $this->sendError('Quantidade Minima não encontrada');
         }
 
         $quantidadeMinima->delete();
 
-        return $this->sendResponse($id, 'Quantidade Minima deleted successfully');
+        return $this->sendResponse($id, 'Quantidade Minima excluída com sucesso');
     }
 }

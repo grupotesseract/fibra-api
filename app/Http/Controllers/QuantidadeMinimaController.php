@@ -55,7 +55,7 @@ class QuantidadeMinimaController extends AppBaseController
 
         $quantidadeMinima = $this->quantidadeMinimaRepository->create($input);
 
-        Flash::success('Quantidade Minima saved successfully.');
+        Flash::success('Quantidade Minima salva com sucesso.');
 
         return redirect(route('quantidadesMinimas.index'));
     }
@@ -72,7 +72,7 @@ class QuantidadeMinimaController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            Flash::error('Quantidade Minima not found');
+            Flash::error('Quantidade Minima não encontrada');
 
             return redirect(route('quantidadesMinimas.index'));
         }
@@ -92,7 +92,7 @@ class QuantidadeMinimaController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            Flash::error('Quantidade Minima not found');
+            Flash::error('Quantidade Minima não encontrada');
 
             return redirect(route('quantidadesMinimas.index'));
         }
@@ -113,14 +113,14 @@ class QuantidadeMinimaController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            Flash::error('Quantidade Minima not found');
+            Flash::error('Quantidade Minima não encontrada');
 
             return redirect(route('quantidadesMinimas.index'));
         }
 
         $quantidadeMinima = $this->quantidadeMinimaRepository->update($request->all(), $id);
 
-        Flash::success('Quantidade Minima updated successfully.');
+        Flash::success('Quantidade Minima atualizada com sucesso.');
 
         return redirect(route('quantidadesMinimas.index'));
     }
@@ -137,14 +137,14 @@ class QuantidadeMinimaController extends AppBaseController
         $quantidadeMinima = $this->quantidadeMinimaRepository->find($id);
 
         if (empty($quantidadeMinima)) {
-            Flash::error('Quantidade Minima not found');
+            Flash::error('Quantidade Minima não encontrada');
 
             return redirect(route('quantidadesMinimas.index'));
         }
 
         $this->quantidadeMinimaRepository->delete($id);
 
-        Flash::success('Quantidade Minima deleted successfully.');
+        Flash::success('Quantidade Minima excluída com sucesso.');
 
         return redirect(route('quantidadesMinimas.index'));
     }
