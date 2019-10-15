@@ -59,3 +59,6 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
+
+
+Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');
