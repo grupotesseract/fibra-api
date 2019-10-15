@@ -41,6 +41,6 @@
 <li class="nav-item {{ Request::is('usuariosLiberacoes*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('usuariosLiberacoes.index') !!}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Usuarios Liberacoes</span>
+        <span>Liberações de Documentos Usuários</span>
     </a>
 </li>
