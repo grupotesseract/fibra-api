@@ -16,6 +16,7 @@ class Plantas {
    * @returns
    */
   eventHandlers() {
+    $('.select2').select2();
     $('.select-plantas-empresa').on('change', async event => {
       let content = '';
       const ID = event.currentTarget.value;

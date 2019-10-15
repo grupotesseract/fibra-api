@@ -23,7 +23,6 @@ class App {
     $('a[href="#"], button').on('click', event => {
       event.preventDefault()
     })
-    $('.select2').select2()
   }
 
 }

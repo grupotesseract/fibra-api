@@ -207,10 +207,17 @@ class ItemController extends AppBaseController
             return redirect()->back();
         }
 
-        $fezUpdate = $item->materiais()->detach($idMaterial);
+        //Se nao tiver esse material associado, erro.
+        if (!$item->materiais->find($idMaterial)) {
+            return \Response::json([
+                'errors' => ['Material não associado ao item']
+            ], 422);
+        }
 
+        $item->materiais()->detach($idMaterial);
+
+        Flash::success('Material removido com sucesso');
         return redirect()->back();
-        return $this->sendResponse($fezUpdate, 'Material removido');
     }
 
 

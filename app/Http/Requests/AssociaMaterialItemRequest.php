@@ -39,7 +39,8 @@ class AssociaMaterialItemRequest extends FormRequest
         return [
             'material_id.required' => 'O campo material é obrigatório',
             'material_id.exists' => 'O campo material é obrigatório',
-            'qnt_instalada.min' => 'A quantidade instalada deve ser no minimo 1',
+            'qnt_instalada.min' => 'A quantidade instalada deve ser no mínimo 1',
+            'qnt_instalada.integer' => 'A quantidade instalada deve ser um número inteiro',
         ];
     }
 

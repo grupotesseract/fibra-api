@@ -10,6 +10,7 @@
      <div class="container-fluid">
           <div class="animated fadeIn">
                  @include('coreui-templates::common.errors')
+                 @include('flash::message')
                  <div class="row">
                      <div class="col-lg-4">
                          <div class="card">
@@ -26,7 +27,6 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-edit fa-lg"></i>
                             <strong>Materiais do Item</strong>
                         </div>
                         <div class="card-body">

@@ -19,7 +19,7 @@ class MateriaisItem {
         $('.select2').select2();
         $('#form-associar-materiais').submit((event) => {
             event.preventDefault()
-            this.submitFormMaterialItem()
+            this.submitFormAddMaterialItem()
         });
     }
 
@@ -28,7 +28,7 @@ class MateriaisItem {
         $(input_qnt).val(0);
     }
 
-    async submitFormMaterialItem() {
+    async submitFormAddMaterialItem() {
         const url = location.href + "/materiais"
         const select_materiais = $('#material_id');
         const input_qnt = $('#qnt_instalada');
