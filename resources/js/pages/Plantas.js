@@ -21,11 +21,11 @@ class Plantas {
       const ID = event.currentTarget.value;
       const result = await Axios.get(`/empresas/${ID}/plantas`)
 
-      for (let [key, value] of Object.entries(result.data)) {
+      for (let [key, value] of Object.entries(result.data.data)) {
         content += `<option value="${key}">${value}</option>`;
       }
 
-      $('.select-plantas-empresa').html(content);
+      $('.select-plantas').html(content);
     })
   }
 

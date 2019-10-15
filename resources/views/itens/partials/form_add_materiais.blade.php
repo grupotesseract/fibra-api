@@ -25,3 +25,7 @@
 {{ Form::close() }}
 
 
+@section('scripts')
+    <script src="/js/pages/MateriaisItem.js"></script>
+@endsection
+

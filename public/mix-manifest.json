@@ -4,6 +4,6 @@
     "/css/pages/login.css": "/css/pages/login.css",
     "/css/pages/welcome.css": "/css/pages/welcome.css",
     "/js/pages/Cidades.js": "/js/pages/Cidades.js",
-    "/js/pages/Home.js": "/js/pages/Home.js",
-    "/js/pages/Usuarios.js": "/js/pages/Usuarios.js"
+    "/js/pages/MateriaisItem.js": "/js/pages/MateriaisItem.js",
+    "/js/pages/Plantas.js": "/js/pages/Plantas.js"
 }

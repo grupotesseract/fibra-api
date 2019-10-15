@@ -2,9 +2,9 @@ const mix = require('laravel-mix')
 const browserSyncFiles = ['public/css/*.{css,js}']
 
 mix.js('resources/js/App.js', 'public/js')
-  .js('resources/js/pages/Home.js', 'public/js/pages')
   .js('resources/js/pages/Cidades.js', 'public/js/pages')
-  .js('resources/js/pages/Usuarios.js', 'public/js/pages')
+  .js('resources/js/pages/Plantas.js', 'public/js/pages')
+  .js('resources/js/pages/MateriaisItem.js', 'public/js/pages')
 
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/pages/login.scss', 'public/css/pages')

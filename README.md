@@ -46,8 +46,8 @@ v art key:generate
 v art migrate
 v art passport:install
 
-v yarn
-v yarn watch
+v y
+v y watch
 ```
 
 ### Comando para gerar um CRUD

@@ -4,7 +4,7 @@
 
 @include('empresas.select', [
     'Model' => $Model->planta,
-    'classesExtras' => 'ajax-plantas-empresa'
+    'classesExtras' => 'select-plantas-empresa'
 ])
 
 <!-- Select de Plantas  -->
@@ -17,7 +17,7 @@
 @else
 
 @include('empresas.select', [
-    'classesExtras' => 'ajax-plantas-empresa'
+    'classesExtras' => 'select-plantas-empresa'
 ])
 
 <!-- Select de Plantas  -->
@@ -30,5 +30,5 @@
 @endif
 
 @section('scripts')
-    <script src="/js/ajax-plantas.js"></script>
+    <script src="/js/pages/Plantas.js"></script>
 @append
