@@ -21,8 +21,13 @@ class MateriaisDoItemDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
 
         $itemID = $this->itemID;
-        return $dataTable->addColumn('action', function($row) use ($itemID){
+        return $dataTable->addColumn('quantidade', function($row) use ($itemID){
             return $row->items()->find($itemID)->pivot->quantidade_instalada;
+        })->addColumn('action', function($row) use ($itemID){
+            return view('itens.partials.form_remove_material')->with([
+                'material_id' => $row->id,
+                'item_id' => $itemID
+            ])->render();
         });
     }
 
@@ -47,7 +52,7 @@ class MateriaisDoItemDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Quantidade'])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
                     'dom'       => 'frtip',
@@ -92,7 +97,14 @@ class MateriaisDoItemDataTable extends DataTable
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false
+            ],
+            'quantidade' => [
+                'title' => 'Quantidade',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false
             ]
+
         ];
     }
 

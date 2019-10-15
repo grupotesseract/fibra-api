@@ -9,10 +9,12 @@ use App\DataTables\ItemDataTable;
 use App\Repositories\ItemRepository;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
-use App\Http\Requests\AssociaMaterialItemRequest;
+use InfyOm\Generator\Utils\ResponseUtil;
 use App\Http\Controllers\AppBaseController;
 use App\DataTables\MateriaisDoItemDataTable;
 use App\DataTables\Scopes\MateriaisDoItemScope;
+use App\Http\Requests\AssociaMaterialItemRequest;
+use App\Http\Requests\DesassociaMaterialItemRequest;
 
 class ItemController extends AppBaseController
 {
@@ -154,7 +156,6 @@ class ItemController extends AppBaseController
         return redirect(route('itens.index'));
     }
 
-
     /**
      * Associa um material com determinada quantidade ao Item
      *
@@ -172,6 +173,14 @@ class ItemController extends AppBaseController
             return redirect(route('itens.index'));
         }
 
+        //Se ja tiver esse material associado, erro.
+        if ($item->materiais->find($request->material_id)) {
+            return \Response::json([
+                'errors' => ['O Material selecionado já está associado ao item']
+            ], 422);
+        }
+
+
         $fezUpdate = $item->materiais()->attach([
             $request->material_id => [
                 'quantidade_instalada' => $request->qnt_instalada
@@ -181,6 +190,28 @@ class ItemController extends AppBaseController
         return $this->sendResponse($fezUpdate, 'Material adicionado');
     }
 
+    /**
+     * Desassocia um material de um Item
+     *
+     * @param  int              $id
+     * @param UpdateItemRequest $request
+     *
+     * @return Response
+     */
+    public function postDesassociarMaterial($idItem, $idMaterial)
+    {
+        $item = $this->itemRepository->find($idItem);
+
+        if (empty($item)) {
+            Flash::error('Item não encontrado');
+            return redirect()->back();
+        }
+
+        $fezUpdate = $item->materiais()->detach($idMaterial);
+
+        return redirect()->back();
+        return $this->sendResponse($fezUpdate, 'Material removido');
+    }
 
 
 

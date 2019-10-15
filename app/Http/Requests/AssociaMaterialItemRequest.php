@@ -29,4 +29,19 @@ class AssociaMaterialItemRequest extends FormRequest
         ];
     }
 
+    /**
+     * Incluindo mensagens amigaveis
+     *
+     * @return void
+     */
+    public function messages()
+    {
+        return [
+            'material_id.required' => 'O campo material é obrigatório',
+            'material_id.exists' => 'O campo material é obrigatório',
+            'qnt_instalada.min' => 'A quantidade instalada deve ser no minimo 1',
+        ];
+    }
+
+
 }
