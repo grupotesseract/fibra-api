@@ -23,7 +23,6 @@ class CriaTabelaPivoItensMateriais extends Migration
             $table->foreign('material_id')->references('id')->on('materiais');
 
             $table->integer('quantidade_instalada')->unsigned();
-
         });
     }
 

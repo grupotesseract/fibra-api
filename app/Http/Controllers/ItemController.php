@@ -83,6 +83,7 @@ class ItemController extends AppBaseController
         }
 
         $mateiriasDataTable->itemID = $id;
+
         return $mateiriasDataTable->addScope(new MateriaisDoItemScope($id))
             ->render('itens.show', compact('item'));
     }
@@ -157,7 +158,7 @@ class ItemController extends AppBaseController
     }
 
     /**
-     * Associa um material com determinada quantidade ao Item
+     * Associa um material com determinada quantidade ao Item.
      *
      * @param  int              $id
      * @param UpdateItemRequest $request
@@ -170,28 +171,28 @@ class ItemController extends AppBaseController
 
         if (empty($item)) {
             Flash::error('Item não encontrado');
+
             return redirect(route('itens.index'));
         }
 
         //Se ja tiver esse material associado, erro.
         if ($item->materiais->find($request->material_id)) {
             return \Response::json([
-                'errors' => ['O Material selecionado já está associado ao item']
+                'errors' => ['O Material selecionado já está associado ao item'],
             ], 422);
         }
 
-
         $fezUpdate = $item->materiais()->attach([
             $request->material_id => [
-                'quantidade_instalada' => $request->qnt_instalada
-            ]
+                'quantidade_instalada' => $request->qnt_instalada,
+            ],
         ]);
 
         return $this->sendResponse($fezUpdate, 'Material adicionado');
     }
 
     /**
-     * Desassocia um material de um Item
+     * Desassocia um material de um Item.
      *
      * @param  int              $id
      * @param UpdateItemRequest $request
@@ -204,23 +205,21 @@ class ItemController extends AppBaseController
 
         if (empty($item)) {
             Flash::error('Item não encontrado');
+
             return redirect()->back();
         }
 
         //Se nao tiver esse material associado, erro.
-        if (!$item->materiais->find($idMaterial)) {
+        if (! $item->materiais->find($idMaterial)) {
             return \Response::json([
-                'errors' => ['Material não associado ao item']
+                'errors' => ['Material não associado ao item'],
             ], 422);
         }
 
         $item->materiais()->detach($idMaterial);
 
         Flash::success('Material removido com sucesso');
+
         return redirect()->back();
     }
-
-
-
-
 }

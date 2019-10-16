@@ -75,22 +75,22 @@ class MaterialDataTable extends DataTable
                 'title' => 'Tipo de Material',
                 'searchable' => false,
                 'orderable' => false,
-                'filterable' => false
+                'filterable' => false,
             ],
             'potenciaValor' => [
                 'data' => 'potenciaValor',
                 'title' => 'Potência',
                 'searchable' => false,
                 'orderable' => false,
-                'filterable' => false
+                'filterable' => false,
             ],
             'tensaoValor' => [
                 'data' => 'tensaoValor',
                 'title' => 'Tensão',
                 'searchable' => false,
                 'orderable' => false,
-                'filterable' => false
-            ]
+                'filterable' => false,
+            ],
         ];
     }
 
