@@ -25,12 +25,12 @@ class AssociaMaterialItemRequest extends FormRequest
     {
         return [
             'material_id' => 'required|exists:materiais,id',
-            'qnt_instalada' => 'required|integer|min:1'
+            'qnt_instalada' => 'required|integer|min:1',
         ];
     }
 
     /**
-     * Incluindo mensagens amigaveis
+     * Incluindo mensagens amigaveis.
      *
      * @return void
      */
@@ -43,6 +43,4 @@ class AssociaMaterialItemRequest extends FormRequest
             'qnt_instalada.integer' => 'A quantidade instalada deve ser um número inteiro',
         ];
     }
-
-
 }

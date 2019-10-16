@@ -25,7 +25,8 @@ class MateriaisDoItemScope implements DataTableScope
     public function apply($query)
     {
         $itemID = $this->itemID;
-        return $query->whereHas('items', function($qItem) use ($itemID) {
+
+        return $query->whereHas('items', function ($qItem) use ($itemID) {
             $qItem->where('item_id', $itemID);
         });
     }
