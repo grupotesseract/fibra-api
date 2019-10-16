@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="/js/select2.full.min.js"></script>
-<script src="/js/datepicker.js"></script>
-<script src="/js/App.js"></script>
+
+<script src="/js/Admin.js"></script>
+
 @yield('scripts')
 
 @if (env('APP_ENV') === 'local')

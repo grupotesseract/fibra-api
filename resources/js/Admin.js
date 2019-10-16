@@ -1,9 +1,11 @@
-import Axios from 'axios'
+import $ from 'jquery';
+import 'select2'
+import 'eonasdan-bootstrap-datetimepicker'
 
 /**
- * @class Programacoes
+ * @class Admin
  */
-class Programacoes {
+class Admin {
 
   /**
    * @constructor
@@ -16,6 +18,7 @@ class Programacoes {
    * @returns
    */
   eventHandlers() {
+    $('.select2').select2();
     $('.datepicker').datetimepicker({
       format: 'DD/MM/YYYY HH:mm:ss',
       locale: 'pt-br',
@@ -29,4 +32,4 @@ class Programacoes {
   }
 }
 
-new Programacoes
+new Admin

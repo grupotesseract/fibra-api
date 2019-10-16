@@ -1,11 +1,10 @@
 {
+    "/js/Admin.js": "/js/Admin.js",
     "/js/App.js": "/js/App.js",
     "/css/app.css": "/css/app.css",
     "/css/pages/login.css": "/css/pages/login.css",
     "/css/pages/welcome.css": "/css/pages/welcome.css",
-    "/js/datepicker.js": "/js/datepicker.js",
     "/js/pages/Cidades.js": "/js/pages/Cidades.js",
     "/js/pages/MateriaisItem.js": "/js/pages/MateriaisItem.js",
-    "/js/pages/Plantas.js": "/js/pages/Plantas.js",
-    "/js/pages/Programacoes.js": "/js/pages/Programacoes.js"
+    "/js/pages/Plantas.js": "/js/pages/Plantas.js"
 }
