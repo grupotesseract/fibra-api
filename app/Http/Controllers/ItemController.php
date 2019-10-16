@@ -9,7 +9,12 @@ use App\DataTables\ItemDataTable;
 use App\Repositories\ItemRepository;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use InfyOm\Generator\Utils\ResponseUtil;
 use App\Http\Controllers\AppBaseController;
+use App\DataTables\MateriaisDoItemDataTable;
+use App\DataTables\Scopes\MateriaisDoItemScope;
+use App\Http\Requests\AssociaMaterialItemRequest;
+use App\Http\Requests\DesassociaMaterialItemRequest;
 
 class ItemController extends AppBaseController
 {
@@ -67,7 +72,7 @@ class ItemController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(MateriaisDoItemDataTable $mateiriasDataTable, $id)
     {
         $item = $this->itemRepository->find($id);
 
@@ -77,7 +82,10 @@ class ItemController extends AppBaseController
             return redirect(route('itens.index'));
         }
 
-        return view('itens.show')->with('item', $item);
+        $mateiriasDataTable->itemID = $id;
+
+        return $mateiriasDataTable->addScope(new MateriaisDoItemScope($id))
+            ->render('itens.show', compact('item'));
     }
 
     /**
@@ -147,5 +155,71 @@ class ItemController extends AppBaseController
         Flash::success('Item excluído com sucesso.');
 
         return redirect(route('itens.index'));
+    }
+
+    /**
+     * Associa um material com determinada quantidade ao Item.
+     *
+     * @param  int              $id
+     * @param UpdateItemRequest $request
+     *
+     * @return Response
+     */
+    public function postAssociarMaterial($id, AssociaMaterialItemRequest $request)
+    {
+        $item = $this->itemRepository->find($id);
+
+        if (empty($item)) {
+            Flash::error('Item não encontrado');
+
+            return redirect(route('itens.index'));
+        }
+
+        //Se ja tiver esse material associado, erro.
+        if ($item->materiais->find($request->material_id)) {
+            return \Response::json([
+                'errors' => ['O Material selecionado já está associado ao item'],
+            ], 422);
+        }
+
+        $fezUpdate = $item->materiais()->attach([
+            $request->material_id => [
+                'quantidade_instalada' => $request->qnt_instalada,
+            ],
+        ]);
+
+        return $this->sendResponse($fezUpdate, 'Material adicionado');
+    }
+
+    /**
+     * Desassocia um material de um Item.
+     *
+     * @param  int              $id
+     * @param UpdateItemRequest $request
+     *
+     * @return Response
+     */
+    public function postDesassociarMaterial($idItem, $idMaterial)
+    {
+        $item = $this->itemRepository->find($idItem);
+
+        if (empty($item)) {
+            Flash::error('Item não encontrado');
+
+            return redirect()->back();
+        }
+
+        //Se nao tiver esse material associado, erro.
+        if (! $item->materiais->find($idMaterial)) {
+            return \Response::json([
+                'errors' => ['Material não associado ao item'],
+            ], 422);
+        }
+
+        $item->materiais()->detach($idMaterial);
+
+        Flash::success('Material removido com sucesso');
+
+        return redirect()->back();
     }
 }

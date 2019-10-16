@@ -85,6 +85,16 @@ class Material extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function items()
+    {
+        return $this
+            ->belongsToMany(\App\Models\Item::class, 'itens_materiais', 'material_id', 'item_id')
+            ->withPivot('quantidade_instalada');
+    }
+
+    /**
      * Acessor para a informação de Tipo de Material.
      *
      * @return int
