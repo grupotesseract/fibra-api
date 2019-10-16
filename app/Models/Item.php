@@ -62,4 +62,13 @@ class Item extends Model
     {
         return $this->belongsTo(\App\Models\Planta::class, 'planta_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function materiais()
+    {
+        return $this->belongsToMany(\App\Models\Material::class, 'itens_materiais', 'item_id', 'material_id')
+            ->withPivot('quantidade_instalada');
+    }
 }
