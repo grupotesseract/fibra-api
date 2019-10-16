@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use Illuminate\Http\Request;
+use App\Models\QuantidadeMinima;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\QuantidadeMinimaRepository;
 use App\Http\Requests\API\CreateQuantidadeMinimaAPIRequest;
 use App\Http\Requests\API\UpdateQuantidadeMinimaAPIRequest;
-use App\Models\QuantidadeMinima;
-use App\Repositories\QuantidadeMinimaRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class QuantidadeMinimaController
- * @package App\Http\Controllers\API
+ * Class QuantidadeMinimaController.
  */
-
 class QuantidadeMinimaAPIController extends AppBaseController
 {
-    /** @var  QuantidadeMinimaRepository */
+    /** @var QuantidadeMinimaRepository */
     private $quantidadeMinimaRepository;
 
     public function __construct(QuantidadeMinimaRepository $quantidadeMinimaRepo)
@@ -27,7 +25,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
     /**
      * Display a listing of the QuantidadeMinima.
-     * GET|HEAD /quantidadesMinimas
+     * GET|HEAD /quantidadesMinimas.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
     /**
      * Store a newly created QuantidadeMinima in storage.
-     * POST /quantidadesMinimas
+     * POST /quantidadesMinimas.
      *
      * @param CreateQuantidadeMinimaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
     /**
      * Display the specified QuantidadeMinima.
-     * GET|HEAD /quantidadesMinimas/{id}
+     * GET|HEAD /quantidadesMinimas/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
     /**
      * Update the specified QuantidadeMinima in storage.
-     * PUT/PATCH /quantidadesMinimas/{id}
+     * PUT/PATCH /quantidadesMinimas/{id}.
      *
      * @param int $id
      * @param UpdateQuantidadeMinimaAPIRequest $request
@@ -107,7 +105,7 @@ class QuantidadeMinimaAPIController extends AppBaseController
 
     /**
      * Remove the specified QuantidadeMinima from storage.
-     * DELETE /quantidadesMinimas/{id}
+     * DELETE /quantidadesMinimas/{id}.
      *
      * @param int $id
      *

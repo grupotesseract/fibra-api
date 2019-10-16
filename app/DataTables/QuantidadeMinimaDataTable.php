@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\QuantidadeMinima;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class QuantidadeMinimaDataTable extends DataTable
 {
@@ -71,7 +71,7 @@ class QuantidadeMinimaDataTable extends DataTable
         return [
             'material_id',
             'planta_id',
-            'quantidade_minima'
+            'quantidade_minima',
         ];
     }
 
@@ -82,6 +82,6 @@ class QuantidadeMinimaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'quantidades_minimasdatatable_' . time();
+        return 'quantidades_minimasdatatable_'.time();
     }
 }
