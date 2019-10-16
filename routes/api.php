@@ -60,5 +60,4 @@ Route::fallback(function () {
     ], 404);
 });
 
-
 Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');

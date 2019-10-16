@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\QuantidadeMinimaDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Http\Controllers\AppBaseController;
+use App\DataTables\QuantidadeMinimaDataTable;
+use App\Repositories\QuantidadeMinimaRepository;
 use App\Http\Requests\CreateQuantidadeMinimaRequest;
 use App\Http\Requests\UpdateQuantidadeMinimaRequest;
-use App\Repositories\QuantidadeMinimaRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class QuantidadeMinimaController extends AppBaseController
 {
-    /** @var  QuantidadeMinimaRepository */
+    /** @var QuantidadeMinimaRepository */
     private $quantidadeMinimaRepository;
 
     public function __construct(QuantidadeMinimaRepository $quantidadeMinimaRepo)

@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\QuantidadeMinima;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CreateQuantidadeMinimaRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *

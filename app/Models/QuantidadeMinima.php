@@ -6,30 +6,27 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class QuantidadeMinima
- * @package App\Models
+ * Class QuantidadeMinima.
  * @version October 15, 2019, 2:49 pm -03
  *
  * @property \App\Models\Planta planta
  * @property \App\Models\Material material
- * @property integer material_id
- * @property integer planta_id
- * @property integer quantidade_minima
+ * @property int material_id
+ * @property int planta_id
+ * @property int quantidade_minima
  */
 class QuantidadeMinima extends Model
 {
     use SoftDeletes;
 
     public $table = 'quantidades_minimas';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'material_id',
         'planta_id',
-        'quantidade_minima'
+        'quantidade_minima',
     ];
 
     /**
@@ -41,18 +38,18 @@ class QuantidadeMinima extends Model
         'id' => 'integer',
         'material_id' => 'integer',
         'planta_id' => 'integer',
-        'quantidade_minima' => 'integer'
+        'quantidade_minima' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'material_id' => 'required',
         'planta_id' => 'required',
-        'quantidade_minima' => 'required'
+        'quantidade_minima' => 'required',
     ];
 
     /**

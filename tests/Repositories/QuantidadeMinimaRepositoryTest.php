@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
+use Tests\ApiTestTrait;
 use App\Models\QuantidadeMinima;
 use App\Repositories\QuantidadeMinimaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class QuantidadeMinimaRepositoryTest extends TestCase
 {
