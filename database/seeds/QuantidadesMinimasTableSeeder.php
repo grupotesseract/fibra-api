@@ -11,6 +11,6 @@ class QuantidadesMinimasTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\Programacao::class, 100)->create();
     }
 }
