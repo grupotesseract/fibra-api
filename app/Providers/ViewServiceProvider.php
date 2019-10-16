@@ -30,6 +30,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('tipos_materiais.select', '\App\ViewComposers\TipoMaterialComposer');
         View::composer('materiais.select_reatores', '\App\ViewComposers\MaterialComposer');
         View::composer('materiais.select_receptaculos', '\App\ViewComposers\MaterialComposer');
+        View::composer('itens.show', '\App\ViewComposers\MaterialComposer');
         View::composer('potencias.select', '\App\ViewComposers\PotenciaComposer');
         View::composer('tensoes.select', '\App\ViewComposers\TensaoComposer');
     }

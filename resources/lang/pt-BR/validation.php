@@ -148,6 +148,8 @@ return [
     'attributes' => [
         'tipo_material_id' => 'tipo de material',
         'planta_id' => 'planta',
+        'qnt_instalada' => 'quantidade instalada',
+        'material_id' => 'material',
     ],
 
 ];

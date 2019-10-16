@@ -172,8 +172,8 @@ return [
         Vessel\VesselServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
-
         Laratrust\LaratrustServiceProvider::class,
+        HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
     ],
 
     /*
@@ -235,6 +235,7 @@ return [
 
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];

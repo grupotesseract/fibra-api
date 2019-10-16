@@ -32,13 +32,13 @@
         @include('plantas.select', [
             'Model' => $programacao
         ])
-    </div>    
+    </div>
 
 @else
 
     <div class="form-group col-sm-6">
         @include('plantas.select')
-    </div>    
+    </div>
 
 @endif
 
@@ -47,3 +47,7 @@
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('programacoes.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
+
+@section('scripts')
+    <script src="/js/datepicker.js"></script>
+@append
