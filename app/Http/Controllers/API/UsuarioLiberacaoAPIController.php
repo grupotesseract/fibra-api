@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use Illuminate\Http\Request;
+use App\Models\UsuarioLiberacao;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\UsuarioLiberacaoRepository;
 use App\Http\Requests\API\CreateUsuarioLiberacaoAPIRequest;
 use App\Http\Requests\API\UpdateUsuarioLiberacaoAPIRequest;
-use App\Models\UsuarioLiberacao;
-use App\Repositories\UsuarioLiberacaoRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class UsuarioLiberacaoController
- * @package App\Http\Controllers\API
+ * Class UsuarioLiberacaoController.
  */
-
 class UsuarioLiberacaoAPIController extends AppBaseController
 {
-    /** @var  UsuarioLiberacaoRepository */
+    /** @var UsuarioLiberacaoRepository */
     private $usuarioLiberacaoRepository;
 
     public function __construct(UsuarioLiberacaoRepository $usuarioLiberacaoRepo)
@@ -27,7 +25,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
     /**
      * Display a listing of the UsuarioLiberacao.
-     * GET|HEAD /usuariosLiberacoes
+     * GET|HEAD /usuariosLiberacoes.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
     /**
      * Store a newly created UsuarioLiberacao in storage.
-     * POST /usuariosLiberacoes
+     * POST /usuariosLiberacoes.
      *
      * @param CreateUsuarioLiberacaoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
     /**
      * Display the specified UsuarioLiberacao.
-     * GET|HEAD /usuariosLiberacoes/{id}
+     * GET|HEAD /usuariosLiberacoes/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
     /**
      * Update the specified UsuarioLiberacao in storage.
-     * PUT/PATCH /usuariosLiberacoes/{id}
+     * PUT/PATCH /usuariosLiberacoes/{id}.
      *
      * @param int $id
      * @param UpdateUsuarioLiberacaoAPIRequest $request
@@ -107,7 +105,7 @@ class UsuarioLiberacaoAPIController extends AppBaseController
 
     /**
      * Remove the specified UsuarioLiberacao from storage.
-     * DELETE /usuariosLiberacoes/{id}
+     * DELETE /usuariosLiberacoes/{id}.
      *
      * @param int $id
      *
