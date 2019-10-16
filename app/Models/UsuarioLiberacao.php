@@ -6,28 +6,25 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class UsuarioLiberacao
- * @package App\Models
+ * Class UsuarioLiberacao.
  * @version October 11, 2019, 4:39 pm -03
  *
  * @property \App\Models\LiberacaoDocumento liberacaoDocumento
  * @property \App\Models\Usuario usuario
- * @property integer liberacao_documento_id
- * @property integer usuario_id
+ * @property int liberacao_documento_id
+ * @property int usuario_id
  */
 class UsuarioLiberacao extends Model
 {
     use SoftDeletes;
 
     public $table = 'usuarios_liberacoes';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
         'liberacao_documento_id',
-        'usuario_id'
+        'usuario_id',
     ];
 
     /**
@@ -38,17 +35,17 @@ class UsuarioLiberacao extends Model
     protected $casts = [
         'id' => 'integer',
         'liberacao_documento_id' => 'integer',
-        'usuario_id' => 'integer'
+        'usuario_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'liberacao_documento_id' => 'required',
-        'usuario_id' => 'required'
+        'usuario_id' => 'required',
     ];
 
     /**

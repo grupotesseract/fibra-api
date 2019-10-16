@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\UsuarioLiberacao;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class UsuarioLiberacaoDataTable extends DataTable
 {
@@ -70,7 +70,7 @@ class UsuarioLiberacaoDataTable extends DataTable
     {
         return [
             'liberacao_documento_id',
-            'usuario_id'
+            'usuario_id',
         ];
     }
 
@@ -81,6 +81,6 @@ class UsuarioLiberacaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'usuarios_liberacoesdatatable_' . time();
+        return 'usuarios_liberacoesdatatable_'.time();
     }
 }

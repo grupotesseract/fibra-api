@@ -11,6 +11,5 @@ class UsuariosLiberacoesTableSeeder extends Seeder
      */
     public function run()
     {
-
     }
 }

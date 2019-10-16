@@ -6,11 +6,9 @@ use App\Models\UsuarioLiberacao;
 use App\Repositories\BaseRepository;
 
 /**
- * Class UsuarioLiberacaoRepository
- * @package App\Repositories
+ * Class UsuarioLiberacaoRepository.
  * @version October 11, 2019, 4:39 pm -03
-*/
-
+ */
 class UsuarioLiberacaoRepository extends BaseRepository
 {
     /**
@@ -18,11 +16,11 @@ class UsuarioLiberacaoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'liberacao_documento_id',
-        'usuario_id'
+        'usuario_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -32,7 +30,7 @@ class UsuarioLiberacaoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

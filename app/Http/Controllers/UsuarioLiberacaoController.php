@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\UsuarioLiberacaoDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Http\Controllers\AppBaseController;
+use App\DataTables\UsuarioLiberacaoDataTable;
+use App\Repositories\UsuarioLiberacaoRepository;
 use App\Http\Requests\CreateUsuarioLiberacaoRequest;
 use App\Http\Requests\UpdateUsuarioLiberacaoRequest;
-use App\Repositories\UsuarioLiberacaoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class UsuarioLiberacaoController extends AppBaseController
 {
-    /** @var  UsuarioLiberacaoRepository */
+    /** @var UsuarioLiberacaoRepository */
     private $usuarioLiberacaoRepository;
 
     public function __construct(UsuarioLiberacaoRepository $usuarioLiberacaoRepo)
