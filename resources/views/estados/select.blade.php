@@ -22,5 +22,5 @@
 
 @section('scripts')
     <script src="/js/pages/Cidades.js"></script>
-@endsection
+@append
 
