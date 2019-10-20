@@ -18,11 +18,6 @@ class App {
    * @returns
    */
   eventHandlers() {
-    // Avoid anchor and button clicks to modify URL or refresh page.
-    $('a[href="#"], button').on('click', event => {
-      event.preventDefault()
-    })
-
     $('.select2').select2();
 
     $('.datepicker').datetimepicker({
