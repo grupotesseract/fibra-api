@@ -1,9 +1,8 @@
 const mix = require('laravel-mix')
 const browserSyncFiles = ['public/css/*.{css,js}']
 
-mix.js('resources/js/App.js', 'public/js')
-  .js('resources/js/Admin.js', 'public/js')
-
+mix
+  .js('resources/js/App.js', 'public/js')
   .js('resources/js/pages/Cidades.js', 'public/js/pages')
   .js('resources/js/pages/Plantas.js', 'public/js/pages')
   .js('resources/js/pages/MateriaisItem.js', 'public/js/pages')
@@ -27,3 +26,4 @@ mix.js('resources/js/App.js', 'public/js')
   .webpackConfig({
     devtool: !mix.inProduction() && 'inline-source-map'
   })
+

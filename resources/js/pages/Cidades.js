@@ -16,9 +16,7 @@ class Cidades {
    * @returns
    */
   eventHandlers() {
-    console.log('passou aqui');
-    $('.select-estados').on('change.select2', async event => {
-      console.log('changed');
+    $('.select-estados').on('change', async event => {
       let content = '';
       const ID = event.currentTarget.value;
       const result = await Axios.get(`/estados/${ID}/cidades`)
