@@ -2156,6 +2156,10 @@ label {
   font-size: 18px;
 }
 
+.card-header strong {
+  font-weight: 500;
+}
+
 .pagination {
   display: flex;
   padding-left: 0;
