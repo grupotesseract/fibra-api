@@ -34,6 +34,7 @@ class Material extends Model
         'tipoMaterialNome',
         'potenciaValor',
         'tensaoValor',
+        'nomePotenciaTensao',
     ];
 
     /**
@@ -128,5 +129,15 @@ class Material extends Model
         if ($this->tensao()->exists()) {
             return $this->tensao->valor;
         }
+    }
+
+    /**
+     * Acessor para obter uma string com 'Nome - Potencia W - Tensão V'.
+     *
+     * @return string
+     */
+    public function getNomePotenciaTensaoAttribute()
+    {
+        return "$this->nome - $this->potenciaValor W - $this->tensaoValor V";
     }
 }

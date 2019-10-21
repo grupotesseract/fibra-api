@@ -28,6 +28,6 @@ class MaterialComposer
      */
     public function compose(View $view)
     {
-        $view->with('materiais', $this->materialRepository->getArrayParaSelect());
+        $view->with('materiais', $this->materialRepository->getArrayNomePotenciaTensaoParaSelect());
     }
 }
