@@ -48,6 +48,3 @@
     <a href="{!! route('programacoes.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
 
-@section('scripts')
-    <script src="/js/datepicker.js"></script>
-@append
