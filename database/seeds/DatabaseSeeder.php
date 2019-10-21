@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             $this->call(ProgramacoesTableSeeder::class);
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
+            $this->call(QuantidadesMinimasTableSeeder::class);
         }
     }
 }

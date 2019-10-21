@@ -16,7 +16,6 @@ class Cidades {
    * @returns
    */
   eventHandlers() {
-    $('.select2').select2();
     $('.select-estados').on('change', async event => {
       let content = '';
       const ID = event.currentTarget.value;
