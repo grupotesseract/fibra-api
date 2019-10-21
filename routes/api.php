@@ -60,4 +60,5 @@ Route::fallback(function () {
     ], 404);
 });
 
+Route::resource('usuarios_liberacoes', 'UsuarioLiberacaoAPIController');
 Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');
