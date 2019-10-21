@@ -34,7 +34,7 @@ class Material extends Model
         'tipoMaterialNome',
         'potenciaValor',
         'tensaoValor',
-        'nomePotenciaTensao'
+        'nomePotenciaTensao',
     ];
 
     /**
@@ -132,7 +132,7 @@ class Material extends Model
     }
 
     /**
-     * Acessor para obter uma string com 'Nome - Potencia W - Tensão V'
+     * Acessor para obter uma string com 'Nome - Potencia W - Tensão V'.
      *
      * @return string
      */
@@ -140,5 +140,4 @@ class Material extends Model
     {
         return "$this->nome - $this->potenciaValor W - $this->tensaoValor V";
     }
-
 }

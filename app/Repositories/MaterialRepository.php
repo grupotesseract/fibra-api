@@ -49,7 +49,6 @@ class MaterialRepository extends BaseRepository
         return $this->model()::pluck('nome', 'id')->all();
     }
 
-
     /**
      * Retorna um array de Materiais no formato [id => 'Nome - Potencia W - Tensao V'].
      *
@@ -59,5 +58,4 @@ class MaterialRepository extends BaseRepository
     {
         return $this->model()::all()->pluck('nomePotenciaTensao', 'id')->all();
     }
-
 }
