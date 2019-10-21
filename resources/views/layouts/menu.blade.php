@@ -40,3 +40,9 @@
         <span> Liberações de Documentos</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('quantidadesMinimas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('quantidadesMinimas.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Quantidades Minimas</span>
+    </a>
+</li>
