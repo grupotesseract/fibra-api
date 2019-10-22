@@ -69,6 +69,9 @@ class ProgramacaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id' => [
+                'title' => 'ID',
+            ],
             'dataInicioPrevistaFormatada' => [
                 'data' => 'dataInicioPrevistaFormatada',
                 'title' => 'Data Inicio Prevista',
