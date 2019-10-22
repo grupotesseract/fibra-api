@@ -8,9 +8,9 @@ use App\Http\Requests;
 use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
+use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
-use App\DataTables\LiberacaoDocumentoDataTable;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
 
 class ProgramacaoController extends AppBaseController
@@ -152,7 +152,7 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Metodo para servir a view de Liberações de Documentos de 1 Programação
+     * Metodo para servir a view de Liberações de Documentos de 1 Programação.
      *
      * @return void
      */
@@ -171,5 +171,4 @@ class ProgramacaoController extends AppBaseController
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_liberacoes_documentos', compact('programacao'));
     }
-
 }

@@ -60,15 +60,12 @@ class Programacao extends Model
         'planta_id' => 'required',
     ];
 
-
     public $appends = [
         'dataInicioPrevistaFormatada',
         'dataFimPrevistaFormatada',
         'dataInicioRealFormatada',
-        'dataFimRealFormatada'
+        'dataFimRealFormatada',
     ];
-
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -183,7 +180,7 @@ class Programacao extends Model
     }
 
     /**
-     * Acessor para Data Inicio Prevista formatada
+     * Acessor para Data Inicio Prevista formatada.
      *
      * @param string $value
      * @return Carbon
@@ -194,7 +191,7 @@ class Programacao extends Model
     }
 
     /**
-     * Acessor para Data Fim Prevista formatada
+     * Acessor para Data Fim Prevista formatada.
      *
      * @param string $value
      * @return Carbon
@@ -205,7 +202,7 @@ class Programacao extends Model
     }
 
     /**
-     * Acessor para Data Inicio Real formatada
+     * Acessor para Data Inicio Real formatada.
      *
      * @param string $value
      * @return Carbon
@@ -216,7 +213,7 @@ class Programacao extends Model
     }
 
     /**
-     * Acessor para Data Fim Real formatada
+     * Acessor para Data Fim Real formatada.
      *
      * @param string $value
      * @return Carbon
