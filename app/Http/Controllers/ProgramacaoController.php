@@ -10,6 +10,8 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
+use App\DataTables\LiberacaoDocumentoDataTable;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -148,4 +150,26 @@ class ProgramacaoController extends AppBaseController
 
         return redirect(route('programacoes.index'));
     }
+
+    /**
+     * Metodo para servir a view de Liberações de Documentos de 1 Programação
+     *
+     * @return void
+     */
+    public function getLiberacoesDocumentos(LiberacaoDocumentoDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Item não encontrado');
+
+            return redirect(route('itens.index'));
+        }
+
+        $datatable->programacaoID = $id;
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_liberacoes_documentos', compact('programacao'));
+    }
+
 }
