@@ -69,10 +69,37 @@ class ProgramacaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'data_inicio_prevista',
-            'data_fim_prevista',
-            'data_inicio_real',
-            'data_fim_real',
+            'id' => [
+                'title' => 'ID',
+            ],
+            'dataInicioPrevistaFormatada' => [
+                'data' => 'dataInicioPrevistaFormatada',
+                'title' => 'Data Inicio Prevista',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataFimPrevistaFormatada' => [
+                'data' => 'dataFimPrevistaFormatada',
+                'title' => 'Data Fim Prevista',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataInicioRealFormatada' => [
+                'data' => 'dataInicioRealFormatada',
+                'title' => 'Data Inicio Real',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataFimRealFormatada' => [
+                'data' => 'dataFimRealFormatada',
+                'title' => 'Data Fim Real',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
         ];
     }
 

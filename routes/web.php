@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')->name('itens.associarMaterial');
     Route::delete('itens/{id_item}/materiais/{id_material}', 'ItemController@postDesassociarMaterial')->name('itens.desassociarMaterial');
     Route::resource('programacoes', 'ProgramacaoController');
+    Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')->name('programacoes.liberacoesDocumentos');
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');
     Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');
