@@ -2,15 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\QuantidadeSubstituida;
 use App\Repositories\BaseRepository;
+use App\Models\QuantidadeSubstituida;
 
 /**
- * Class QuantidadeSubstituidaRepository
- * @package App\Repositories
+ * Class QuantidadeSubstituidaRepository.
  * @version October 23, 2019, 3:09 pm -03
-*/
-
+ */
 class QuantidadeSubstituidaRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class QuantidadeSubstituidaRepository extends BaseRepository
         'programacao_id',
         'item_id',
         'material_id',
-        'quantidade_substituida'
+        'quantidade_substituida',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class QuantidadeSubstituidaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

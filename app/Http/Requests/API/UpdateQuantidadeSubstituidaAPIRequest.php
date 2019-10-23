@@ -25,7 +25,7 @@ class UpdateQuantidadeSubstituidaAPIRequest extends APIRequest
     public function rules()
     {
         $rules = QuantidadeSubstituida::$rules;
-        
+
         return $rules;
     }
 }

@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Models\Usuario;
-use App\Models\LiberacaoDocumento;
 use Faker\Generator as Faker;
 use App\Models\UsuarioLiberacao;
+use App\Models\LiberacaoDocumento;
 
 $factory->define(UsuarioLiberacao::class, function (Faker $faker) {
     return [

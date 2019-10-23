@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\QuantidadeSubstituida;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class QuantidadeSubstituidaDataTable extends DataTable
 {
@@ -72,7 +72,7 @@ class QuantidadeSubstituidaDataTable extends DataTable
             'programacao_id',
             'item_id',
             'material_id',
-            'quantidade_substituida'
+            'quantidade_substituida',
         ];
     }
 
@@ -83,6 +83,6 @@ class QuantidadeSubstituidaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'quantidades_substituidasdatatable_' . time();
+        return 'quantidades_substituidasdatatable_'.time();
     }
 }
