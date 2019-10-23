@@ -60,6 +60,13 @@ class Programacao extends Model
         'planta_id' => 'required',
     ];
 
+    public $appends = [
+        'dataInicioPrevistaFormatada',
+        'dataFimPrevistaFormatada',
+        'dataInicioRealFormatada',
+        'dataFimRealFormatada',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -170,5 +177,49 @@ class Programacao extends Model
     public function formDataFimRealAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Inicio Prevista formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataInicioPrevistaFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_prevista)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Fim Prevista formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataFimPrevistaFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_prevista)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Inicio Real formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataInicioRealFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Fim Real formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataFimRealFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
     }
 }
