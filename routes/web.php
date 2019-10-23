@@ -35,3 +35,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('usuariosLiberacoes', 'UsuarioLiberacaoController');
     Route::resource('quantidadesMinimas', 'QuantidadeMinimaController');
 });
+
+
+Route::resource('estoque', 'EstoqueController');
