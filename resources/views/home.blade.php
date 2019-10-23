@@ -6,6 +6,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script src="/js/pages/Home.js"></script>
-@endsection

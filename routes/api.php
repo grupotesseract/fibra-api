@@ -59,3 +59,6 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
+
+Route::resource('usuarios_liberacoes', 'UsuarioLiberacaoAPIController');
+Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');

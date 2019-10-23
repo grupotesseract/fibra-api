@@ -34,9 +34,22 @@
 <li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('itens.index') !!}"><i class="fa fa-building"></i><span> Itens</span></a>
 </li>
+ {{--
 <li class="nav-item {{ Request::is('liberacoesDocumentos*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('liberacoesDocumentos.index') !!}">
         <i class="fa fa-clock-o"></i>
         <span> Liberações de Documentos</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('usuariosLiberacoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('usuariosLiberacoes.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Liberações de Documentos Usuários</span>
+
+<li class="nav-item {{ Request::is('quantidadesMinimas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('quantidadesMinimas.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Quantidades Minimas</span>
+    </a>
+</li>
+ --}}

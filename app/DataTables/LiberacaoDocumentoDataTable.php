@@ -45,11 +45,10 @@ class LiberacaoDocumentoDataTable extends DataTable
             ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
-                    'dom'       => 'Bfrtip',
+                    'dom'       => 'Brtip',
                     'stateSave' => true,
                     'order'     => [[0, 'desc']],
                     'buttons'   => [
-                        ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'print', 'text' => '<i class="fa fa-print"></i> Imprimir', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],
@@ -69,8 +68,13 @@ class LiberacaoDocumentoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'programacao_id',
-            'data_hora_formatada' => ['searchable' => 'false'],
+            'dataHoraFormatada' => [
+                'data' => 'dataHoraFormatada',
+                'title' => 'Data e Horário da liberação',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
         ];
     }
 

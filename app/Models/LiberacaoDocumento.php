@@ -26,7 +26,7 @@ class LiberacaoDocumento extends Model
         'data_hora',
     ];
 
-    protected $appends = ['data_hora_formatada'];
+    protected $appends = ['dataHoraFormatada'];
 
     /**
      * The attributes that should be casted to native types.

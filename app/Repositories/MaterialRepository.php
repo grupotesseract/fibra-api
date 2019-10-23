@@ -40,12 +40,22 @@ class MaterialRepository extends BaseRepository
     }
 
     /**
-     * Retorna um array de Tipos de Materiais no formato [id => 'nome'].
+     * Retorna um array de  Materiais no formato [id => 'nome'].
      *
      * @return array
      */
     public function getArrayParaSelect()
     {
         return $this->model()::pluck('nome', 'id')->all();
+    }
+
+    /**
+     * Retorna um array de Materiais no formato [id => 'Nome - Potencia W - Tensao V'].
+     *
+     * @return array
+     */
+    public function getArrayNomePotenciaTensaoParaSelect()
+    {
+        return $this->model()::all()->pluck('nomePotenciaTensao', 'id')->all();
     }
 }

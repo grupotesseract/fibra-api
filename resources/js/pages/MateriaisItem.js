@@ -16,8 +16,7 @@ class MateriaisItem {
      * @returns
      */
     eventHandlers() {
-        $('.select2').select2();
-        $('#form-associar-materiais').submit((event) => {
+        $('#form-associar-materiais').on('submit', (event) => {
             event.preventDefault()
             this.submitFormAddMaterialItem()
         });
