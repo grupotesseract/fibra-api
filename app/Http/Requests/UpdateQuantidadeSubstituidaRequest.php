@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\QuantidadeSubstituida;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateQuantidadeSubstituidaRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,7 @@ class UpdateQuantidadeSubstituidaRequest extends FormRequest
     public function rules()
     {
         $rules = QuantidadeSubstituida::$rules;
-        
+
         return $rules;
     }
 }

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\QuantidadeSubstituidaDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Http\Controllers\AppBaseController;
+use App\DataTables\QuantidadeSubstituidaDataTable;
+use App\Repositories\QuantidadeSubstituidaRepository;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 use App\Http\Requests\UpdateQuantidadeSubstituidaRequest;
-use App\Repositories\QuantidadeSubstituidaRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class QuantidadeSubstituidaController extends AppBaseController
 {
-    /** @var  QuantidadeSubstituidaRepository */
+    /** @var QuantidadeSubstituidaRepository */
     private $quantidadeSubstituidaRepository;
 
     public function __construct(QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)

@@ -6,33 +6,30 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class QuantidadeSubstituida
- * @package App\Models
+ * Class QuantidadeSubstituida.
  * @version October 23, 2019, 3:09 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
  * @property \App\Models\Material material
- * @property integer programacao_id
- * @property integer item_id
- * @property integer material_id
- * @property integer quantidade_substituida
+ * @property int programacao_id
+ * @property int item_id
+ * @property int material_id
+ * @property int quantidade_substituida
  */
 class QuantidadeSubstituida extends Model
 {
     use SoftDeletes;
 
     public $table = 'quantidades_substituidas';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'programacao_id',
         'item_id',
         'material_id',
-        'quantidade_substituida'
+        'quantidade_substituida',
     ];
 
     /**
@@ -45,11 +42,11 @@ class QuantidadeSubstituida extends Model
         'programacao_id' => 'integer',
         'item_id' => 'integer',
         'material_id' => 'integer',
-        'quantidade_substituida' => 'integer'
+        'quantidade_substituida' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -57,7 +54,7 @@ class QuantidadeSubstituida extends Model
         'programacao_id' => 'required',
         'item_id' => 'required',
         'material_id' => 'required',
-        'quantidade_substituida' => 'required'
+        'quantidade_substituida' => 'required',
     ];
 
     /**

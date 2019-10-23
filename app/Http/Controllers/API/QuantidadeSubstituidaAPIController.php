@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use Illuminate\Http\Request;
+use App\Models\QuantidadeSubstituida;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\QuantidadeSubstituidaRepository;
 use App\Http\Requests\API\CreateQuantidadeSubstituidaAPIRequest;
 use App\Http\Requests\API\UpdateQuantidadeSubstituidaAPIRequest;
-use App\Models\QuantidadeSubstituida;
-use App\Repositories\QuantidadeSubstituidaRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class QuantidadeSubstituidaController
- * @package App\Http\Controllers\API
+ * Class QuantidadeSubstituidaController.
  */
-
 class QuantidadeSubstituidaAPIController extends AppBaseController
 {
-    /** @var  QuantidadeSubstituidaRepository */
+    /** @var QuantidadeSubstituidaRepository */
     private $quantidadeSubstituidaRepository;
 
     public function __construct(QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)
@@ -27,7 +25,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
     /**
      * Display a listing of the QuantidadeSubstituida.
-     * GET|HEAD /quantidadesSubstituidas
+     * GET|HEAD /quantidadesSubstituidas.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
     /**
      * Store a newly created QuantidadeSubstituida in storage.
-     * POST /quantidadesSubstituidas
+     * POST /quantidadesSubstituidas.
      *
      * @param CreateQuantidadeSubstituidaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
     /**
      * Display the specified QuantidadeSubstituida.
-     * GET|HEAD /quantidadesSubstituidas/{id}
+     * GET|HEAD /quantidadesSubstituidas/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
     /**
      * Update the specified QuantidadeSubstituida in storage.
-     * PUT/PATCH /quantidadesSubstituidas/{id}
+     * PUT/PATCH /quantidadesSubstituidas/{id}.
      *
      * @param int $id
      * @param UpdateQuantidadeSubstituidaAPIRequest $request
@@ -107,7 +105,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
     /**
      * Remove the specified QuantidadeSubstituida from storage.
-     * DELETE /quantidadesSubstituidas/{id}
+     * DELETE /quantidadesSubstituidas/{id}.
      *
      * @param int $id
      *
