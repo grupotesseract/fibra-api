@@ -5,7 +5,7 @@
             <li class="breadcrumb-item">
                 <a href="{!! route('quantidadesSubstituidas.index') !!}">Quantidade Substituida</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">Detalhe</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,7 +14,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
+                                 <strong>Detalhes</strong>
                                   <a href="{!! route('quantidadesSubstituidas.index') !!}" class="btn btn-ghost-light">Back</a>
                              </div>
                              <div class="card-body">

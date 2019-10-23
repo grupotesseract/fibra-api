@@ -40,7 +40,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($quantidadesSubstituidas->toArray(), 'Quantidades Substituidas retrieved successfully');
+        return $this->sendResponse($quantidadesSubstituidas->toArray(), 'Quantidades Substituidas listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
 
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->create($input);
 
-        return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida saved successfully');
+        return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            return $this->sendError('Quantidade Substituida not found');
+            return $this->sendError('Quantidade Substituida não encontrada');
         }
 
-        return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida retrieved successfully');
+        return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            return $this->sendError('Quantidade Substituida not found');
+            return $this->sendError('Quantidade Substituida não encontrada');
         }
 
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->update($input, $id);
 
-        return $this->sendResponse($quantidadeSubstituida->toArray(), 'QuantidadeSubstituida updated successfully');
+        return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            return $this->sendError('Quantidade Substituida not found');
+            return $this->sendError('Quantidade Substituida não encontrada');
         }
 
         $quantidadeSubstituida->delete();
 
-        return $this->sendResponse($id, 'Quantidade Substituida deleted successfully');
+        return $this->sendResponse($id, 'Quantidade Substituida excluída com sucesso');
     }
 }

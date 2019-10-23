@@ -11,6 +11,6 @@ class QuantidadesSubstituidasTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\QuantidadeSubstituida::class, 100)->create();
     }
 }

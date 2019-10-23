@@ -55,7 +55,7 @@ class QuantidadeSubstituidaController extends AppBaseController
 
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->create($input);
 
-        Flash::success('Quantidade Substituida saved successfully.');
+        Flash::success('Quantidade Substituida salva com sucesso.');
 
         return redirect(route('quantidadesSubstituidas.index'));
     }
@@ -72,7 +72,7 @@ class QuantidadeSubstituidaController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            Flash::error('Quantidade Substituida not found');
+            Flash::error('Quantidade Substituida não encontrada');
 
             return redirect(route('quantidadesSubstituidas.index'));
         }
@@ -92,7 +92,7 @@ class QuantidadeSubstituidaController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            Flash::error('Quantidade Substituida not found');
+            Flash::error('Quantidade Substituida não encontrada');
 
             return redirect(route('quantidadesSubstituidas.index'));
         }
@@ -113,14 +113,14 @@ class QuantidadeSubstituidaController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            Flash::error('Quantidade Substituida not found');
+            Flash::error('Quantidade Substituida não encontrada');
 
             return redirect(route('quantidadesSubstituidas.index'));
         }
 
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->update($request->all(), $id);
 
-        Flash::success('Quantidade Substituida updated successfully.');
+        Flash::success('Quantidade Substituida atualizada com sucesso.');
 
         return redirect(route('quantidadesSubstituidas.index'));
     }
@@ -137,14 +137,14 @@ class QuantidadeSubstituidaController extends AppBaseController
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->find($id);
 
         if (empty($quantidadeSubstituida)) {
-            Flash::error('Quantidade Substituida not found');
+            Flash::error('Quantidade Substituida não encontrada');
 
             return redirect(route('quantidadesSubstituidas.index'));
         }
 
         $this->quantidadeSubstituidaRepository->delete($id);
 
-        Flash::success('Quantidade Substituida deleted successfully.');
+        Flash::success('Quantidade Substituida excluída com sucesso.');
 
         return redirect(route('quantidadesSubstituidas.index'));
     }
