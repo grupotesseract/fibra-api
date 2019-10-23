@@ -28,14 +28,17 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('itens', 'ItemController');
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')->name('itens.associarMaterial');
     Route::delete('itens/{id_item}/materiais/{id_material}', 'ItemController@postDesassociarMaterial')->name('itens.desassociarMaterial');
+
     Route::resource('programacoes', 'ProgramacaoController');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')->name('programacoes.liberacoesDocumentos');
+    Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')->name('programacoes.estoque');
+
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');
     Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');
     Route::resource('usuariosLiberacoes', 'UsuarioLiberacaoController');
     Route::resource('quantidadesMinimas', 'QuantidadeMinimaController');
+    Route::resource('estoque', 'EstoqueController');
 });
 
 
-Route::resource('estoque', 'EstoqueController');

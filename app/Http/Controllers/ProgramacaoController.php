@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\Http\Requests;
+use App\DataTables\EstoqueDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
@@ -161,14 +162,33 @@ class ProgramacaoController extends AppBaseController
         $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
-            Flash::error('Item não encontrado');
-
-            return redirect(route('itens.index'));
+            Flash::error('Programação não encontrada');
+            return redirect(route('programacoes.index'));
         }
 
         $datatable->programacaoID = $id;
 
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_liberacoes_documentos', compact('programacao'));
+    }
+
+    /**
+     * Metodo para servir a view de Gerenciar Estoque de 1 Programação.
+     *
+     * @return void
+     */
+    public function getGerenciarEstoque(EstoqueDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+            return redirect(route('programacoes.index'));
+        }
+
+        $datatable->programacaoID = $id;
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_estoque', compact('programacao'));
     }
 }
