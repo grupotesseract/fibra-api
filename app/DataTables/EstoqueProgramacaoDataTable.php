@@ -65,24 +65,32 @@ class EstoqueProgramacaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material' => [
+            'material_nome_potencia_tensao' => [
                 'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material',
+                'title' => 'Material - Potência - Tensão',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
                 'visible' => true,
             ],
+            'material' => [
+                'data' => 'material.nome',
+                'title' => 'Material',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => false,
+            ],
             'material_id' => [
                 'title' => 'ID Material',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
                 'visible' => false,
             ],
             'programacao_id' => [
                 'title' => 'ID Programação',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
                 'visible' => false,
@@ -90,7 +98,7 @@ class EstoqueProgramacaoDataTable extends DataTable
             'quantidade_inicial' => [
                 'data' => 'quantidade_inicial',
                 'title' => 'Qnt. Inicial',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => true,
                 'filterable' => false,
                 'visible' => true,
@@ -98,7 +106,7 @@ class EstoqueProgramacaoDataTable extends DataTable
             'quantidade_final' => [
                 'data' => 'quantidade_final',
                 'title' => 'Qnt. Final',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => true,
                 'filterable' => false,
                 'visible' => true,

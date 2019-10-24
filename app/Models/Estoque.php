@@ -22,10 +22,8 @@ class Estoque extends Model
     use SoftDeletes;
 
     public $table = 'estoque';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'material_id',
@@ -53,10 +51,10 @@ class Estoque extends Model
      * @var array
      */
     public static $rules = [
-        'material_id' => 'required',
-        'programacao_id' => 'required',
-        'quantidade_inicial' => 'required',
-        'quantidade_final' => 'required'
+        'material_id' => 'required|exists:materiais,id',
+        'programacao_id' => 'required|exists:programacoes,id',
+        'quantidade_inicial' => 'required|integer|min:1',
+        'quantidade_final' => 'nullable|integer|min:0'
     ];
 
     /**

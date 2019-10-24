@@ -146,6 +146,6 @@ class EstoqueController extends AppBaseController
 
         Flash::success('Estoque deleted successfully.');
 
-        return redirect(route('estoque.index'));
+        return redirect()->back();
     }
 }

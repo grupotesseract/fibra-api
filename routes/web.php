@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('programacoes', 'ProgramacaoController');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')->name('programacoes.liberacoesDocumentos');
     Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')->name('programacoes.estoque');
+    Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')->name('programacoes.addEstoque');
 
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');

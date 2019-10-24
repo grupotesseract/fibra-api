@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\Http\Requests;
-use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
+use App\Http\Requests\CreateEstoqueRequest;
+use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
@@ -190,5 +191,37 @@ class ProgramacaoController extends AppBaseController
 
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_estoque', compact('programacao'));
+    }
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de Estoque
+     * a partir de uma programacao
+     *
+     * @param CreateEstoqueRequest $request
+     *
+     * @return Response
+     */
+    public function postAdicionarEstoque(CreateEstoqueRequest $request, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+            return redirect(route('programacoes.index'));
+        }
+
+        //Se ja tiver estoque para esse mateiral, erro.
+        $jaExisteEstoque = $programacao->estoques()
+           ->where('material_id', $request->material_ida)
+           ->count();
+
+        if ($jaExisteEstoque) {
+            return \Response::json([
+                'errors' => ['Já existe um estoque para o material selecionado'],
+            ], 422);
+        }
+
+        $result = $programacao->estoques()->create($request->all());
+        return $this->sendResponse($result, 'Estoque adicionado');
     }
 }

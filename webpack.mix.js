@@ -6,6 +6,7 @@ mix
   .js('resources/js/pages/Cidades.js', 'public/js/pages')
   .js('resources/js/pages/Plantas.js', 'public/js/pages')
   .js('resources/js/pages/MateriaisItem.js', 'public/js/pages')
+  .js('resources/js/pages/Estoque.js', 'public/js/pages')
 
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/pages/login.scss', 'public/css/pages')
