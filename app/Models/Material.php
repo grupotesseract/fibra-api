@@ -96,6 +96,34 @@ class Material extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function estoques()
+    {
+        return $this->hasMany(\App\Models\Estoque::class);
+    }
+
+    /**
+     * Programações relacionadas a esse material
+     *
+     * @return Collection
+     **/
+    public function programacoes()
+    {
+        return $this->estoques()->with('programacao')->get()->pluck('programacao');
+    }
+
+    /**
+     * Acessor para conseguir obter as programacoes desse material como propriedade
+     *
+     * @return Collection
+     */
+     public function getProgramacoesAttribute()
+     {
+        return $this->programacoes();
+     }
+
+    /**
      * Acessor para a informação de Tipo de Material.
      *
      * @return int

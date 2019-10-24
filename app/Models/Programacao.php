@@ -88,7 +88,7 @@ class Programacao extends Model
      **/
     public function materiais()
     {
-        return $this->estoques()->with('material')->pluck('material');
+        return $this->estoques()->with('material')->get()->pluck('material');
     }
 
     /**
