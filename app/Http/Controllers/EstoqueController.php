@@ -55,7 +55,7 @@ class EstoqueController extends AppBaseController
 
         $estoque = $this->estoqueRepository->create($input);
 
-        Flash::success('Estoque saved successfully.');
+        Flash::success('Estoque criado com sucesso.');
 
         return redirect(route('estoque.index'));
     }
@@ -72,7 +72,7 @@ class EstoqueController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            Flash::error('Estoque not found');
+            Flash::error('Estoque não encontrado');
 
             return redirect(route('estoque.index'));
         }
@@ -92,7 +92,7 @@ class EstoqueController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            Flash::error('Estoque not found');
+            Flash::error('Estoque não encontrado');
 
             return redirect(route('estoque.index'));
         }
@@ -113,16 +113,16 @@ class EstoqueController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            Flash::error('Estoque not found');
+            Flash::error('Estoque não encontrado');
 
             return redirect(route('estoque.index'));
         }
 
         $estoque = $this->estoqueRepository->update($request->all(), $id);
 
-        Flash::success('Estoque updated successfully.');
+        Flash::success('Estoque atualizado');
 
-        return redirect(route('estoque.index'));
+        return redirect(route('programacoes.estoque', $estoque->programacao_id));
     }
 
     /**
@@ -137,14 +137,14 @@ class EstoqueController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            Flash::error('Estoque not found');
+            Flash::error('Estoque não encontrado');
 
             return redirect(route('estoque.index'));
         }
 
         $this->estoqueRepository->delete($id);
 
-        Flash::success('Estoque deleted successfully.');
+        Flash::success('Estoque removido com sucesso.');
 
         return redirect()->back();
     }
