@@ -92,14 +92,14 @@ class Programacao extends Model
     }
 
     /**
-     * Acessor para conseguir obter os materiais dessa programacao como propriedade
+     * Acessor para conseguir obter os materiais dessa programacao como propriedade.
      *
      * @return Collection
      */
-     public function getMateriaisAttribute()
-     {
+    public function getMateriaisAttribute()
+    {
         return $this->materiais();
-     }
+    }
 
     /**
      * Mutator para o campo data_inicio_prevista.
