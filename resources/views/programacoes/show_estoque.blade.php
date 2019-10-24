@@ -18,6 +18,9 @@
                                  <a href="{!! route('programacoes.show', $programacao->id) !!}" class="btn btn-ghost-light">Voltar</a>
                              </div>
                              <div class="card-body">
+                                 @include('programacoes.partials.form_add_estoque')
+                                 <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
+                                 <hr>
                                  @include('estoque.table')
                              </div>
                          </div>

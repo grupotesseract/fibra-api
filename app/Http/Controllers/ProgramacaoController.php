@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\Http\Requests;
-use App\DataTables\EstoqueDataTable;
+use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
@@ -177,7 +177,7 @@ class ProgramacaoController extends AppBaseController
      *
      * @return void
      */
-    public function getGerenciarEstoque(EstoqueDataTable $datatable, $id)
+    public function getGerenciarEstoque(EstoqueProgramacaoDataTable $datatable, $id)
     {
         $programacao = $this->programacaoRepository->find($id);
 

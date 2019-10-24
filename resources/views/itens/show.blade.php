@@ -33,7 +33,7 @@
                             @include('itens.partials.form_add_materiais')
                             <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
                             <hr>
-                            @include('itens.table')
+                            @include('materiais.table')
                             <div class="pull-right mr-3">
 
                             </div>
