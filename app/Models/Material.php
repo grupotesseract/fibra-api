@@ -104,7 +104,7 @@ class Material extends Model
     }
 
     /**
-     * Programações relacionadas a esse material
+     * Programações relacionadas a esse material.
      *
      * @return Collection
      **/
@@ -114,14 +114,14 @@ class Material extends Model
     }
 
     /**
-     * Acessor para conseguir obter as programacoes desse material como propriedade
+     * Acessor para conseguir obter as programacoes desse material como propriedade.
      *
      * @return Collection
      */
-     public function getProgramacoesAttribute()
-     {
+    public function getProgramacoesAttribute()
+    {
         return $this->programacoes();
-     }
+    }
 
     /**
      * Acessor para a informação de Tipo de Material.

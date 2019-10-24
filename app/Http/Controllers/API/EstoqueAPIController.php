@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Estoque;
+use Illuminate\Http\Request;
+use App\Repositories\EstoqueRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEstoqueAPIRequest;
 use App\Http\Requests\API\UpdateEstoqueAPIRequest;
-use App\Models\Estoque;
-use App\Repositories\EstoqueRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class EstoqueController
- * @package App\Http\Controllers\API
+ * Class EstoqueController.
  */
-
 class EstoqueAPIController extends AppBaseController
 {
-    /** @var  EstoqueRepository */
+    /** @var EstoqueRepository */
     private $estoqueRepository;
 
     public function __construct(EstoqueRepository $estoqueRepo)
@@ -27,7 +25,7 @@ class EstoqueAPIController extends AppBaseController
 
     /**
      * Display a listing of the Estoque.
-     * GET|HEAD /estoque
+     * GET|HEAD /estoque.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class EstoqueAPIController extends AppBaseController
 
     /**
      * Store a newly created Estoque in storage.
-     * POST /estoque
+     * POST /estoque.
      *
      * @param CreateEstoqueAPIRequest $request
      *
@@ -62,7 +60,7 @@ class EstoqueAPIController extends AppBaseController
 
     /**
      * Display the specified Estoque.
-     * GET|HEAD /estoque/{id}
+     * GET|HEAD /estoque/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class EstoqueAPIController extends AppBaseController
 
     /**
      * Update the specified Estoque in storage.
-     * PUT/PATCH /estoque/{id}
+     * PUT/PATCH /estoque/{id}.
      *
      * @param int $id
      * @param UpdateEstoqueAPIRequest $request
@@ -107,7 +105,7 @@ class EstoqueAPIController extends AppBaseController
 
     /**
      * Remove the specified Estoque from storage.
-     * DELETE /estoque/{id}
+     * DELETE /estoque/{id}.
      *
      * @param int $id
      *

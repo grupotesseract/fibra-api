@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
 
+namespace Tests\Repositories;
+
+use Tests\TestCase;
 use App\Models\Estoque;
+use Tests\ApiTestTrait;
 use App\Repositories\EstoqueRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 
 class EstoqueRepositoryTest extends TestCase
 {

@@ -6,11 +6,9 @@ use App\Models\Estoque;
 use App\Repositories\BaseRepository;
 
 /**
- * Class EstoqueRepository
- * @package App\Repositories
+ * Class EstoqueRepository.
  * @version October 23, 2019, 7:50 pm -03
-*/
-
+ */
 class EstoqueRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class EstoqueRepository extends BaseRepository
         'material_id',
         'programacao_id',
         'quantidade_inicial',
-        'quantidade_final'
+        'quantidade_final',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class EstoqueRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

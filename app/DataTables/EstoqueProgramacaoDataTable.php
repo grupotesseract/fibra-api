@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Estoque;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class EstoqueProgramacaoDataTable extends DataTable
 {
@@ -49,7 +49,7 @@ class EstoqueProgramacaoDataTable extends DataTable
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner btnAtualizaDataTable'],
-                    [ 'extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas', ]
+                    ['extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas'],
                 ],
                 'language' => [
                     'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
@@ -121,6 +121,6 @@ class EstoqueProgramacaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'estoquedatatable_' . time();
+        return 'estoquedatatable_'.time();
     }
 }

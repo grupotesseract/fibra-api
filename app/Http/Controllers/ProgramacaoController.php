@@ -7,8 +7,8 @@ use Response;
 use App\Http\Requests;
 use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\CreateEstoqueRequest;
+use App\Repositories\ProgramacaoRepository;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Http\Requests\CreateProgramacaoRequest;
@@ -164,6 +164,7 @@ class ProgramacaoController extends AppBaseController
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');
+
             return redirect(route('programacoes.index'));
         }
 
@@ -184,6 +185,7 @@ class ProgramacaoController extends AppBaseController
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');
+
             return redirect(route('programacoes.index'));
         }
 
@@ -195,7 +197,7 @@ class ProgramacaoController extends AppBaseController
 
     /**
      * Metodo para recebe o POST para criar um novo registro de Estoque
-     * a partir de uma programacao
+     * a partir de uma programacao.
      *
      * @param CreateEstoqueRequest $request
      *
@@ -207,6 +209,7 @@ class ProgramacaoController extends AppBaseController
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');
+
             return redirect(route('programacoes.index'));
         }
 
@@ -222,6 +225,7 @@ class ProgramacaoController extends AppBaseController
         }
 
         $result = $programacao->estoques()->create($request->all());
+
         return $this->sendResponse($result, 'Estoque adicionado');
     }
 }
