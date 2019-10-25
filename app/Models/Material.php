@@ -28,6 +28,8 @@ class Material extends Model
         'potencia_id',
         'tensao_id',
         'tipo_material_id',
+        'base_id',
+        'reator_id',
     ];
 
     public $appends = [
@@ -48,6 +50,8 @@ class Material extends Model
         'potencia' => 'string',
         'tensao' => 'string',
         'tipo_material_id' => 'integer',
+        'base_id' => 'integer',
+        'reator_id' => 'integer',
         'potencia_id'  => 'integer',
         'tensao_id'  => 'integer',
     ];
@@ -67,6 +71,22 @@ class Material extends Model
     public function tipoMaterial()
     {
         return $this->belongsTo(\App\Models\TipoMaterial::class, 'tipo_material_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function base()
+    {
+        return $this->belongsTo(\App\Models\Material::class, 'base_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function reator()
+    {
+        return $this->belongsTo(\App\Models\Material::class, 'reator_id');
     }
 
     /**
