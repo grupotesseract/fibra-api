@@ -90,4 +90,12 @@ class Planta extends Model
         return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->latest('data_inicio_prevista');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function itens()
+    {
+        return $this->hasMany(\App\Models\Item::class, 'planta_id');
+    }
+
 }
