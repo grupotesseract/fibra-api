@@ -45,11 +45,11 @@
 
 @endif
 
-@if (isset($material) && $material->receptaculo)
+@if (isset($material) && $material->base)
 <!-- Tipo Material Id Field -->
 <div class="form-group">
-    {!! Form::label('receptaculo_id', 'Receptáculo') !!}
-    <p>{!! $material->receptaculo->nome !!}</p>
+    {!! Form::label('base_id', 'Base') !!}
+    <p>{!! $material->base->nome !!}</p>
 </div>
 @endif
 

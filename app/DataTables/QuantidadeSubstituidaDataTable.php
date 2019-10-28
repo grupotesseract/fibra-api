@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Material;
+use App\Models\QuantidadeSubstituida;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class MaterialDataTable extends DataTable
+class QuantidadeSubstituidaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class MaterialDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'materiais.datatables_actions');
+        return $dataTable->addColumn('action', 'quantidades_substituidas.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Material $model
+     * @param \App\Models\QuantidadeSubstituida $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Material $model)
+    public function query(QuantidadeSubstituida $model)
     {
         return $model->newQuery();
     }
@@ -42,7 +42,7 @@ class MaterialDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
+            ->addAction(['width' => '120px', 'printable' => false])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -69,42 +69,10 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
-            'tipoMaterialNome' => [
-                'data' => 'tipoMaterialNome',
-                'title' => 'Tipo de Material',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-            ],
-            'potenciaValor' => [
-                'data' => 'potenciaValor',
-                'title' => 'Potência',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-            ],
-            'tensaoValor' => [
-                'data' => 'tensaoValor',
-                'title' => 'Tensão',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-            ],
-            'baseNome' => [
-                'data' => 'baseNome',
-                'title' => 'Base',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-            ],
-            'reatorNome' => [
-                'data' => 'reatorNome',
-                'title' => 'Reator',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-            ],
+            'programacao_id',
+            'item_id',
+            'material_id',
+            'quantidade_substituida',
         ];
     }
 
@@ -115,6 +83,6 @@ class MaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'materiaisdatatable_'.time();
+        return 'quantidades_substituidasdatatable_'.time();
     }
 }

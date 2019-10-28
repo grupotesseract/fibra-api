@@ -20,6 +20,18 @@
         ])
     </div>
 
+    <div class="form-group col-sm-6">
+        @include('materiais.select_bases', [
+            'Model' => $material
+        ])
+    </div>
+
+    <div class="form-group col-sm-6">
+        @include('materiais.select_reatores', [
+            'Model' => $material
+        ])
+    </div>
+
 @else
 
     <div class="form-group col-sm-6">
@@ -31,7 +43,7 @@
     </div>
 
     <div class="form-group col-sm-6">
-        @include('materiais.select_receptaculos')
+        @include('materiais.select_bases')
     </div>
 
     <div class="form-group col-sm-6">
