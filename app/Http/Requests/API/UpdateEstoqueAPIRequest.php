@@ -25,7 +25,7 @@ class UpdateEstoqueAPIRequest extends APIRequest
     public function rules()
     {
         $rules = Estoque::$rules;
-        
+
         return $rules;
     }
 }

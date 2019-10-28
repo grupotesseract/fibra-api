@@ -6,16 +6,15 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Estoque
- * @package App\Models
+ * Class Estoque.
  * @version October 23, 2019, 7:50 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Material material
- * @property integer material_id
- * @property integer programacao_id
- * @property integer quantidade_inicial
- * @property integer quantidade_final
+ * @property int material_id
+ * @property int programacao_id
+ * @property int quantidade_inicial
+ * @property int quantidade_final
  */
 class Estoque extends Model
 {
@@ -29,7 +28,7 @@ class Estoque extends Model
         'material_id',
         'programacao_id',
         'quantidade_inicial',
-        'quantidade_final'
+        'quantidade_final',
     ];
 
     /**
@@ -42,11 +41,11 @@ class Estoque extends Model
         'material_id' => 'integer',
         'programacao_id' => 'integer',
         'quantidade_inicial' => 'integer',
-        'quantidade_final' => 'integer'
+        'quantidade_final' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -54,7 +53,7 @@ class Estoque extends Model
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
         'quantidade_inicial' => 'required|integer|min:1',
-        'quantidade_final' => 'nullable|integer|min:0'
+        'quantidade_final' => 'nullable|integer|min:0',
     ];
 
     /**

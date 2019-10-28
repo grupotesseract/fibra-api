@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Estoque;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class EstoqueDataTable extends DataTable
 {
@@ -48,11 +48,11 @@ class EstoqueDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner'],
                 ],
             ]);
     }
@@ -68,7 +68,7 @@ class EstoqueDataTable extends DataTable
             'material_id',
             'programacao_id',
             'quantidade_inicial',
-            'quantidade_final'
+            'quantidade_final',
         ];
     }
 
@@ -79,6 +79,6 @@ class EstoqueDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'estoquedatatable_' . time();
+        return 'estoquedatatable_'.time();
     }
 }
