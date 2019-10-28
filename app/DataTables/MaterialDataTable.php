@@ -89,7 +89,21 @@ class MaterialDataTable extends DataTable
                 'title' => 'Tensão',
                 'searchable' => false,
                 'orderable' => false,
+                'filterable' => false, 
+            ],
+            'baseNome' => [
+                'data' => 'baseNome',
+                'title' => 'Base',
+                'searchable' => false,
+                'orderable' => false,
                 'filterable' => false,
+            ],
+            'reatorNome' => [
+                'data' => 'reatorNome',
+                'title' => 'Reator',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false, 
             ],
         ];
     }

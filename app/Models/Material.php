@@ -37,6 +37,8 @@ class Material extends Model
         'potenciaValor',
         'tensaoValor',
         'nomePotenciaTensao',
+        'baseNome',
+        'reatorNome',
     ];
 
     /**
@@ -152,12 +154,38 @@ class Material extends Model
     }
 
     /**
+     * Acessor para a informação de Base.
+     *
+     * @return int
+     */
+    public function getBaseNomeAttribute()
+    {
+        if ($this->base()->exists()) {
+            return $this->base->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Reator.
+     *
+     * @return int
+     */
+    public function getReatorNomeAttribute()
+    {
+        if ($this->reator()->exists()) {
+            return $this->reator->nome;
+        }
+    }
+
+    /**
      * Acessor para obter uma string com 'Nome - Potencia W - Tensão V'.
      *
      * @return string
      */
     public function getNomePotenciaTensaoAttribute()
     {
-        return "$this->nome - $this->potenciaValor W - $this->tensaoValor V";
+        $base = !is_null($this->baseNome) ? "- Base $this->baseNome" : '';
+        $reator = !is_null($this->reatorNome) ? "- Reator $this->reatorNome" : '';
+        return "$this->nome - $this->potenciaValor W - $this->tensaoValor V $base $reator";
     }
 }
