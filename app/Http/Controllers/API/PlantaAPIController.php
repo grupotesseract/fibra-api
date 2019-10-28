@@ -9,6 +9,7 @@ use App\Repositories\PlantaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreatePlantaAPIRequest;
 use App\Http\Requests\API\UpdatePlantaAPIRequest;
+use App\Transformers\PlantaTransformer;
 
 /**
  * Class PlantaController.
@@ -130,7 +131,9 @@ class PlantaAPIController extends AppBaseController
     public function syncPlantas()
     {
         $plantas = Planta::with('programacaoMaisRecente')->get();
+
+        $plantas = fractal($plantas, new PlantaTransformer())->toArray();
         
-        return $this->sendResponse($plantas->toArray(), 'Plantas listadas com sucesso');
+        return $this->sendResponse($plantas, 'Planta sincronizada com sucesso');
     }
 }
