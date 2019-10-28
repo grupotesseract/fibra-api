@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'store', 'update', 'destroy',
     ]);
+
+    Route::get('sync/plantas', 'PlantaAPIController@syncPlantas');
 });
 
 /*

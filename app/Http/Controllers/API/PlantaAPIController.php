@@ -126,4 +126,11 @@ class PlantaAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Planta excluída com sucesso');
     }
+
+    public function syncPlantas()
+    {
+        $plantas = Planta::with('programacaoMaisRecente')->get();
+        
+        return $this->sendResponse($plantas->toArray(), 'Plantas listadas com sucesso');
+    }
 }

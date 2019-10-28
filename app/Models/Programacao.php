@@ -209,7 +209,8 @@ class Programacao extends Model
      */
     public function getDataInicioRealFormatadaAttribute()
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
+        if (!is_null($this->data_inicio_real))
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
     }
 
     /**
@@ -220,6 +221,7 @@ class Programacao extends Model
      */
     public function getDataFimRealFormatadaAttribute()
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
+        if (!is_null($this->data_fim_real))
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
     }
 }
