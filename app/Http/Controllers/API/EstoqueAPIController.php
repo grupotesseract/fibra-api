@@ -40,7 +40,7 @@ class EstoqueAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($estoque->toArray(), 'Estoque retrieved successfully');
+        return $this->sendResponse($estoque->toArray(), 'Listagem de estoques obtida com sucesso');
     }
 
     /**
@@ -55,9 +55,22 @@ class EstoqueAPIController extends AppBaseController
     {
         $input = $request->all();
 
+        $programacao = $this->programacaoRepository->find($request->programacao_id);
+
+        //Se ja tiver estoque para esse mateiral, erro.
+        $jaExisteEstoque = $programacao->estoques()
+           ->where('material_id', $request->material_id)
+           ->count();
+
+        if ($jaExisteEstoque) {
+            return \Response::json([
+                'errors' => ['Já existe um estoque para o material selecionado'],
+            ], 422);
+        }
+
         $estoque = $this->estoqueRepository->create($input);
 
-        return $this->sendResponse($estoque->toArray(), 'Estoque saved successfully');
+        return $this->sendResponse($estoque->toArray(), 'Estoque criado com sucesso');
     }
 
     /**
@@ -74,10 +87,10 @@ class EstoqueAPIController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            return $this->sendError('Estoque not found');
+            return $this->sendError('Estoque não encontrado');
         }
 
-        return $this->sendResponse($estoque->toArray(), 'Estoque retrieved successfully');
+        return $this->sendResponse($estoque->toArray(), 'Estoque obtido com sucesso');
     }
 
     /**
@@ -97,12 +110,12 @@ class EstoqueAPIController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            return $this->sendError('Estoque not found');
+            return $this->sendError('Estoque não encontrado');
         }
 
         $estoque = $this->estoqueRepository->update($input, $id);
 
-        return $this->sendResponse($estoque->toArray(), 'Estoque updated successfully');
+        return $this->sendResponse($estoque->toArray(), 'Estoque atualizado com sucesso');
     }
 
     /**
@@ -121,11 +134,11 @@ class EstoqueAPIController extends AppBaseController
         $estoque = $this->estoqueRepository->find($id);
 
         if (empty($estoque)) {
-            return $this->sendError('Estoque not found');
+            return $this->sendError('Estoque não encontrado');
         }
 
         $estoque->delete();
 
-        return $this->sendResponse($id, 'Estoque deleted successfully');
+        return $this->sendResponse($id, 'Estoque removido com sucesso');
     }
 }

@@ -15,7 +15,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Estoque da programação {{ $programacao->id }} </strong>
+                                 <strong>Estoque da programação em {{ $programacao->dataInicioPrevistaFormatada }} </strong>
                                  <a href="{!! route('programacoes.show', $programacao->id) !!}" class="btn btn-ghost-light">Voltar</a>
                              </div>
                              <div class="card-body">

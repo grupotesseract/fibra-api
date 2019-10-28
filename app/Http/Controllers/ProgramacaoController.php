@@ -212,7 +212,7 @@ class ProgramacaoController extends AppBaseController
 
         //Se ja tiver estoque para esse mateiral, erro.
         $jaExisteEstoque = $programacao->estoques()
-           ->where('material_id', $request->material_ida)
+           ->where('material_id', $request->material_id)
            ->count();
 
         if ($jaExisteEstoque) {
