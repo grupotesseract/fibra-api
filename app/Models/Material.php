@@ -80,7 +80,7 @@ class Material extends Model
      **/
     public function base()
     {
-        return $this->belongsTo(\App\Models\Material::class, 'base_id');
+        return $this->belongsTo(self::class, 'base_id');
     }
 
     /**
@@ -88,7 +88,7 @@ class Material extends Model
      **/
     public function reator()
     {
-        return $this->belongsTo(\App\Models\Material::class, 'reator_id');
+        return $this->belongsTo(self::class, 'reator_id');
     }
 
     /**
@@ -184,8 +184,9 @@ class Material extends Model
      */
     public function getNomePotenciaTensaoAttribute()
     {
-        $base = !is_null($this->baseNome) ? "- Base $this->baseNome" : '';
-        $reator = !is_null($this->reatorNome) ? "- Reator $this->reatorNome" : '';
+        $base = ! is_null($this->baseNome) ? "- Base $this->baseNome" : '';
+        $reator = ! is_null($this->reatorNome) ? "- Reator $this->reatorNome" : '';
+
         return "$this->nome - $this->potenciaValor W - $this->tensaoValor V $base $reator";
     }
 }
