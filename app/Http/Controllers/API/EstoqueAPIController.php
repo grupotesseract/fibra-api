@@ -7,6 +7,7 @@ use App\Models\Estoque;
 use Illuminate\Http\Request;
 use App\Repositories\EstoqueRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateEstoqueAPIRequest;
 use App\Http\Requests\API\UpdateEstoqueAPIRequest;
 
@@ -18,9 +19,13 @@ class EstoqueAPIController extends AppBaseController
     /** @var EstoqueRepository */
     private $estoqueRepository;
 
-    public function __construct(EstoqueRepository $estoqueRepo)
+    /** @var ProgramacaoRepository */
+    private $programacaoRepository;
+
+    public function __construct(EstoqueRepository $estoqueRepo, ProgramacaoRepository $programacaoRepo)
     {
         $this->estoqueRepository = $estoqueRepo;
+        $this->programacaoRepository = $programacaoRepo;
     }
 
     /**

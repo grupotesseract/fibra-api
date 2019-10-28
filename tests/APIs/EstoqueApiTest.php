@@ -21,7 +21,7 @@ class EstoqueApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/estoque', $estoque
+            '/api/estoques', $estoque
         );
 
         $this->assertApiResponse($estoque);
@@ -36,7 +36,7 @@ class EstoqueApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/estoque/'.$estoque->id
+            '/api/estoques/'.$estoque->id
         );
 
         $this->assertApiResponse($estoque->toArray());
@@ -52,7 +52,7 @@ class EstoqueApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/estoque/'.$estoque->id,
+            '/api/estoques/'.$estoque->id,
             $editedEstoque
         );
 
@@ -68,13 +68,13 @@ class EstoqueApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/estoque/'.$estoque->id
+             '/api/estoques/'.$estoque->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/estoque/'.$estoque->id
+            '/api/estoques/'.$estoque->id
         );
 
         $this->response->assertStatus(404);

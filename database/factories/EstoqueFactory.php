@@ -1,6 +1,5 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Models\Estoque;
 use App\Models\Material;
 use App\Models\Programacao;
