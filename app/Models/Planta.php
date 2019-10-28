@@ -71,4 +71,18 @@ class Planta extends Model
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function programacoes()
+    {
+        return $this->hasMany(\App\Models\Programacao::class, 'planta_id');
+    }
+
+    public function programacaoMaisRecente()
+    {
+        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->latest('data_inicio_prevista');
+    }
+
 }
