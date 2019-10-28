@@ -85,9 +85,19 @@ class Planta extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function programacaoMaisRecente()
+    public function proximaProgramacao()
     {
         return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->latest('data_inicio_prevista');
+    }
+
+    /**
+     * Relacionamento pra trazer próxima programação mais recente de uma Planta
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function programacaoAnteriorMaisRecente()
+    {
+        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNotNull('data_fim_real')->latest('data_fim_real');
     }
 
     /**

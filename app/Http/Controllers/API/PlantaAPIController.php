@@ -132,9 +132,9 @@ class PlantaAPIController extends AppBaseController
     {
         $plantas = Planta::with(
             [
-                'programacaoMaisRecente', 
-                'itens',
-                'itens.materiais'
+                'proximaProgramacao', 
+                'itens.materiais',
+                'programacaoAnteriorMaisRecente.estoques'
             ]
         )->get();
 

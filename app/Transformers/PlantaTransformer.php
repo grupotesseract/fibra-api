@@ -15,10 +15,10 @@ class PlantaTransformer extends TransformerAbstract
     public function transform(Planta $planta)
     {
         //Programação mais Recente
-        $programacaoMaisRecente = !is_null($planta->programacaoMaisRecente) ? [
-            'id' => $planta->programacaoMaisRecente->id,
-            'data_inicio_prevista' => $planta->programacaoMaisRecente->data_inicio_prevista,
-            'data_fim_prevista' => $planta->programacaoMaisRecente->data_fim_prevista,
+        $proximaProgramacao = !is_null($planta->proximaProgramacao) ? [
+            'id' => $planta->proximaProgramacao->id,
+            'data_inicio_prevista' => $planta->proximaProgramacao->data_inicio_prevista,
+            'data_fim_prevista' => $planta->proximaProgramacao->data_fim_prevista,
         ] : null;
 
         //Itens de uma Planta
@@ -32,6 +32,7 @@ class PlantaTransformer extends TransformerAbstract
                     'nome' => $material->nome,
                     'base' => $material->baseNome,
                     'reator' => $material->reatorNome,
+                    'tipoMaterial' => $material->tipoMaterialNome,
                     'quantidadeInstalada' => $material->pivot->quantidade_instalada
                 ];
             }
@@ -44,12 +45,29 @@ class PlantaTransformer extends TransformerAbstract
                 'materiais' => $materiais ?? Array()
             ];
         }
+
+        //Informações de Estoque obtidas através da Programação Anterior mais Recente
+        $estoquePlanta = [];
+        if (!is_null($planta->programacaoAnteriorMaisRecente)) {
+            foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
+                $estoquePlanta[] = [
+                    'id' => $estoque->material_id,
+                    'nome' => $estoque->material->nome,
+                    'base' => $estoque->material->baseNome,
+                    'reator' => $estoque->material->reatorNome,
+                    'tipoMaterial' => $estoque->material->tipoMaterialNome,
+                    'quantidade' => $estoque->quantidade_final
+                ];
+            }
+        }
         
+        //Montagem final da Resposta da API
         return [
             'id' => $planta->id,
             'nome' => $planta->nome,
-            'programacaoMaisRecente' => $programacaoMaisRecente,
-            'itens' => $itens
+            'proximaProgramacao' => $proximaProgramacao,
+            'itens' => $itens,
+            'estoque' => $estoquePlanta
         ];
     }
 }
