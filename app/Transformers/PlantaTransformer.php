@@ -14,13 +14,17 @@ class PlantaTransformer extends TransformerAbstract
      */
     public function transform(Planta $planta)
     {
+        //Programação mais Recente
         $programacaoMaisRecente = !is_null($planta->programacaoMaisRecente) ? [
             'id' => $planta->programacaoMaisRecente->id,
             'data_inicio_prevista' => $planta->programacaoMaisRecente->data_inicio_prevista,
             'data_fim_prevista' => $planta->programacaoMaisRecente->data_fim_prevista,
         ] : null;
 
+        //Itens de uma Planta
         foreach ($planta->itens as $item) {
+            
+            //Materiais Instalados de uma Planta
             $materiais = [];
             foreach ($item->materiais as $material) {
                 $materiais[] = [
