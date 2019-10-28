@@ -52,4 +52,16 @@
         <span>Quantidades Minimas</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('estoque*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('estoque.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Estoque</span>
+    </a>
+</li>
  --}}
+<li class="nav-item {{ Request::is('quantidadesSubstituidas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('quantidadesSubstituidas.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Quantidades Substituidas</span>
+    </a>
+</li>
