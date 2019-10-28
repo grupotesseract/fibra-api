@@ -76,6 +76,32 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function estoques()
+    {
+        return $this->hasMany(\App\Models\Estoque::class);
+    }
+
+    /**
+     * @return Collection
+     **/
+    public function materiais()
+    {
+        return $this->estoques()->with('material')->get()->pluck('material');
+    }
+
+    /**
+     * Acessor para conseguir obter os materiais dessa programacao como propriedade.
+     *
+     * @return Collection
+     */
+    public function getMateriaisAttribute()
+    {
+        return $this->materiais();
+    }
+
+    /**
      * Mutator para o campo data_inicio_prevista.
      *
      * @param string $value

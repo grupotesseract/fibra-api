@@ -1,9 +1,9 @@
 import Axios from 'axios'
 
 /**
- * @class MateriaisItem
+ * @class Estoque
  */
-class MateriaisItem {
+class Estoque {
 
   /**
    * @constructor
@@ -16,25 +16,37 @@ class MateriaisItem {
    * @returns
    */
   eventHandlers() {
-    $('#form-associar-materiais').on('submit', (event) => {
+    $('#form-add-estoque').on('submit', (event) => {
       event.preventDefault()
-      this.submitFormAddMaterialItem()
+      this.submitFormAsync()
     });
   }
 
-  resetFormAssociarItem (select_materiais, input_qnt) {
+  /**
+   * Limpa os campos do formulario
+   */
+  resetForm(select_materiais, qnt_inicial, qnt_final) {
     $(select_materiais).val(0).trigger('change')
-    $(input_qnt).val(0);
+    $(qnt_inicial).val(0);
+    $(qnt_final).val(0);
   }
 
-  async submitFormAddMaterialItem() {
-    const url = location.href + "/materiais"
-    const select_materiais = $('#material_id');
-    const input_qnt = $('#qnt_instalada');
+  /**
+   * Faz o submit do formulário de forma assíncrona
+   */
+  async submitFormAsync() {
+    const url = location.href
     const container_erros = $("#container-erros");
+    const programacao_id = $('#programacao_id').val();
+    const select_materiais = $('#material_id');
+    const qnt_inicial = $('#qnt_inicial');
+    const qnt_final = $('#qnt_final');
+
     const data = {
       material_id : select_materiais.val(),
-      qnt_instalada : input_qnt.val(),
+      programacao_id : programacao_id,
+      quantidade_inicial : qnt_inicial.val(),
+      quantidade_final : qnt_final.val(),
     };
 
     container_erros.slideUp().html('');
@@ -42,7 +54,7 @@ class MateriaisItem {
     const result = await Axios.post(url, data)
       .then(response => {
         if (response.data.success){
-          this.resetFormAssociarItem(select_materiais, input_qnt)
+          this.resetForm(select_materiais, qnt_inicial, qnt_final)
           LaravelDataTables.dataTableBuilder.draw()
         }
       })
@@ -55,4 +67,4 @@ class MateriaisItem {
 
 }
 
-new MateriaisItem
+new Estoque
