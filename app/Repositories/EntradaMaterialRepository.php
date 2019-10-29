@@ -6,11 +6,9 @@ use App\Models\EntradaMaterial;
 use App\Repositories\BaseRepository;
 
 /**
- * Class EntradaMaterialRepository
- * @package App\Repositories
+ * Class EntradaMaterialRepository.
  * @version October 29, 2019, 12:14 am -03
-*/
-
+ */
 class EntradaMaterialRepository extends BaseRepository
 {
     /**
@@ -19,11 +17,11 @@ class EntradaMaterialRepository extends BaseRepository
     protected $fieldSearchable = [
         'material_id',
         'programacao_id',
-        'quantidade'
+        'quantidade',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -33,7 +31,7 @@ class EntradaMaterialRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
