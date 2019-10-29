@@ -55,7 +55,7 @@ class EntradaMaterialController extends AppBaseController
 
         $entradaMaterial = $this->entradaMaterialRepository->create($input);
 
-        Flash::success('Entrada Material saved successfully.');
+        Flash::success('Entrada de material adicionada com sucesso.');
 
         return redirect(route('entradasMateriais.index'));
     }
@@ -72,7 +72,7 @@ class EntradaMaterialController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            Flash::error('Entrada Material not found');
+            Flash::error('Entrada de material não encontrada');
 
             return redirect(route('entradasMateriais.index'));
         }
@@ -92,7 +92,7 @@ class EntradaMaterialController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            Flash::error('Entrada Material not found');
+            Flash::error('Entrada de material não encontrada');
 
             return redirect(route('entradasMateriais.index'));
         }
@@ -113,16 +113,16 @@ class EntradaMaterialController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            Flash::error('Entrada Material not found');
+            Flash::error('Entrada de material não encontrada');
 
             return redirect(route('entradasMateriais.index'));
         }
 
         $entradaMaterial = $this->entradaMaterialRepository->update($request->all(), $id);
 
-        Flash::success('Entrada Material updated successfully.');
+        Flash::success('Entrada de material atualizada com sucesso');
 
-        return redirect(route('entradasMateriais.index'));
+        return redirect(route('programacoes.entradasMateriais', $entradaMaterial->programacao->id));
     }
 
     /**
@@ -137,15 +137,15 @@ class EntradaMaterialController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            Flash::error('Entrada Material not found');
+            Flash::error('Entrada de material não encontrada');
 
             return redirect(route('entradasMateriais.index'));
         }
 
         $this->entradaMaterialRepository->delete($id);
 
-        Flash::success('Entrada Material deleted successfully.');
+        Flash::success('Entrada de material removida com suceso.');
 
-        return redirect(route('entradasMateriais.index'));
+        return redirect()->back();
     }
 }

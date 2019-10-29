@@ -35,8 +35,8 @@ class CreateEstoqueAPIRequest extends APIRequest
     public function messages()
     {
         return [
-            'programacao_id.required' => 'O campo programacao é obrigatório',
-            'programacao_id.exists' => 'O campo programacao é obrigatório',
+            'programacao_id.required' => 'O campo programação é obrigatório',
+            'programacao_id.exists' => 'O campo programação é obrigatório',
             'material_id.required' => 'O campo material é obrigatório',
             'material_id.exists' => 'O campo material é obrigatório',
             'quantidade_inicial.min' => 'A quantidade inicial deve ser no mínimo 1',

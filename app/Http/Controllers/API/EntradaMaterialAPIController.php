@@ -40,7 +40,7 @@ class EntradaMaterialAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($entradasMateriais->toArray(), 'Entradas Materiais retrieved successfully');
+        return $this->sendResponse($entradasMateriais->toArray(), 'Entradas de materiais obtidas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
         $entradaMaterial = $this->entradaMaterialRepository->create($input);
 
-        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada Material saved successfully');
+        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class EntradaMaterialAPIController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            return $this->sendError('Entrada Material not found');
+            return $this->sendError('Entrada de material não encontrada');
         }
 
-        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada Material retrieved successfully');
+        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material obtida com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class EntradaMaterialAPIController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            return $this->sendError('Entrada Material not found');
+            return $this->sendError('Entrada de material não encontrada');
         }
 
         $entradaMaterial = $this->entradaMaterialRepository->update($input, $id);
 
-        return $this->sendResponse($entradaMaterial->toArray(), 'EntradaMaterial updated successfully');
+        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class EntradaMaterialAPIController extends AppBaseController
         $entradaMaterial = $this->entradaMaterialRepository->find($id);
 
         if (empty($entradaMaterial)) {
-            return $this->sendError('Entrada Material not found');
+            return $this->sendError('Entrada de material não encontrada');
         }
 
         $entradaMaterial->delete();
 
-        return $this->sendResponse($id, 'Entrada Material deleted successfully');
+        return $this->sendResponse($id, 'Entrada de material removida com sucesso');
     }
 }

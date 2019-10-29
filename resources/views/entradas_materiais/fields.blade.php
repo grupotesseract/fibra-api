@@ -1,5 +1,5 @@
-{!! Form::hidden('material_id', $estoque->material->id) !!}
-{!! Form::hidden('programacao_id', $estoque->programacao->id) !!}
+{!! Form::hidden('material_id', $entradaMaterial->material->id) !!}
+{!! Form::hidden('programacao_id', $entradaMaterial->programacao->id) !!}
 
 <!-- Quantidade Field -->
 <div class="form-group col-sm-6">
