@@ -11,6 +11,6 @@ class EntradasMateriaisTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\EntradaMaterial::class, 50)->create();
     }
 }
