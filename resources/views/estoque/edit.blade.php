@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Estoque</strong>
+                              <strong>Estoque do material {{ $estoque->material->nomePotenciaTensao }} da programacao em {{ $estoque->programacao->dataInicioPrevistaFormatada}}</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($estoque, ['route' => ['estoque.update', $estoque->id], 'method' => 'patch']) !!}

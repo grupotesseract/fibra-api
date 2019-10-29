@@ -21,7 +21,7 @@ class EntradaMaterial extends Model
     use SoftDeletes;
 
     public $table = 'entradas_materiais';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -50,9 +50,9 @@ class EntradaMaterial extends Model
      * @var array
      */
     public static $rules = [
-        'material_id' => 'required',
-        'programacao_id' => 'required',
-        'quantidade' => 'required'
+        'material_id' => 'required|exists:materiais,id',
+        'programacao_id' => 'required|exists:programacoes,id',
+        'quantidade' => 'required|integer|min:1',
     ];
 
     /**

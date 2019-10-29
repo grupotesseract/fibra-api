@@ -6,8 +6,10 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\ProgramacaoDataTable;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEstoqueRequest;
+use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Repositories\ProgramacaoRepository;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
@@ -228,4 +230,49 @@ class ProgramacaoController extends AppBaseController
 
         return $this->sendResponse($result, 'Estoque adicionado');
     }
+
+
+    /**
+     * Metodo para servir a view de Entradas de Materiais de 1 Programação.
+     *
+     * @return void
+     */
+    public function getEntradasMateriais(EntradaMateriaisProgramacaoDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        $datatable->programacaoID = $id;
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_entradas_materiais', compact('programacao'));
+    }
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de EntradaMaterial
+     * a partir de uma programacao.
+     *
+     * @param CreateEntradaMaterialRequest $request
+     *
+     * @return Response
+     */
+    public function postAdicionarEntradaMaterial(CreateEntradaMaterialRequest $request, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+            return redirect(route('programacoes.index'));
+        }
+
+        $result = $programacao->entradasMateriais()->create($request->all());
+
+        return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
 }

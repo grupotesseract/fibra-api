@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('entradasMateriais', 'EntradaMaterialController');
     Route::get('programacoes/{id}/entrada-materiais', 'ProgramacaoController@getEntradasMateriais')
         ->name('programacoes.entradasMateriais');
-    Route::post('programacoes/{id}/entrada-materiais', 'ProgramacaoController@postEntradasMateriais')
+    Route::post('programacoes/{id}/entrada-materiais', 'ProgramacaoController@postAdicionarEntradaMaterial')
         ->name('programacoes.addEntradaMaterial');
 
 
