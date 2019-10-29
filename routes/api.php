@@ -20,6 +20,12 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'store', 'update', 'destroy',
     ]);
+
+    Route::resource('usuarios_liberacoes', 'UsuarioLiberacaoAPIController');
+    Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');
+    Route::resource('estoques', 'EstoqueAPIController');
+    Route::resource('quantidades_substituidas', 'QuantidadeSubstituidaAPIController');
+    Route::resource('entradas_materiais', 'EntradaMaterialAPIController');
 });
 
 /*
@@ -59,6 +65,3 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
-
-Route::resource('usuarios_liberacoes', 'UsuarioLiberacaoAPIController');
-Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');

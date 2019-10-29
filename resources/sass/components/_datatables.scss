@@ -6,6 +6,9 @@ table#dataTableBuilder {
 div.dataTables_wrapper {
   div.dataTables_filter {
     float: right;
+    input {
+      height:35px;
+    }
   }
 
   div.dataTables_info {

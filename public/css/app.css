@@ -2022,17 +2022,21 @@ a:hover {
   padding: 10px 0;
 }
 
-.sidebar .nav-link i {
+.sidebar .nav-item.active {
+  background-color: #41484a;
+}
+
+.sidebar .nav-item .nav-link i {
   font-size: 12px;
   opacity: 0.75;
   width: 20px;
 }
 
-.sidebar .nav-link.active {
+.sidebar .nav-item .nav-link.active {
   background-color: rgba(76, 90, 103, 0.5);
 }
 
-.sidebar .nav-link:hover {
+.sidebar .nav-item .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
@@ -2257,6 +2261,10 @@ table#dataTableBuilder {
 
 div.dataTables_wrapper div.dataTables_filter {
   float: right;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+  height: 35px;
 }
 
 div.dataTables_wrapper div.dataTables_info {

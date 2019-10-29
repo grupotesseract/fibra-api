@@ -28,6 +28,8 @@ class Material extends Model
         'potencia_id',
         'tensao_id',
         'tipo_material_id',
+        'base_id',
+        'reator_id',
     ];
 
     public $appends = [
@@ -35,6 +37,8 @@ class Material extends Model
         'potenciaValor',
         'tensaoValor',
         'nomePotenciaTensao',
+        'baseNome',
+        'reatorNome',
     ];
 
     /**
@@ -48,6 +52,8 @@ class Material extends Model
         'potencia' => 'string',
         'tensao' => 'string',
         'tipo_material_id' => 'integer',
+        'base_id' => 'integer',
+        'reator_id' => 'integer',
         'potencia_id'  => 'integer',
         'tensao_id'  => 'integer',
     ];
@@ -67,6 +73,22 @@ class Material extends Model
     public function tipoMaterial()
     {
         return $this->belongsTo(\App\Models\TipoMaterial::class, 'tipo_material_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function base()
+    {
+        return $this->belongsTo(self::class, 'base_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function reator()
+    {
+        return $this->belongsTo(self::class, 'reator_id');
     }
 
     /**
@@ -93,6 +115,34 @@ class Material extends Model
         return $this
             ->belongsToMany(\App\Models\Item::class, 'itens_materiais', 'material_id', 'item_id')
             ->withPivot('quantidade_instalada');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function estoques()
+    {
+        return $this->hasMany(\App\Models\Estoque::class);
+    }
+
+    /**
+     * Programações relacionadas a esse material.
+     *
+     * @return Collection
+     **/
+    public function programacoes()
+    {
+        return $this->estoques()->with('programacao')->get()->pluck('programacao');
+    }
+
+    /**
+     * Acessor para conseguir obter as programacoes desse material como propriedade.
+     *
+     * @return Collection
+     */
+    public function getProgramacoesAttribute()
+    {
+        return $this->programacoes();
     }
 
     /**
@@ -132,12 +182,39 @@ class Material extends Model
     }
 
     /**
+     * Acessor para a informação de Base.
+     *
+     * @return int
+     */
+    public function getBaseNomeAttribute()
+    {
+        if ($this->base()->exists()) {
+            return $this->base->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de Reator.
+     *
+     * @return int
+     */
+    public function getReatorNomeAttribute()
+    {
+        if ($this->reator()->exists()) {
+            return $this->reator->nome;
+        }
+    }
+
+    /**
      * Acessor para obter uma string com 'Nome - Potencia W - Tensão V'.
      *
      * @return string
      */
     public function getNomePotenciaTensaoAttribute()
     {
-        return "$this->nome - $this->potenciaValor W - $this->tensaoValor V";
+        $base = ! is_null($this->baseNome) ? "- Base $this->baseNome" : '';
+        $reator = ! is_null($this->reatorNome) ? "- Reator $this->reatorNome" : '';
+
+        return "$this->nome - $this->potenciaValor W - $this->tensaoValor V $base $reator";
     }
 }

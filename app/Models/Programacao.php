@@ -76,6 +76,22 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function estoques()
+    {
+        return $this->hasMany(\App\Models\Estoque::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function entradasMateriais()
+    {
+        return $this->hasMany(\App\Models\EntradaMaterial::class);
+    }
+
+    /**
      * Mutator para o campo data_inicio_prevista.
      *
      * @param string $value

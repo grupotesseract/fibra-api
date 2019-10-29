@@ -33,6 +33,9 @@ class DatabaseSeeder extends Seeder
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
             $this->call(QuantidadesMinimasTableSeeder::class);
+            $this->call(EstoqueTableSeeder::class);
+            $this->call(QuantidadesSubstituidasTableSeeder::class);
+            $this->call(EntradasMateriaisTableSeeder::class);
         }
     }
 }
