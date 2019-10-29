@@ -4,6 +4,7 @@
     "/css/pages/login.css": "/css/pages/login.css",
     "/css/pages/welcome.css": "/css/pages/welcome.css",
     "/js/pages/Cidades.js": "/js/pages/Cidades.js",
+    "/js/pages/EntradaMateriais.js": "/js/pages/EntradaMateriais.js",
     "/js/pages/Estoque.js": "/js/pages/Estoque.js",
     "/js/pages/MateriaisItem.js": "/js/pages/MateriaisItem.js",
     "/js/pages/Plantas.js": "/js/pages/Plantas.js"

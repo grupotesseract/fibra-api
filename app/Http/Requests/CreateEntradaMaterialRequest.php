@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\API;
+namespace App\Http\Requests;
 
-use App\Models\Estoque;
-use InfyOm\Generator\Request\APIRequest;
+use App\Models\EntradaMaterial;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CreateEstoqueAPIRequest extends APIRequest
+class CreateEntradaMaterialRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class CreateEstoqueAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Estoque::$rules;
+        return EntradaMaterial::$rules;
     }
 
     /**
@@ -39,10 +39,8 @@ class CreateEstoqueAPIRequest extends APIRequest
             'programacao_id.exists' => 'O campo programação é obrigatório',
             'material_id.required' => 'O campo material é obrigatório',
             'material_id.exists' => 'O campo material é obrigatório',
-            'quantidade_inicial.min' => 'A quantidade inicial deve ser no mínimo 1',
-            'quantidade_inicial.integer' => 'A quantidade inicial deve ser um número inteiro',
-            'quantidade_final.min' => 'A quantidade final deve ser no mínimo 1',
-            'quantidade_final.integer' => 'A quantidade final deve ser um número inteiro',
+            'quantidade.min' => 'A quantidade deve ser no mínimo 1',
+            'quantidade.integer' => 'A quantidade deve ser um número inteiro',
         ];
     }
 }
