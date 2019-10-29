@@ -65,3 +65,9 @@
         <span>Quantidades Substituidas</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('entradasMateriais*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('entradasMateriais.index') !!}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Entradas Materiais</span>
+    </a>
+</li>

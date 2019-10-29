@@ -10,3 +10,9 @@
         <span> Gerenciar Estoque </span>
     </a>
 </div>
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.entradasMateriais', $programacao->id) !!}">
+        <i class="fa fa-lightbulb-o"></i> &nbsp;
+        <span> Entradas de Materiais </span>
+    </a>
+</div>
