@@ -65,5 +65,3 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
-
-
