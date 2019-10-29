@@ -57,7 +57,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
         $entradaMaterial = $this->entradaMaterialRepository->create($input);
 
-        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material salvo com sucesso');
+        return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material salva com sucesso');
     }
 
     /**
