@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use Illuminate\Http\Request;
+use App\Models\EntradaMaterial;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\EntradaMaterialRepository;
 use App\Http\Requests\API\CreateEntradaMaterialAPIRequest;
 use App\Http\Requests\API\UpdateEntradaMaterialAPIRequest;
-use App\Models\EntradaMaterial;
-use App\Repositories\EntradaMaterialRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 /**
- * Class EntradaMaterialController
- * @package App\Http\Controllers\API
+ * Class EntradaMaterialController.
  */
-
 class EntradaMaterialAPIController extends AppBaseController
 {
-    /** @var  EntradaMaterialRepository */
+    /** @var EntradaMaterialRepository */
     private $entradaMaterialRepository;
 
     public function __construct(EntradaMaterialRepository $entradaMaterialRepo)
@@ -27,7 +25,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
     /**
      * Display a listing of the EntradaMaterial.
-     * GET|HEAD /entradasMateriais
+     * GET|HEAD /entradasMateriais.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
     /**
      * Store a newly created EntradaMaterial in storage.
-     * POST /entradasMateriais
+     * POST /entradasMateriais.
      *
      * @param CreateEntradaMaterialAPIRequest $request
      *
@@ -62,7 +60,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
     /**
      * Display the specified EntradaMaterial.
-     * GET|HEAD /entradasMateriais/{id}
+     * GET|HEAD /entradasMateriais/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
     /**
      * Update the specified EntradaMaterial in storage.
-     * PUT/PATCH /entradasMateriais/{id}
+     * PUT/PATCH /entradasMateriais/{id}.
      *
      * @param int $id
      * @param UpdateEntradaMaterialAPIRequest $request
@@ -107,7 +105,7 @@ class EntradaMaterialAPIController extends AppBaseController
 
     /**
      * Remove the specified EntradaMaterial from storage.
-     * DELETE /entradasMateriais/{id}
+     * DELETE /entradasMateriais/{id}.
      *
      * @param int $id
      *

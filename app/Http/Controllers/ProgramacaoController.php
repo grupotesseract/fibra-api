@@ -6,16 +6,16 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\ProgramacaoDataTable;
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEstoqueRequest;
-use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Repositories\ProgramacaoRepository;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -231,7 +231,6 @@ class ProgramacaoController extends AppBaseController
         return $this->sendResponse($result, 'Estoque adicionado');
     }
 
-
     /**
      * Metodo para servir a view de Entradas de Materiais de 1 Programação.
      *
@@ -267,6 +266,7 @@ class ProgramacaoController extends AppBaseController
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');
+
             return redirect(route('programacoes.index'));
         }
 
@@ -274,5 +274,4 @@ class ProgramacaoController extends AppBaseController
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
     }
-
 }

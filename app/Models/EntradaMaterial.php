@@ -6,15 +6,14 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class EntradaMaterial
- * @package App\Models
+ * Class EntradaMaterial.
  * @version October 29, 2019, 12:14 am -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Material material
- * @property integer material_id
- * @property integer programacao_id
- * @property integer quantidade
+ * @property int material_id
+ * @property int programacao_id
+ * @property int quantidade
  */
 class EntradaMaterial extends Model
 {
@@ -22,14 +21,12 @@ class EntradaMaterial extends Model
 
     public $table = 'entradas_materiais';
 
-
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'material_id',
         'programacao_id',
-        'quantidade'
+        'quantidade',
     ];
 
     /**
@@ -41,11 +38,11 @@ class EntradaMaterial extends Model
         'id' => 'integer',
         'material_id' => 'integer',
         'programacao_id' => 'integer',
-        'quantidade' => 'integer'
+        'quantidade' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */

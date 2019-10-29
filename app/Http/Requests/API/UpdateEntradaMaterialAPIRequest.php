@@ -25,7 +25,7 @@ class UpdateEntradaMaterialAPIRequest extends APIRequest
     public function rules()
     {
         $rules = EntradaMaterial::$rules;
-        
+
         return $rules;
     }
 }

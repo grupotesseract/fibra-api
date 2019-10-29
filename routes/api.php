@@ -65,5 +65,3 @@ Route::resource('quantidades_minimas', 'QuantidadeMinimaAPIController');
 Route::resource('estoques', 'EstoqueAPIController');
 Route::resource('quantidades_substituidas', 'QuantidadeSubstituidaAPIController');
 Route::resource('entradas_materiais', 'EntradaMaterialAPIController');
-
-

@@ -34,13 +34,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')->name('programacoes.estoque');
     Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')->name('programacoes.addEstoque');
 
-
     Route::resource('entradasMateriais', 'EntradaMaterialController');
     Route::get('programacoes/{id}/entrada-materiais', 'ProgramacaoController@getEntradasMateriais')
         ->name('programacoes.entradasMateriais');
     Route::post('programacoes/{id}/entrada-materiais', 'ProgramacaoController@postAdicionarEntradaMaterial')
         ->name('programacoes.addEntradaMaterial');
-
 
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');
@@ -48,10 +46,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('usuariosLiberacoes', 'UsuarioLiberacaoController');
     Route::resource('quantidadesMinimas', 'QuantidadeMinimaController');
     Route::resource('estoque', 'EstoqueController');
-
-
 });
 
 Route::resource('quantidadesSubstituidas', 'QuantidadeSubstituidaController');
-
-

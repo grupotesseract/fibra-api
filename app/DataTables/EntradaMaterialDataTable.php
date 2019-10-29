@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\EntradaMaterial;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class EntradaMaterialDataTable extends DataTable
 {
@@ -48,11 +48,11 @@ class EntradaMaterialDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner'],
                 ],
             ]);
     }
@@ -67,7 +67,7 @@ class EntradaMaterialDataTable extends DataTable
         return [
             'material_id',
             'programacao_id',
-            'quantidade'
+            'quantidade',
         ];
     }
 
@@ -78,6 +78,6 @@ class EntradaMaterialDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'entradas_materiaisdatatable_' . time();
+        return 'entradas_materiaisdatatable_'.time();
     }
 }
