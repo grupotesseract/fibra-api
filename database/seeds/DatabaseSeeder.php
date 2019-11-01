@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             $this->call(QuantidadesMinimasTableSeeder::class);
             $this->call(EstoqueTableSeeder::class);
             $this->call(QuantidadesSubstituidasTableSeeder::class);
+            $this->call(EntradasMateriaisTableSeeder::class);
         }
     }
 }

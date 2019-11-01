@@ -84,21 +84,11 @@ class Programacao extends Model
     }
 
     /**
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function materiais()
+    public function entradasMateriais()
     {
-        return $this->estoques()->with('material')->get()->pluck('material');
-    }
-
-    /**
-     * Acessor para conseguir obter os materiais dessa programacao como propriedade.
-     *
-     * @return Collection
-     */
-    public function getMateriaisAttribute()
-    {
-        return $this->materiais();
+        return $this->hasMany(\App\Models\EntradaMaterial::class);
     }
 
     /**
