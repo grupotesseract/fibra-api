@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::resource('entradas_materiais', 'EntradaMaterialAPIController');
 
     //ROTAS DE SINCRONIZAÇÃO
-    Route::get('sync/plantas', 'PlantaAPIController@syncPlantas');
+    Route::get('sync/empresas', 'EmpresaAPIController@syncEmpresas');
 });
 
 /*

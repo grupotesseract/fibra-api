@@ -9,6 +9,7 @@ use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEmpresaAPIRequest;
 use App\Http\Requests\API\UpdateEmpresaAPIRequest;
+use App\Transformers\EmpresaTransformer;
 
 /**
  * Class EmpresaController.
@@ -126,5 +127,20 @@ class EmpresaAPIController extends AppBaseController
         $empresa->delete();
 
         return $this->sendResponse($id, 'Empresa excluída com sucesso');
+    }
+
+    public function syncEmpresas()
+    {
+        $empresas = Empresa::with(
+            [
+                'plantas.proximaProgramacao', 
+                'plantas.itens.materiais',
+                'plantas.programacaoAnteriorMaisRecente.estoques'
+            ]
+        )->get();
+
+        $empresas = fractal($empresas, new EmpresaTransformer())->toArray();
+        
+        return $this->sendResponse($empresas['data'], 'Empresas sincronizadas com sucesso');
     }
 }
