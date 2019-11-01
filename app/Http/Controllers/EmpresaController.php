@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\EmpresaDataTable;
-use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
+use App\Repositories\EmpresaRepository;
+use Flash;
+use Response;
 
 class EmpresaController extends AppBaseController
 {

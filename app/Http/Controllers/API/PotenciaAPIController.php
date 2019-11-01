@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Potencia;
-use Illuminate\Http\Request;
-use App\Repositories\PotenciaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreatePotenciaAPIRequest;
 use App\Http\Requests\API\UpdatePotenciaAPIRequest;
+use App\Models\Potencia;
+use App\Repositories\PotenciaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class PotenciaController.

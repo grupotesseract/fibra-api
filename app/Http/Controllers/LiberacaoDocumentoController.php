@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\LiberacaoDocumentoDataTable;
-use App\Repositories\LiberacaoDocumentoRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateLiberacaoDocumentoRequest;
 use App\Http\Requests\UpdateLiberacaoDocumentoRequest;
+use App\Repositories\LiberacaoDocumentoRepository;
+use Flash;
+use Response;
 
 class LiberacaoDocumentoController extends AppBaseController
 {

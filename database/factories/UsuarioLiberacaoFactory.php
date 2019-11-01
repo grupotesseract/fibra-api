@@ -1,10 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\Usuario;
-use Faker\Generator as Faker;
-use App\Models\UsuarioLiberacao;
 use App\Models\LiberacaoDocumento;
+use App\Models\Usuario;
+use App\Models\UsuarioLiberacao;
+use Faker\Generator as Faker;
 
 $factory->define(UsuarioLiberacao::class, function (Faker $faker) {
     return [

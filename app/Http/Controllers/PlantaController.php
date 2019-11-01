@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\PlantaDataTable;
-use App\Repositories\PlantaRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreatePlantaRequest;
 use App\Http\Requests\UpdatePlantaRequest;
-use App\Http\Controllers\AppBaseController;
+use App\Repositories\PlantaRepository;
+use Flash;
+use Response;
 
 class PlantaController extends AppBaseController
 {

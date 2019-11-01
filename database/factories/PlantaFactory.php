@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Models\Cidade;
-use App\Models\Planta;
 use App\Models\Empresa;
+use App\Models\Planta;
 use Faker\Generator as Faker;
 
 $factory->define(Planta::class, function (Faker $faker) {

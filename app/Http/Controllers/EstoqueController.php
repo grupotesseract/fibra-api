@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\EstoqueDataTable;
-use App\Repositories\EstoqueRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateEstoqueRequest;
 use App\Http\Requests\UpdateEstoqueRequest;
+use App\Repositories\EstoqueRepository;
+use Flash;
+use Response;
 
 class EstoqueController extends AppBaseController
 {

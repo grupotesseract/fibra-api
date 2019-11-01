@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Empresa;
-use Illuminate\Http\Request;
-use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEmpresaAPIRequest;
 use App\Http\Requests\API\UpdateEmpresaAPIRequest;
+use App\Models\Empresa;
+use App\Repositories\EmpresaRepository;
 use App\Transformers\EmpresaTransformer;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EmpresaController.
@@ -133,14 +133,14 @@ class EmpresaAPIController extends AppBaseController
     {
         $empresas = Empresa::with(
             [
-                'plantas.proximaProgramacao', 
+                'plantas.proximaProgramacao',
                 'plantas.itens.materiais',
-                'plantas.programacaoAnteriorMaisRecente.estoques'
+                'plantas.programacaoAnteriorMaisRecente.estoques',
             ]
         )->get();
 
         $empresas = fractal($empresas, new EmpresaTransformer())->toArray();
-        
+
         return $this->sendResponse($empresas['data'], 'Empresas sincronizadas com sucesso');
     }
 }

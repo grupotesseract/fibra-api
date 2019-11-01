@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\UsuarioLiberacao;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\UsuarioLiberacaoRepository;
 use App\Http\Requests\API\CreateUsuarioLiberacaoAPIRequest;
 use App\Http\Requests\API\UpdateUsuarioLiberacaoAPIRequest;
+use App\Models\UsuarioLiberacao;
+use App\Repositories\UsuarioLiberacaoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class UsuarioLiberacaoController.
