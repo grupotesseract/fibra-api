@@ -246,6 +246,7 @@ class ProgramacaoController extends AppBaseController
             return redirect(route('programacoes.index'));
         }
 
+
         $datatable->programacaoID = $id;
 
         return $datatable->addScope(new PorIdProgramacaoScope($id))
@@ -268,6 +269,17 @@ class ProgramacaoController extends AppBaseController
             Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
+        }
+
+        //Se ja tiver uma entrada de mateiral para essa programacao: erro.
+        $jaExisteEntrada = $programacao->entradasMateriais()
+           ->where('material_id', $request->material_id)
+           ->count();
+
+        if ($jaExisteEntrada) {
+            return \Response::json([
+                'errors' => ['Já existe uma entrada desse material'],
+            ], 422);
         }
 
         $result = $programacao->entradasMateriais()->create($request->all());
