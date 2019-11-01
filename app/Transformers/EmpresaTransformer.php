@@ -17,15 +17,15 @@ class EmpresaTransformer extends TransformerAbstract
         foreach ($empresa->plantas as $planta) {
 
             //Programação mais Recente
-            $proximaProgramacao = !is_null($planta->proximaProgramacao) ? [
+            $proximaProgramacao = ! is_null($planta->proximaProgramacao) ? [
                 'id' => $planta->proximaProgramacao->id,
                 'data_inicio_prevista' => $planta->proximaProgramacao->data_inicio_prevista,
                 'data_fim_prevista' => $planta->proximaProgramacao->data_fim_prevista,
             ] : null;
-    
+
             //Itens de uma Planta
             foreach ($planta->itens as $item) {
-                
+
                 //Materiais Instalados de uma Planta
                 $materiais = [];
                 foreach ($item->materiais as $material) {
@@ -35,22 +35,22 @@ class EmpresaTransformer extends TransformerAbstract
                         'base' => $material->baseNome,
                         'reator' => $material->reatorNome,
                         'tipoMaterial' => $material->tipoMaterialNome,
-                        'quantidadeInstalada' => $material->pivot->quantidade_instalada
+                        'quantidadeInstalada' => $material->pivot->quantidade_instalada,
                     ];
                 }
-                
+
                 $itens[] = [
                     'id' => $item->id,
                     'nome' => $item->nome,
                     'qrcode' => $item->qrcode,
                     'circuito' => $item->circuito,
-                    'materiais' => $materiais ?? null
+                    'materiais' => $materiais ?? null,
                 ];
             }
-    
+
             //Informações de Estoque obtidas através da Programação Anterior mais Recente
             $estoquePlanta = [];
-            if (!is_null($planta->programacaoAnteriorMaisRecente)) {
+            if (! is_null($planta->programacaoAnteriorMaisRecente)) {
                 foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
                     $estoquePlanta[] = [
                         'id' => $estoque->material_id,
@@ -58,26 +58,25 @@ class EmpresaTransformer extends TransformerAbstract
                         'base' => $estoque->material->baseNome,
                         'reator' => $estoque->material->reatorNome,
                         'tipoMaterial' => $estoque->material->tipoMaterialNome,
-                        'quantidade' => $estoque->quantidade_final
+                        'quantidade' => $estoque->quantidade_final,
                     ];
                 }
             }
 
-            $plantas[] =  [
+            $plantas[] = [
                 'id' => $planta->id,
                 'nome' => $planta->nome,
                 'proximaProgramacao' => $proximaProgramacao,
                 'itens' => $itens ?? null,
-                'estoque' => $estoquePlanta
+                'estoque' => $estoquePlanta,
             ];
         }
-        
-        
+
         //Montagem final da Resposta da API
         return [
             'id' => $empresa->id,
             'nome' => $empresa->nome,
-            'plantas' => $plantas ?? null
+            'plantas' => $plantas ?? null,
         ];
     }
 }

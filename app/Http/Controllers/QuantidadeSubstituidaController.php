@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\QuantidadeSubstituidaDataTable;
-use App\Repositories\QuantidadeSubstituidaRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 use App\Http\Requests\UpdateQuantidadeSubstituidaRequest;
+use App\Repositories\QuantidadeSubstituidaRepository;
+use Flash;
+use Response;
 
 class QuantidadeSubstituidaController extends AppBaseController
 {

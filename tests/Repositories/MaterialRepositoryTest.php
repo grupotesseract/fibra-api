@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\Material;
 use App\Repositories\MaterialRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class MaterialRepositoryTest extends TestCase
 {

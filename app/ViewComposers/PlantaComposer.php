@@ -2,8 +2,8 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\PlantaRepository;
+use Illuminate\View\View;
 
 class PlantaComposer
 {

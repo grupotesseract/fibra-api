@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\QuantidadeSubstituida;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\QuantidadeSubstituidaRepository;
 use App\Http\Requests\API\CreateQuantidadeSubstituidaAPIRequest;
 use App\Http\Requests\API\UpdateQuantidadeSubstituidaAPIRequest;
+use App\Models\QuantidadeSubstituida;
+use App\Repositories\QuantidadeSubstituidaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class QuantidadeSubstituidaController.

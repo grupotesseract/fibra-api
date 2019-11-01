@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Planta;
-use Illuminate\Http\Request;
-use App\Repositories\PlantaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreatePlantaAPIRequest;
 use App\Http\Requests\API\UpdatePlantaAPIRequest;
+use App\Models\Planta;
+use App\Repositories\PlantaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class PlantaController.
@@ -126,5 +126,4 @@ class PlantaAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Planta excluída com sucesso');
     }
-    
 }

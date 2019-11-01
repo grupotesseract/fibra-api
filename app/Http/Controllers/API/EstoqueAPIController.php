@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Estoque;
-use Illuminate\Http\Request;
-use App\Repositories\EstoqueRepository;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateEstoqueAPIRequest;
 use App\Http\Requests\API\UpdateEstoqueAPIRequest;
+use App\Models\Estoque;
+use App\Repositories\EstoqueRepository;
+use App\Repositories\ProgramacaoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EstoqueController.

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Laravel\Passport\HasApiTokens;
-use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class Usuario.

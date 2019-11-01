@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\EntradaMaterial;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\EntradaMaterialRepository;
 use App\Http\Requests\API\CreateEntradaMaterialAPIRequest;
 use App\Http\Requests\API\UpdateEntradaMaterialAPIRequest;
+use App\Models\EntradaMaterial;
+use App\Repositories\EntradaMaterialRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EntradaMaterialController.

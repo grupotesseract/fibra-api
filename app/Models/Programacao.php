@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
 use Collective\Html\Eloquent\FormAccessible;
+use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -129,7 +129,7 @@ class Programacao extends Model
      */
     public function setDataInicioRealAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             try {
                 $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
             } catch (\Exception $e) {
@@ -148,7 +148,7 @@ class Programacao extends Model
      */
     public function setDataFimRealAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             try {
                 $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
             } catch (\Exception $e) {
@@ -157,7 +157,6 @@ class Programacao extends Model
         } else {
             $this->attributes['data_fim_real'] = null;
         }
-
     }
 
     /**
@@ -190,8 +189,9 @@ class Programacao extends Model
      */
     public function formDataInicioRealAttribute($value)
     {
-        if (!is_null($value))            
+        if (! is_null($value)) {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -202,8 +202,9 @@ class Programacao extends Model
      */
     public function formDataFimRealAttribute($value)
     {
-        if (!is_null($value))
+        if (! is_null($value)) {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -236,8 +237,9 @@ class Programacao extends Model
      */
     public function getDataInicioRealFormatadaAttribute()
     {
-        if (!is_null($this->data_inicio_real))
+        if (! is_null($this->data_inicio_real)) {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -248,7 +250,8 @@ class Programacao extends Model
      */
     public function getDataFimRealFormatadaAttribute()
     {
-        if (!is_null($this->data_fim_real))
+        if (! is_null($this->data_fim_real)) {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
+        }
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Tests\APIs;
 
-use Tests\TestCase;
 use App\Models\Tensao;
-use Tests\ApiTestTrait;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class TensaoApiTest extends TestCase
 {

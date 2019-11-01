@@ -81,7 +81,7 @@ class Planta extends Model
     }
 
     /**
-     * Relacionamento pra trazer próxima programação mais recente de uma Planta
+     * Relacionamento pra trazer próxima programação mais recente de uma Planta.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -91,7 +91,7 @@ class Planta extends Model
     }
 
     /**
-     * Relacionamento pra trazer próxima programação mais recente de uma Planta
+     * Relacionamento pra trazer próxima programação mais recente de uma Planta.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -107,5 +107,4 @@ class Planta extends Model
     {
         return $this->hasMany(\App\Models\Item::class, 'planta_id');
     }
-
 }

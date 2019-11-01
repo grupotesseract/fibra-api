@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\Potencia;
 use App\Repositories\PotenciaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class PotenciaRepositoryTest extends TestCase
 {

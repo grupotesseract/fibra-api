@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Programacao;
-use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateProgramacaoAPIRequest;
 use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
+use App\Models\Programacao;
+use App\Repositories\ProgramacaoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class ProgramacaoController.
