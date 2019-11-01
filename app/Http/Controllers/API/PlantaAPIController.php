@@ -140,6 +140,6 @@ class PlantaAPIController extends AppBaseController
 
         $plantas = fractal($plantas, new PlantaTransformer())->toArray();
         
-        return $this->sendResponse($plantas, 'Planta sincronizada com sucesso');
+        return $this->sendResponse($plantas['data'], 'Planta sincronizada com sucesso');
     }
 }
