@@ -37,4 +37,19 @@ class EntradaMaterialRepository extends BaseRepository
     {
         return EntradaMaterial::class;
     }
+
+    /**
+     * Metodo para checar se existe registro para evitar duplicidade
+     *
+     * @param mixed $programacaoId
+     * @param mixed $materialId
+     * @return boolean
+     */
+    public function checaEntradaExistente($programacaoId, $materialId)
+    {
+        return $this->model::where('programacao_id', $programacaoId)
+            ->where('material_id', $materialId)
+            ->exists();
+    }
+
 }

@@ -53,8 +53,17 @@ class EntradaMaterialAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        $entradaMaterial = $this->entradaMaterialRepository->create($input);
+        $jaExisteEntrada= $this->entradaMaterialRepository
+           ->checaEntradaExistente($request->programacao_id, $request->material_id);
 
+        //Se ja tiver uma entrada de material para essa programacao: erro.
+        if ($jaExisteEntrada) {
+            return \Response::json([
+                'errors' => ['Já existe uma entrada desse material'],
+            ], 422);
+        }
+
+        $entradaMaterial = $this->entradaMaterialRepository->create($input);
         return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material salva com sucesso');
     }
 

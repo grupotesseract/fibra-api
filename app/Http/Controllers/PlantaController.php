@@ -59,7 +59,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta salva com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
@@ -125,7 +125,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta atualizada com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
@@ -149,7 +149,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta excluída com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
