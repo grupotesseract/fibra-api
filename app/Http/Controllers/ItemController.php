@@ -62,7 +62,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item salvo com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.show', $item->planta_id));
     }
 
     /**
@@ -130,7 +130,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item atualizado com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.show', $item->planta_id));
     }
 
     /**
@@ -154,7 +154,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item excluído com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.show', $item->planta_id));
     }
 
     /**

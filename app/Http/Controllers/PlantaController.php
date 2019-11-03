@@ -6,6 +6,8 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\PlantaDataTable;
+use App\DataTables\ItemsDaPlantaDataTable;
+use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Repositories\PlantaRepository;
 use App\Http\Requests\CreatePlantaRequest;
 use App\Http\Requests\UpdatePlantaRequest;
@@ -67,7 +69,7 @@ class PlantaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(ItemsDaPlantaDataTable $datatable, $id)
     {
         $planta = $this->plantaRepository->find($id);
 
@@ -77,7 +79,8 @@ class PlantaController extends AppBaseController
             return redirect(route('plantas.index'));
         }
 
-        return view('plantas.show')->with('planta', $planta);
+        return $datatable->addScope(new PorIdPlantaScope($id))
+            ->render('plantas.show', compact('planta'));
     }
 
     /**
