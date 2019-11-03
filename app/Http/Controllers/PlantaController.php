@@ -163,4 +163,25 @@ class PlantaController extends AppBaseController
 
         return $this->sendResponse($plantas, 'Plantas por empresa');
     }
+
+
+    /**
+     * Metodo para servir a view com a datatable de itens de uma planta
+     *
+     * @param ItemsDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getItemsPlanta(ItemsDaPlantaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+            ->render('plantas.show_itens', compact('planta'));
+    }
 }

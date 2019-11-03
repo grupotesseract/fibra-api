@@ -23,7 +23,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
     Route::resource('empresas', 'EmpresaController');
+
     Route::resource('plantas', 'PlantaController');
+    Route::get('plantas/{id}/itens', 'PlantaController@getItemsPlanta')->name('plantas.itens');
+
     Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')->name('itens.associarMaterial');
