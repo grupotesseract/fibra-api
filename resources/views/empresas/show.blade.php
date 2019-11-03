@@ -10,6 +10,7 @@
      <div class="container-fluid">
           <div class="animated fadeIn">
                  @include('coreui-templates::common.errors')
+                 @include('flash::message')
                  <div class="row">
                      <div class="col-lg-4">
                          <div class="card">
@@ -28,6 +29,14 @@
                                  <strong>Plantas</strong>
                              </div>
                              <div class="card-body">
+                                 <div class="px-5 py-2">
+                                     <a class="btn btn-primary form-control" href="{!! route('plantas.create', ['empresa_id' => $empresa->id]) !!}">
+                                         <i class="fa fa-plus"></i> &nbsp;
+                                         <span> Adicionar Planta </span>
+                                     </a>
+                                 </div>
+
+                                 <hr>
                                  @include('plantas.table')
                              </div>
                          </div>

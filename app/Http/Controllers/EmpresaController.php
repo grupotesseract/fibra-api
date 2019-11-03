@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Flash;
 use Response;
-use App\Http\Requests;
 use App\DataTables\EmpresaDataTable;
-use App\DataTables\PlantaDataTable;
+use App\DataTables\PlantasDaEmpresaDataTable;
 use App\DataTables\Scopes\PorIdEmpresaScope;
 use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
@@ -69,7 +68,7 @@ class EmpresaController extends AppBaseController
      *
      * @return Response
      */
-    public function show(PlantaDataTable $datatable, $id)
+    public function show(PlantasDaEmpresaDataTable $datatable, $id)
     {
         $empresa = $this->empresaRepository->find($id);
 
