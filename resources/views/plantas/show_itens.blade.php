@@ -26,7 +26,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Items da planta {{$planta->nome}}</strong>
+                            <strong>Itens da planta {{$planta->nome}}</strong>
                         </div>
                         <div class="card-body">
                             <div class="px-5 py-2">
