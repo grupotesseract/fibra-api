@@ -25,5 +25,15 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('estados.select', '\App\ViewComposers\EstadoComposer');
         View::composer('cidades.select', '\App\ViewComposers\CidadeComposer');
+        View::composer('empresas.select', '\App\ViewComposers\EmpresaComposer');
+        View::composer('plantas.select', '\App\ViewComposers\PlantaComposer');
+        View::composer('tipos_materiais.select', '\App\ViewComposers\TipoMaterialComposer');
+        View::composer('materiais.select_reatores', '\App\ViewComposers\MaterialComposer');
+        View::composer('materiais.select_bases', '\App\ViewComposers\MaterialComposer');
+        View::composer('itens.show', '\App\ViewComposers\MaterialComposer');
+        View::composer('programacoes.show_estoque', '\App\ViewComposers\MaterialComposer');
+        View::composer('programacoes.show_entradas_materiais', '\App\ViewComposers\MaterialComposer');
+        View::composer('potencias.select', '\App\ViewComposers\PotenciaComposer');
+        View::composer('tensoes.select', '\App\ViewComposers\TensaoComposer');
     }
 }

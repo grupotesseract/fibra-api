@@ -97,7 +97,7 @@ return [
     | localized telephone numbers, street address information and more.
     |
     */
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,6 +172,7 @@ return [
         Vessel\VesselServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
         HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
     ],
 
@@ -229,6 +230,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,

@@ -50,38 +50,6 @@ class LaratrustSeeder extends Seeder
             // Attach all permissions to the role
             $role->permissions()->sync($permissions);
         }
-
-        // Creating user with permissions
-        if (! empty($userPermission)) {
-            foreach ($userPermission as $key => $modules) {
-                foreach ($modules as $module => $value) {
-
-                    // Create default user for each permission set
-                    $user = \App\Models\Usuario::create([
-                        'name' => ucwords(str_replace('_', ' ', $key)),
-                        'email' => $key.'@app.com',
-                        'password' => bcrypt('password'),
-                        'remember_token' => str_random(10),
-                    ]);
-                    $permissions = [];
-
-                    foreach (explode(',', $value) as $p => $perm) {
-                        $permissionValue = $mapPermission->get($perm);
-
-                        $permissions[] = \App\Models\Permission::firstOrCreate([
-                            'name' => $permissionValue.'-'.$module,
-                            'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
-                            'description' => ucfirst($permissionValue).' '.ucfirst($module),
-                        ])->id;
-
-                        $this->command->info('Creating Permission to '.$permissionValue.' for '.$module);
-                    }
-                }
-
-                // Attach all permissions to the user
-                $user->permissions()->sync($permissions);
-            }
-        }
     }
 
     /**
@@ -93,8 +61,8 @@ class LaratrustSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         DB::table('permission_role')->truncate();
-        DB::table('permission_user')->truncate();
-        DB::table('role_user')->truncate();
+        DB::table('permission_usuario')->truncate();
+        DB::table('role_usuario')->truncate();
         $usersTable = (new \App\Models\Usuario)->getTable();
         $rolesTable = (new \App\Models\Role)->getTable();
         $permissionsTable = (new \App\Models\Permission)->getTable();

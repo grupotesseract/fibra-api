@@ -18,20 +18,27 @@
     padding: 10px 0;
   }
 
-  .nav-link {
-    i {
-      font-size: 12px;
-      opacity: 0.75;
-      width: 20px;
-    }
-
+  .nav-item {
     &.active {
-      background-color: rgba(76,90,103,0.5);
+      background-color: $gray-active;
     }
 
-    &:hover {
-      background-color: rgba(255,255,255,0.075);
+    .nav-link {
+      i {
+        font-size: 12px;
+        opacity: 0.75;
+        width: 20px;
+      }
+
+      &.active {
+        background-color: rgba(76,90,103,0.5);
+      }
+
+      &:hover {
+        background-color: rgba(255,255,255,0.075);
+      }
     }
+
   }
 
   footer {
