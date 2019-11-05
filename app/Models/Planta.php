@@ -77,7 +77,7 @@ class Planta extends Model
      **/
     public function itens()
     {
-        return $this->hasMany(App\Models\Item::class);
+        return $this->hasMany(\App\Models\Item::class);
     }
 
    /**
@@ -85,7 +85,7 @@ class Planta extends Model
     **/
    public function programacoes()
    {
-       return $this->hasMany(App\Models\Programacao::class);
+       return $this->hasMany(\App\Models\Programacao::class);
    }
 
 

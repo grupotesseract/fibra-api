@@ -63,7 +63,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação salva com sucesso.');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**
@@ -128,7 +128,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação atualizada com sucesso.');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**
@@ -152,7 +152,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação excluída com sucesso');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**

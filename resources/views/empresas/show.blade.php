@@ -26,7 +26,7 @@
                      <div class="col-lg-8">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Plantas</strong>
+                                 <strong>Plantas da empresa {{$empresa->nome}}</strong>
                              </div>
                              <div class="card-body">
                                  <div class="px-5 py-2">
