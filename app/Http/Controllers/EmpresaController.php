@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\EmpresaDataTable;
+use App\DataTables\PlantasDaEmpresaDataTable;
+use App\DataTables\Scopes\PorIdEmpresaScope;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateEmpresaRequest;
@@ -67,7 +69,7 @@ class EmpresaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(PlantasDaEmpresaDataTable $datatable, $id)
     {
         $empresa = $this->empresaRepository->find($id);
 
@@ -77,7 +79,8 @@ class EmpresaController extends AppBaseController
             return redirect(route('empresas.index'));
         }
 
-        return view('empresas.show')->with('empresa', $empresa);
+        return $datatable->addScope(new PorIdEmpresaScope($id))
+            ->render('empresas.show', compact('empresa'));
     }
 
     /**

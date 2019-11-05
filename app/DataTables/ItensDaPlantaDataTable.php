@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\QuantidadeMinima;
+use App\Models\Item;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class QuantidadeMinimaDataTable extends DataTable
+class ItensDaPlantaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class QuantidadeMinimaDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'quantidades_minimas.datatables_actions');
+        return $dataTable->addColumn('action', 'itens.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\QuantidadeMinima $model
+     * @param \App\Models\Item $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(QuantidadeMinima $model)
+    public function query(Item $model)
     {
-        return $model->newQuery()->with('material');
+        return $model->newQuery();
     }
 
     /**
@@ -42,7 +42,7 @@ class QuantidadeMinimaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -68,36 +68,9 @@ class QuantidadeMinimaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material_nome_potencia_tensao' => [
-                'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material - Potência - Tensão',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => true,
-            ],
-            'material' => [
-                'data' => 'material.nome',
-                'title' => 'Material',
-                'searchable' => true,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => false,
-            ],
-            'material_id' => [
-                'title' => 'ID Material',
-                'searchable' => true,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => false,
-            ],
-            'quantidade_minima' => [
-                'title' => 'Qnt. Mínima',
-                'searchable' => true,
-                'orderable' => true,
-                'filterable' => false,
-                'visible' => true,
-            ],
+            'nome',
+            'qrcode',
+            'circuito',
         ];
     }
 
@@ -108,6 +81,6 @@ class QuantidadeMinimaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'quantidades_minimasdatatable_'.time();
+        return 'itensdatatable_'.time();
     }
 }

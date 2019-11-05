@@ -26,4 +26,21 @@ class CreateQuantidadeMinimaRequest extends FormRequest
     {
         return QuantidadeMinima::$rules;
     }
+
+    /**
+     * Incluindo mensagens amigaveis.
+     *
+     * @return void
+     */
+    public function messages()
+    {
+        return [
+            'planta_id.required' => 'O campo planta é obrigatório',
+            'planta_id.exists' => 'O campo planta é obrigatório',
+            'material_id.required' => 'O campo material é obrigatório',
+            'material_id.exists' => 'O campo material é obrigatório',
+            'quantidade_minima.min' => 'A quantidade deve ser no mínimo 1',
+            'quantidade_minima.integer' => 'A quantidade deve ser um número inteiro',
+        ];
+    }
 }

@@ -81,4 +81,12 @@ class Usuario extends Authenticatable
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function liberacoesDocumentos()
+    {
+        return $this->belongsToMany(\App\Models\LiberacaoDocumento::class, 'usuarios_liberacoes', 'usuario_id', 'liberacao_documento_id');
+    }
 }

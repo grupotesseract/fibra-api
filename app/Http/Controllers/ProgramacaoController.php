@@ -63,7 +63,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação salva com sucesso.');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**
@@ -128,7 +128,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação atualizada com sucesso.');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**
@@ -152,7 +152,7 @@ class ProgramacaoController extends AppBaseController
 
         Flash::success('Programação excluída com sucesso');
 
-        return redirect(route('programacoes.index'));
+        return redirect(route('plantas.programacoes', $programacao->planta_id));
     }
 
     /**
@@ -268,6 +268,17 @@ class ProgramacaoController extends AppBaseController
             Flash::error('Programação não encontrada');
 
             return redirect(route('programacoes.index'));
+        }
+
+        //Se ja tiver uma entrada de mateiral para essa programacao: erro.
+        $jaExisteEntrada = $programacao->entradasMateriais()
+           ->where('material_id', $request->material_id)
+           ->count();
+
+        if ($jaExisteEntrada) {
+            return \Response::json([
+                'errors' => ['Já existe uma entrada desse material'],
+            ], 422);
         }
 
         $result = $programacao->entradasMateriais()->create($request->all());

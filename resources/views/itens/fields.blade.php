@@ -24,18 +24,18 @@
         @include('plantas.select', [
             'Model' => $item
         ])
-    </div>    
+    </div>
 
 @else
 
     <div class="form-group col-sm-6">
         @include('plantas.select')
-    </div>    
+    </div>
 
 @endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('itens.index') !!}" class="btn btn-default">Cancelar</a>
+    <a href="{!! url()->previous() !!}" class="btn btn-default">Cancelar</a>
 </div>

@@ -98,7 +98,7 @@ class Planta extends Model
     public function programacaoAnteriorMaisRecente()
     {
         return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNotNull('data_fim_real')->latest('data_fim_real');
-    }
+    }    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -106,5 +106,10 @@ class Planta extends Model
     public function itens()
     {
         return $this->hasMany(\App\Models\Item::class, 'planta_id');
+    }
+
+    public function quantidadesMinimas()
+    {
+        return $this->hasMany(\App\Models\QuantidadeMinima::class, 'planta_id');
     }
 }

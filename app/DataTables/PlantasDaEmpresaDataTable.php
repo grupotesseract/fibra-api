@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\QuantidadeMinima;
+use App\Models\Planta;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class QuantidadeMinimaDataTable extends DataTable
+class PlantasDaEmpresaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class QuantidadeMinimaDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'quantidades_minimas.datatables_actions');
+        return $dataTable->addColumn('action', 'plantas.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\QuantidadeMinima $model
+     * @param \App\Models\Planta $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(QuantidadeMinima $model)
+    public function query(Planta $model)
     {
-        return $model->newQuery()->with('material');
+        return $model->newQuery();
     }
 
     /**
@@ -42,7 +42,7 @@ class QuantidadeMinimaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -50,8 +50,8 @@ class QuantidadeMinimaDataTable extends DataTable
                     'order'     => [[0, 'desc']],
                     'buttons'   => [
                         ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'print', 'text' => '<i class="fa fa-print"></i> Imprimir', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],
-                        ['extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas'],
                     ],
                     'language' => [
                         'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
@@ -68,36 +68,8 @@ class QuantidadeMinimaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material_nome_potencia_tensao' => [
-                'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material - Potência - Tensão',
-                'searchable' => false,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => true,
-            ],
-            'material' => [
-                'data' => 'material.nome',
-                'title' => 'Material',
-                'searchable' => true,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => false,
-            ],
-            'material_id' => [
-                'title' => 'ID Material',
-                'searchable' => true,
-                'orderable' => false,
-                'filterable' => false,
-                'visible' => false,
-            ],
-            'quantidade_minima' => [
-                'title' => 'Qnt. Mínima',
-                'searchable' => true,
-                'orderable' => true,
-                'filterable' => false,
-                'visible' => true,
-            ],
+            'nome',
+            'endereco',
         ];
     }
 
@@ -108,6 +80,6 @@ class QuantidadeMinimaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'quantidades_minimasdatatable_'.time();
+        return 'plantasdatatable_'.time();
     }
 }

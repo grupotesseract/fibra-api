@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! route('empresas.show', $planta->empresa_id) !!}" class="btn btn-ghost-light">Voltar</a>
+                            <a href="{!! route('plantas.show', $planta->id) !!}" class="btn btn-ghost-light">Voltar</a>
                         </div>
                         <div class="card-body">
                             @include('plantas.show_fields')
@@ -26,10 +26,16 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Outras informações da planta {{$planta->nome}}</strong>
+                            <strong>Quantidades mínimas da planta {{$planta->nome}}</strong>
                         </div>
                         <div class="card-body">
-                            @include('plantas.partials.menu_detalhes')
+
+                            @include('plantas.partials.form_add_quantidades_minimas')
+                            <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
+
+                            <hr>
+
+                            @include('quantidades_minimas.table')
                         </div>
                     </div>
                 </div>

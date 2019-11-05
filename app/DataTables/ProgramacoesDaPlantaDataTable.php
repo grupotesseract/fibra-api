@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\QuantidadeMinima;
+use App\Models\Programacao;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class QuantidadeMinimaDataTable extends DataTable
+class ProgramacoesDaPlantaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class QuantidadeMinimaDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'quantidades_minimas.datatables_actions');
+        return $dataTable->addColumn('action', 'programacoes.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\QuantidadeMinima $model
+     * @param \App\Models\Programacao $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(QuantidadeMinima $model)
+    public function query(Programacao $model)
     {
-        return $model->newQuery()->with('material');
+        return $model->newQuery();
     }
 
     /**
@@ -42,7 +42,7 @@ class QuantidadeMinimaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -68,35 +68,36 @@ class QuantidadeMinimaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material_nome_potencia_tensao' => [
-                'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material - Potência - Tensão',
+            'id' => [
+                'title' => 'ID',
+            ],
+            'dataInicioPrevistaFormatada' => [
+                'data' => 'dataInicioPrevistaFormatada',
+                'title' => 'Data Inicio Prevista',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => true,
             ],
-            'material' => [
-                'data' => 'material.nome',
-                'title' => 'Material',
-                'searchable' => true,
+            'dataFimPrevistaFormatada' => [
+                'data' => 'dataFimPrevistaFormatada',
+                'title' => 'Data Fim Prevista',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
             ],
-            'material_id' => [
-                'title' => 'ID Material',
-                'searchable' => true,
+            'dataInicioRealFormatada' => [
+                'data' => 'dataInicioRealFormatada',
+                'title' => 'Data Inicio Real',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
             ],
-            'quantidade_minima' => [
-                'title' => 'Qnt. Mínima',
-                'searchable' => true,
-                'orderable' => true,
+            'dataFimRealFormatada' => [
+                'data' => 'dataFimRealFormatada',
+                'title' => 'Data Fim Real',
+                'searchable' => false,
+                'orderable' => false,
                 'filterable' => false,
-                'visible' => true,
             ],
         ];
     }
@@ -108,6 +109,6 @@ class QuantidadeMinimaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'quantidades_minimasdatatable_'.time();
+        return 'programacoesdatatable_'.time();
     }
 }

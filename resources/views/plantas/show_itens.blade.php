@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! route('empresas.show', $planta->empresa_id) !!}" class="btn btn-ghost-light">Voltar</a>
+                            <a href="{!! route('plantas.show', $planta->id) !!}" class="btn btn-ghost-light">Voltar</a>
                         </div>
                         <div class="card-body">
                             @include('plantas.show_fields')
@@ -26,10 +26,19 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Outras informações da planta {{$planta->nome}}</strong>
+                            <strong>Itens da planta {{$planta->nome}}</strong>
                         </div>
                         <div class="card-body">
-                            @include('plantas.partials.menu_detalhes')
+                            <div class="px-5 py-2">
+                                <a class="btn btn-primary form-control" href="{!! route('itens.create', ['planta_id' => $planta->id, 'empresa_id' => $planta->empresa_id]) !!}">
+                                    <i class="fa fa-plus"></i> &nbsp;
+                                    <span> Adicionar Item </span>
+                                </a>
+                            </div>
+
+                            <hr>
+
+                            @include('itens.table')
                         </div>
                     </div>
                 </div>
