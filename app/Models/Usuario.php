@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Laravel\Passport\HasApiTokens;
-use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class Usuario.
@@ -89,5 +89,4 @@ class Usuario extends Authenticatable
     {
         return $this->belongsToMany(\App\Models\LiberacaoDocumento::class, 'usuarios_liberacoes', 'usuario_id', 'liberacao_documento_id');
     }
-
 }

@@ -2,11 +2,11 @@
 
 namespace Tests\APIs;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\LiberacaoDocumento;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class LiberacaoDocumentoApiTest extends TestCase
 {

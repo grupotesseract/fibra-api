@@ -7,4 +7,4 @@
 @section('scripts')
     @include('vendor.datatables.js')
     {!! $dataTable->scripts() !!}
-@endsection
+@append

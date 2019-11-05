@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\UsuarioLiberacaoDataTable;
-use App\Repositories\UsuarioLiberacaoRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateUsuarioLiberacaoRequest;
 use App\Http\Requests\UpdateUsuarioLiberacaoRequest;
+use App\Repositories\UsuarioLiberacaoRepository;
+use Flash;
+use Response;
 
 class UsuarioLiberacaoController extends AppBaseController
 {

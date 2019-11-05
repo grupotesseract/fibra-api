@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ItensDaPlantaDataTable;
+use App\DataTables\PlantaDataTable;
+use App\DataTables\ProgramacoesDaPlantaDataTable;
+use App\DataTables\QuantidadeMinimaDataTable;
+use App\DataTables\Scopes\PorIdPlantaScope;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
+use App\Http\Requests\CreatePlantaRequest;
+use App\Http\Requests\CreateQuantidadeMinimaRequest;
+use App\Http\Requests\UpdatePlantaRequest;
+use App\Repositories\PlantaRepository;
+use App\Repositories\QuantidadeMinimaRepository;
 use Flash;
 use Response;
-use App\Http\Requests;
-use App\DataTables\PlantaDataTable;
-use App\Repositories\PlantaRepository;
-use App\Http\Requests\CreatePlantaRequest;
-use App\Http\Requests\UpdatePlantaRequest;
-use App\Http\Controllers\AppBaseController;
 
 class PlantaController extends AppBaseController
 {
     /** @var PlantaRepository */
     private $plantaRepository;
 
-    public function __construct(PlantaRepository $plantaRepo)
+    /** @var QuantidadeMinimaRepository */
+    private $qntMinimaRepository;
+
+    public function __construct(PlantaRepository $plantaRepo, QuantidadeMinimaRepository $qntRepo)
     {
         $this->plantaRepository = $plantaRepo;
+        $this->qntMinimaRepository = $qntRepo;
     }
 
     /**
@@ -57,7 +67,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta salva com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
@@ -67,7 +77,7 @@ class PlantaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(ItensDaPlantaDataTable $datatable, $id)
     {
         $planta = $this->plantaRepository->find($id);
 
@@ -77,7 +87,8 @@ class PlantaController extends AppBaseController
             return redirect(route('plantas.index'));
         }
 
-        return view('plantas.show')->with('planta', $planta);
+        return $datatable->addScope(new PorIdPlantaScope($id))
+                         ->render('plantas.show', compact('planta'));
     }
 
     /**
@@ -122,7 +133,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta atualizada com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
@@ -146,7 +157,7 @@ class PlantaController extends AppBaseController
 
         Flash::success('Planta excluída com sucesso.');
 
-        return redirect(route('plantas.index'));
+        return redirect(route('empresas.show', $planta->empresa_id));
     }
 
     /**
@@ -159,5 +170,89 @@ class PlantaController extends AppBaseController
         $plantas = $this->plantaRepository->getArrayParaSelect($empresaId);
 
         return $this->sendResponse($plantas, 'Plantas por empresa');
+    }
+
+    /**
+     * Metodo para servir a view com a datatable de itens de uma planta.
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getItensPlanta(ItensDaPlantaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+                         ->render('plantas.show_itens', compact('planta'));
+    }
+
+    /**
+     * Metodo para servir a view com a datatable de programacoes de uma planta.
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getProgramacoesPlanta(ProgramacoesDaPlantaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+                         ->render('plantas.show_programacoes', compact('planta'));
+    }
+
+    /**
+     * Metodo para servir a view com a datatable de QuantidadeMinima de uma planta.
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getQuantidadesMinimasPlanta(QuantidadeMinimaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+                         ->render('plantas.show_quantidades_minimas', compact('planta'));
+    }
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de QuantidadeMinima
+     * a partir de uma planta.
+     *
+     * @param CreateEntradaMaterialRequest $request
+     *
+     * @return Response
+     */
+    public function postQuantidadesMinimasPlanta(CreateQuantidadeMinimaRequest $request, $id)
+    {
+        $jaExisteQntMinima = $this->qntMinimaRepository
+            ->checaEntradaExistente($request->planta_id, $request->material_id);
+
+        if ($jaExisteQntMinima) {
+            return \Response::json([
+                'errors' => ['Já existe uma quantidade mínima para esse material'],
+            ], 422);
+        }
+
+        $result = $this->qntMinimaRepository->create($request->all());
+
+        return $this->sendResponse($result, 'Quantidade mínima adicionada com sucesso');
     }
 }

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\ItemDataTable;
-use App\Repositories\ItemRepository;
-use App\Http\Requests\CreateItemRequest;
-use App\Http\Requests\UpdateItemRequest;
-use InfyOm\Generator\Utils\ResponseUtil;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\MateriaisDoItemDataTable;
 use App\DataTables\Scopes\MateriaisDoItemScope;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\AssociaMaterialItemRequest;
+use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\DesassociaMaterialItemRequest;
+use App\Http\Requests\UpdateItemRequest;
+use App\Repositories\ItemRepository;
+use Flash;
+use InfyOm\Generator\Utils\ResponseUtil;
+use Response;
 
 class ItemController extends AppBaseController
 {
@@ -62,7 +62,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item salvo com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.itens', $item->planta_id));
     }
 
     /**
@@ -130,7 +130,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item atualizado com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.itens', $item->planta_id));
     }
 
     /**
@@ -154,7 +154,7 @@ class ItemController extends AppBaseController
 
         Flash::success('Item excluído com sucesso.');
 
-        return redirect(route('itens.index'));
+        return redirect(route('plantas.itens', $item->planta_id));
     }
 
     /**

@@ -23,7 +23,7 @@
 <!-- Select de Plantas  -->
 <div class="form-group">
     {!! Form::label('plantas', 'Planta') !!} <br>
-    {!! Form::select('planta_id', [''=>'']+$plantas, null, ['class' =>"form-control select-plantas select2 ". ($classesExtras ?? '') ]
+    {!! Form::select('planta_id', [''=>'']+$plantas, \Request::get('planta_id'), ['class' =>"form-control select-plantas select2 ". ($classesExtras ?? '') ]
     ) !!}
 </div>
 

@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
 use App\Models\Usuario;
-use Tests\ApiTestTrait;
 use App\Repositories\UsuarioRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class UsuarioRepositoryTest extends TestCase
 {

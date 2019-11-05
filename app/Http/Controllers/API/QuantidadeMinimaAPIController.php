@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\QuantidadeMinima;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\QuantidadeMinimaRepository;
 use App\Http\Requests\API\CreateQuantidadeMinimaAPIRequest;
 use App\Http\Requests\API\UpdateQuantidadeMinimaAPIRequest;
+use App\Models\QuantidadeMinima;
+use App\Repositories\QuantidadeMinimaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class QuantidadeMinimaController.

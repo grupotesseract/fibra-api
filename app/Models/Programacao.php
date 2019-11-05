@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
 use Collective\Html\Eloquent\FormAccessible;
+use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
