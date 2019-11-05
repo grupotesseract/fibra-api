@@ -14,7 +14,9 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Liberações de documentos da programação em {{ $programacao->dataInicioPrevistaFormatada }} </strong>
+                                 <strong>Liberações de documentos da programação em {{ $programacao->dataInicioRealFormatada }} - {{ $programacao->dataInicioRealFormatada }}</strong>
+                                     <br>
+                                     <strong>Planta: {{ $programacao->planta->nome }}</strong>
                                  <a href="{!! route('programacoes.show', $programacao->id) !!}" class="btn btn-ghost-light">Voltar</a>
                              </div>
                              <div class="card-body">

@@ -11,5 +11,6 @@ class UsuariosLiberacoesTableSeeder extends Seeder
      */
     public function run()
     {
+        factory(App\Models\UsuarioLiberacao::class, 20)->create();
     }
 }
