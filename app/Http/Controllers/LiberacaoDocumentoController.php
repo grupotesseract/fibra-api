@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Flash;
 use Response;
-use App\Http\Requests;
 use App\Http\Controllers\AppBaseController;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Repositories\LiberacaoDocumentoRepository;
 use App\Http\Requests\CreateLiberacaoDocumentoRequest;
 use App\Http\Requests\UpdateLiberacaoDocumentoRequest;
+use App\DataTables\Scopes\PorIdLiberacaoDocumentoScope;
+use App\DataTables\UsuariosDaLiberacaoDocumentoDataTable;
 
 class LiberacaoDocumentoController extends AppBaseController
 {
@@ -67,17 +68,17 @@ class LiberacaoDocumentoController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(UsuariosDaLiberacaoDocumentoDataTable $datatable, $id)
     {
         $liberacaoDocumento = $this->liberacaoDocumentoRepository->find($id);
 
         if (empty($liberacaoDocumento)) {
             Flash::error('Liberação de Documento não encontrada');
-
             return redirect(route('liberacoesDocumentos.index'));
         }
 
-        return view('liberacoes_documentos.show')->with('liberacaoDocumento', $liberacaoDocumento);
+        return $datatable->addScope(new PorIdLiberacaoDocumentoScope($id))
+            ->render('liberacoes_documentos.show', compact('liberacaoDocumento'));
     }
 
     /**
