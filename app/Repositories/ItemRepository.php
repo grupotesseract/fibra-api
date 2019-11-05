@@ -39,14 +39,13 @@ class ItemRepository extends BaseRepository
         return Item::class;
     }
 
-
     /**
      * Retorna um array de Itens no formato [id => 'nome'].
      *
      * @param mixed $plantaId - caso queira somente os itens de uma planta especifica
      * @return array
      */
-    public function getArrayParaSelect($plantaId=null)
+    public function getArrayParaSelect($plantaId = null)
     {
         if ($plantaId) {
             return $this->model()::where('planta_id', $plantaId)
@@ -55,7 +54,4 @@ class ItemRepository extends BaseRepository
 
         return $this->model()::pluck('nome', 'id')->all();
     }
-
-
-
 }

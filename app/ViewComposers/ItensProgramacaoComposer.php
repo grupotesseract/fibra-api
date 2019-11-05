@@ -2,9 +2,9 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\ItemRepository;
 use App\Repositories\ProgramacaoRepository;
+use Illuminate\View\View;
 
 class ItensProgramacaoComposer
 {
@@ -12,7 +12,7 @@ class ItensProgramacaoComposer
     protected $programacaoRepository;
 
     /**
-     * __construct
+     * __construct.
      *
      * @param ItemRepository $itemRepository
      * @param ProgramacaoRepository $programacaoRepository

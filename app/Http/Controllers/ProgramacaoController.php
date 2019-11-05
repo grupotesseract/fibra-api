@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\DataTables\ProgramacaoDataTable;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests\CreateEstoqueRequest;
-use App\Repositories\ProgramacaoRepository;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
-use App\Http\Requests\CreateProgramacaoRequest;
-use App\Http\Requests\UpdateProgramacaoRequest;
-use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
-use App\Repositories\QuantidadeSubstituidaRepository;
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
+use App\Http\Requests\CreateEstoqueRequest;
+use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
+use App\Http\Requests\UpdateProgramacaoRequest;
+use App\Repositories\ProgramacaoRepository;
+use App\Repositories\QuantidadeSubstituidaRepository;
+use Flash;
+use Response;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -311,7 +311,6 @@ class ProgramacaoController extends AppBaseController
             ->render('programacoes.show_quantidades_substituidas', compact('programacao'));
     }
 
-
     /**
      * Metodo para recebe o POST para criar um novo registro de QuantidadeSubstituida
      * a partir de uma programacao.
@@ -330,7 +329,7 @@ class ProgramacaoController extends AppBaseController
         }
 
         $result = $this->qntSubstituidaRepository->create($request->all());
+
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
     }
-
 }
