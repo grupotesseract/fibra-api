@@ -42,7 +42,7 @@ class QuantidadeSubstituidaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false, 'title'=>"Ações"])
+            ->addAction(['width' => '120px', 'printable' => false, 'title'=>'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -115,7 +115,6 @@ class QuantidadeSubstituidaDataTable extends DataTable
                 'visible' => true,
             ],
         ];
-
     }
 
     /**
