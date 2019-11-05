@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\TipoMaterial;
-use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\TipoMaterialRepository;
 use App\Http\Requests\API\CreateTipoMaterialAPIRequest;
 use App\Http\Requests\API\UpdateTipoMaterialAPIRequest;
+use App\Models\TipoMaterial;
+use App\Repositories\TipoMaterialRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class TipoMaterialController.

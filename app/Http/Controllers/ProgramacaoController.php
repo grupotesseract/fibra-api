@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\DataTables\ProgramacaoDataTable;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests\CreateEstoqueRequest;
-use App\Repositories\ProgramacaoRepository;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
+use App\DataTables\ProgramacaoDataTable;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
+use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\Http\Requests\CreateEstoqueRequest;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
-use App\DataTables\Scopes\PorIdProgramacaoScope;
-use App\Http\Requests\CreateEntradaMaterialRequest;
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
+use App\Repositories\ProgramacaoRepository;
+use Flash;
+use Response;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -245,7 +245,6 @@ class ProgramacaoController extends AppBaseController
 
             return redirect(route('programacoes.index'));
         }
-
 
         $datatable->programacaoID = $id;
 

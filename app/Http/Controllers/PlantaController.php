@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\DataTables\PlantaDataTable;
-use App\Repositories\PlantaRepository;
 use App\DataTables\ItensDaPlantaDataTable;
-use App\Http\Requests\CreatePlantaRequest;
-use App\Http\Requests\UpdatePlantaRequest;
+use App\DataTables\PlantaDataTable;
+use App\DataTables\ProgramacoesDaPlantaDataTable;
+use App\DataTables\QuantidadeMinimaDataTable;
 use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Http\Controllers\AppBaseController;
-use App\DataTables\QuantidadeMinimaDataTable;
-use App\Repositories\QuantidadeMinimaRepository;
-use App\DataTables\ProgramacoesDaPlantaDataTable;
+use App\Http\Requests;
+use App\Http\Requests\CreatePlantaRequest;
 use App\Http\Requests\CreateQuantidadeMinimaRequest;
+use App\Http\Requests\UpdatePlantaRequest;
+use App\Repositories\PlantaRepository;
+use App\Repositories\QuantidadeMinimaRepository;
+use Flash;
+use Response;
 
 class PlantaController extends AppBaseController
 {
@@ -172,9 +172,8 @@ class PlantaController extends AppBaseController
         return $this->sendResponse($plantas, 'Plantas por empresa');
     }
 
-
     /**
-     * Metodo para servir a view com a datatable de itens de uma planta
+     * Metodo para servir a view com a datatable de itens de uma planta.
      *
      * @param ItensDaPlantaDataTable $datatable
      * @param mixed $id
@@ -194,7 +193,7 @@ class PlantaController extends AppBaseController
     }
 
     /**
-     * Metodo para servir a view com a datatable de programacoes de uma planta
+     * Metodo para servir a view com a datatable de programacoes de uma planta.
      *
      * @param ItensDaPlantaDataTable $datatable
      * @param mixed $id
@@ -214,7 +213,7 @@ class PlantaController extends AppBaseController
     }
 
     /**
-     * Metodo para servir a view com a datatable de QuantidadeMinima de uma planta
+     * Metodo para servir a view com a datatable de QuantidadeMinima de uma planta.
      *
      * @param ItensDaPlantaDataTable $datatable
      * @param mixed $id
@@ -225,6 +224,7 @@ class PlantaController extends AppBaseController
 
         if (empty($planta)) {
             Flash::error('Planta não encontrada');
+
             return redirect(route('plantas.index'));
         }
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\CidadeRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\CidadeRepository;
 
 class CidadeController extends AppBaseController
 {

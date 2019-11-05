@@ -1,10 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\Planta;
 use App\Models\Material;
-use Faker\Generator as Faker;
+use App\Models\Planta;
 use App\Models\QuantidadeMinima;
+use Faker\Generator as Faker;
 
 $factory->define(QuantidadeMinima::class, function (Faker $faker) {
     return [

@@ -48,7 +48,6 @@ class UsuarioLiberacao extends Model
         'usuario_id' => 'required',
     ];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/

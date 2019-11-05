@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
 use App\DataTables\EmpresaDataTable;
 use App\DataTables\PlantasDaEmpresaDataTable;
 use App\DataTables\Scopes\PorIdEmpresaScope;
-use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
+use App\Repositories\EmpresaRepository;
+use Flash;
+use Response;
 
 class EmpresaController extends AppBaseController
 {
@@ -74,6 +74,7 @@ class EmpresaController extends AppBaseController
 
         if (empty($empresa)) {
             Flash::error('Empresa não encontrada');
+
             return redirect(route('empresas.index'));
         }
 

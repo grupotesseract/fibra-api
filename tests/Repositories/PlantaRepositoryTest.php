@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
 use App\Models\Planta;
-use Tests\ApiTestTrait;
 use App\Repositories\PlantaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class PlantaRepositoryTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\CidadeRepository;
+use Illuminate\View\View;
 
 class CidadeComposer
 {

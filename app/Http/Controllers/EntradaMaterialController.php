@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\EntradaMaterialDataTable;
-use App\Repositories\EntradaMaterialRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Http\Requests\UpdateEntradaMaterialRequest;
+use App\Repositories\EntradaMaterialRepository;
+use Flash;
+use Response;
 
 class EntradaMaterialController extends AppBaseController
 {

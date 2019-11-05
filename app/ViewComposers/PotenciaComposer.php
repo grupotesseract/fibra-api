@@ -2,8 +2,8 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\PotenciaRepository;
+use Illuminate\View\View;
 
 class PotenciaComposer
 {
