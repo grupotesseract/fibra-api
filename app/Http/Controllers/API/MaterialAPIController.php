@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Material;
-use Illuminate\Http\Request;
-use App\Repositories\MaterialRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateMaterialAPIRequest;
 use App\Http\Requests\API\UpdateMaterialAPIRequest;
+use App\Models\Material;
+use App\Repositories\MaterialRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class MaterialController.

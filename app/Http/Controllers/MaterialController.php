@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\MaterialDataTable;
-use App\Repositories\MaterialRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateMaterialRequest;
 use App\Http\Requests\UpdateMaterialRequest;
+use App\Repositories\MaterialRepository;
+use Flash;
+use Response;
 
 class MaterialController extends AppBaseController
 {

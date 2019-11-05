@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\QuantidadeMinimaDataTable;
-use App\Repositories\QuantidadeMinimaRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateQuantidadeMinimaRequest;
 use App\Http\Requests\UpdateQuantidadeMinimaRequest;
+use App\Repositories\QuantidadeMinimaRepository;
+use Flash;
+use Response;
 
 class QuantidadeMinimaController extends AppBaseController
 {
@@ -148,5 +148,4 @@ class QuantidadeMinimaController extends AppBaseController
 
         return redirect(route('plantas.quantidadesMinimas', $quantidadeMinima->planta_id));
     }
-
 }

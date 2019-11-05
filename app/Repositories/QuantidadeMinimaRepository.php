@@ -39,11 +39,11 @@ class QuantidadeMinimaRepository extends BaseRepository
     }
 
     /**
-     * Metodo para checar se existe registro para evitar duplicidade
+     * Metodo para checar se existe registro para evitar duplicidade.
      *
      * @param mixed $plantaId
      * @param mixed $materialId
-     * @return boolean
+     * @return bool
      */
     public function checaEntradaExistente($plantaId, $materialId)
     {
@@ -51,5 +51,4 @@ class QuantidadeMinimaRepository extends BaseRepository
             ->where('material_id', $materialId)
             ->exists();
     }
-
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\EntradaMaterial;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\EntradaMaterialRepository;
 use App\Http\Requests\API\CreateEntradaMaterialAPIRequest;
 use App\Http\Requests\API\UpdateEntradaMaterialAPIRequest;
+use App\Models\EntradaMaterial;
+use App\Repositories\EntradaMaterialRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EntradaMaterialController.
@@ -53,7 +53,7 @@ class EntradaMaterialAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        $jaExisteEntrada= $this->entradaMaterialRepository
+        $jaExisteEntrada = $this->entradaMaterialRepository
            ->checaEntradaExistente($request->programacao_id, $request->material_id);
 
         //Se ja tiver uma entrada de material para essa programacao: erro.
@@ -64,6 +64,7 @@ class EntradaMaterialAPIController extends AppBaseController
         }
 
         $entradaMaterial = $this->entradaMaterialRepository->create($input);
+
         return $this->sendResponse($entradaMaterial->toArray(), 'Entrada de material salva com sucesso');
     }
 

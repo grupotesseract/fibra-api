@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Empresa;
-use Illuminate\Http\Request;
-use App\Repositories\EmpresaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEmpresaAPIRequest;
 use App\Http\Requests\API\UpdateEmpresaAPIRequest;
+use App\Models\Empresa;
+use App\Repositories\EmpresaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EmpresaController.

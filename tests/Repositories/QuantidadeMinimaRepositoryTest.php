@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\QuantidadeMinima;
 use App\Repositories\QuantidadeMinimaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class QuantidadeMinimaRepositoryTest extends TestCase
 {

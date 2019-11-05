@@ -1,10 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Models\EntradaMaterial;
 use App\Models\Material;
 use App\Models\Programacao;
 use Faker\Generator as Faker;
-use App\Models\EntradaMaterial;
 
 $factory->define(EntradaMaterial::class, function (Faker $faker) {
     return [

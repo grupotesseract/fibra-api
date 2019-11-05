@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
 use App\Models\Empresa;
-use Tests\ApiTestTrait;
 use App\Repositories\EmpresaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class EmpresaRepositoryTest extends TestCase
 {

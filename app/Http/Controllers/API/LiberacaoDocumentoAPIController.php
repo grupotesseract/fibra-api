@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Models\LiberacaoDocumento;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\LiberacaoDocumentoRepository;
 use App\Http\Requests\API\CreateLiberacaoDocumentoAPIRequest;
 use App\Http\Requests\API\UpdateLiberacaoDocumentoAPIRequest;
+use App\Models\LiberacaoDocumento;
+use App\Repositories\LiberacaoDocumentoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class LiberacaoDocumentoController.
