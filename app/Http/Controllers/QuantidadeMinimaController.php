@@ -57,7 +57,7 @@ class QuantidadeMinimaController extends AppBaseController
 
         Flash::success('Quantidade Minima salva com sucesso.');
 
-        return redirect(route('quantidadesMinimas.index'));
+        return redirect(route('plantas.quantidadesMinimas', $quantidadeMinima->planta_id));
     }
 
     /**
@@ -122,7 +122,7 @@ class QuantidadeMinimaController extends AppBaseController
 
         Flash::success('Quantidade Minima atualizada com sucesso.');
 
-        return redirect(route('quantidadesMinimas.index'));
+        return redirect(route('plantas.quantidadesMinimas', $quantidadeMinima->planta_id));
     }
 
     /**
@@ -146,6 +146,7 @@ class QuantidadeMinimaController extends AppBaseController
 
         Flash::success('Quantidade Minima excluída com sucesso.');
 
-        return redirect(route('quantidadesMinimas.index'));
+        return redirect(route('plantas.quantidadesMinimas', $quantidadeMinima->planta_id));
     }
+
 }

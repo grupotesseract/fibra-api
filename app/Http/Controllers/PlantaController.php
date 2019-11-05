@@ -13,16 +13,22 @@ use App\Http\Requests\UpdatePlantaRequest;
 use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Http\Controllers\AppBaseController;
 use App\DataTables\QuantidadeMinimaDataTable;
+use App\Repositories\QuantidadeMinimaRepository;
 use App\DataTables\ProgramacoesDaPlantaDataTable;
+use App\Http\Requests\CreateQuantidadeMinimaRequest;
 
 class PlantaController extends AppBaseController
 {
     /** @var PlantaRepository */
     private $plantaRepository;
 
-    public function __construct(PlantaRepository $plantaRepo)
+    /** @var QuantidadeMinimaRepository */
+    private $qntMinimaRepository;
+
+    public function __construct(PlantaRepository $plantaRepo, QuantidadeMinimaRepository $qntRepo)
     {
         $this->plantaRepository = $plantaRepo;
+        $this->qntMinimaRepository = $qntRepo;
     }
 
     /**
@@ -82,7 +88,7 @@ class PlantaController extends AppBaseController
         }
 
         return $datatable->addScope(new PorIdPlantaScope($id))
-            ->render('plantas.show', compact('planta'));
+                         ->render('plantas.show', compact('planta'));
     }
 
     /**
@@ -184,7 +190,7 @@ class PlantaController extends AppBaseController
         }
 
         return $datatable->addScope(new PorIdPlantaScope($id))
-            ->render('plantas.show_itens', compact('planta'));
+                         ->render('plantas.show_itens', compact('planta'));
     }
 
     /**
@@ -204,7 +210,7 @@ class PlantaController extends AppBaseController
         }
 
         return $datatable->addScope(new PorIdPlantaScope($id))
-            ->render('plantas.show_programacoes', compact('planta'));
+                         ->render('plantas.show_programacoes', compact('planta'));
     }
 
     /**
@@ -213,7 +219,7 @@ class PlantaController extends AppBaseController
      * @param ItensDaPlantaDataTable $datatable
      * @param mixed $id
      */
-    public function getQuantidadesMinimaPlanta(QuantidadeMinimaDataTable $datatable, $id)
+    public function getQuantidadesMinimasPlanta(QuantidadeMinimaDataTable $datatable, $id)
     {
         $planta = $this->plantaRepository->find($id);
 
@@ -223,6 +229,30 @@ class PlantaController extends AppBaseController
         }
 
         return $datatable->addScope(new PorIdPlantaScope($id))
-            ->render('plantas.show_quantidades_minimas', compact('planta'));
+                         ->render('plantas.show_quantidades_minimas', compact('planta'));
+    }
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de QuantidadeMinima
+     * a partir de uma planta.
+     *
+     * @param CreateEntradaMaterialRequest $request
+     *
+     * @return Response
+     */
+    public function postQuantidadesMinimasPlanta(CreateQuantidadeMinimaRequest $request, $id)
+    {
+        $jaExisteQntMinima = $this->qntMinimaRepository
+            ->checaEntradaExistente($request->planta_id, $request->material_id);
+
+        if ($jaExisteQntMinima) {
+            return \Response::json([
+                'errors' => ['Já existe uma quantidade mínima para esse material'],
+            ], 422);
+        }
+
+        $result = $this->qntMinimaRepository->create($request->all());
+
+        return $this->sendResponse($result, 'Quantidade mínima adicionada com sucesso');
     }
 }

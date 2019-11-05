@@ -31,7 +31,7 @@
                         <div class="card-body">
 
                             @include('plantas.partials.form_add_quantidades_minimas')
-
+                            <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
 
                             <hr>
 

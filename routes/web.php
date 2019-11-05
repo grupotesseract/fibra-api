@@ -29,8 +29,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('plantas.itens');
     Route::get('plantas/{id}/programacoes', 'PlantaController@getProgramacoesPlanta')
         ->name('plantas.programacoes');
-    Route::get('plantas/{id}/quantidades-minimas', 'PlantaController@getQuantidadesMinimaPlanta')
+    Route::get('plantas/{id}/quantidades-minimas', 'PlantaController@getQuantidadesMinimasPlanta')
         ->name('plantas.quantidadesMinimas');
+
+    Route::post('plantas/{id}/quantidades-minimas', 'PlantaController@postQuantidadesMinimasPlanta')
+        ->name('plantas.addQuantidadesMinimas');
 
     Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');

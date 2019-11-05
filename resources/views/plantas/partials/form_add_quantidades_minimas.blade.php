@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['quantidadesMinimas.store'], 'id' => 'form-quantidades-minimas']) !!}
+{!! Form::open(['route' => ['plantas.addQuantidadesMinimas', $planta->id], 'id' => 'form-quantidades-minimas']) !!}
 <div class="row">
 
     <!-- Select Materiais -->
@@ -10,11 +10,11 @@
 
     <!-- Quantidade Instalada Field -->
     <div class="form-group col-sm-4">
-        {!! Form::label('quantidade_instalada', 'Quantidade mínima') !!}
-        {!! Form::number('quantidade_instalada', null, ['class' => 'form-control', 'id' => 'qnt_instalada']) !!}
+        {!! Form::label('quantidade_minima', 'Quantidade mínima') !!}
+        {!! Form::number('quantidade_minima', null, ['class' => 'form-control', 'id' => 'qnt_minima']) !!}
     </div>
 
-    {{ Form::hidden('planta_id', $planta->id) }}
+    {{ Form::hidden('planta_id', $planta->id, ['id' => 'planta_id']) }}
 
     <!-- Quantidade Instalada Field -->
     <div class="form-group col-sm-2">
