@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
-use App\DataTables\EstoqueProgramacaoDataTable;
-use App\DataTables\LiberacaoDocumentoDataTable;
-use App\DataTables\ProgramacaoDataTable;
-use App\DataTables\Scopes\PorIdProgramacaoScope;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests;
-use App\Http\Requests\CreateEntradaMaterialRequest;
-use App\Http\Requests\CreateEstoqueRequest;
-use App\Http\Requests\CreateProgramacaoRequest;
-use App\Http\Requests\UpdateProgramacaoRequest;
-use App\Repositories\ProgramacaoRepository;
 use Flash;
 use Response;
+use App\Http\Requests;
+use App\DataTables\ProgramacaoDataTable;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests\CreateEstoqueRequest;
+use App\Repositories\ProgramacaoRepository;
+use App\DataTables\EstoqueProgramacaoDataTable;
+use App\DataTables\LiberacaoDocumentoDataTable;
+use App\Http\Requests\CreateProgramacaoRequest;
+use App\Http\Requests\UpdateProgramacaoRequest;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\DataTables\QuantidadeSubstituidaDataTable;
+use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -284,5 +285,24 @@ class ProgramacaoController extends AppBaseController
         $result = $programacao->entradasMateriais()->create($request->all());
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
+    /**
+     * Metodo para servir a view de QuantidadeSubstituida de Materiais de 1 Programação.
+     *
+     * @return void
+     */
+    public function getQuantidadesSubstituidas(QuantidadeSubstituidaDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_quantidades_substituidas', compact('programacao'));
     }
 }
