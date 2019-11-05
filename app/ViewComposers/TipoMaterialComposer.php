@@ -2,8 +2,8 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\TipoMaterialRepository;
+use Illuminate\View\View;
 
 class TipoMaterialComposer
 {

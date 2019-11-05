@@ -2,11 +2,11 @@
 
 namespace Tests\APIs;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\QuantidadeMinima;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class QuantidadeMinimaApiTest extends TestCase
 {

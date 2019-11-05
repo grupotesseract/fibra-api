@@ -54,10 +54,10 @@ class UsuarioDataTable extends DataTable
                     'stateSave' => true,
                     'order'     => [[0, 'asc']],
                     'buttons'   => [
-                        ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-sm'],
-                        ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-sm'],
-                        ['extend' => 'print', 'text' => '<i class="fa fa-print"></i>', 'className' => 'btn btn-sm'],
-                        ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i>', 'className' => 'btn btn-sm'],
+                        ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'print', 'text' => '<i class="fa fa-print"></i> Imprimir', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],
                     ],
                     'language' => [
                         'url' => url('https://cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json'),

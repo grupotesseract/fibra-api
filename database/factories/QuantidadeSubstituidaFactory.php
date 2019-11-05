@@ -4,8 +4,8 @@
 use App\Models\Item;
 use App\Models\Material;
 use App\Models\Programacao;
-use Faker\Generator as Faker;
 use App\Models\QuantidadeSubstituida;
+use Faker\Generator as Faker;
 
 $factory->define(QuantidadeSubstituida::class, function (Faker $faker) {
     return [

@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
-use Tests\ApiTestTrait;
 use App\Models\QuantidadeSubstituida;
 use App\Repositories\QuantidadeSubstituidaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class QuantidadeSubstituidaRepositoryTest extends TestCase
 {

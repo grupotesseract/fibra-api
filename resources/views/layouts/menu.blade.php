@@ -7,8 +7,8 @@
 <li class="nav-item {{ Request::is('empresas*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('empresas.index') !!}"><i class="fa fa-university"></i><span> Empresas</span></a>
 
-    <li class="nav-item {{ Request::is('plantas*') ? 'active' : '' }}">
-    <a class="nav-link" href="{!! route('plantas.index') !!}"><i class="fa fa-map-o"></i><span> Plantas</span></a>
+    {{-- <li class="nav-item {{ Request::is('plantas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('plantas.index') !!}"><i class="fa fa-map-o"></i><span> Plantas</span></a> --}}
 </li>
 
 <li class="nav-item {{ Request::is('tiposMateriais*') ? 'active' : '' }}">
@@ -29,8 +29,8 @@
         <i class="fa fa-battery-full"></i>
         <span> Tensões</span>
     </a>
-<li class="nav-item {{ Request::is('programacoes*') ? 'active' : '' }}">
-    <a class="nav-link" href="{!! route('programacoes.index') !!}"><i class="fa fa-calendar"></i><span> Programações</span></a>
+{{-- <li class="nav-item {{ Request::is('programacoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{!! route('programacoes.index') !!}"><i class="fa fa-calendar"></i><span> Programações</span></a> --}}
 <li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('itens.index') !!}"><i class="fa fa-building"></i><span> Itens</span></a>
 </li>

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Tensao;
-use Illuminate\Http\Request;
-use App\Repositories\TensaoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateTensaoAPIRequest;
 use App\Http\Requests\API\UpdateTensaoAPIRequest;
+use App\Models\Tensao;
+use App\Repositories\TensaoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class TensaoController.

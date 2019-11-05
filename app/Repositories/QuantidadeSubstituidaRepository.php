@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Repositories\BaseRepository;
 use App\Models\QuantidadeSubstituida;
+use App\Repositories\BaseRepository;
 
 /**
  * Class QuantidadeSubstituidaRepository.
