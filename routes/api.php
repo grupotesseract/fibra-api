@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::resource('estoques', 'EstoqueAPIController');
     Route::resource('quantidades_substituidas', 'QuantidadeSubstituidaAPIController');
     Route::resource('entradas_materiais', 'EntradaMaterialAPIController');
+
+    //ROTAS DE SINCRONIZAÇÃO
+    Route::get('sync/empresas', 'EmpresaAPIController@syncEmpresas');
 });
 
 /*

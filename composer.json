@@ -13,6 +13,7 @@
         "barryvdh/laravel-snappy": "^0.4.5",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "fzaninotto/faker": "^1.4",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "htmlmin/htmlmin": "^6.0",
@@ -26,9 +27,9 @@
         "predis/predis": "^1.1",
         "santigarcor/laratrust": "^5.2",
         "shipping-docker/vessel": "^4.0",
+        "spatie/laravel-fractal": "^5.6",
         "yajra/laravel-datatables-buttons": "^4.6",
-        "yajra/laravel-datatables-oracle": "~9.0",
-        "fzaninotto/faker": "^1.4"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
