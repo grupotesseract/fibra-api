@@ -12,28 +12,18 @@
                  @include('coreui-templates::common.errors')
                  @include('flash::message')
                  <div class="row">
-                     <div class="col-lg-4">
+                     <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Detalhes</strong>
-                                 <a href="{!! route('programacoes.index') !!}" class="btn btn-ghost-light">Voltar</a>
-                             </div>
-                             <div class="card-body">
-                                 @include('programacoes.show_fields')
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-lg-8">
-                         <div class="card">
-                             <div class="card-header">
-                                 <strong>Quantidades substituídas da programação em {{ $programacao->dataInicioPrevistaFormatada }} </strong>
+                                 <strong>Quantidades substituídas da programação em {{ $programacao->dataInicioPrevistaFormatada }} da planta {{$programacao->planta->nome}} </strong>
+
                                  <a href="{!! route('programacoes.show', $programacao->id) !!}" class="btn btn-ghost-light">Voltar</a>
                              </div>
                              <div class="card-body">
                                  @include('programacoes.partials.form_quantidades_substituidas')
                                  <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
                                  <hr>
-                                 @include('entradas_materiais.table')
+                                 @include('quantidades_substituidas.table')
                              </div>
                          </div>
                      </div>

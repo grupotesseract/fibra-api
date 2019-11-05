@@ -16,16 +16,21 @@ use App\Http\Requests\UpdateProgramacaoRequest;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
 use App\DataTables\QuantidadeSubstituidaDataTable;
 use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\Repositories\QuantidadeSubstituidaRepository;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
+use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 
 class ProgramacaoController extends AppBaseController
 {
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo)
+    private $qntSubstituidaRepository;
+
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->qntSubstituidaRepository = $quantidadeSubstituidaRepo;
     }
 
     /**
@@ -305,4 +310,27 @@ class ProgramacaoController extends AppBaseController
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_quantidades_substituidas', compact('programacao'));
     }
+
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de QuantidadeSubstituida
+     * a partir de uma programacao.
+     */
+    public function postQuantidadesSubstituidas(CreateQuantidadeSubstituidaRequest $request, $id)
+    {
+
+        //Se ja tiver uma entrada de mateiral para essa programacao: erro.
+        $jaExisteQntSubstituida = $this->qntSubstituidaRepository
+            ->checaEntradaExistente($request->item_id, $request->programacao_id, $request->material_id);
+
+        if ($jaExisteQntSubstituida) {
+            return \Response::json([
+                'errors' => ['Já existe uma quantidade substituída para esse material'],
+            ], 422);
+        }
+
+        $result = $this->qntSubstituidaRepository->create($request->all());
+        return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
 }

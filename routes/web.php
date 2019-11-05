@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@getQuantidadesSubstituidas')
         ->name('programacoes.quantidadesSubstituidas');
     Route::post('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@postQuantidadesSubstituidas')
-        ->name('programacoes.quantidadesSubstituidas');
+        ->name('programacoes.addQuantidadesSubstituidas');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');

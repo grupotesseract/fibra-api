@@ -29,7 +29,7 @@ class QuantidadeSubstituidaDataTable extends DataTable
      */
     public function query(QuantidadeSubstituida $model)
     {
-        return $model->newQuery()->with('material');
+        return $model->newQuery()->with(['material', 'item']);
     }
 
     /**
@@ -68,6 +68,14 @@ class QuantidadeSubstituidaDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'item' => [
+                'data' => 'item.nome',
+                'title' => 'Item',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => true,
+            ],
             'material_nome_potencia_tensao' => [
                 'data' => 'material.nomePotenciaTensao',
                 'title' => 'Material - Potência - Tensão',

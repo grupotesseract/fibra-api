@@ -51,10 +51,10 @@ class QuantidadeSubstituida extends Model
      * @var array
      */
     public static $rules = [
-        'programacao_id' => 'required',
-        'item_id' => 'required',
-        'material_id' => 'required',
-        'quantidade_substituida' => 'required',
+        'item_id' => 'required|exists:itens,id',
+        'material_id' => 'required|exists:materiais,id',
+        'programacao_id' => 'required|exists:programacoes,id',
+        'quantidade_substituida' => 'required|integer|min:1',
     ];
 
     /**
