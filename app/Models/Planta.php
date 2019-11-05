@@ -98,7 +98,7 @@ class Planta extends Model
     public function programacaoAnteriorMaisRecente()
     {
         return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNotNull('data_fim_real')->latest('data_fim_real');
-    }    
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

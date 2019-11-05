@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\LiberacaoDocumentoDataTable;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests;
 use App\DataTables\Scopes\PorIdLiberacaoDocumentoScope;
 use App\DataTables\UsuariosDaLiberacaoDocumentoDataTable;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateLiberacaoDocumentoRequest;
 use App\Http\Requests\UpdateLiberacaoDocumentoRequest;
 use App\Repositories\LiberacaoDocumentoRepository;
