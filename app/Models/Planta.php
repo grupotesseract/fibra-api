@@ -88,6 +88,14 @@ class Planta extends Model
        return $this->hasMany(\App\Models\Programacao::class);
    }
 
+   /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    **/
+   public function quantidadesMinimas()
+   {
+       return $this->hasMany(\App\Models\QuantidadeMinima::class);
+   }
+
 
 
 }

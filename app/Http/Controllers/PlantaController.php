@@ -6,13 +6,14 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\PlantaDataTable;
-use App\DataTables\ItensDaPlantaDataTable;
-use App\DataTables\ProgramacoesDaPlantaDataTable;
-use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Repositories\PlantaRepository;
+use App\DataTables\ItensDaPlantaDataTable;
 use App\Http\Requests\CreatePlantaRequest;
 use App\Http\Requests\UpdatePlantaRequest;
+use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Http\Controllers\AppBaseController;
+use App\DataTables\QuantidadeMinimaDataTable;
+use App\DataTables\ProgramacoesDaPlantaDataTable;
 
 class PlantaController extends AppBaseController
 {
@@ -204,5 +205,24 @@ class PlantaController extends AppBaseController
 
         return $datatable->addScope(new PorIdPlantaScope($id))
             ->render('plantas.show_programacoes', compact('planta'));
+    }
+
+    /**
+     * Metodo para servir a view com a datatable de QuantidadeMinima de uma planta
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getQuantidadesMinimaPlanta(QuantidadeMinimaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+            ->render('plantas.show_quantidades_minimas', compact('planta'));
     }
 }

@@ -25,8 +25,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('empresas', 'EmpresaController');
 
     Route::resource('plantas', 'PlantaController');
-    Route::get('plantas/{id}/itens', 'PlantaController@getItensPlanta')->name('plantas.itens');
-    Route::get('plantas/{id}/programacoes', 'PlantaController@getProgramacoesPlanta')->name('plantas.programacoes');
+    Route::get('plantas/{id}/itens', 'PlantaController@getItensPlanta')
+        ->name('plantas.itens');
+    Route::get('plantas/{id}/programacoes', 'PlantaController@getProgramacoesPlanta')
+        ->name('plantas.programacoes');
+    Route::get('plantas/{id}/quantidades-minimas', 'PlantaController@getQuantidadesMinimaPlanta')
+        ->name('plantas.quantidadesMinimas');
 
     Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');

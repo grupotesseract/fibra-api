@@ -7,11 +7,17 @@
     </a>
 </div>
 
-
 <div class="px-5 py-2">
     <a class="btn btn-primary form-control" href="{!! route('plantas.programacoes', $planta->id) !!}">
         <i class="fa fa-calendar"></i> &nbsp;
         <span> Gerenciar Programações</span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('plantas.quantidadesMinimas', $planta->id) !!}">
+        <i class="fa fa-angle-double-down"></i> &nbsp;
+        <span> Quantidade Mínima de Materiais</span>
     </a>
 </div>
 
