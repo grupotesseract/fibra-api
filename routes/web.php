@@ -25,7 +25,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('empresas', 'EmpresaController');
 
     Route::resource('plantas', 'PlantaController');
-    Route::get('plantas/{id}/itens', 'PlantaController@getItemsPlanta')->name('plantas.itens');
+    Route::get('plantas/{id}/itens', 'PlantaController@getItensPlanta')->name('plantas.itens');
+    Route::get('plantas/{id}/programacoes', 'PlantaController@getProgramacoesPlanta')->name('plantas.programacoes');
 
     Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');

@@ -71,4 +71,23 @@ class Planta extends Model
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function itens()
+    {
+        return $this->hasMany(App\Models\Item::class);
+    }
+
+   /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    **/
+   public function programacoes()
+   {
+       return $this->hasMany(App\Models\Programacao::class);
+   }
+
+
+
 }

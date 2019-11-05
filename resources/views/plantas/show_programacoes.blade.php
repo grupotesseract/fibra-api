@@ -26,19 +26,19 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Itens da planta {{$planta->nome}}</strong>
+                            <strong>Programações da planta {{$planta->nome}}</strong>
                         </div>
                         <div class="card-body">
                             <div class="px-5 py-2">
-                                <a class="btn btn-primary form-control" href="{!! route('itens.create', ['planta_id' => $planta->id, 'empresa_id' => $planta->empresa_id]) !!}">
+                                <a class="btn btn-primary form-control" href="{!! route('programacoes.create', ['planta_id' => $planta->id, 'empresa_id' => $planta->empresa_id]) !!}">
                                     <i class="fa fa-plus"></i> &nbsp;
-                                    <span> Adicionar Item </span>
+                                    <span> Adicionar Programação </span>
                                 </a>
                             </div>
 
                             <hr>
 
-                            @include('itens.table')
+                            @include('programacoes.table')
                         </div>
                     </div>
                 </div>

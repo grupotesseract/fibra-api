@@ -6,7 +6,8 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\PlantaDataTable;
-use App\DataTables\ItemsDaPlantaDataTable;
+use App\DataTables\ItensDaPlantaDataTable;
+use App\DataTables\ProgramacoesDaPlantaDataTable;
 use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Repositories\PlantaRepository;
 use App\Http\Requests\CreatePlantaRequest;
@@ -69,7 +70,7 @@ class PlantaController extends AppBaseController
      *
      * @return Response
      */
-    public function show(ItemsDaPlantaDataTable $datatable, $id)
+    public function show(ItensDaPlantaDataTable $datatable, $id)
     {
         $planta = $this->plantaRepository->find($id);
 
@@ -168,10 +169,10 @@ class PlantaController extends AppBaseController
     /**
      * Metodo para servir a view com a datatable de itens de uma planta
      *
-     * @param ItemsDaPlantaDataTable $datatable
+     * @param ItensDaPlantaDataTable $datatable
      * @param mixed $id
      */
-    public function getItemsPlanta(ItemsDaPlantaDataTable $datatable, $id)
+    public function getItensPlanta(ItensDaPlantaDataTable $datatable, $id)
     {
         $planta = $this->plantaRepository->find($id);
 
@@ -183,5 +184,25 @@ class PlantaController extends AppBaseController
 
         return $datatable->addScope(new PorIdPlantaScope($id))
             ->render('plantas.show_itens', compact('planta'));
+    }
+
+    /**
+     * Metodo para servir a view com a datatable de programacoes de uma planta
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getProgramacoesPlanta(ProgramacoesDaPlantaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+            ->render('plantas.show_programacoes', compact('planta'));
     }
 }
