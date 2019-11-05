@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\TensaoDataTable;
-use App\Repositories\TensaoRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateTensaoRequest;
 use App\Http\Requests\UpdateTensaoRequest;
-use App\Http\Controllers\AppBaseController;
+use App\Repositories\TensaoRepository;
+use Flash;
+use Response;
 
 class TensaoController extends AppBaseController
 {

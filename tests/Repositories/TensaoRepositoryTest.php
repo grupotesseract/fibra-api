@@ -2,11 +2,11 @@
 
 namespace Tests\Repositories;
 
-use Tests\TestCase;
 use App\Models\Tensao;
-use Tests\ApiTestTrait;
 use App\Repositories\TensaoRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class TensaoRepositoryTest extends TestCase
 {

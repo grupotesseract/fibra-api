@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Item;
-use Illuminate\Http\Request;
-use App\Repositories\ItemRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateItemAPIRequest;
 use App\Http\Requests\API\UpdateItemAPIRequest;
+use App\Models\Item;
+use App\Repositories\ItemRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class ItemController.

@@ -14,7 +14,7 @@
 <!-- Select de empresas  -->
 <div class="form-group">
     {!! Form::label('empresas', 'Empresa') !!} <br>
-    {!! Form::select('empresa_id', [''=>'']+$empresas, null, ['class' => "form-control select2 ". ( isset($classesExtras) ? $classesExtras : ''  ) ]
+    {!! Form::select('empresa_id', [''=>'']+$empresas, \Request::get('empresa_id'), ['class' => "form-control select2 ". ( isset($classesExtras) ? $classesExtras : ''  ) ]
     ) !!}
 </div>
 

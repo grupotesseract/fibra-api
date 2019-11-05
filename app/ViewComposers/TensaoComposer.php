@@ -2,8 +2,8 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\TensaoRepository;
+use Illuminate\View\View;
 
 class TensaoComposer
 {

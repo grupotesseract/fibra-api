@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Usuario;
-use Illuminate\Http\Request;
-use App\Repositories\UsuarioRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateUsuarioAPIRequest;
 use App\Http\Requests\API\UpdateUsuarioAPIRequest;
+use App\Models\Usuario;
+use App\Repositories\UsuarioRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class UsuarioController.

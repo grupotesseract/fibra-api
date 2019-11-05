@@ -1,9 +1,9 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Models\LiberacaoDocumento;
 use App\Models\Programacao;
 use Faker\Generator as Faker;
-use App\Models\LiberacaoDocumento;
 
 $factory->define(LiberacaoDocumento::class, function (Faker $faker) {
     return [

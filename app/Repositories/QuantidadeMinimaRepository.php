@@ -37,4 +37,18 @@ class QuantidadeMinimaRepository extends BaseRepository
     {
         return QuantidadeMinima::class;
     }
+
+    /**
+     * Metodo para checar se existe registro para evitar duplicidade.
+     *
+     * @param mixed $plantaId
+     * @param mixed $materialId
+     * @return bool
+     */
+    public function checaEntradaExistente($plantaId, $materialId)
+    {
+        return $this->model::where('planta_id', $plantaId)
+            ->where('material_id', $materialId)
+            ->exists();
+    }
 }

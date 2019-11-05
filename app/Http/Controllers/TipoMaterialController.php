@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
 use App\DataTables\TipoMaterialDataTable;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\TipoMaterialRepository;
+use App\Http\Requests;
 use App\Http\Requests\CreateTipoMaterialRequest;
 use App\Http\Requests\UpdateTipoMaterialRequest;
+use App\Repositories\TipoMaterialRepository;
+use Flash;
+use Response;
 
 class TipoMaterialController extends AppBaseController
 {

@@ -57,6 +57,14 @@ class LiberacaoDocumento extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function usuarios()
+    {
+        return $this->belongsToMany(\App\Models\Usuario::class, 'usuarios_liberacoes', 'liberacao_documento_id', 'usuario_id');
+    }
+
+    /**
      * Acessor para Data Hora.
      *
      * @param string $value
