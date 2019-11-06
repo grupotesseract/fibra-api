@@ -75,24 +75,41 @@ class Planta extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function itens()
-    {
-        return $this->hasMany(\App\Models\Item::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
     public function programacoes()
     {
-        return $this->hasMany(\App\Models\Programacao::class);
+        return $this->hasMany(\App\Models\Programacao::class, 'planta_id');
+    }
+
+    /**
+     * Relacionamento pra trazer próxima programação mais recente de uma Planta.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proximaProgramacao()
+    {
+        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->latest('data_inicio_prevista');
+    }
+
+    /**
+     * Relacionamento pra trazer próxima programação mais recente de uma Planta.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function programacaoAnteriorMaisRecente()
+    {
+        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNotNull('data_fim_real')->latest('data_fim_real');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function itens()
+    {
+        return $this->hasMany(\App\Models\Item::class, 'planta_id');
+    }
+
     public function quantidadesMinimas()
     {
-        return $this->hasMany(\App\Models\QuantidadeMinima::class);
+        return $this->hasMany(\App\Models\QuantidadeMinima::class, 'planta_id');
     }
 }
