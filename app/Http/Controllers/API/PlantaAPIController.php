@@ -72,7 +72,7 @@ class PlantaAPIController extends AppBaseController
         $planta = $this->plantaRepository->find($id);
 
         if (empty($planta)) {
-            return $this->sendError('Planta not found');
+            return $this->sendError('Planta não encontrada');
         }
 
         return $this->sendResponse($planta->toArray(), 'Planta listada com sucesso');
