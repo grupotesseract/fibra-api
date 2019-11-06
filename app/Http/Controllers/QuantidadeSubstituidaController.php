@@ -57,7 +57,7 @@ class QuantidadeSubstituidaController extends AppBaseController
 
         Flash::success('Quantidade Substituida salva com sucesso.');
 
-        return redirect(route('quantidadesSubstituidas.index'));
+        return redirect(route('programacoes.quantidadesSubstituidas', $quantidadeSubstituida->programacao_id));
     }
 
     /**
@@ -122,7 +122,7 @@ class QuantidadeSubstituidaController extends AppBaseController
 
         Flash::success('Quantidade Substituida atualizada com sucesso.');
 
-        return redirect(route('quantidadesSubstituidas.index'));
+        return redirect(route('programacoes.quantidadesSubstituidas', $quantidadeSubstituida->programacao_id));
     }
 
     /**
@@ -146,6 +146,6 @@ class QuantidadeSubstituidaController extends AppBaseController
 
         Flash::success('Quantidade Substituida excluída com sucesso.');
 
-        return redirect(route('quantidadesSubstituidas.index'));
+        return redirect(route('programacoes.quantidadesSubstituidas', $quantidadeSubstituida->programacao_id));
     }
 }

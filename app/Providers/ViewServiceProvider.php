@@ -34,6 +34,8 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('itens.show', '\App\ViewComposers\MaterialComposer');
         View::composer('programacoes.show_estoque', '\App\ViewComposers\MaterialComposer');
         View::composer('programacoes.show_entradas_materiais', '\App\ViewComposers\MaterialComposer');
+        View::composer('programacoes.show_quantidades_substituidas', '\App\ViewComposers\MaterialComposer');
+        View::composer('programacoes.show_quantidades_substituidas', '\App\ViewComposers\ItensProgramacaoComposer');
         View::composer('potencias.select', '\App\ViewComposers\PotenciaComposer');
         View::composer('tensoes.select', '\App\ViewComposers\TensaoComposer');
     }
