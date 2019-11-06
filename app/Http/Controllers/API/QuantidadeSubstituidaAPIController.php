@@ -53,6 +53,16 @@ class QuantidadeSubstituidaAPIController extends AppBaseController
     {
         $input = $request->all();
 
+        //Se ja tiver uma qnt substituida de mateiral para uma a programacao e o item,  erro.
+        $jaExisteQntSubstituida = $this->quantidadeSubstituidaRepository
+            ->checaEntradaExistente($request->item_id, $request->programacao_id, $request->material_id);
+
+        if ($jaExisteQntSubstituida) {
+            return \Response::json([
+                'errors' => ['Já existe uma quantidade substituída para esse material'],
+            ], 422);
+        }
+
         $quantidadeSubstituida = $this->quantidadeSubstituidaRepository->create($input);
 
         return $this->sendResponse($quantidadeSubstituida->toArray(), 'Quantidade Substituida salva com sucesso');

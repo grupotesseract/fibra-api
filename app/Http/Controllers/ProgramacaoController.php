@@ -6,14 +6,17 @@ use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\DataTables\ProgramacaoDataTable;
+use App\DataTables\QuantidadeSubstituidaDataTable;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Http\Requests\CreateEstoqueRequest;
 use App\Http\Requests\CreateProgramacaoRequest;
+use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
 use App\Repositories\ProgramacaoRepository;
+use App\Repositories\QuantidadeSubstituidaRepository;
 use Flash;
 use Response;
 
@@ -22,9 +25,12 @@ class ProgramacaoController extends AppBaseController
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo)
+    private $qntSubstituidaRepository;
+
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->qntSubstituidaRepository = $quantidadeSubstituidaRepo;
     }
 
     /**
@@ -282,6 +288,47 @@ class ProgramacaoController extends AppBaseController
         }
 
         $result = $programacao->entradasMateriais()->create($request->all());
+
+        return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
+    /**
+     * Metodo para servir a view de QuantidadeSubstituida de Materiais de 1 Programação.
+     *
+     * @return void
+     */
+    public function getQuantidadesSubstituidas(QuantidadeSubstituidaDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_quantidades_substituidas', compact('programacao'));
+    }
+
+    /**
+     * Metodo para recebe o POST para criar um novo registro de QuantidadeSubstituida
+     * a partir de uma programacao.
+     */
+    public function postQuantidadesSubstituidas(CreateQuantidadeSubstituidaRequest $request, $id)
+    {
+
+        //Se ja tiver uma entrada de mateiral para essa programacao: erro.
+        $jaExisteQntSubstituida = $this->qntSubstituidaRepository
+            ->checaEntradaExistente($request->item_id, $request->programacao_id, $request->material_id);
+
+        if ($jaExisteQntSubstituida) {
+            return \Response::json([
+                'errors' => ['Já existe uma quantidade substituída para esse material'],
+            ], 422);
+        }
+
+        $result = $this->qntSubstituidaRepository->create($request->all());
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
     }

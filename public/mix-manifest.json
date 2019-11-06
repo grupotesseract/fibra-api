@@ -8,5 +8,6 @@
     "/js/pages/Estoque.js": "/js/pages/Estoque.js",
     "/js/pages/MateriaisItem.js": "/js/pages/MateriaisItem.js",
     "/js/pages/Plantas.js": "/js/pages/Plantas.js",
-    "/js/pages/QuantidadesMinimas.js": "/js/pages/QuantidadesMinimas.js"
+    "/js/pages/QuantidadesMinimas.js": "/js/pages/QuantidadesMinimas.js",
+    "/js/pages/QuantidadesSubstituidas.js": "/js/pages/QuantidadesSubstituidas.js"
 }
