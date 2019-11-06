@@ -31,9 +31,9 @@
     </a>
 {{-- <li class="nav-item {{ Request::is('programacoes*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('programacoes.index') !!}"><i class="fa fa-calendar"></i><span> Programações</span></a> --}}
-<li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
+{{-- <li class="nav-item {{ Request::is('itens*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('itens.index') !!}"><i class="fa fa-building"></i><span> Itens</span></a>
-</li>
+</li> --}}
  {{--
 <li class="nav-item {{ Request::is('liberacoesDocumentos*') ? 'active' : '' }}">
     <a class="nav-link" href="{!! route('liberacoesDocumentos.index') !!}">

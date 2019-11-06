@@ -6,6 +6,7 @@ use App\DataTables\EmpresaDataTable;
 use App\DataTables\PlantasDaEmpresaDataTable;
 use App\DataTables\Scopes\PorIdEmpresaScope;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
 use App\Repositories\EmpresaRepository;

@@ -129,10 +129,14 @@ class Programacao extends Model
      */
     public function setDataInicioRealAttribute($value)
     {
-        try {
-            $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        if (! is_null($value)) {
+            try {
+                $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
+            } catch (\Exception $e) {
+                $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+            }
+        } else {
+            $this->attributes['data_inicio_real'] = null;
         }
     }
 
@@ -144,10 +148,14 @@ class Programacao extends Model
      */
     public function setDataFimRealAttribute($value)
     {
-        try {
-            $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        if (! is_null($value)) {
+            try {
+                $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
+            } catch (\Exception $e) {
+                $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+            }
+        } else {
+            $this->attributes['data_fim_real'] = null;
         }
     }
 
@@ -181,7 +189,9 @@ class Programacao extends Model
      */
     public function formDataInicioRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        if (! is_null($value)) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -192,7 +202,9 @@ class Programacao extends Model
      */
     public function formDataFimRealAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        if (! is_null($value)) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -225,7 +237,9 @@ class Programacao extends Model
      */
     public function getDataInicioRealFormatadaAttribute()
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
+        if (! is_null($this->data_inicio_real)) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio_real)->format('d/m/Y H:i:s');
+        }
     }
 
     /**
@@ -236,6 +250,8 @@ class Programacao extends Model
      */
     public function getDataFimRealFormatadaAttribute()
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
+        if (! is_null($this->data_fim_real)) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
+        }
     }
 }
