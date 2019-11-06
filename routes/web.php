@@ -20,10 +20,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
     Route::get('/empresas/{id}/plantas', 'PlantaController@getPorEmpresa');
 
-    Route::resource('usuarios', 'UsuarioController');
-    Route::resource('tiposMateriais', 'TipoMaterialController');
-    Route::resource('empresas', 'EmpresaController');
-
     Route::resource('plantas', 'PlantaController');
     Route::get('plantas/{id}/itens', 'PlantaController@getItensPlanta')
         ->name('plantas.itens');
@@ -31,26 +27,35 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('plantas.programacoes');
     Route::get('plantas/{id}/quantidades-minimas', 'PlantaController@getQuantidadesMinimasPlanta')
         ->name('plantas.quantidadesMinimas');
-
     Route::post('plantas/{id}/quantidades-minimas', 'PlantaController@postQuantidadesMinimasPlanta')
         ->name('plantas.addQuantidadesMinimas');
 
-    Route::resource('materiais', 'MaterialController');
     Route::resource('itens', 'ItemController');
-    Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')->name('itens.associarMaterial');
+    Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')
+        ->name('itens.associarMaterial');
     Route::delete('itens/{id_item}/materiais/{id_material}', 'ItemController@postDesassociarMaterial')->name('itens.desassociarMaterial');
 
     Route::resource('programacoes', 'ProgramacaoController');
-    Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')->name('programacoes.liberacoesDocumentos');
-    Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')->name('programacoes.estoque');
-    Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')->name('programacoes.addEstoque');
-
-    Route::resource('entradasMateriais', 'EntradaMaterialController');
+    Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')
+        ->name('programacoes.liberacoesDocumentos');
+    Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')
+        ->name('programacoes.estoque');
+    Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')
+        ->name('programacoes.addEstoque');
     Route::get('programacoes/{id}/entrada-materiais', 'ProgramacaoController@getEntradasMateriais')
         ->name('programacoes.entradasMateriais');
     Route::post('programacoes/{id}/entrada-materiais', 'ProgramacaoController@postAdicionarEntradaMaterial')
         ->name('programacoes.addEntradaMaterial');
+    Route::get('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@getQuantidadesSubstituidas')
+        ->name('programacoes.quantidadesSubstituidas');
+    Route::post('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@postQuantidadesSubstituidas')
+        ->name('programacoes.addQuantidadesSubstituidas');
 
+    Route::resource('usuarios', 'UsuarioController');
+    Route::resource('tiposMateriais', 'TipoMaterialController');
+    Route::resource('empresas', 'EmpresaController');
+    Route::resource('materiais', 'MaterialController');
+    Route::resource('entradasMateriais', 'EntradaMaterialController');
     Route::resource('potencias', 'PotenciaController');
     Route::resource('tensoes', 'TensaoController');
     Route::resource('liberacoesDocumentos', 'LiberacaoDocumentoController');

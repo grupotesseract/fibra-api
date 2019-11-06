@@ -38,4 +38,19 @@ class QuantidadeSubstituidaRepository extends BaseRepository
     {
         return QuantidadeSubstituida::class;
     }
+
+    /**
+     * Metodo para checar se existe registro para evitar duplicidade.
+     *
+     * @param mixed $programacaoId
+     * @param mixed $materialId
+     * @return bool
+     */
+    public function checaEntradaExistente($itemId, $programacaoId, $materialId)
+    {
+        return $this->model::where('programacao_id', $programacaoId)
+            ->where('material_id', $materialId)
+            ->where('item_id', $itemId)
+            ->exists();
+    }
 }

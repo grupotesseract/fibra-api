@@ -29,7 +29,7 @@ class QuantidadeSubstituidaDataTable extends DataTable
      */
     public function query(QuantidadeSubstituida $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['material', 'item']);
     }
 
     /**
@@ -42,17 +42,16 @@ class QuantidadeSubstituidaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title'=>'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
                     'stateSave' => true,
                     'order'     => [[0, 'desc']],
                     'buttons'   => [
-                        ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-default btn-sm no-corner'],
-                        ['extend' => 'print', 'text' => '<i class="fa fa-print"></i> Imprimir', 'className' => 'btn btn-default btn-sm no-corner'],
                         ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner'],
+                        ['extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas'],
                     ],
                     'language' => [
                         'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
@@ -69,10 +68,52 @@ class QuantidadeSubstituidaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'programacao_id',
-            'item_id',
-            'material_id',
-            'quantidade_substituida',
+            'item' => [
+                'data' => 'item.nome',
+                'title' => 'Item',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => true,
+            ],
+            'material_nome_potencia_tensao' => [
+                'data' => 'material.nomePotenciaTensao',
+                'title' => 'Material - Potência - Tensão',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => true,
+            ],
+            'material' => [
+                'data' => 'material.nome',
+                'title' => 'Material',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => false,
+            ],
+            'material_id' => [
+                'title' => 'ID Material',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => false,
+            ],
+            'programacao_id' => [
+                'title' => 'ID Programação',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+                'visible' => false,
+            ],
+            'quantidade_substituida' => [
+                'data' => 'quantidade_substituida',
+                'title' => 'Qnt. Substituída',
+                'searchable' => true,
+                'orderable' => true,
+                'filterable' => false,
+                'visible' => true,
+            ],
         ];
     }
 
