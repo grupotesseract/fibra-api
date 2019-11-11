@@ -59,7 +59,7 @@
 <!-- Nome Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nome', 'Nome') !!}
-    {!! Form::text('nome', null, ['class' => 'form-control']) !!}
+    {!! Form::text('nome', null, ['class' => 'form-control nomeMaterial']) !!}
 </div>
 
 <!-- Submit Field -->
@@ -67,3 +67,7 @@
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('materiais.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
+
+@section('scripts')
+    <script src="/js/pages/Materiais.js"></script>
+@endsection
