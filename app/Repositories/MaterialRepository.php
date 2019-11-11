@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Material;
 use App\Repositories\BaseRepository;
-
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Class MaterialRepository.
  * @version September 10, 2019, 4:11 pm -03
@@ -54,8 +54,16 @@ class MaterialRepository extends BaseRepository
      *
      * @return array
      */
-    public function getArrayNomePotenciaTensaoParaSelect()
+    public function getArrayNomePotenciaTensaoParaSelect($tipoMaterialTipo = null)
     {
-        return $this->model()::all()->pluck('nomePotenciaTensao', 'id')->all();
+        if (! is_null($tipoMaterialTipo)) {
+            $materiais = $this->model()::whereHas('tipoMaterial', function (Builder $query) use ($tipoMaterialTipo) {
+                $query->where('tipo', $tipoMaterialTipo);
+            })->get()->pluck('nomePotenciaTensao', 'id')->all();
+        } else {
+            $materiais = $this->model()::all()->pluck('nomePotenciaTensao', 'id')->all();
+        }
+        
+        return $materiais;
     }
 }
