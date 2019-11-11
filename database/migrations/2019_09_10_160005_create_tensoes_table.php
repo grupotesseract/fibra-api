@@ -14,7 +14,7 @@ class CreateTensoesTable extends Migration
     {
         Schema::create('tensoes', function (Blueprint $table) {
             $table->bigInteger('id', true);
-            $table->integer('valor');
+            $table->string('valor');
             $table->timestamps();
             $table->softDeletes();
         });
