@@ -49,7 +49,7 @@ class TipoMaterial extends Model
     ];
 
     public $appends = [
-        'nomeSelect'   
+        'nomeSelect',
     ];
 
     /**
