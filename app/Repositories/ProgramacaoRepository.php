@@ -39,4 +39,22 @@ class ProgramacaoRepository extends BaseRepository
     {
         return Programacao::class;
     }
+
+    /**
+     * Método responsável por persistir informações ao banco
+     */
+    public function sincronizaProgramação($id, $input)
+    {
+        $programacao = $this->find($id);
+
+        foreach ($input['liberacoesDocumentos'] as $liberacaoDocumento) {
+            $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
+                [
+                    'data_hora' => $liberacaoDocumento['data_hora']
+                ]
+            );
+            
+        }
+        
+    }
 }

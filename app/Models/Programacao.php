@@ -92,6 +92,14 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function liberacoesDocumentos()
+    {
+        return $this->hasMany(\App\Models\LiberacaoDocumento::class, 'programacao_id');
+    }
+
+    /**
      * Mutator para o campo data_inicio_prevista.
      *
      * @param string $value
