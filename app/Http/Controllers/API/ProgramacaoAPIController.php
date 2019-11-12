@@ -125,10 +125,10 @@ class ProgramacaoAPIController extends AppBaseController
         $programacao->delete();
 
         return $this->sendResponse($id, 'Programação excluída com sucesso');
-    } 
+    }
 
     /**
-     * Sincronização da programação e quantidades inseridas pelos técnicos
+     * Sincronização da programação e quantidades inseridas pelos técnicos.
      *
      * @param int $id
      * @return Response
@@ -137,6 +137,7 @@ class ProgramacaoAPIController extends AppBaseController
     {
         $input = $request->all();
         $programacao = $this->programacaoRepository->sincronizaProgramação($id, $input);
+
         return $this->sendResponse($id, 'Programação sincronizada com sucesso');
     }
 }

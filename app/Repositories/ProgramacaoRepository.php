@@ -41,7 +41,7 @@ class ProgramacaoRepository extends BaseRepository
     }
 
     /**
-     * Método responsável por persistir informações ao banco
+     * Método responsável por persistir informações ao banco.
      */
     public function sincronizaProgramação($id, $input)
     {
@@ -51,7 +51,7 @@ class ProgramacaoRepository extends BaseRepository
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
             $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
                 [
-                    'data_hora' => $inputLiberacaoDocumento['data_hora']
+                    'data_hora' => $inputLiberacaoDocumento['data_hora'],
                 ]
             );
 
@@ -68,7 +68,6 @@ class ProgramacaoRepository extends BaseRepository
             $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
         }
 
-        $programacao->estoques()->createMany($input['estoques']);       
-        
+        $programacao->estoques()->createMany($input['estoques']);
     }
 }
