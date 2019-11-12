@@ -60,6 +60,15 @@ class ProgramacaoRepository extends BaseRepository
 
         $programacao->entradasMateriais()->createMany($input['entradas']);
         $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
+
+        foreach ($input['estoques'] as $key => $estoque) {
+            $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
+            $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
+            $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
+            $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
+        }
+
+        $programacao->estoques()->createMany($input['estoques']);       
         
     }
 }
