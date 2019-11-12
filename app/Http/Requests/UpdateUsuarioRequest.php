@@ -30,7 +30,7 @@ class UpdateUsuarioRequest extends FormRequest
                 'required',
                 Rule::unique('usuarios')->ignore($this->route('usuario'))->whereNull('deleted_at'),
             ],
-            'cidade_id' => 'required'
+            'cidade_id' => 'required',
         ];
 
         return $rules;
