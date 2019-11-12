@@ -150,6 +150,7 @@ return [
         'planta_id' => 'planta',
         'qnt_instalada' => 'quantidade instalada',
         'material_id' => 'material',
+        'cidade_id' => 'cidade'
     ],
 
 ];
