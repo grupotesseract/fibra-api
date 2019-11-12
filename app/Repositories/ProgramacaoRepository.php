@@ -57,6 +57,9 @@ class ProgramacaoRepository extends BaseRepository
 
             $liberacaoDocumento->usuarios()->sync($inputLiberacaoDocumento['usuarios']);
         }
+
+        $programacao->entradasMateriais()->createMany($input['entradas']);
+        $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
         
     }
 }

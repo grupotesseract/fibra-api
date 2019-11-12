@@ -94,6 +94,14 @@ class Programacao extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function quantidadesSubstituidas()
+    {
+        return $this->hasMany(\App\Models\QuantidadeSubstituida::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
     public function liberacoesDocumentos()
     {
         return $this->hasMany(\App\Models\LiberacaoDocumento::class, 'programacao_id');
