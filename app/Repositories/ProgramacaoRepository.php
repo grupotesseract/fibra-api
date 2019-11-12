@@ -47,13 +47,15 @@ class ProgramacaoRepository extends BaseRepository
     {
         $programacao = $this->find($id);
 
-        foreach ($input['liberacoesDocumentos'] as $liberacaoDocumento) {
+        //LIBERAÇÕES DE DOCUMENTOS
+        foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
             $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
                 [
-                    'data_hora' => $liberacaoDocumento['data_hora']
+                    'data_hora' => $inputLiberacaoDocumento['data_hora']
                 ]
             );
-            
+
+            $liberacaoDocumento->usuarios()->sync($inputLiberacaoDocumento['usuarios']);
         }
         
     }
