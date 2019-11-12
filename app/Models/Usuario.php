@@ -66,7 +66,7 @@ class Usuario extends Authenticatable
         'nome' => 'required',
         'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
         'password' => 'required',
-        'cidade_id' => 'required'
+        'cidade_id' => 'required',
     ];
 
     protected $hidden = [
