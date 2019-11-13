@@ -67,4 +67,14 @@ class MaterialRepository extends BaseRepository
 
         return $materiais;
     }
+
+    /**
+     * Retorna um array com todos os Materiais
+     *
+     * @return array
+     */
+    public function getArrayTodosMateriais()
+    {   
+        return $this->model()::all()->pluck('nomePotenciaTensao', 'id')->toArray();
+    }
 }
