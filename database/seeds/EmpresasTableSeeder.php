@@ -60,10 +60,21 @@ class EmpresasTableSeeder extends Seeder
                                                     'quantidade_final' => $qtdeInicialEstoque + $qtdeEntrada - $qtdeSubstituida,
                                                 ]
                                             );
+                                            
                                         }
                                     }
                                 )
                             );
+
+                            foreach ($materiaisIds as $materialId) {
+                                \App\Models\QuantidadeMinima::create(
+                                    [
+                                        'planta_id' => $planta->id,
+                                        'material_id' => $materialId,
+                                        'quantidade_minima' => rand(50, 100),
+                                    ]
+                                );
+                            }
                         }
                     ) 
                 );

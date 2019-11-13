@@ -26,15 +26,9 @@ class DatabaseSeeder extends Seeder
             $this->call(TensoesTableSeeder::class);
             $this->call(TiposMateriaisTableSeeder::class);
             $this->call(MateriaisTableSeeder::class);
-            $this->call(EmpresasTableSeeder::class);
-            //$this->call(PlantasTableSeeder::class);
-            //$this->call(ProgramacoesTableSeeder::class);
+            $this->call(EmpresasTableSeeder::class);            
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
-            $this->call(QuantidadesMinimasTableSeeder::class);
-            //$this->call(EstoqueTableSeeder::class);
-            //$this->call(QuantidadesSubstituidasTableSeeder::class);
-            //$this->call(EntradasMateriaisTableSeeder::class);
         }
     }
 }
