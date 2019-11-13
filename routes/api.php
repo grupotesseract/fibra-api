@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
 
     //ROTAS DE SINCRONIZAÇÃO
     Route::get('sync/empresas', 'EmpresaAPIController@syncEmpresas');
+    Route::post('sync/programacoes/{idProgramacao}/item/{idItem}/fotos', 'ProgramacaoAPIController@syncProgramacaoItemFotos');
 });
 
 /*
