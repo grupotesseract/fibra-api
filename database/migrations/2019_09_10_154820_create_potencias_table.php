@@ -14,7 +14,7 @@ class CreatePotenciasTable extends Migration
     {
         Schema::create('potencias', function (Blueprint $table) {
             $table->bigInteger('id', true);
-            $table->integer('valor');
+            $table->string('valor');
             $table->timestamps();
             $table->softDeletes();
         });
