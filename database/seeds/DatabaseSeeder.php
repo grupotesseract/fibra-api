@@ -22,13 +22,12 @@ class DatabaseSeeder extends Seeder
             $this->call(CidadesSQLSeeder::class);
             $this->call(LaratrustSeeder::class);
             $this->call(AdminUserSeeder::class);
-            $this->call(TiposMateriaisTableSeeder::class);
-            $this->call(EmpresasTableSeeder::class);
-            $this->call(PlantasTableSeeder::class);
             $this->call(PotenciasTableSeeder::class);
             $this->call(TensoesTableSeeder::class);
+            $this->call(TiposMateriaisTableSeeder::class);
             $this->call(MateriaisTableSeeder::class);
-            //$this->call(ItensTableSeeder::class);
+            $this->call(EmpresasTableSeeder::class);
+            //$this->call(PlantasTableSeeder::class);
             $this->call(ProgramacoesTableSeeder::class);
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
