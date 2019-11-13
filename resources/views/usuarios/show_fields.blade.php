@@ -37,12 +37,12 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Criado em') !!}
-    <p>{!! $usuario->created_at !!}</p>
+    <p>{!! $usuario->created_at->format('d/m/Y H:i:s') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Atualizado em') !!}
-    <p>{!! $usuario->updated_at !!}</p>
+    <p>{!! $usuario->updated_at->format('d/m/Y H:i:s') !!}</p>
 </div>
 
