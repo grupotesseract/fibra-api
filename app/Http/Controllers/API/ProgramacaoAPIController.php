@@ -136,7 +136,8 @@ class ProgramacaoAPIController extends AppBaseController
     public function syncProgramacoes($id, Request $request)
     {
         $input = $request->all();
-        $programacao = $this->programacaoRepository->sincronizaProgramação($id, $input);
-        return $this->sendResponse($id, 'Programação sincronizada com sucesso');
+        $programacao = $this->programacaoRepository->find($id);
+        $this->programacaoRepository->sincronizaProgramação($programacao, $input);
+        return $this->sendResponse($programacao->toArray(), 'Programação sincronizada com sucesso');
     }
 }
