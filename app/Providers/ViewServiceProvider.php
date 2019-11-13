@@ -29,8 +29,8 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('plantas.select', '\App\ViewComposers\PlantaComposer');
         View::composer('plantas.show_quantidades_minimas', '\App\ViewComposers\MaterialComposer');
         View::composer('tipos_materiais.select', '\App\ViewComposers\TipoMaterialComposer');
-        View::composer('materiais.select_reatores', '\App\ViewComposers\MaterialComposer');
-        View::composer('materiais.select_bases', '\App\ViewComposers\MaterialComposer');
+        View::composer('materiais.select_reatores', '\App\ViewComposers\MaterialReatorComposer');
+        View::composer('materiais.select_bases', '\App\ViewComposers\MaterialBaseComposer');
         View::composer('itens.show', '\App\ViewComposers\MaterialComposer');
         View::composer('programacoes.show_estoque', '\App\ViewComposers\MaterialComposer');
         View::composer('programacoes.show_entradas_materiais', '\App\ViewComposers\MaterialComposer');

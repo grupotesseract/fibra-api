@@ -43,6 +43,6 @@ class TipoMaterialRepository extends BaseRepository
      */
     public function getArrayParaSelect()
     {
-        return $this->model()::pluck('nome', 'id')->all();
+        return $this->model()::all()->pluck('nomeSelect', 'id')->all();
     }
 }
