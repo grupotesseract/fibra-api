@@ -62,7 +62,7 @@ class MaterialRepository extends BaseRepository
                 $query->where('tipo', $tipoMaterialTipo);
             })->get()->pluck('nomePotenciaTensao', 'id')->all();
         } else {
-            $materiais = $this->model()::all()->pluck('nomePotenciaTensao', 'id')->all();
+            $materiais = $this->model()::doesntHave('tipoMaterial')->get()->pluck('nomePotenciaTensao', 'id')->all();
         }
 
         return $materiais;
