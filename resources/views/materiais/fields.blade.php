@@ -59,7 +59,8 @@
 <!-- Nome Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nome', 'Nome') !!}
-    {!! Form::text('nome', null, ['class' => 'form-control nomeMaterial']) !!}
+    {!! Form::text('nome', null, ['class' => 'form-control nomeMaterial', 
+        'disabled' => isset($material->tipo_material_id) && !is_null($material->tipo_material_id) ?? false]) !!}
 </div>
 
 <!-- Submit Field -->
