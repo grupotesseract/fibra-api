@@ -54,4 +54,22 @@ class ItemRepository extends BaseRepository
 
         return $this->model()::pluck('nome', 'id')->all();
     }
+
+
+    /**
+     * Metodo para fazer update da quantidade instalada de um material em um item
+     *
+     * @return void
+     */
+    public function updateQuantidadeInstaladaMaterial($item, $idMaterial, $qntInstalada)
+    {
+        return $item->materiais()->updateExistingPivot($idMaterial, [
+            'quantidade_instalada' => $qntInstalada
+        ]);
+    }
+
+
+
+
+
 }
