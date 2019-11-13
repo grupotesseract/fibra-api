@@ -15,7 +15,7 @@ class CreateItensTable extends Migration
         Schema::create('itens', function (Blueprint $table) {
             $table->bigInteger('id', true);
             $table->string('nome');
-            $table->string('qrcode');
+            $table->string('qrcode')->unique();
             $table->enum('circuito', ['Normal', 'Emergência']);
             $table->integer('planta_id')->unsigned();
             $table->timestamps();
