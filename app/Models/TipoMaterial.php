@@ -47,4 +47,22 @@ class TipoMaterial extends Model
         'abreviacao' => 'required',
         'tipo' => 'required',
     ];
+
+    public $appends = [
+        'nomeSelect',
+    ];
+
+    /**
+     * Acessor para obter uma string com 'Nome - Abreviação - Tipo'.
+     *
+     * @return string
+     */
+    public function getNomeSelectAttribute()
+    {
+        $tipo = ! is_null($this->tipo) ? $this->tipo : '';
+        $nome = ! is_null($this->nome) ? " - $this->nome" : '';
+        $abreviação = ! is_null($this->abreviacao) ? " - $this->abreviacao" : '';
+
+        return "$tipo $nome $abreviação";
+    }
 }
