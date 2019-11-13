@@ -127,15 +127,14 @@ class ProgramacaoAPIController extends AppBaseController
         return $this->sendResponse($id, 'Programação excluída com sucesso');
     }
 
-    
     /**
-     * Método pra persistir fotos no Cloudinary e associar referência no banco
+     * Método pra persistir fotos no Cloudinary e associar referência no banco.
      *
      * @param int $idProgramacao
      * @param int $idItem
      * @param Request $request
      * @return Response
-     */ 
+     */
     public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
     {
         dd($request->fotos);
