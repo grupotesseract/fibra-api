@@ -28,8 +28,9 @@ class UpdateUsuarioRequest extends FormRequest
         $rules = [
             'email' => [
                 'required',
-                Rule::unique('usuarios')->ignore($this->route('usuario')),
+                Rule::unique('usuarios')->ignore($this->route('usuario'))->whereNull('deleted_at'),
             ],
+            'cidade_id' => 'required',
         ];
 
         return $rules;
