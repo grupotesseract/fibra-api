@@ -28,6 +28,9 @@ class EmpresasTableSeeder extends Seeder
                                     }
                                 )
                             );
+                            $planta->programacoes()->saveMany(
+                                factory(App\Models\Programacao::class, 1)->create()
+                            );
                         }
                     ) 
                 );
