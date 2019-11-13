@@ -34,7 +34,7 @@ class EmpresasTableSeeder extends Seeder
                                             $qtdeEntrada = rand(0, 10);
                                             $qtdeSubstituida = rand(0, 5);
                                             $qtdeInicialEstoque = rand(15, 30);
-                                            
+
                                             \App\Models\EntradaMaterial::create(
                                                 [
                                                     'programacao_id' => $programacao->id,
@@ -42,13 +42,13 @@ class EmpresasTableSeeder extends Seeder
                                                     'quantidade' => $qtdeEntrada,
                                                 ]
                                             );
-                                            
+
                                             \App\Models\QuantidadeSubstituida::create(
                                                 [
                                                     'programacao_id' => $programacao->id,
                                                     'quantidade_substituida' => $qtdeSubstituida,
                                                     'material_id' => $materialId,
-                                                    'item_id' => $planta->itens->random(1)->first()->id   
+                                                    'item_id' => $planta->itens->random(1)->first()->id,
                                                 ]
                                             );
 
@@ -60,7 +60,6 @@ class EmpresasTableSeeder extends Seeder
                                                     'quantidade_final' => $qtdeInicialEstoque + $qtdeEntrada - $qtdeSubstituida,
                                                 ]
                                             );
-                                            
                                         }
                                     }
                                 )
@@ -76,7 +75,7 @@ class EmpresasTableSeeder extends Seeder
                                 );
                             }
                         }
-                    ) 
+                    )
                 );
             }
         );
