@@ -34,6 +34,7 @@ class Material extends Model
 
     public $appends = [
         'tipoMaterialNome',
+        'tipoMaterialTipo',
         'potenciaValor',
         'tensaoValor',
         'nomePotenciaTensao',
@@ -154,6 +155,18 @@ class Material extends Model
     {
         if ($this->tipoMaterial()->exists()) {
             return $this->tipoMaterial->nome;
+        }
+    }
+
+    /**
+     * Acessor para a informação de tipo do Tipo de Material.
+     *
+     * @return int
+     */
+    public function getTipoMaterialTipoAttribute()
+    {
+        if ($this->tipoMaterial()->exists()) {
+            return $this->tipoMaterial->tipo;
         }
     }
 

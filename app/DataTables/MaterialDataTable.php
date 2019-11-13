@@ -70,13 +70,20 @@ class MaterialDataTable extends DataTable
     {
         return [
             'nome',
+            'tipoMaterialTipo' => [
+                'data' => 'tipoMaterialTipo',
+                'title' => 'Tipo',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'tipoMaterialNome' => [
                 'data' => 'tipoMaterialNome',
                 'title' => 'Tipo de Material',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-            ],
+            ],            
             'potenciaValor' => [
                 'data' => 'potenciaValor',
                 'title' => 'Potência',
