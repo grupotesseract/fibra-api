@@ -43,11 +43,18 @@ cp .env.example .env
 v start
 v comp i
 v art key:generate
-v art migrate
-v art passport:install
-
+v art migrate:fresh --seed
+v art passport:install --force
 v y
 v y watch
+```
+
+Em caso de erros, executar:
+``` sh
+v down
+docker image rm vessel/app
+docker image rm vessel/node
+v start
 ```
 
 ### Comando para gerar um CRUD
