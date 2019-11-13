@@ -12,13 +12,14 @@ RUN useradd -ms /bin/bash -u 1337 vessel \
   && echo "deb http://ppa.launchpad.net/nginx/development/ubuntu bionic main" \
     > /etc/apt/sources.list.d/ppa_nginx_mainline.list \
   && export APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true \
-  && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C \
-  && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C300EE8C \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C300EE8C \
   && apt-get update
 
 RUN apt-get install -y --no-install-recommends \
     curl \
     libssl1.0-dev \
+    libxrender1 \
     nginx \
     supervisor \
     unzip \
