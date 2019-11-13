@@ -5,7 +5,7 @@ namespace App\ViewComposers;
 use App\Repositories\MaterialRepository;
 use Illuminate\View\View;
 
-class MaterialComposer
+class MaterialBaseComposer
 {
     protected $materialRepository;
 
