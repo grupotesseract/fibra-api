@@ -30,7 +30,7 @@ class Potencia extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'valor' => 'integer',
+        'valor' => 'string',
     ];
 
     /**
