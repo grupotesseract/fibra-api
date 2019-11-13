@@ -125,10 +125,10 @@ class ProgramacaoAPIController extends AppBaseController
         $programacao->delete();
 
         return $this->sendResponse($id, 'Programação excluída com sucesso');
-    } 
+    }
 
     /**
-     * Sincronização da programação e quantidades inseridas pelos técnicos
+     * Sincronização da programação e quantidades inseridas pelos técnicos.
      *
      * @param int $id
      * @return Response
