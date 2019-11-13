@@ -11,6 +11,8 @@ class PlantasTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Planta::class, 30)->create();
+        factory(App\Models\Planta::class, 15)->create()->each(function ($planta) {
+            $planta->itens()->saveMany(factory(\App\Models\Item::class, 20)->create());
+        }); 
     }
 }
