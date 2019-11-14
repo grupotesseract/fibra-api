@@ -18,6 +18,6 @@ class AdminUserSeeder extends Seeder
             'nome' => 'Admin Tesseract',
             'cidade_id' => Cidade::where('nome', 'Bauru')->first()->id,
         ]);
-        $userAdmin->attachRole(\App\Models\Role::ROLE_ADMIN);        
+        $userAdmin->attachRole(\App\Models\Role::ROLE_ADMIN);
     }
 }
