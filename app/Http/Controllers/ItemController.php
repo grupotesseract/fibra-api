@@ -8,10 +8,10 @@ use App\DataTables\Scopes\MateriaisDoItemScope;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\AssociaMaterialItemRequest;
-use App\Http\Requests\UpdateQuantidadeMaterialItemRequest;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\DesassociaMaterialItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Http\Requests\UpdateQuantidadeMaterialItemRequest;
 use App\Repositories\ItemRepository;
 use Flash;
 use InfyOm\Generator\Utils\ResponseUtil;
@@ -225,7 +225,7 @@ class ItemController extends AppBaseController
     }
 
     /**
-     * Metodo para servir a view para editar a qntInstalada de um material
+     * Metodo para servir a view para editar a qntInstalada de um material.
      *
      * @return view
      */
@@ -235,21 +235,24 @@ class ItemController extends AppBaseController
 
         if (empty($item)) {
             Flash::error('Item não encontrado');
+
             return redirect()->back();
         }
 
         //Se nao tiver esse material associado, erro.
         if (! $item->materiais->find($idMaterial)) {
             Flash::error('Material não associado ao item');
+
             return redirect()->back();
         }
 
         $qntInstalada = $item->materiais->find($idMaterial)->pivot->quantidade_instalada;
-        return view("itens.edit-quantidade-material", compact('item', 'idMaterial', 'qntInstalada'));
+
+        return view('itens.edit-quantidade-material', compact('item', 'idMaterial', 'qntInstalada'));
     }
 
     /**
-     * Metodo para receber a request de atualizar quantidade instalada de um material
+     * Metodo para receber a request de atualizar quantidade instalada de um material.
      *
      * @param UpdateQuantidadeMaterialItemRequest $request
      * @param mixed $idItem
@@ -260,19 +263,21 @@ class ItemController extends AppBaseController
 
         if (empty($item)) {
             Flash::error('Item não encontrado');
+
             return redirect()->back();
         }
 
         //Se nao tiver esse material associado, erro.
         if (! $item->materiais->find($request->id_material)) {
             Flash::error('Material não associado ao item');
+
             return redirect()->back();
         }
 
         $this->itemRepository->updateQuantidadeInstaladaMaterial($item, $request->id_material, $request->quantidade_instalada);
 
         Flash::success('Quantidade instalada atualizada.');
-        return redirect(route("itens.show", $idItem));
-    }
 
+        return redirect(route('itens.show', $idItem));
+    }
 }
