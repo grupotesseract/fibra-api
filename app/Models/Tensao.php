@@ -39,6 +39,6 @@ class Tensao extends Model
      * @var array
      */
     public static $rules = [
-        'valor' => 'required',
+        'valor' => 'required|unique:tensoes,valor',
     ];
 }

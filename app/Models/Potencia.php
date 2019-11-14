@@ -30,7 +30,7 @@ class Potencia extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'valor' => 'string',
+        'valor' => 'string'
     ];
 
     /**
@@ -39,6 +39,6 @@ class Potencia extends Model
      * @var array
      */
     public static $rules = [
-        'valor' => 'required',
+        'valor' => 'required|unique:potencias,valor',
     ];
 }
