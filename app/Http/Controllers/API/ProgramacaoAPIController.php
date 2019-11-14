@@ -128,6 +128,21 @@ class ProgramacaoAPIController extends AppBaseController
     }
 
     /**
+     * Método pra persistir fotos no Cloudinary e associar referência no banco.
+     *
+     * @param int $idProgramacao
+     * @param int $idItem
+     * @param Request $request
+     * @return Response
+     */
+    public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
+    {
+        dd($request->fotos);
+        //TO-DO - PERSISTIR FOTOS NO CLOUDINARY E ASSOCIAR REFERÊNCIA NO BANCO
+        return $this->sendResponse($idItem, 'Fotos do item salva com sucesso');
+    }
+
+    /**
      * Sincronização da programação e quantidades inseridas pelos técnicos.
      *
      * @param int $id
