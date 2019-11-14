@@ -26,6 +26,7 @@ class UpdateItemRequest extends FormRequest
     {
         $rules = Item::$rules;
         $rules['qrcode'] .= ','.$this->route('iten');
+
         return $rules;
     }
 }
