@@ -126,4 +126,19 @@ class ProgramacaoAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Programação excluída com sucesso');
     }
+
+    /**
+     * Sincronização da programação e quantidades inseridas pelos técnicos.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function syncProgramacoes($id, Request $request)
+    {
+        $input = $request->all();
+        $programacao = $this->programacaoRepository->find($id);
+        $this->programacaoRepository->sincronizaProgramação($programacao, $input);
+
+        return $this->sendResponse($programacao->toArray(), 'Programação sincronizada com sucesso');
+    }
 }

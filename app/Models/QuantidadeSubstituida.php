@@ -54,7 +54,7 @@ class QuantidadeSubstituida extends Model
         'item_id' => 'required|exists:itens,id',
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
-        'quantidade_substituida' => 'required|integer|min:1',
+        'quantidade_substituida' => 'required|integer',
     ];
 
     /**
