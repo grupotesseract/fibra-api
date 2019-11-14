@@ -39,4 +39,42 @@ class ProgramacaoRepository extends BaseRepository
     {
         return Programacao::class;
     }
+
+    /**
+     * Método responsável por persistir informações ao banco.
+     */
+    public function sincronizaProgramação($programacao, $input)
+    {
+        //LIBERAÇÕES DE DOCUMENTOS
+        foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
+            $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
+                [
+                    'data_hora' => $inputLiberacaoDocumento['data_hora'],
+                ]
+            );
+
+            //SYNC DOS COLABORADORES ASSOCIADOS A LIBERAÇÃO DO DOCUMENTO
+            $liberacaoDocumento->usuarios()->sync($inputLiberacaoDocumento['usuarios']);
+        }
+
+        //ENTRADAS DE MATERIAIS
+        $programacao->entradasMateriais()->createMany($input['entradas']);
+
+        //QUANTIDADES SUBSTITUIDAS
+        $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
+
+        //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
+        //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
+        foreach ($input['estoques'] as $key => $estoque) {
+            $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
+            $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
+
+            //ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
+            $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
+            $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
+        }
+
+        //PERSISTINDO ESTOQUE CALCULADO
+        $programacao->estoques()->createMany($input['estoques']);
+    }
 }

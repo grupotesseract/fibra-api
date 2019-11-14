@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             $this->call(CidadesSQLSeeder::class);
             $this->call(LaratrustSeeder::class);
             $this->call(AdminUserSeeder::class);
+            $this->call(TecnicoUserSeeder::class);
             $this->call(PotenciasTableSeeder::class);
             $this->call(TensoesTableSeeder::class);
             $this->call(TiposMateriaisTableSeeder::class);

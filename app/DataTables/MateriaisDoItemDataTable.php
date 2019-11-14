@@ -25,7 +25,7 @@ class MateriaisDoItemDataTable extends DataTable
         return $dataTable->addColumn('quantidade', function ($row) use ($itemID) {
             return $row->items()->find($itemID)->pivot->quantidade_instalada;
         })->addColumn('action', function ($row) use ($itemID) {
-            return view('itens.partials.form_remove_material')->with([
+            return view('itens.partials.acoes-datatable-materiais')->with([
                 'material_id' => $row->id,
                 'item_id' => $itemID,
             ])->render();
