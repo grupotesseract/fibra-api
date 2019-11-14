@@ -18,22 +18,6 @@ class AdminUserSeeder extends Seeder
             'nome' => 'Admin Tesseract',
             'cidade_id' => Cidade::where('nome', 'Bauru')->first()->id,
         ]);
-        $userAdmin->attachRole(\App\Models\Role::ROLE_ADMIN);
-
-        $userAdmin = factory(\App\Models\Usuario::class)->create([
-            'email' => env('ADMIN_EMAIL', 'fvlimafernandes@grupotesseract.com.br'),
-            'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
-            'nome' => 'Tecnico Tesseract Fernando',
-            'cidade_id' => Cidade::where('nome', 'Bauru')->first()->id,
-        ]);
-        $userAdmin->attachRole(\App\Models\Role::ROLE_TECNICO);
-
-        $userAdmin = factory(\App\Models\Usuario::class)->create([
-            'email' => env('ADMIN_EMAIL', 'evandro.carreira@grupotesseract.com.br'),
-            'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
-            'nome' => 'Tecnico Tesseract Evandro',
-            'cidade_id' => Cidade::where('nome', 'Bauru')->first()->id,
-        ]);
-        $userAdmin->attachRole(\App\Models\Role::ROLE_TECNICO);
+        $userAdmin->attachRole(\App\Models\Role::ROLE_ADMIN);        
     }
 }
