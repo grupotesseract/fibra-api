@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')
         ->name('itens.associarMaterial');
     Route::delete('itens/{id_item}/materiais/{id_material}', 'ItemController@postDesassociarMaterial')->name('itens.desassociarMaterial');
+    Route::get('itens/{id_item}/materiais/{id_material}/edit', 'ItemController@getEditarQuantidadeMaterial')->name('itens.materiais.edit');
+    Route::put('itens/{id_item}/materiais/{id_material}/edit', 'ItemController@putEditarQuantidadeMaterial')->name('itens.materiais.update');
 
     Route::resource('programacoes', 'ProgramacaoController');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')
