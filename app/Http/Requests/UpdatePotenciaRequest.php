@@ -24,6 +24,8 @@ class UpdatePotenciaRequest extends FormRequest
      */
     public function rules()
     {
-        return Potencia::$rules;
+        $rules = Potencia::$rules;
+        $rules['valor'] .= ','.$this->route('potencia');
+        return $rules;
     }
 }

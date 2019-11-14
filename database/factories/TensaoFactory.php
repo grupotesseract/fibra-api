@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Tensao::class, function (Faker $faker) {
     return [
-        'valor' => $faker->numberBetween($min = 50, $max = 100),
+        'valor' => $faker->unique()->numberBetween($min = 50, $max = 100),
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
