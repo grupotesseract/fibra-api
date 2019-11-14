@@ -83,7 +83,7 @@ class MaterialDataTable extends DataTable
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-            ],            
+            ],
             'potenciaValor' => [
                 'data' => 'potenciaValor',
                 'title' => 'Potência',
