@@ -142,7 +142,6 @@ class ProgramacaoAPIController extends AppBaseController
         return $this->sendResponse($idItem, 'Fotos do item salva com sucesso');
     }
 
-    
     /**
      * Sincronização da programação e quantidades inseridas pelos técnicos.
      *
