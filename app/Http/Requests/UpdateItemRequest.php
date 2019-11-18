@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Item;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateItemRequest extends FormRequest
 {
@@ -25,7 +26,10 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         $rules = Item::$rules;
-        $rules['qrcode'] .= ','.$this->route('iten');
+        $rules['qrcode'] = [
+            'required',
+            Rule::unique('itens')->ignore($this->route('iten'))->whereNull('deleted_at'),
+        ];
 
         return $rules;
     }
