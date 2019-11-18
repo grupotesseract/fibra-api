@@ -50,7 +50,7 @@ class Item extends Model
      */
     public static $rules = [
         'nome' => 'required',
-        'qrcode' => 'required|unique:itens,qrcode',
+        'qrcode' => 'required|unique:itens,qrcode,NULL,id,deleted_at,NULL',
         'circuito' => 'required',
         'planta_id' => 'required',
     ];
