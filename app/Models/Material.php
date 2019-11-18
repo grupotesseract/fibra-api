@@ -202,7 +202,7 @@ class Material extends Model
     public function getBaseNomeAttribute()
     {
         if ($this->base()->exists()) {
-            return $this->base->nome;
+            return $this->base->nomePotenciaTensao;
         }
     }
 
@@ -214,7 +214,7 @@ class Material extends Model
     public function getReatorNomeAttribute()
     {
         if ($this->reator()->exists()) {
-            return $this->reator->nome;
+            return $this->reator->nomePotenciaTensao;
         }
     }
 
