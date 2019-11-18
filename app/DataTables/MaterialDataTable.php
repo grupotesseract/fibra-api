@@ -69,7 +69,14 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
+            'id',
+            'nome' => [
+                'data' => 'nome',
+                'title' => 'Nome',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'tipoMaterialTipo' => [
                 'data' => 'tipoMaterialTipo',
                 'title' => 'Tipo',
