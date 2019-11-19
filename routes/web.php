@@ -66,5 +66,5 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('estoque', 'EstoqueController');
     Route::resource('quantidadesSubstituidas', 'QuantidadeSubstituidaController');
 
-    Route::get('export/itens/{planta_id}', 'ItemController@export');
+    Route::get('export/planta/{planta_id}/programacao/{programacao_id}', 'ItemController@export');
 });

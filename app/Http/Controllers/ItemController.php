@@ -283,8 +283,8 @@ class ItemController extends AppBaseController
         return redirect(route('itens.show', $idItem));
     }
 
-    public function export($planta_id) 
+    public function export($planta_id, $programacao_id) 
     {                
-        return Excel::download(new ItensExport($planta_id), 'itens.xlsx'); 
+        return Excel::download(new ItensExport($planta_id, $programacao_id), 'itens.xlsx'); 
     }
 }
