@@ -16,6 +16,8 @@ use App\Repositories\ItemRepository;
 use Flash;
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
+use App\Exports\ItensExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ItemController extends AppBaseController
 {
@@ -279,5 +281,10 @@ class ItemController extends AppBaseController
         Flash::success('Quantidade instalada atualizada.');
 
         return redirect(route('itens.show', $idItem));
+    }
+
+    public function export($planta_id) 
+    {                
+        return (new ItensExport($planta_id))->download('itens.xlsx');        
     }
 }
