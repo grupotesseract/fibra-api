@@ -3,20 +3,26 @@
 namespace App\Exports;
 
 use App\Models\Item;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\Exportable;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class ItensExport implements FromQuery
+class ItensExport implements FromView
 {
-    use Exportable;
 
     public function __construct(int $planta_id)
     {
         $this->planta_id = $planta_id;
-    }    
+    }       
     
-    public function query()
+
+    public function view(): View
     {
-        return Item::query()->where('planta_id', $this->planta_id);
+        return view('itens.export', 
+            [
+                'itens' => Item::with('materiais')->where('planta_id', $this->planta_id)->get()
+            ]
+        );
+
+
     }
 }

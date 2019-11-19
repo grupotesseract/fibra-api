@@ -285,6 +285,6 @@ class ItemController extends AppBaseController
 
     public function export($planta_id) 
     {                
-        return (new ItensExport($planta_id))->download('itens.xlsx');        
+        return Excel::download(new ItensExport($planta_id), 'itens.xlsx'); 
     }
 }
