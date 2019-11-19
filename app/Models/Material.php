@@ -225,7 +225,7 @@ class Material extends Model
      */
     public function getNomePotenciaTensaoAttribute()
     {
-        $nome = ! is_null($this->nome) ? $this->nome : $this->tipoMaterialNome;
+        $nome = ! is_null($this->nome) ? $this->nome : "$this->tipoMaterialTipo - $this->tipoMaterialNome";
         $potencia = ! is_null($this->potenciaValor) ? "- $this->potenciaValor W" : '';
         $tensao = ! is_null($this->tensaoValor) ? "- $this->tensaoValor V" : '';
         $base = ! is_null($this->baseNome) ? "- Base $this->baseNome" : '';
