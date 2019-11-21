@@ -8,6 +8,8 @@ use App\DataTables\LiberacaoDocumentoDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Exports\ProgramacaoExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
@@ -331,5 +333,18 @@ class ProgramacaoController extends AppBaseController
         $result = $this->qntSubstituidaRepository->create($request->all());
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
+    public function export($programacao_id) 
+    {                
+        $programacao = $this->programacaoRepository->find($programacao_id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return Excel::download(new ProgramacaoExport($programacao), 'itens.xlsx');
     }
 }

@@ -16,8 +16,6 @@ use App\Repositories\ItemRepository;
 use Flash;
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
-use App\Exports\ItensExport;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ItemController extends AppBaseController
 {
@@ -282,9 +280,5 @@ class ItemController extends AppBaseController
 
         return redirect(route('itens.show', $idItem));
     }
-
-    public function export($planta_id, $programacao_id) 
-    {                
-        return Excel::download(new ItensExport($planta_id, $programacao_id), 'itens.xlsx'); 
-    }
+    
 }
