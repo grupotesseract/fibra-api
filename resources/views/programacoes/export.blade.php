@@ -9,7 +9,9 @@
         <th><strong>Tensão</strong></th>
         <th><strong>E27 / E/40</strong></th>
         <th><strong>Reator/Tipo</strong></th>
-        <th><strong>Lampada</strong></th>        
+        <th><strong>Lâmpada</strong></th>        
+        <th><strong>Reator</strong></th>        
+        <th><strong>Base</strong></th>        
     </tr>
     </thead>
     <tbody>
@@ -42,6 +44,23 @@
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
                 $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
+                
+                
+                if(!is_null($material->reator)) {
+                    $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->reator->id)->get()->first();                    
+                    $qtdeSubstReator = !is_null($querySubstReator) && !empty($querySubstReator) ? $querySubstReator->quantidade_substituida : '';
+                }
+                else {
+                    $querySubstReator = '';
+                }
+                
+                if(!is_null($material->base)) {
+                    $querySubstBase = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->base->id)->get()->first();                    
+                    $qtdeSubstBase = !is_null($querySubstBase) && !empty($querySubstBase) ? $querySubstBase->quantidade_substituida : '';
+                }
+                else {
+                    $qtdeSubstBase = '';
+                }
             !!}            
         
             <tr>
@@ -54,6 +73,8 @@
                 <td>{{ !is_null($material->base) ? $material->base->nome : '' }}</td>                
                 <td>{{ !is_null($material->reator) ? $material->reator->nome : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
+                <td>{{ $querySubstReator }} </td>      
+                <td>{{ $qtdeSubstBase }} </td>      
 
             </tr>  
         @endforeach        
