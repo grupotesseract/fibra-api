@@ -30,6 +30,7 @@ class Material extends Model
         'tipo_material_id',
         'base_id',
         'reator_id',
+        'tipo_reator_qtde'
     ];
 
     public $appends = [
