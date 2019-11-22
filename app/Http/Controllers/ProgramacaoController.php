@@ -335,9 +335,15 @@ class ProgramacaoController extends AppBaseController
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
     }
 
-    public function export($programacao_id) 
+    /**
+     * Metodo para gerar Excel de uma Programação
+     *
+     * @param [type] $id
+     * @return Excel
+     */
+    public function export($id) 
     {                
-        $programacao = $this->programacaoRepository->find($programacao_id);
+        $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');

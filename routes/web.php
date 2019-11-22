@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.quantidadesSubstituidas');
     Route::post('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@postQuantidadesSubstituidas')
         ->name('programacoes.addQuantidadesSubstituidas');
+    Route::get('programacoes/{id}/export', 'ProgramacaoController@export')
+        ->name('programacoes.export');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
@@ -66,5 +68,4 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('estoque', 'EstoqueController');
     Route::resource('quantidadesSubstituidas', 'QuantidadeSubstituidaController');
 
-    Route::get('export/programacao/{programacao_id}', 'ProgramacaoController@export');
 });

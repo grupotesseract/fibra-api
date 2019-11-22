@@ -38,8 +38,49 @@
     
     
     @foreach($itens as $item)
+        {!! 
+            $materiais = $item->materiais;
+            $primeiroMaterial = $materiais[0];
+            $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->id)->get()->first();                    
+            $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
+            
+            
+            if(!is_null($primeiroMaterial->reator)) {
+                $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->reator->id)->get()->first();                    
+                $qtdeSubstReator = !is_null($querySubstReator) && !empty($querySubstReator) ? $querySubstReator->quantidade_substituida : '';
+            }
+            else {
+                $querySubstReator = '';
+            }
+            
+            if(!is_null($primeiroMaterial->base)) {
+                $querySubstBase = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->base->id)->get()->first();                    
+                $qtdeSubstBase = !is_null($querySubstBase) && !empty($querySubstBase) ? $querySubstBase->quantidade_substituida : '';
+            }
+            else {
+                $qtdeSubstBase = '';
+            }
+
+            $materiais->pull(0);
+        !!}
         
-        @foreach ($item->materiais as $material)
+        <tr>                
+            <th rowspan="{{ $item->materiais->count() }}">{{ $item->nome }}</th>
+            <th rowspan="{{ $item->materiais->count() }}">{{ $item->circuito }}</th>
+            <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
+            <td>{{ !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial->tensao) ? $primeiroMaterial->tensao->valor : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial->base) ? $primeiroMaterial->base->nome : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->nome : '' }}</td>  
+            <td>{{ $qtdeSubstLampada }} </td>      
+            <td>{{ $querySubstReator }} </td>      
+            <td>{{ $qtdeSubstBase }} </td> 
+        </tr>
+
+
+        
+        @foreach ($materiais as $material)
             
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
@@ -63,9 +104,7 @@
                 }
             !!}            
         
-            <tr>
-                <td>{{ $loop->first ? $item->nome : '' }}</td>
-                <td>{{ $loop->first ? $item->circuito : '' }}</td>
+            <tr>                
                 <td>{{ $material->pivot->quantidade_instalada }}</td>                
                 <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->abreviacao : '' }}</td>                
                 <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
