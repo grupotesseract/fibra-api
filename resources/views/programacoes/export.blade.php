@@ -65,8 +65,8 @@
         !!}
         
         <tr>                
-            <th rowspan="{{ $item->materiais->count() }}">{{ $item->nome }}</th>
-            <th rowspan="{{ $item->materiais->count() }}">{{ $item->circuito }}</th>
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
             <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
             <td>{{ !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
             <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
