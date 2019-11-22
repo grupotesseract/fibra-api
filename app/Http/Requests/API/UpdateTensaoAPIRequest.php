@@ -24,6 +24,8 @@ class UpdateTensaoAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Tensao::$rules;
+        $rules = Tensao::$rules;        
+        $rules['valor'] .= ','.$this->route('tenso');
+        return $rules;
     }
 }
