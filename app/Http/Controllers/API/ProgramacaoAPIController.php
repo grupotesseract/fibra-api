@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
+use Response;
+use App\Models\Programacao;
+use Illuminate\Http\Request;
+use App\Repositories\FotoRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateProgramacaoAPIRequest;
 use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
-use App\Models\Programacao;
-use App\Repositories\ProgramacaoRepository;
-use Illuminate\Http\Request;
-use Response;
 
 /**
  * Class ProgramacaoController.
@@ -17,10 +18,12 @@ class ProgramacaoAPIController extends AppBaseController
 {
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
+    private $fotoRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, FotoRepository $fotoRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->fotoRepository = $fotoRepo;
     }
 
     /**
@@ -128,18 +131,17 @@ class ProgramacaoAPIController extends AppBaseController
     }
 
     /**
-     * Método pra persistir fotos no Cloudinary e associar referência no banco.
+     * Método para salvar as fotos de uma programacao
      *
      * @param int $idProgramacao
      * @param int $idItem
      * @param Request $request
-     * @return Response
+     * @return Response - Fotos criadas
      */
     public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
     {
-        dd($request->fotos);
-        //TO-DO - PERSISTIR FOTOS NO CLOUDINARY E ASSOCIAR REFERÊNCIA NO BANCO
-        return $this->sendResponse($idItem, 'Fotos do item salva com sucesso');
+        $fotos = $this->fotoRepository->sincronizarFotos($idProgramacao, $idItem, $request);
+        return $this->sendResponse($fotos, 'Fotos do item salva com sucesso');
     }
 
     /**
