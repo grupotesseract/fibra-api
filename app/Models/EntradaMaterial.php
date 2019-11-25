@@ -49,7 +49,7 @@ class EntradaMaterial extends Model
     public static $rules = [
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
-        'quantidade' => 'required|integer|min:1',
+        'quantidade' => 'required|integer',
     ];
 
     /**

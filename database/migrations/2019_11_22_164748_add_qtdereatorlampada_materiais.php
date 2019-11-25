@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveUniqueQrcodeItens extends Migration
+class AddQtdereatorlampadaMateriais extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class RemoveUniqueQrcodeItens extends Migration
      */
     public function up()
     {
-        Schema::table('itens', function (Blueprint $table) {
-            $table->dropUnique(['qrcode']);
+        Schema::table('materiais', function (Blueprint $table) {
+            $table->integer('tipo_reator_qtde')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class RemoveUniqueQrcodeItens extends Migration
      */
     public function down()
     {
-        Schema::table('itens', function (Blueprint $table) {
-            //
+        Schema::table('materiais', function (Blueprint $table) {
+            $table->dropColumn('tipo_reator_qtde');
         });
     }
 }
