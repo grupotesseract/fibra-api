@@ -343,7 +343,7 @@ class ProgramacaoController extends AppBaseController
      */
     public function export($id) 
     {                
-        $programacao = $this->programacaoRepository->find($id);
+        $programacao = $this->programacaoRepository->find($id);        
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');
@@ -351,6 +351,9 @@ class ProgramacaoController extends AppBaseController
             return redirect(route('programacoes.index'));
         }
 
-        return Excel::download(new ProgramacaoExport($programacao), 'itens.xlsx');
+        $nomePlanta = $programacao->planta->nome;
+        $exportNomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
+
+        return Excel::download(new ProgramacaoExport($programacao), $exportNomeArquivo);
     }
 }

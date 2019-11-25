@@ -7,7 +7,7 @@
         <th><strong>Tipo</strong></th>
         <th><strong>Pot.(W)</strong></th>
         <th><strong>Tensão</strong></th>
-        <th><strong>E27 / E/40</strong></th>
+        <th><strong>Base/Tipo</strong></th>
         <th><strong>Reator/Tipo</strong></th>
         <th><strong>Lâmpada</strong></th>        
         <th><strong>Reator</strong></th>        
@@ -32,7 +32,7 @@
                         'materiais.potencia',
                         'materiais.tensao',
                     ]
-                )->get();
+                )->orderBy('qrcode')->get();
 
     !!}
     

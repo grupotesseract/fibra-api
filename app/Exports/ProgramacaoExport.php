@@ -2,26 +2,31 @@
 
 namespace App\Exports;
 
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class ProgramacaoExport implements FromView
+class ProgramacaoExport implements WithMultipleSheets
 {
+    use Exportable;
+    
+    protected $programacao;
 
+    /**
+     * COnstructor recebendo objeto de Programação
+     *
+     * @param Programacao $programacao Objeto de programação
+     */
     public function __construct($programacao)
     {
         $this->programacao = $programacao;
-    }       
-    
+    } 
 
-    public function view(): View
+    /**
+     * @return array
+     */
+    public function sheets(): array
     {
-        return view('programacoes.export', 
-            [                
-                'programacao' => $this->programacao
-            ]
-        );
-
-
+        $sheets[] = new QtdesExport($this->programacao);
+        return $sheets;
     }
 }
