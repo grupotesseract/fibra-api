@@ -27,6 +27,7 @@ class ProgramacaoExport implements WithMultipleSheets
     public function sheets(): array
     {
         $sheets[] = new QtdesExport($this->programacao);
+        $sheets[] = new QtdeResumidaMateriaisExport($this->programacao);
         return $sheets;
     }
 }
