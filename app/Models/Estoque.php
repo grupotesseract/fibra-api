@@ -52,8 +52,8 @@ class Estoque extends Model
     public static $rules = [
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
-        'quantidade_inicial' => 'required|integer|min:1',
-        'quantidade_final' => 'nullable|integer|min:0',
+        'quantidade_inicial' => 'required|integer',
+        'quantidade_final' => 'nullable|integer',
     ];
 
     /**

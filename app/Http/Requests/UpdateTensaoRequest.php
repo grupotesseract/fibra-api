@@ -24,8 +24,9 @@ class UpdateTensaoRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Tensao::$rules;        
+        $rules = Tensao::$rules;
         $rules['valor'] .= ','.$this->route('tenso');
+
         return $rules;
     }
 }

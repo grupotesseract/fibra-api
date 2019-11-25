@@ -24,6 +24,9 @@ class UpdatePotenciaAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Potencia::$rules;
+        $rules = Potencia::$rules;
+        $rules['valor'] .= ','.$this->route('potencia');
+
+        return $rules;
     }
 }
