@@ -51,6 +51,7 @@
 
 
         !!}
+        
         <tr>                
             <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : '' }}</td>                
             <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
