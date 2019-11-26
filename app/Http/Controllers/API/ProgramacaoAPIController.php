@@ -6,6 +6,7 @@ use Response;
 use App\Models\Programacao;
 use Illuminate\Http\Request;
 use App\Repositories\FotoRepository;
+use App\Repositories\ItemRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateProgramacaoAPIRequest;
@@ -19,10 +20,12 @@ class ProgramacaoAPIController extends AppBaseController
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
     private $fotoRepository;
+    private $itemRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo, FotoRepository $fotoRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, ItemRepository $itemRepo, FotoRepository $fotoRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->itemRepository = $itemRepo;
         $this->fotoRepository = $fotoRepo;
     }
 
@@ -140,6 +143,17 @@ class ProgramacaoAPIController extends AppBaseController
      */
     public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
     {
+
+        $programacao = $this->programacaoRepository->find($idProgramacao);
+        if (empty($programacao)) {
+            return $this->sendError('Programação não encontrada');
+        }
+
+        $item = $this->itemRepository->find($idItem);
+        if (empty($item)) {
+            return $this->sendError('Item não encontrado');
+        }
+
         $fotos = $this->fotoRepository->sincronizarFotos($idProgramacao, $idItem, $request);
         return $this->sendResponse($fotos, 'Fotos do item salva com sucesso');
     }

@@ -84,6 +84,7 @@ class Foto extends Model
     /**
      * getURLCloudinaryAttribute
      *
+     * @return string
      */
     public function getURLCloudinaryAttribute()
     {
@@ -91,5 +92,15 @@ class Foto extends Model
             .env('CLOUDINARY_CLOUD_NAME')
             .'/image/upload/f_auto,q_auto/'
             ."$this->cloudinary_id";
+    }
+
+    /**
+     * Path de pastas no Cloudinary
+     *
+     * @return string
+     */
+    public function getPathCloudinaryAttribute()
+    {
+        return "PROGRAMAÇÃO_$this->programacao_id/ITEM_$this->item_id/";
     }
 }

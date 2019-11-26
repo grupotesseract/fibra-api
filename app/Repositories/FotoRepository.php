@@ -133,6 +133,7 @@ class FotoRepository extends BaseRepository
 
         if ($foto && \File::exists($foto->pathCompleto)) {
             \File::delete($foto->pathCompleto);
+            $foto->update(['path' => null]);
         }
     }
 
