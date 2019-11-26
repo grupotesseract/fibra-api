@@ -6,16 +6,15 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Foto
- * @package App\Models
+ * Class Foto.
  * @version November 22, 2019, 7:52 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
  * @property string cloudinary_id
  * @property string path
- * @property integer programacao_id
- * @property integer item_id
+ * @property int programacao_id
+ * @property int item_id
  */
 class Foto extends Model
 {
@@ -29,7 +28,7 @@ class Foto extends Model
         'cloudinary_id',
         'path',
         'programacao_id',
-        'item_id'
+        'item_id',
     ];
 
     /**
@@ -42,17 +41,17 @@ class Foto extends Model
         'cloudinary_id' => 'string',
         'path' => 'string',
         'programacao_id' => 'integer',
-        'item_id' => 'integer'
+        'item_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'programacao_id' => 'required',
-        'item_id' => 'required'
+        'item_id' => 'required',
     ];
 
     /**
@@ -72,15 +71,15 @@ class Foto extends Model
     }
 
     /**
-     * Acessor para o path completo da foto no filesystem
+     * Acessor para o path completo da foto no filesystem.
      */
-     public function getPathCompletoAttribute()
-     {
-        return storage_path()."/app/".$this->path;
-     }
+    public function getPathCompletoAttribute()
+    {
+        return storage_path().'/app/'.$this->path;
+    }
 
     /**
-     * getURLCloudinaryAttribute
+     * getURLCloudinaryAttribute.
      *
      * @return string
      */
@@ -93,7 +92,7 @@ class Foto extends Model
     }
 
     /**
-     * Path de pastas no Cloudinary
+     * Path de pastas no Cloudinary.
      *
      * @return string
      */
