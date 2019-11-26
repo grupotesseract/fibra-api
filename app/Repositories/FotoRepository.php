@@ -109,20 +109,6 @@ class FotoRepository extends BaseRepository
     }
 
     /**
-     * Override BaseRepository@delete - para remover também do cloudinary
-     *
-     * @param $id
-     * @return int
-     */
-    public function delete($id)
-    {
-        $this->deleteCloudinary($id);
-        $this->deleteLocal($id);
-
-        return parent::delete($id);
-    }
-
-    /**
      * Deleta o arquivo do filesystem
      *
      * @param mixed $id
@@ -135,6 +121,20 @@ class FotoRepository extends BaseRepository
             \File::delete($foto->pathCompleto);
             $foto->update(['path' => null]);
         }
+    }
+
+    /**
+     * Override BaseRepository@delete - para remover também do cloudinary
+     *
+     * @param $id
+     * @return int
+     */
+    public function delete($id)
+    {
+        $this->deleteCloudinary($id);
+        $this->deleteLocal($id);
+
+        return parent::delete($id);
     }
 
     /**

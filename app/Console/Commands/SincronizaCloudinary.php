@@ -40,9 +40,11 @@ class SincronizaCloudinary extends Command
         $fotoRepository = new \App\Repositories\FotoRepository(app());
         $fotosLocais = $fotoRepository->model()::whereNull('cloudinary_id')->get();
 
-        $fotosLocais->each(function ($Foto) use ($fotoRepository){
-            $enviou = $fotoRepository->enviarCloudinary($Foto, $Foto->id, $Foto->pathCloudinary);
+        \Log::info("[SincronizaCloudinary] Fotos para enviar: ".$fotosLocais->count());
 
+        $fotosLocais->each(function ($Foto) use ($fotoRepository){
+
+            $enviou = $fotoRepository->enviarCloudinary($Foto, $Foto->id, $Foto->pathCloudinary);
             if ($enviou) {
                 $fotoRepository->deleteLocal($Foto->id);
             }
