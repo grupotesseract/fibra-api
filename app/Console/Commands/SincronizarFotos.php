@@ -4,14 +4,14 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class SincronizaCloudinary extends Command
+class SincronizarFotos extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'fibra:sincronizarCloudinary';
+    protected $signature = 'fibra:sincronizarFotos';
 
     /**
      * The console command description.
@@ -40,7 +40,7 @@ class SincronizaCloudinary extends Command
         $fotoRepository = new \App\Repositories\FotoRepository(app());
         $fotosLocais = $fotoRepository->model()::whereNull('cloudinary_id')->get();
 
-        \Log::info("[SincronizaCloudinary] Fotos para enviar: ".$fotosLocais->count());
+        \Log::info("[SincronizaFotos] Fotos para enviar: ".$fotosLocais->count());
 
         $fotosLocais->each(function ($Foto) use ($fotoRepository){
 

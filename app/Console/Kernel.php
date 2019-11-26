@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('fibra:sincronizarCloudinary')
+        $schedule->command('fibra:sincronizarFotos')
                  ->everyFiveMinutes();
     }
 

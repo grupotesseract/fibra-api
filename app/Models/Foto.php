@@ -23,9 +23,7 @@ class Foto extends Model
 
     public $table = 'fotos';
 
-
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'cloudinary_id',
