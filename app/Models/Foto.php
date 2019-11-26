@@ -22,7 +22,7 @@ class Foto extends Model
     use SoftDeletes;
 
     public $table = 'fotos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -71,5 +71,25 @@ class Foto extends Model
     public function item()
     {
         return $this->belongsTo(\App\Models\Item::class, 'item_id');
+    }
+
+    /**
+     * Acessor para o path completo da foto no filesystem
+     */
+     public function getPathCompletoAttribute()
+     {
+        return storage_path()."/app/".$this->path;
+     }
+
+    /**
+     * getURLCloudinaryAttribute
+     *
+     */
+    public function getURLCloudinaryAttribute()
+    {
+        return 'https://res.cloudinary.com/'
+            .env('CLOUDINARY_CLOUD_NAME')
+            .'/image/upload/f_auto,q_auto/'
+            ."$this->cloudinary_id";
     }
 }

@@ -131,7 +131,7 @@ class ProgramacaoAPIController extends AppBaseController
     }
 
     /**
-     * Método para salvar as fotos de uma programacao
+     * Sincronização das fotos de um item de uma programação
      *
      * @param int $idProgramacao
      * @param int $idItem
