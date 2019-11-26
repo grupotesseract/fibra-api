@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use App\Models\Programacao;
-use Illuminate\Http\Request;
-use App\Repositories\FotoRepository;
-use App\Repositories\ItemRepository;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\ProgramacaoRepository;
 use App\Http\Requests\API\CreateProgramacaoAPIRequest;
 use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
+use App\Models\Programacao;
+use App\Repositories\FotoRepository;
+use App\Repositories\ItemRepository;
+use App\Repositories\ProgramacaoRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class ProgramacaoController.
@@ -134,7 +134,7 @@ class ProgramacaoAPIController extends AppBaseController
     }
 
     /**
-     * Sincronização das fotos de um item de uma programação
+     * Sincronização das fotos de um item de uma programação.
      *
      * @param int $idProgramacao
      * @param int $idItem
@@ -143,7 +143,6 @@ class ProgramacaoAPIController extends AppBaseController
      */
     public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
     {
-
         $programacao = $this->programacaoRepository->find($idProgramacao);
         if (empty($programacao)) {
             return $this->sendError('Programação não encontrada');
@@ -155,6 +154,7 @@ class ProgramacaoAPIController extends AppBaseController
         }
 
         $fotos = $this->fotoRepository->sincronizarFotos($idProgramacao, $idItem, $request);
+
         return $this->sendResponse($fotos, 'Fotos do item salva com sucesso');
     }
 

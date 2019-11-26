@@ -24,7 +24,7 @@ return [
         'width'  => 150,
         'height' => 150,
         'crop'   => 'fit',
-        'effect' => null
+        'effect' => null,
     ],
 
 ];
