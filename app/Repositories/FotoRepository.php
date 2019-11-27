@@ -6,11 +6,9 @@ use App\Models\Foto;
 use App\Repositories\BaseRepository;
 
 /**
- * Class FotoRepository
- * @package App\Repositories
+ * Class FotoRepository.
  * @version November 22, 2019, 7:54 pm -03
-*/
-
+ */
 class FotoRepository extends BaseRepository
 {
     /**
@@ -18,11 +16,11 @@ class FotoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'programacao_id',
-        'item_id'
+        'item_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -32,7 +30,7 @@ class FotoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
@@ -40,28 +38,30 @@ class FotoRepository extends BaseRepository
     }
 
     /**
-     * Salva um arquivo localmente
+     * Salva um arquivo localmente.
      *
      * @return string - path do arquivo
      */
     public function armazenaLocal($foto)
     {
         $pathStorage = '/fotos';
+
         return \Storage::put($pathStorage, $foto);
     }
 
     /**
-     * Salve o arquivo localmente e retorna um model Foto
+     * Salve o arquivo localmente e retorna um model Foto.
      *
      * @return App\Models\Foto
      */
     public function createArmazenandoLocal($arquivoUploaded, $idProgramacao, $idItem)
     {
         $arquivoLocal = $this->armazenaLocal($arquivoUploaded);
+
         return $this->create([
             'path' => $arquivoLocal,
             'programacao_id' => $idProgramacao,
-            'item_id' => $idItem
+            'item_id' => $idItem,
         ]);
     }
 
@@ -72,7 +72,7 @@ class FotoRepository extends BaseRepository
      * @param string $publicId - public id desejado para a foto
      * @param string $pasta - pasta do cloudinary caso esteja usando alguma
      */
-    public function enviarCloudinary($foto, $publicId, $pasta=null)
+    public function enviarCloudinary($foto, $publicId, $pasta = null)
     {
         $pasta = $pasta ? ['folder' => $pasta] : [];
 
@@ -82,23 +82,23 @@ class FotoRepository extends BaseRepository
 
             if ($retornoCloudinary) {
                 $idCloudinary = $pasta ? $pasta['folder'].$publicId : $publicId;
+
                 return  $foto->update([
                     'cloudinary_id' => $idCloudinary,
                 ]);
             }
 
             return false;
-
         } else {
             return false;
         }
     }
 
     /**
-     * Remove a imagem do Cloudinary
+     * Remove a imagem do Cloudinary.
      *
      * @param $fotoID
-     * @return boolean
+     * @return bool
      */
     public function deleteCloudinary($idFoto)
     {
@@ -109,7 +109,7 @@ class FotoRepository extends BaseRepository
     }
 
     /**
-     * Deleta o arquivo do filesystem
+     * Deleta o arquivo do filesystem.
      *
      * @param mixed $id
      */
@@ -124,7 +124,7 @@ class FotoRepository extends BaseRepository
     }
 
     /**
-     * Override BaseRepository@delete - para remover também do cloudinary
+     * Override BaseRepository@delete - para remover também do cloudinary.
      *
      * @param $id
      * @return int
