@@ -19,5 +19,4 @@ class Role extends LaratrustRole
     {
         return self::pluck('display_name', 'id')->all();
     }
-
 }

@@ -60,7 +60,7 @@ class UsuarioRepository extends BaseRepository
     }
 
     /**
-     * Faz o update do usuário e entao associa ao Role
+     * Faz o update do usuário e entao associa ao Role.
      *
      * @return App\Models\Usuario
      */
