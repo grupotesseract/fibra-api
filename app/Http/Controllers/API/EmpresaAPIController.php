@@ -6,8 +6,10 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateEmpresaAPIRequest;
 use App\Http\Requests\API\UpdateEmpresaAPIRequest;
 use App\Models\Empresa;
+use App\Models\Usuario;
 use App\Repositories\EmpresaRepository;
 use App\Transformers\EmpresaTransformer;
+use App\Transformers\UsuarioTransformer;
 use Illuminate\Http\Request;
 use Response;
 
@@ -129,6 +131,11 @@ class EmpresaAPIController extends AppBaseController
         return $this->sendResponse($id, 'Empresa excluída com sucesso');
     }
 
+    /**
+     * Método para sincronização de entrada de dados do Mobile
+     *
+     * @return Response
+     */
     public function syncEmpresas()
     {
         $empresas = Empresa::with(
@@ -139,8 +146,16 @@ class EmpresaAPIController extends AppBaseController
             ]
         )->get();
 
-        $empresas = fractal($empresas, new EmpresaTransformer())->toArray();
+        $usuarios = Usuario::all();
 
-        return $this->sendResponse($empresas['data'], 'Empresas sincronizadas com sucesso');
+        $empresas = fractal($empresas, new EmpresaTransformer())->toArray();
+        $usuarios = fractal($usuarios, new UsuarioTransformer())->toArray();
+
+        $retorno = [
+            'usuarios' => $usuarios['data'],
+            'empresas' => $empresas['data']
+        ];
+
+        return $this->sendResponse($retorno, 'Empresas e usuários sincronizados com sucesso');
     }
 }

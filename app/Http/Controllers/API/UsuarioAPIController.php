@@ -135,7 +135,7 @@ class UsuarioAPIController extends AppBaseController
      */
     public function login(Request $request)
     {
-        $usuario = $this->usuarioRepository->findByField('email', $request->email)->first();
+        $usuario = $this->usuarioRepository->findByField('login', $request->email)->first();
 
         if ($usuario) {
             $token = $this->usuarioRepository->login($usuario, $request);

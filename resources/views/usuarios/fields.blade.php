@@ -10,6 +10,12 @@
     {!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Login Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('login', 'Login') !!}
+    {!! Form::text('login', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Senha') !!}

@@ -32,6 +32,7 @@ class Usuario extends Authenticatable
     public $fillable = [
         'nome',
         'email',
+        'login',
         'email_verified_at',
         'password',
         'telefone',
@@ -49,6 +50,7 @@ class Usuario extends Authenticatable
         'id' => 'integer',
         'nome' => 'string',
         'email' => 'string',
+        'login' => 'string',
         'email_verified_at' => 'datetime',
         'password' => 'string',
         'telefone' => 'string',
@@ -63,8 +65,8 @@ class Usuario extends Authenticatable
      * @var array
      */
     public static $rules = [
-        'nome' => 'required',
-        'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
+        'nome' => 'required',        
+        'login' => 'required|unique:usuarios,login,NULL,id,deleted_at,NULL',
         'password' => 'required',
         'cidade_id' => 'required',
     ];
