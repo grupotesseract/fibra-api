@@ -53,7 +53,7 @@ class FotoRepository extends BaseRepository
     /**
      * Salve o arquivo localmente e retorna um model Foto
      *
-     * @return void
+     * @return App\Models\Foto
      */
     public function createArmazenandoLocal($arquivoUploaded, $idProgramacao, $idItem)
     {

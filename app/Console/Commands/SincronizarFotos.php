@@ -43,8 +43,10 @@ class SincronizarFotos extends Command
         \Log::info("[SincronizaFotos] Fotos para enviar: ".$fotosLocais->count());
 
         $fotosLocais->each(function ($Foto) use ($fotoRepository){
+            $ambiente = \App::environment();
+            $pathCloudinary = "$ambiente/$Foto->pathCloudinary";
 
-            $enviou = $fotoRepository->enviarCloudinary($Foto, $Foto->id, $Foto->pathCloudinary);
+            $enviou = $fotoRepository->enviarCloudinary($Foto, $Foto->id, $pathCloudinary);
             if ($enviou) {
                 $fotoRepository->deleteLocal($Foto->id);
             }
