@@ -40,6 +40,11 @@
             'Model' => $usuario
         ])
     </div>
+    <div class="form-group col-sm-6">
+        @include('roles.select', [
+            'Model' => $usuario
+        ])
+    </div>
 
 @else
 
@@ -48,6 +53,9 @@
     </div>
     <div class="form-group col-sm-6">
         @include('cidades.select')
+    </div>
+    <div class="form-group col-sm-6">
+        @include('roles.select')
     </div>
 
 @endif
