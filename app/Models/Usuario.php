@@ -65,7 +65,7 @@ class Usuario extends Authenticatable
      * @var array
      */
     public static $rules = [
-        'nome' => 'required',        
+        'nome' => 'required',
         'login' => 'required|unique:usuarios,login,NULL,id,deleted_at,NULL',
         'password' => 'required',
         'cidade_id' => 'required',

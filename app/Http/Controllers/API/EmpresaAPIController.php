@@ -132,7 +132,7 @@ class EmpresaAPIController extends AppBaseController
     }
 
     /**
-     * Método para sincronização de entrada de dados do Mobile
+     * Método para sincronização de entrada de dados do Mobile.
      *
      * @return Response
      */
@@ -153,7 +153,7 @@ class EmpresaAPIController extends AppBaseController
 
         $retorno = [
             'usuarios' => $usuarios['data'],
-            'empresas' => $empresas['data']
+            'empresas' => $empresas['data'],
         ];
 
         return $this->sendResponse($retorno, 'Empresas e usuários sincronizados com sucesso');
