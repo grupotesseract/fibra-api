@@ -6,6 +6,8 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateProgramacaoAPIRequest;
 use App\Http\Requests\API\UpdateProgramacaoAPIRequest;
 use App\Models\Programacao;
+use App\Repositories\FotoRepository;
+use App\Repositories\ItemRepository;
 use App\Repositories\ProgramacaoRepository;
 use Illuminate\Http\Request;
 use Response;
@@ -17,10 +19,14 @@ class ProgramacaoAPIController extends AppBaseController
 {
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
+    private $fotoRepository;
+    private $itemRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, ItemRepository $itemRepo, FotoRepository $fotoRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->itemRepository = $itemRepo;
+        $this->fotoRepository = $fotoRepo;
     }
 
     /**
@@ -128,18 +134,28 @@ class ProgramacaoAPIController extends AppBaseController
     }
 
     /**
-     * Método pra persistir fotos no Cloudinary e associar referência no banco.
+     * Sincronização das fotos de um item de uma programação.
      *
      * @param int $idProgramacao
      * @param int $idItem
      * @param Request $request
-     * @return Response
+     * @return Response - Fotos criadas
      */
     public function syncProgramacaoItemFotos($idProgramacao, $idItem, Request $request)
     {
-        dd($request->fotos);
-        //TO-DO - PERSISTIR FOTOS NO CLOUDINARY E ASSOCIAR REFERÊNCIA NO BANCO
-        return $this->sendResponse($idItem, 'Fotos do item salva com sucesso');
+        $programacao = $this->programacaoRepository->find($idProgramacao);
+        if (empty($programacao)) {
+            return $this->sendError('Programação não encontrada');
+        }
+
+        $item = $this->itemRepository->find($idItem);
+        if (empty($item)) {
+            return $this->sendError('Item não encontrado');
+        }
+
+        $fotos = $this->fotoRepository->sincronizarFotos($idProgramacao, $idItem, $request);
+
+        return $this->sendResponse($fotos, 'Fotos do item salva com sucesso');
     }
 
     /**
