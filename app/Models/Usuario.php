@@ -77,6 +77,10 @@ class Usuario extends Authenticatable
         'remember_token',
     ];
 
+    public $appends = [
+        'role'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -91,5 +95,15 @@ class Usuario extends Authenticatable
     public function liberacoesDocumentos()
     {
         return $this->belongsToMany(\App\Models\LiberacaoDocumento::class, 'usuarios_liberacoes', 'usuario_id', 'liberacao_documento_id');
+    }
+
+    /**
+     * Acessor para a informação de tipo do Tipo de Material.
+     *
+     * @return int
+     */
+    public function getRoleAttribute()
+    {
+        return $this->roles->first()->name;
     }
 }
