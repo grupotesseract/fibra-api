@@ -83,7 +83,27 @@ class MateriaisDoItemDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
+            'nome' => [
+                'data' => 'nome',
+                'title' => 'Nome',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'abreviacao' => [
+                'data' => 'abreviacao',
+                'title' => 'Abreviação',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipo_reator_qtde' => [
+                'data' => 'tipo_reator_qtde',
+                'title' => 'Qtde. Tipo Reator',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'tipoMaterialTipo' => [
                 'data' => 'tipoMaterialTipo',
                 'title' => 'Tipo',
