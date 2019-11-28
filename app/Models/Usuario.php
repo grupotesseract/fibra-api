@@ -78,7 +78,7 @@ class Usuario extends Authenticatable
     ];
 
     public $appends = [
-        'role'
+        'role',
     ];
 
     /**
