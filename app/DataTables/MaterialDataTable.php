@@ -33,7 +33,7 @@ class MaterialDataTable extends DataTable
             [
                 'tipoMaterial' => function ($query) {
                     $query->orderBy('tipo')->orderBy('nome');
-                }
+                },
             ]
         )->orderBy('nome');
     }
