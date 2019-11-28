@@ -29,7 +29,7 @@ class ItensDaPlantaDataTable extends DataTable
      */
     public function query(Item $model)
     {
-        return $model->newQuery();
+        return $model->orderBy('nome');
     }
 
     /**

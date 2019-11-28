@@ -63,11 +63,18 @@
         'disabled' => isset($material->tipo_material_id) && !is_null($material->tipo_material_id) ?? false]) !!}
 </div>
 
+<!-- Nome Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('abreviacao', 'Abreviação') !!}
+    {!! Form::text('abreviacao', null, ['class' => 'form-control abreviacaoMaterial', 
+        'disabled' => isset($material->tipo_material_id) && !is_null($material->tipo_material_id) ?? false]) !!}
+</div>
+
 <!-- tipo_reator_qtde Reator Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tipo_reator_qtde', 'Tipo de Reator') !!}
     {!! Form::number('tipo_reator_qtde', null, ['class' => 'form-control tipoReator', 
-        'disabled' => is_null($material->tipo_reator_qtde) ?? true]) !!}
+        'disabled' => isset($material->tipo_reator_qtde) && is_null($material->tipo_reator_qtde) ?? true]) !!}
 </div>
 
 <!-- Submit Field -->
