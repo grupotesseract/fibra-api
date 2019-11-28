@@ -108,6 +108,14 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function fotos()
+    {
+        return $this->hasMany(\App\Models\Foto::class, 'programacao_id');
+    }
+
+    /**
      * Mutator para o campo data_inicio_prevista.
      *
      * @param string $value

@@ -25,6 +25,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('estados.select', '\App\ViewComposers\EstadoComposer');
         View::composer('cidades.select', '\App\ViewComposers\CidadeComposer');
+        View::composer('roles.select', '\App\ViewComposers\RoleComposer');
         View::composer('empresas.select', '\App\ViewComposers\EmpresaComposer');
         View::composer('plantas.select', '\App\ViewComposers\PlantaComposer');
         View::composer('plantas.show_quantidades_minimas', '\App\ViewComposers\MaterialComposer');

@@ -26,7 +26,7 @@ class UpdateUsuarioRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'email' => [
+            'login' => [
                 'required',
                 Rule::unique('usuarios')->ignore($this->route('usuario'))->whereNull('deleted_at'),
             ],
