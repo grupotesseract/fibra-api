@@ -23,6 +23,8 @@ class Material extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $with = ['tipoMaterial', 'base', 'reator', 'potencia', 'tensao'];
+
     public $fillable = [
         'nome',
         'potencia_id',
@@ -31,6 +33,7 @@ class Material extends Model
         'base_id',
         'reator_id',
         'tipo_reator_qtde',
+        'abreviacao',
     ];
 
     public $appends = [
@@ -53,6 +56,7 @@ class Material extends Model
         'nome' => 'string',
         'potencia' => 'string',
         'tensao' => 'string',
+        'abreviacao' => 'string',
         'tipo_material_id' => 'integer',
         'base_id' => 'integer',
         'reator_id' => 'integer',

@@ -40,7 +40,13 @@ class MateriaisDoItemDataTable extends DataTable
      */
     public function query(Material $model)
     {
-        return $model->with('items');
+        return $model->with(
+            [
+                'tipoMaterial' => function ($query) {
+                    $query->orderBy('tipo')->orderBy('nome');
+                }
+            ]
+        )->orderBy('nome');
     }
 
     /**
