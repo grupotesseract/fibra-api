@@ -81,7 +81,7 @@ class Item extends Model
     }
 
     /**
-     * Relacionamento com Fotos
+     * Relacionamento com Fotos.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

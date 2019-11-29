@@ -9,7 +9,6 @@ use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
 use App\Exports\ProgramacaoExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
@@ -20,6 +19,7 @@ use App\Http\Requests\UpdateProgramacaoRequest;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\QuantidadeSubstituidaRepository;
 use Flash;
+use Maatwebsite\Excel\Facades\Excel;
 use Response;
 
 class ProgramacaoController extends AppBaseController
@@ -336,14 +336,14 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Metodo para gerar Excel de uma Programação
+     * Metodo para gerar Excel de uma Programação.
      *
      * @param [type] $id
      * @return Excel
      */
-    public function export($id) 
-    {                
-        $programacao = $this->programacaoRepository->find($id);        
+    public function export($id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
 
         if (empty($programacao)) {
             Flash::error('Programação não encontrada');

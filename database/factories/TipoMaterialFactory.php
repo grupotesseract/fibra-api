@@ -6,6 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(TipoMaterial::class, function (Faker $faker) {
     $tipo = $faker->randomElement(['Lâmpada', 'Reator']);
+
     return [
         'nome' => $faker->word,
         'abreviacao' => $faker->text(5),
