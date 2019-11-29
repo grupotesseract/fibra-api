@@ -58,11 +58,13 @@ class MaterialRepository extends BaseRepository
     public function getArrayNomePotenciaTensaoParaSelect($tipoMaterialTipo = null)
     {
         if (! is_null($tipoMaterialTipo)) {
-            $materiais = $this->model()::whereHas('tipoMaterial', function (Builder $query) use ($tipoMaterialTipo) {
-                $query->where('tipo', $tipoMaterialTipo);
-            })->get()->pluck('nomePotenciaTensao', 'id')->all();
+            $materiais = $this->model()::whereHas(
+                'tipoMaterial', function (Builder $query) use ($tipoMaterialTipo) {
+                    $query->where('tipo', $tipoMaterialTipo)->orderBy('tipo')->orderBy('nome');
+                }
+            )->orderBy('nome')->get()->pluck('nomePotenciaTensao', 'id')->all();
         } else {
-            $materiais = $this->model()::doesntHave('tipoMaterial')->get()->pluck('nomePotenciaTensao', 'id')->all();
+            $materiais = $this->model()::doesntHave('tipoMaterial')->orderBy('nome')->get()->pluck('nomePotenciaTensao', 'id')->all();
         }
 
         return $materiais;
@@ -75,6 +77,6 @@ class MaterialRepository extends BaseRepository
      */
     public function getArrayTodosMateriais()
     {
-        return $this->model()::all()->pluck('nomePotenciaTensao', 'id')->toArray();
+        return $this->model()::orderBy('nome')->get()->pluck('nomePotenciaTensao', 'id')->toArray();
     }
 }
