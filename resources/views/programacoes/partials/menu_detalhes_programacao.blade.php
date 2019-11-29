@@ -23,9 +23,9 @@
     </a>
 </div>
 
-<div class="px-5 py-2">
+{{-- <div class="px-5 py-2">
     <a class="btn btn-primary form-control" href="{!! route('programacoes.export', $programacao->id) !!}">
         <i class="fa fa-book"></i> &nbsp;
         <span> Relatório Quantidades </span>
     </a>
-</div>
+</div> --}}
