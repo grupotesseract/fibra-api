@@ -16,11 +16,14 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! url()->previous() !!}" class="btn btn-ghost-light">Voltar</a>
+                            <a href="{!! url()->previous() !!}" class="btn btn-primary">Voltar</a>
+                            <a href="{!! route('plantas.show', $item->planta->id) !!}" class="btn btn-primary">Acessar Planta</a>
+                            <a href="{!! route('plantas.itens', $item->planta->id) !!}" class="btn btn-primary">Acessar Itens da Planta</a>
                         </div>
                         <div class="card-body">
                             @include('itens.show_fields')
                         </div>
+                        
                     </div>
                 </div>
 

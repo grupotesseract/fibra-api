@@ -20,6 +20,7 @@ class Materiais {
       const primeiroNome = nomeCompleto.replace(/ .*/,'');
 
       $('.nomeMaterial').prop('disabled', id.length > 0).prop('value', null);
+      $('.abreviacaoMaterial').prop('disabled', id.length > 0).prop('value', null);
       $('.tipoReator').prop('disabled', primeiroNome != 'Reator').prop('value', null);
     })
   }

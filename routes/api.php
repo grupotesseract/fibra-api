@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::resource('entradas_materiais', 'EntradaMaterialAPIController');
 
     //ROTAS DE SINCRONIZAÇÃO
-    Route::get('sync/empresas', 'EmpresaAPIController@syncEmpresas');
+    Route::get('sync', 'EmpresaAPIController@syncEmpresas');
     Route::post('sync/programacoes/{idProgramacao}/item/{idItem}/fotos', 'ProgramacaoAPIController@syncProgramacaoItemFotos');
     Route::post('sync/programacoes/{id}', 'ProgramacaoAPIController@syncProgramacoes');
 });

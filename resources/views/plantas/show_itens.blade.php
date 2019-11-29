@@ -16,7 +16,8 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! route('plantas.show', $planta->id) !!}" class="btn btn-ghost-light">Voltar</a>
+                            <a href="{!! route('plantas.show', $planta->id) !!}" class="btn btn-primary">Voltar</a>
+                            <a href="{!! route('empresas.show', $planta->empresa->id) !!}" class="btn btn-primary">Acessar Empresa</a>
                         </div>
                         <div class="card-body">
                             @include('plantas.show_fields')

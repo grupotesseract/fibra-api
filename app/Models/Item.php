@@ -79,4 +79,14 @@ class Item extends Model
     {
         return $this->hasMany(\App\Models\QuantidadeSubstituida::class, 'item_id');
     }
+
+    /**
+     * Relacionamento com Fotos
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fotos()
+    {
+        return $this->hasMany(\App\Models\Foto::class, 'item_id');
+    }
 }

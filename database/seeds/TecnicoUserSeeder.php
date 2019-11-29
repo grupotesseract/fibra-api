@@ -12,7 +12,8 @@ class TecnicoUserSeeder extends Seeder
     public function run()
     {
         $userAdmin = factory(\App\Models\Usuario::class)->create([
-            'email' => env('ADMIN_EMAIL', 'fvlimafernandes@grupotesseract.com.br'),
+            'login' => env('ADMIN_EMAIL', 'fvlimafernandes'),
+            'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Fernando Lima Fernandes',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
@@ -20,7 +21,8 @@ class TecnicoUserSeeder extends Seeder
         $userAdmin->attachRole(\App\Models\Role::ROLE_TECNICO);
 
         $userAdmin = factory(\App\Models\Usuario::class)->create([
-            'email' => env('ADMIN_EMAIL', 'evandro.carreira@grupotesseract.com.br'),
+            'login' => env('ADMIN_EMAIL', 'evandro.carreira'),
+            'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Evandro Carreira',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
@@ -28,7 +30,8 @@ class TecnicoUserSeeder extends Seeder
         $userAdmin->attachRole(\App\Models\Role::ROLE_TECNICO);
 
         $userAdmin = factory(\App\Models\Usuario::class)->create([
-            'email' => env('ADMIN_EMAIL', 'renato.gomes@grupotesseract.com.br'),
+            'login' => env('ADMIN_EMAIL', 'renato.gomes'),
+            'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Renato Gomes',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
