@@ -15,7 +15,7 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Detalhes</strong>
-                                 <a href="{!! route('programacoes.index') !!}" class="btn btn-ghost-light">Voltar</a>
+                                 <a href="{!! url()->previous() !!}" class="btn btn-primary">Voltar</a>
                              </div>
                              <div class="card-body">
                                  @include('programacoes.show_fields')
