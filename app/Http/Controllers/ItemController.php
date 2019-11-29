@@ -280,5 +280,4 @@ class ItemController extends AppBaseController
 
         return redirect(route('itens.show', $idItem));
     }
-    
 }

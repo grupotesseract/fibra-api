@@ -10,13 +10,13 @@ class QtdeResumidaMateriaisExport implements FromView
     public function __construct($programacao)
     {
         $this->programacao = $programacao;
-    }     
-    
+    }
+
     public function view(): View
     {
-        return view('programacoes.relatorio.relatorioQtdeResumidaMateriais', 
-            [                
-                'programacao' => $this->programacao
+        return view('programacoes.relatorio.relatorioQtdeResumidaMateriais',
+            [
+                'programacao' => $this->programacao,
             ]
         );
     }
