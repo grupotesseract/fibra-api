@@ -92,14 +92,14 @@ class MateriaisDoItemDataTable extends DataTable
             ],
             'abreviacao' => [
                 'data' => 'abreviacao',
-                'title' => 'Abreviação',
+                'title' => 'Abrev.',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
             ],
             'tipo_reator_qtde' => [
                 'data' => 'tipo_reator_qtde',
-                'title' => 'Qtde. Tipo Reator',
+                'title' => 'Qtde. Reator',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
@@ -120,14 +120,14 @@ class MateriaisDoItemDataTable extends DataTable
             ],
             'potenciaValor' => [
                 'data' => 'potenciaValor',
-                'title' => 'Potência',
+                'title' => 'P(W)',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
             ],
             'tensaoValor' => [
                 'data' => 'tensaoValor',
-                'title' => 'Tensão',
+                'title' => 'T(V)',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
@@ -147,7 +147,7 @@ class MateriaisDoItemDataTable extends DataTable
                 'filterable' => false,
             ],
             'quantidade' => [
-                'title' => 'Quantidade',
+                'title' => 'Qtde',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
