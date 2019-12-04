@@ -75,25 +75,29 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+            'id' => [
+                'orderable' => false,
+                'filterable' => false,
+            ],
+
             'nome' => [
                 'data' => 'nome',
                 'title' => 'Nome',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
             ],
             'abreviacao' => [
                 'data' => 'abreviacao',
                 'title' => 'Abreviação',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
             ],
             'tipo_reator_qtde' => [
                 'data' => 'tipo_reator_qtde',
                 'title' => 'Qtde. Tipo Reator',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
             ],
