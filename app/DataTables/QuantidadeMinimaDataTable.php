@@ -42,7 +42,7 @@ class QuantidadeMinimaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters(
                 [
                     'dom'       => 'Bfrtip',
@@ -68,31 +68,71 @@ class QuantidadeMinimaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material_nome_potencia_tensao' => [
-                'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material - Potência - Tensão',
+            'nome' => [
+                'data' => 'material.nome',
+                'title' => 'Nome',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'abreviacao' => [
+                'data' => 'material.abreviacao',
+                'title' => 'Abrev.',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipo_reator_qtde' => [
+                'data' => 'material.tipo_reator_qtde',
+                'title' => 'Qtde. Reator',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipoMaterialTipo' => [
+                'data' => 'material.tipoMaterialTipo',
+                'title' => 'Tipo',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => true,
             ],
-            'material' => [
-                'data' => 'material.nome',
-                'title' => 'Material',
-                'searchable' => true,
+            'tipoMaterialNome' => [
+                'data' => 'material.tipoMaterialNome',
+                'title' => 'Tipo de Material',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
             ],
-            'material_id' => [
-                'title' => 'ID Material',
-                'searchable' => true,
+            'potenciaValor' => [
+                'data' => 'material.potenciaValor',
+                'title' => 'P(W)',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
+            ],
+            'tensaoValor' => [
+                'data' => 'material.tensaoValor',
+                'title' => 'T(V)',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'baseNome' => [
+                'data' => 'material.baseNome',
+                'title' => 'Base',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'reatorNome' => [
+                'data' => 'material.reatorNome',
+                'title' => 'Reator',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
             ],
             'quantidade_minima' => [
-                'title' => 'Qnt. Mínima',
+                'title' => 'Qtd.',
                 'searchable' => true,
                 'orderable' => true,
                 'filterable' => false,
