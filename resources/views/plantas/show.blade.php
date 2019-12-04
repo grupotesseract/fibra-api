@@ -15,14 +15,14 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Detalhes</strong>
-                            <a href="{!! route('empresas.show', $planta->empresa_id) !!}" class="btn btn-primary">Voltar</a>
+                            <strong>Detalhes</strong>                            
                         </div>
                         <div class="card-body">
                             @include('plantas.show_fields')
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+                
             </div>
         </div>
     </div>
