@@ -23,13 +23,18 @@ class QuantidadeSubstituida extends Model
 
     public $table = 'quantidades_substituidas';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'data_manutencao'];
 
     public $fillable = [
         'programacao_id',
         'item_id',
         'material_id',
         'quantidade_substituida',
+        'data_manutencao',
+    ];
+
+    public $appends = [
+        'data_manutencao_formatada',
     ];
 
     /**
@@ -43,6 +48,7 @@ class QuantidadeSubstituida extends Model
         'item_id' => 'integer',
         'material_id' => 'integer',
         'quantidade_substituida' => 'integer',
+        'data_manutencao' => 'string',
     ];
 
     /**
@@ -55,6 +61,7 @@ class QuantidadeSubstituida extends Model
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
         'quantidade_substituida' => 'required|integer',
+        'data_manutencao' => 'required|date',
     ];
 
     /**
@@ -79,5 +86,16 @@ class QuantidadeSubstituida extends Model
     public function material()
     {
         return $this->belongsTo(\App\Models\Material::class, 'material_id');
+    }
+
+    /**
+     * Acessor para data da manutenção.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function getDataManutencaoFormatadaAttribute()
+    {
+        return \Carbon\Carbon::parse($this->data_manutencao)->format('d/m/Y H:i:s');
     }
 }
