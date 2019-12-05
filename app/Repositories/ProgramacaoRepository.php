@@ -45,7 +45,6 @@ class ProgramacaoRepository extends BaseRepository
      */
     public function sincronizaProgramação($programacao, $input)
     {
-        
         $programacao->update($input['programacao']);
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {

@@ -105,7 +105,7 @@ class Usuario extends Authenticatable
      */
     public function getRoleAttribute()
     {
-        if (!is_null($this->roles->first())) {
+        if (! is_null($this->roles->first())) {
             return $this->roles->first()->name;
         }
     }
