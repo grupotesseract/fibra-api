@@ -30,11 +30,11 @@ class QuantidadeSubstituida extends Model
         'item_id',
         'material_id',
         'quantidade_substituida',
-        'data_manutencao'
+        'data_manutencao',
     ];
 
     public $appends = [
-        'data_manutencao_formatada'
+        'data_manutencao_formatada',
     ];
 
     /**
@@ -89,7 +89,7 @@ class QuantidadeSubstituida extends Model
     }
 
     /**
-     * Acessor para data da manutenção
+     * Acessor para data da manutenção.
      *
      * @param Carbon $value
      * @return Carbon
