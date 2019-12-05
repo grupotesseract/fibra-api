@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class EmpresasTableSeeder extends Seeder
 {
@@ -43,11 +44,14 @@ class EmpresasTableSeeder extends Seeder
                                                 ]
                                             );
 
+                                            $timestamp = mt_rand(1, time());
+                                            $randomDate = date('Y-m-d H:i:s', $timestamp);
                                             \App\Models\QuantidadeSubstituida::create(
                                                 [
                                                     'programacao_id' => $programacao->id,
                                                     'quantidade_substituida' => $qtdeSubstituida,
                                                     'material_id' => $materialId,
+                                                    'data_manutencao' => $randomDate,
                                                     'item_id' => $planta->itens->random(1)->first()->id,
                                                 ]
                                             );
