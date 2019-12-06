@@ -10,8 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/word', 'RelatorioFotograficoController@test');
-
 /*
 |--------------------------------------------------------------------------
 | Rotas Protegidas (Somente Logado & ROLE ADMIN)

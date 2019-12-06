@@ -10,7 +10,7 @@ class PhpWordHelper
 {
 
     /**
-     * Retorna uma intancia do PhpWord
+     * Retorna uma instancia do PhpWord
      *
      * @return \PhpOffice\PhpWord\PhpWord
      */
@@ -20,7 +20,7 @@ class PhpWordHelper
     }
 
     /**
-     * Metodo para adicioanar o bloco de titulo com o numero e nome do item
+     * Metodo para adicionar o bloco de titulo com numero e nome do item
      *
      * @param \PhpOffice\PhpWord\Element\Section
      * @param string $numero
