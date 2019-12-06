@@ -13,3 +13,12 @@
     ]) !!}
 </div>
 {!! Form::close() !!}
+
+{!! Form::open(['route' => ['programacoes.relatorioFotos', $id]]) !!}
+<div class='btn-group'>
+    {!! Form::button('<i class="fa fa-download"></i>', [
+        'type' => 'submit',
+        'class' => 'btn btn-ghost-info'
+    ]) !!}
+</div>
+{!! Form::close() !!}
