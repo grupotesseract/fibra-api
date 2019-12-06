@@ -92,6 +92,19 @@ class Foto extends Model
     }
 
     /**
+     * Acessor para a URL do cloudinary com o encoding de caracteres e extensao .jpeg
+     *
+     * @return string
+     */
+    public function getURLParaRelatorioAttribute()
+    {
+        return 'http://res.cloudinary.com/'
+            .env('CLOUDINARY_CLOUD_NAME')
+            .'/image/upload/f_auto,q_auto/'
+            .urlencode("$this->cloudinary_id.jpeg");
+    }
+
+    /**
      * Path de pastas no Cloudinary.
      *
      * @return string

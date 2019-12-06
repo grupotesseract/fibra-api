@@ -332,4 +332,25 @@ class ProgramacaoController extends AppBaseController
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
     }
+
+    /**
+     * Metodo para fazer download do relatório de fotos de uma programacao
+     *
+     * @return download
+     */
+    public function downloadRelatorioFotos($id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        $this->programacaoRepository->gerarRelatorioFotos($programacao);
+
+        return \Response::download('relatorio.docx');
+    }
+
 }
