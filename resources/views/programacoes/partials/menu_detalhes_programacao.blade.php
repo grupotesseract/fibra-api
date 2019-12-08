@@ -22,3 +22,12 @@
         <span> Quantidades Substituídas </span>
     </a>
 </div>
+
+<div class="px-5 py-2">
+    {!! Form::open(['route' => ['programacoes.relatorioFotos', $programacao->id]]) !!}
+    {!! Form::button('<i class="fa fa-download"></i> &nbsp; Relatório Fotográfico', [
+        'type' => 'submit',
+        'class' => 'btn btn-primary form-control'
+    ]) !!}
+    {!! Form::close() !!}
+</div>

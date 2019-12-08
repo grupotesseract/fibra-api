@@ -90,8 +90,8 @@ class ProgramacaoRepository extends BaseRepository
         $idsItemsComFoto = $programacao->fotos()->pluck('item_id')->unique();
         $itens = $programacao->planta->itens->whereIn('id', $idsItemsComFoto);
 
-        $wordDoc = \App\Helpers\PhpWordHelper::criarDoc();
-        $section= $wordDoc->addSection();
+        $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
+        $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
         $indice=1;
 
         foreach ($itens as $item) {
@@ -101,6 +101,6 @@ class ProgramacaoRepository extends BaseRepository
             \App\Helpers\PhpWordHelper::addSecaoFotos($section, $fotos);
         }
 
-        return \App\Helpers\PhpWordHelper::salvarDoc($wordDoc);
+        return \App\Helpers\PhpWordHelper::salvarDoc($phpWord);
     }
 }
