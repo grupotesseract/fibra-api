@@ -22,3 +22,19 @@
         <span> Quantidades Substituídas </span>
     </a>
 </div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.export', $programacao->id) !!}">
+        <i class="fa fa-book"></i> &nbsp;
+        <span> Relatório Quantidades </span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
+    {!! Form::open(['route' => ['programacoes.relatorioFotos', $programacao->id]]) !!}
+    {!! Form::button('<i class="fa fa-download"></i> &nbsp; Relatório Fotográfico', [
+        'type' => 'submit',
+        'class' => 'btn btn-primary form-control'
+    ]) !!}
+    {!! Form::close() !!}
+</div>
