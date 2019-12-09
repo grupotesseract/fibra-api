@@ -334,7 +334,7 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer download do relatório de fotos de uma programacao
+     * Metodo para fazer download do relatório de fotos de uma programacao.
      *
      * @return download
      */
@@ -352,5 +352,4 @@ class ProgramacaoController extends AppBaseController
 
         return \Response::download('relatorio.docx');
     }
-
 }

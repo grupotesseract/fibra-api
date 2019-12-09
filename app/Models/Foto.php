@@ -92,7 +92,7 @@ class Foto extends Model
     }
 
     /**
-     * Acessor para a URL do cloudinary com o encoding de caracteres e extensao .jpeg
+     * Acessor para a URL do cloudinary com o encoding de caracteres e extensao .jpeg.
      *
      * @return string
      */

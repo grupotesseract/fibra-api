@@ -79,9 +79,8 @@ class ProgramacaoRepository extends BaseRepository
         $programacao->estoques()->createMany($input['estoques']);
     }
 
-
     /**
-     * Metodo para gerar o relatório de fotos da programação
+     * Metodo para gerar o relatório de fotos da programação.
      *
      * @return void
      */
@@ -92,10 +91,9 @@ class ProgramacaoRepository extends BaseRepository
 
         $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
         $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
-        $indice=1;
+        $indice = 1;
 
         foreach ($itens as $item) {
-
             $fotos = $programacao->fotos->where('item_id', $item->id);
             \App\Helpers\PhpWordHelper::addSecaoTitulo($section, $indice++, $item->nome);
             \App\Helpers\PhpWordHelper::addSecaoFotos($section, $fotos);
