@@ -61,7 +61,7 @@ class QuantidadeSubstituida extends Model
         'material_id' => 'required|exists:materiais,id',
         'programacao_id' => 'required|exists:programacoes,id',
         'quantidade_substituida' => 'required|integer',
-        'data_manutencao' => 'required|date',
+        'data_manutencao' => 'required',
     ];
 
     /**
@@ -97,5 +97,20 @@ class QuantidadeSubstituida extends Model
     public function getDataManutencaoFormatadaAttribute()
     {
         return \Carbon\Carbon::parse($this->data_manutencao)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Mutator para o campo data_manutencao.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function setDataManutencaoAttribute($value)
+    {
+        try {
+            $this->attributes['data_manutencao'] = \Carbon\Carbon::parse($value);
+        } catch (\Exception $e) {
+            $this->attributes['data_manutencao'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        }
     }
 }
