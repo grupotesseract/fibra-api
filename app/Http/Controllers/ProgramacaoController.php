@@ -8,6 +8,7 @@ use App\DataTables\LiberacaoDocumentoDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
 use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Exports\ProgramacaoExport;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateEntradaMaterialRequest;
@@ -18,6 +19,7 @@ use App\Http\Requests\UpdateProgramacaoRequest;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\QuantidadeSubstituidaRepository;
 use Flash;
+use Maatwebsite\Excel\Facades\Excel;
 use Response;
 
 class ProgramacaoController extends AppBaseController
@@ -331,6 +333,28 @@ class ProgramacaoController extends AppBaseController
         $result = $this->qntSubstituidaRepository->create($request->all());
 
         return $this->sendResponse($result, 'Entrada de material adicionada com sucesso');
+    }
+
+    /**
+     * Metodo para gerar Excel de uma Programação.
+     *
+     * @param [type] $id
+     * @return Excel
+     */
+    public function export($id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        $nomePlanta = $programacao->planta->nome;
+        $exportNomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
+
+        return Excel::download(new ProgramacaoExport($programacao), $exportNomeArquivo);
     }
 
     /**
