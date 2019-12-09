@@ -5,7 +5,7 @@
 <div class="row">
 
     <!-- Select Materiais -->
-    <div class="form-group col-sm-4">
+    <div class="form-group col-sm-3">
         {!! Form::label('item', 'Item') !!}
         {!! Form::select('item_id', [0=>'Selecione um Item']+$itens, null, ['class' => 'form-control  select2', 'id' => 'item_id']
         ) !!}
@@ -23,6 +23,13 @@
         {!! Form::label('quantidade', 'Qnt. substituída') !!}
         {!! Form::number('quantidade', null, ['class' => 'form-control', 'id' => 'quantidade']) !!}
     </div>
+
+    <!-- Data Inicio Real Field -->
+    <div class="form-group col-sm-2">
+        {!! Form::label('data_manutencao', 'Data da Manutenção') !!}
+        {!! Form::text('data_manutencao', null, ['class' => 'datepicker form-control','id' => 'data_manutencao']) !!}
+    </div>
+
 
     <div class="form-group col-sm-1">
         {!! Form::button('<i class="fa fa-plus"></i>', [
