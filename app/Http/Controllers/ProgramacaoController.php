@@ -357,9 +357,8 @@ class ProgramacaoController extends AppBaseController
         return Excel::download(new ProgramacaoExport($programacao), $exportNomeArquivo);
     }
 
-
-    /** 
-    * Metodo para fazer download do relatório de fotos de uma programacao.
+    /**
+     * Metodo para fazer download do relatório de fotos de uma programacao.
      *
      * @return download
      */
