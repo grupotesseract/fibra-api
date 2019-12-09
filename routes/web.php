@@ -68,5 +68,3 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('estoque', 'EstoqueController');
     Route::resource('quantidadesSubstituidas', 'QuantidadeSubstituidaController');
 });
-
-
