@@ -48,7 +48,6 @@ class QuantidadeSubstituida extends Model
         'item_id' => 'integer',
         'material_id' => 'integer',
         'quantidade_substituida' => 'integer',
-        'data_manutencao' => 'string',
     ];
 
     /**
