@@ -69,6 +69,7 @@ class Usuario extends Authenticatable
         'login' => 'required|unique:usuarios,login,NULL,id,deleted_at,NULL',
         'password' => 'required',
         'cidade_id' => 'required',
+        'role_id' => 'required',
     ];
 
     protected $hidden = [
@@ -104,6 +105,8 @@ class Usuario extends Authenticatable
      */
     public function getRoleAttribute()
     {
-        return $this->roles->first()->name;
+        if (! is_null($this->roles->first())) {
+            return $this->roles->first()->name;
+        }
     }
 }

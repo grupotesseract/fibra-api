@@ -56,8 +56,8 @@
             <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : '' }}</td>                
             <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
             <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
-            <td>{{ !is_null($material->base) ? $material->base->nome : '' }}</td>                
-            <td>{{ !is_null($material->reator) ? $material->reator->nome : '' }}</td>              
+            <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
+            <td>{{ !is_null($material->reator) ? $material->reator->tipoMaterial->nome : '' }}</td>              
             <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
             <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              

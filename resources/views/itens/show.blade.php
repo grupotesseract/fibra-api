@@ -16,9 +16,6 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! url()->previous() !!}" class="btn btn-primary">Voltar</a>
-                            <a href="{!! route('plantas.show', $item->planta->id) !!}" class="btn btn-primary">Acessar Planta</a>
-                            <a href="{!! route('plantas.itens', $item->planta->id) !!}" class="btn btn-primary">Acessar Itens da Planta</a>
                         </div>
                         <div class="card-body">
                             @include('itens.show_fields')
@@ -33,6 +30,28 @@
                             <strong>Materiais do Item</strong>
                         </div>
                         <div class="card-body">
+                            
+                            <div class="px-5 py-2">    
+                                <a class="btn btn-primary form-control" href="{!! url()->previous() !!}">
+                                    <i class="fa fa-angle-double-left"></i> &nbsp;
+                                    <span> Voltar</span>
+                                </a>
+                            </div>
+
+                            <div class="px-5 py-2">    
+                                <a class="btn btn-primary form-control" href="{!! route('plantas.show', $item->planta->id) !!}">
+                                    <i class="fa fa-angle-double-left"></i> &nbsp;
+                                    <span> Acessar Planta</span>
+                                </a>
+                            </div>
+
+                            <div class="px-5 py-2">    
+                                <a class="btn btn-primary form-control" href="{!! route('plantas.itens', $item->planta->id) !!}">
+                                    <i class="fa fa-angle-double-left"></i> &nbsp;
+                                    <span> Acessar Itens da Planta</span>
+                                </a>
+                            </div>
+                            
                             @include('itens.partials.form_add_materiais')
                             <div id="container-erros" class="alert alert-danger" style="display:none;"></div>
                             <hr>

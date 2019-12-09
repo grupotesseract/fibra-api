@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.addQuantidadesSubstituidas');
     Route::get('programacoes/{id}/export', 'ProgramacaoController@export')
         ->name('programacoes.export');
+    Route::post('/programacoes/{id}/relatorio-fotos', 'ProgramacaoController@downloadRelatorioFotos')
+        ->name('programacoes.relatorioFotos');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
