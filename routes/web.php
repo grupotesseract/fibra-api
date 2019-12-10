@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.export');
     Route::post('/programacoes/{id}/relatorio-fotos', 'ProgramacaoController@downloadRelatorioFotos')
         ->name('programacoes.relatorioFotos');
+    Route::get('programacoes/{id}/comentarios', 'ProgramacaoController@getGerenciarComentarios')
+        ->name('programacoes.comentarios');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
