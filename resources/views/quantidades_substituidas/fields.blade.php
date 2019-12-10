@@ -7,7 +7,6 @@
 <!-- Planta Id Field -->
 {{ Form::hidden('material_id', null)}}
 
-
 <!-- Quantidade Substituida Field -->
 <div class="form-group col-sm-3">
     {!! Form::label('quantidade_substituida', 'Quantidade Substituida:') !!}
@@ -23,5 +22,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('quantidadesSubstituidas.index') !!}" class="btn btn-default">Cancelar</a>
+    <a href="{!! url()->previous() !!}" class="btn btn-default">Cancelar</a>
 </div>
