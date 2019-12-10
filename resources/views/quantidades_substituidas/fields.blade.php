@@ -19,8 +19,11 @@
     {!! Form::text('data_manutencao', null, ['class' => 'datepicker form-control','id'=>'data_manutencao']) !!}
 </div>
 
+<div class="form-group col-sm-12" style="min-height:150px"></div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! url()->previous() !!}" class="btn btn-default">Cancelar</a>
 </div>
+
