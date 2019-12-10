@@ -30,6 +30,6 @@
 
 
 @section('scripts')
-    <script src="/js/pages/EntradaMateriais.js"></script>
+    <script src="/js/pages/Comentarios.js"></script>
 @append
 

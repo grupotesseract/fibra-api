@@ -55,7 +55,7 @@ class ComentarioController extends AppBaseController
 
         $comentario = $this->comentarioRepository->create($input);
 
-        Flash::success('Comentario salvo com sucesso.');
+        Flash::success('Comentário salvo com sucesso.');
 
         return redirect(route('comentarios.index'));
     }
@@ -72,7 +72,7 @@ class ComentarioController extends AppBaseController
         $comentario = $this->comentarioRepository->find($id);
 
         if (empty($comentario)) {
-            Flash::error('Comentario não encontrado');
+            Flash::error('Comentário não encontrado');
 
             return redirect(route('comentarios.index'));
         }
@@ -92,7 +92,7 @@ class ComentarioController extends AppBaseController
         $comentario = $this->comentarioRepository->find($id);
 
         if (empty($comentario)) {
-            Flash::error('Comentario não encontrado');
+            Flash::error('Comentário não encontrado');
 
             return redirect(route('comentarios.index'));
         }
@@ -101,7 +101,7 @@ class ComentarioController extends AppBaseController
     }
 
     /**
-     * Update the specified Comentario in storage.
+     * Update the specified Comentário in storage.
      *
      * @param  int              $id
      * @param UpdateComentarioRequest $request
@@ -113,20 +113,20 @@ class ComentarioController extends AppBaseController
         $comentario = $this->comentarioRepository->find($id);
 
         if (empty($comentario)) {
-            Flash::error('Comentario não encontrado');
+            Flash::error('Comentário não encontrado');
 
             return redirect(route('comentarios.index'));
         }
 
         $comentario = $this->comentarioRepository->update($request->all(), $id);
 
-        Flash::success('Comentario atualizado com sucesso.');
+        Flash::success('Comentário atualizado com sucesso.');
 
-        return redirect(route('comentarios.index'));
+        return redirect(route('programacoes.comentarios', $comentario->programacao_id));
     }
 
     /**
-     * Remove the specified Comentario from storage.
+     * Remove the specified Comentário from storage.
      *
      * @param  int $id
      *
@@ -137,15 +137,14 @@ class ComentarioController extends AppBaseController
         $comentario = $this->comentarioRepository->find($id);
 
         if (empty($comentario)) {
-            Flash::error('Comentario não encontrado');
-
+            Flash::error('Comentário não encontrado');
             return redirect(route('comentarios.index'));
         }
 
         $this->comentarioRepository->delete($id);
 
-        Flash::success('Comentario removido com sucesso.');
+        Flash::success('Comentário removido com sucesso.');
 
-        return redirect(route('comentarios.index'));
+        return redirect(route('programacoes.comentarios', $comentario->programacao_id));
     }
 }

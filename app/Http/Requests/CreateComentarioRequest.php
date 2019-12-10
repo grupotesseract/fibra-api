@@ -27,4 +27,20 @@ class CreateComentarioRequest extends FormRequest
     {
         return Comentario::$rules;
     }
+
+    /**
+     * Incluindo mensagens amigaveis.
+     *
+     * @return void
+     */
+    public function messages()
+    {
+        return [
+            'programacao_id.required' => 'O campo programação é obrigatório',
+            'programacao_id.exists' => 'O campo programação é obrigatório',
+            'item_id.required' => 'O campo item é obrigatório',
+            'item_id.exists' => 'O campo item é obrigatório',
+            'comentario.required' => 'O campo comentário é obrigatório',
+        ];
+    }
 }

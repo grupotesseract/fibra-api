@@ -12,6 +12,8 @@ use App\DataTables\ProgramacaoDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEstoqueRequest;
 use App\Repositories\ProgramacaoRepository;
+use App\Repositories\ComentarioRepository;
+use App\Http\Requests\CreateComentarioRequest;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\Http\Requests\CreateProgramacaoRequest;
@@ -28,11 +30,14 @@ class ProgramacaoController extends AppBaseController
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
+    private $comentarioRepository;
+
     private $qntSubstituidaRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->comentarioRepository = $comentarioRepo;
         $this->qntSubstituidaRepository = $quantidadeSubstituidaRepo;
     }
 
@@ -395,5 +400,17 @@ class ProgramacaoController extends AppBaseController
 
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_comentarios', compact('programacao'));
+    }
+
+    /**
+     * Recebe o POST de criar um novo comentario via ajax
+     *
+     * @param CreateComentarioRequest $request
+     * @param mixed $id
+     */
+    public function postGerenciarComentarios(CreateComentarioRequest $request, $id)
+    {
+        $result = $this->comentarioRepository->create($request->all());
+        return $this->sendResponse($result, 'Comentário adicionado com sucesso');
     }
 }

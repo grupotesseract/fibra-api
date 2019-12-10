@@ -21,11 +21,8 @@ class Comentario extends Model
     use SoftDeletes;
 
     public $table = 'comentarios';
-    
 
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'item_id',
@@ -51,8 +48,8 @@ class Comentario extends Model
      * @var array
      */
     public static $rules = [
-        'item_id' => 'required',
-        'programacao_id' => 'required',
+        'item_id' => 'required|exists:itens,id',
+        'programacao_id' => 'required|exists:programacoes,id',
         'comentario' => 'required'
     ];
 
