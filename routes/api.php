@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico|cliente']], funct
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'index', 'show',
     ]);
+
+    Route::resource('comentarios', 'ComentarioAPIController');
 });
 
 /*
@@ -70,3 +72,5 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
+
+
