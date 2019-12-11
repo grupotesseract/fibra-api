@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Collective\Html\Eloquent\FormAccessible;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Collective\Html\Eloquent\FormAccessible;
 
 /**
  * Class QuantidadeSubstituida.
