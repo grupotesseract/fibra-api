@@ -72,7 +72,7 @@ class ComentarioDataTable extends DataTable
                 'orderable' => false,
                 'filterable' => false,
             ],
-            'comentario'
+            'comentario',
         ];
     }
 
