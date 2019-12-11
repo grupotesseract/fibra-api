@@ -1,5 +1,6 @@
 <table>
     <thead>
+    
     <tr>
         <th><strong>Descrição</strong></th>
         <th><strong>Circuito</strong></th>
@@ -12,6 +13,9 @@
         <th><strong>Lâmpada</strong></th>        
         <th><strong>Reator</strong></th>        
         <th><strong>Base</strong></th>        
+        <th><strong>Data Manutenção</strong></th>                
+        <th><strong>Comentários</strong></th>                
+
     </tr>
     </thead>
     <tbody>
@@ -43,7 +47,7 @@
             $primeiroMaterial = $materiais[0];
             $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->id)->get()->first();                    
             $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-            
+            $data_manutencao = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->data_manutencao->format('d/m/Y H:i:s') : '';
             
             if(!is_null($primeiroMaterial->reator)) {
                 $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->reator->id)->get()->first();                    
@@ -61,6 +65,9 @@
                 $qtdeSubstBase = '';
             }
 
+            
+            $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
+
             $materiais->pull(0);
         !!}
         
@@ -76,6 +83,9 @@
             <td>{{ $qtdeSubstLampada }} </td>      
             <td>{{ $querySubstReator }} </td>      
             <td>{{ $qtdeSubstBase }} </td> 
+            <td>{{ $data_manutencao }} </td> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($comentario) ? $comentario->comentario : '' }} </th> 
+            
         </tr>
 
 
@@ -85,7 +95,7 @@
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
                 $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-                
+                $data_manutencao = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->data_manutencao->format('d/m/Y H:i:s') : '';
                 
                 if(!is_null($material->reator)) {
                     $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->reator->id)->get()->first();                    
@@ -113,7 +123,8 @@
                 <td>{{ !is_null($material->reator) ? $material->reator->tipoMaterial->abreviacao : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $querySubstReator }} </td>      
-                <td>{{ $qtdeSubstBase }} </td>      
+                <td>{{ $qtdeSubstBase }} </td>
+                <td>{{ $data_manutencao }} </td>       
 
             </tr>  
         @endforeach        
