@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComentarioDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateComentarioRequest;
 use App\Http\Requests\UpdateComentarioRequest;
 use App\Repositories\ComentarioRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ComentarioController extends AppBaseController
 {
-    /** @var  ComentarioRepository */
+    /** @var ComentarioRepository */
     private $comentarioRepository;
 
     public function __construct(ComentarioRepository $comentarioRepo)
@@ -138,6 +138,7 @@ class ComentarioController extends AppBaseController
 
         if (empty($comentario)) {
             Flash::error('Comentário não encontrado');
+
             return redirect(route('comentarios.index'));
         }
 

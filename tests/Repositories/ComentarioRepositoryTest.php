@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
+
+namespace Tests\Repositories;
 
 use App\Models\Comentario;
 use App\Repositories\ComentarioRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class ComentarioRepositoryTest extends TestCase
 {
