@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Comentario;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ComentarioDataTable extends DataTable
 {
@@ -83,6 +83,6 @@ class ComentarioDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'comentariosdatatable_' . time();
+        return 'comentariosdatatable_'.time();
     }
 }

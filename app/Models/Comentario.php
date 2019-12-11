@@ -6,14 +6,13 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Comentario
- * @package App\Models
+ * Class Comentario.
  * @version December 10, 2019, 12:27 am -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
- * @property integer item_id
- * @property integer programacao_id
+ * @property int item_id
+ * @property int programacao_id
  * @property string comentario
  */
 class Comentario extends Model
@@ -27,7 +26,7 @@ class Comentario extends Model
     public $fillable = [
         'item_id',
         'programacao_id',
-        'comentario'
+        'comentario',
     ];
 
     /**
@@ -39,18 +38,18 @@ class Comentario extends Model
         'id' => 'integer',
         'item_id' => 'integer',
         'programacao_id' => 'integer',
-        'comentario' => 'string'
+        'comentario' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'item_id' => 'required|exists:itens,id',
         'programacao_id' => 'required|exists:programacoes,id',
-        'comentario' => 'required'
+        'comentario' => 'required',
     ];
 
     /**
