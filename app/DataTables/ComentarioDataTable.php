@@ -29,7 +29,7 @@ class ComentarioDataTable extends DataTable
      */
     public function query(Comentario $model)
     {
-        return $model->newQuery();
+        return $model->with('item');
     }
 
     /**
@@ -65,7 +65,13 @@ class ComentarioDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'item_id',
+            'nome' => [
+                'data' => 'item.nome',
+                'title' => 'Nome do Item',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'comentario'
         ];
     }
