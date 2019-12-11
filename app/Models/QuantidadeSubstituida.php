@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Collective\Html\Eloquent\FormAccessible;
 
 /**
  * Class QuantidadeSubstituida.
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class QuantidadeSubstituida extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, FormAccessible;
 
     public $table = 'quantidades_substituidas';
 
@@ -111,5 +112,16 @@ class QuantidadeSubstituida extends Model
         } catch (\Exception $e) {
             $this->attributes['data_manutencao'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
         }
+    }
+
+    /**
+     * Form Acessor para Data Inicio Prevista.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function formDataManutencaoAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
     }
 }
