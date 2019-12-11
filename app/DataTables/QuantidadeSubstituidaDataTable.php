@@ -29,7 +29,14 @@ class QuantidadeSubstituidaDataTable extends DataTable
      */
     public function query(QuantidadeSubstituida $model)
     {
-        return $model->newQuery()->with(['material', 'item']);
+        return $model->newQuery()->with(
+            [
+                'material',
+                'item' => function ($query) {
+                    $query->orderBy('qrcode');
+                },
+            ]
+        );
     }
 
     /**
