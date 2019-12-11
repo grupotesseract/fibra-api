@@ -56,6 +56,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.export');
     Route::post('/programacoes/{id}/relatorio-fotos', 'ProgramacaoController@downloadRelatorioFotos')
         ->name('programacoes.relatorioFotos');
+    Route::get('programacoes/{id}/comentarios', 'ProgramacaoController@getGerenciarComentarios')
+        ->name('programacoes.comentarios');
+    Route::post('programacoes/{id}/comentarios', 'ProgramacaoController@postGerenciarComentarios')
+        ->name('programacoes.comentarios');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
@@ -69,4 +73,5 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('quantidadesMinimas', 'QuantidadeMinimaController');
     Route::resource('estoque', 'EstoqueController');
     Route::resource('quantidadesSubstituidas', 'QuantidadeSubstituidaController');
+    Route::resource('comentarios', 'ComentarioController');
 });

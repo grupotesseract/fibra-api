@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ComentarioDataTable;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
@@ -11,11 +12,13 @@ use App\DataTables\Scopes\PorIdProgramacaoScope;
 use App\Exports\ProgramacaoExport;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
+use App\Http\Requests\CreateComentarioRequest;
 use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Http\Requests\CreateEstoqueRequest;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
+use App\Repositories\ComentarioRepository;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\QuantidadeSubstituidaRepository;
 use Flash;
@@ -27,11 +30,14 @@ class ProgramacaoController extends AppBaseController
     /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
+    private $comentarioRepository;
+
     private $qntSubstituidaRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
+        $this->comentarioRepository = $comentarioRepo;
         $this->qntSubstituidaRepository = $quantidadeSubstituidaRepo;
     }
 
@@ -375,5 +381,37 @@ class ProgramacaoController extends AppBaseController
         $this->programacaoRepository->gerarRelatorioFotos($programacao);
 
         return \Response::download('relatorio.docx');
+    }
+
+    /**
+     * Metodo para servir a view de QuantidadeSubstituida de Materiais de 1 Programação.
+     *
+     * @return View
+     */
+    public function getGerenciarComentarios(ComentarioDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_comentarios', compact('programacao'));
+    }
+
+    /**
+     * Recebe o POST de criar um novo comentario via ajax.
+     *
+     * @param CreateComentarioRequest $request
+     * @param mixed $id
+     */
+    public function postGerenciarComentarios(CreateComentarioRequest $request, $id)
+    {
+        $result = $this->comentarioRepository->create($request->all());
+
+        return $this->sendResponse($result, 'Comentário adicionado com sucesso');
     }
 }
