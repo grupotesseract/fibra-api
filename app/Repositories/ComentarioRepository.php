@@ -6,11 +6,9 @@ use App\Models\Comentario;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ComentarioRepository
- * @package App\Repositories
+ * Class ComentarioRepository.
  * @version December 10, 2019, 12:27 am -03
-*/
-
+ */
 class ComentarioRepository extends BaseRepository
 {
     /**
@@ -19,11 +17,11 @@ class ComentarioRepository extends BaseRepository
     protected $fieldSearchable = [
         'item_id',
         'programacao_id',
-        'comentario'
+        'comentario',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -33,7 +31,7 @@ class ComentarioRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

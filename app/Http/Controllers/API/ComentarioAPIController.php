@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateComentarioAPIRequest;
 use App\Http\Requests\API\UpdateComentarioAPIRequest;
 use App\Models\Comentario;
 use App\Repositories\ComentarioRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class ComentarioController
- * @package App\Http\Controllers\API
+ * Class ComentarioController.
  */
-
 class ComentarioAPIController extends AppBaseController
 {
-    /** @var  ComentarioRepository */
+    /** @var ComentarioRepository */
     private $comentarioRepository;
 
     public function __construct(ComentarioRepository $comentarioRepo)
@@ -27,7 +25,7 @@ class ComentarioAPIController extends AppBaseController
 
     /**
      * Display a listing of the Comentario.
-     * GET|HEAD /comentarios
+     * GET|HEAD /comentarios.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ComentarioAPIController extends AppBaseController
 
     /**
      * Store a newly created Comentario in storage.
-     * POST /comentarios
+     * POST /comentarios.
      *
      * @param CreateComentarioAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ComentarioAPIController extends AppBaseController
 
     /**
      * Display the specified Comentario.
-     * GET|HEAD /comentarios/{id}
+     * GET|HEAD /comentarios/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ComentarioAPIController extends AppBaseController
 
     /**
      * Update the specified Comentario in storage.
-     * PUT/PATCH /comentarios/{id}
+     * PUT/PATCH /comentarios/{id}.
      *
      * @param int $id
      * @param UpdateComentarioAPIRequest $request
@@ -107,7 +105,7 @@ class ComentarioAPIController extends AppBaseController
 
     /**
      * Remove the specified Comentario from storage.
-     * DELETE /comentarios/{id}
+     * DELETE /comentarios/{id}.
      *
      * @param int $id
      *

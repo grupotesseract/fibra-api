@@ -25,7 +25,7 @@ class UpdateComentarioAPIRequest extends APIRequest
     public function rules()
     {
         $rules = Comentario::$rules;
-        
+
         return $rules;
     }
 }

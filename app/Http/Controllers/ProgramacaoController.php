@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Exports\ProgramacaoExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\DataTables\ComentarioDataTable;
-use App\DataTables\ProgramacaoDataTable;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests\CreateEstoqueRequest;
-use App\Repositories\ProgramacaoRepository;
-use App\Repositories\ComentarioRepository;
-use App\Http\Requests\CreateComentarioRequest;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
-use App\Http\Requests\CreateProgramacaoRequest;
-use App\Http\Requests\UpdateProgramacaoRequest;
-use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Exports\ProgramacaoExport;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
+use App\Http\Requests\CreateComentarioRequest;
 use App\Http\Requests\CreateEntradaMaterialRequest;
-use App\Repositories\QuantidadeSubstituidaRepository;
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
+use App\Http\Requests\CreateEstoqueRequest;
+use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
+use App\Http\Requests\UpdateProgramacaoRequest;
+use App\Repositories\ComentarioRepository;
+use App\Repositories\ProgramacaoRepository;
+use App\Repositories\QuantidadeSubstituidaRepository;
+use Flash;
+use Maatwebsite\Excel\Facades\Excel;
+use Response;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -403,7 +403,7 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Recebe o POST de criar um novo comentario via ajax
+     * Recebe o POST de criar um novo comentario via ajax.
      *
      * @param CreateComentarioRequest $request
      * @param mixed $id
@@ -411,6 +411,7 @@ class ProgramacaoController extends AppBaseController
     public function postGerenciarComentarios(CreateComentarioRequest $request, $id)
     {
         $result = $this->comentarioRepository->create($request->all());
+
         return $this->sendResponse($result, 'Comentário adicionado com sucesso');
     }
 }
