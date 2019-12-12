@@ -161,14 +161,6 @@ class QuantidadeSubstituidaDataTable extends DataTable
                 'filterable' => false,
                 'visible' => true,
             ],
-            'data_manutencao' => [
-                'data' => 'data_manutencao_formatada',
-                'title' => 'Data da Manutenção',
-                'searchable' => true,
-                'orderable' => true,
-                'filterable' => false,
-                'visible' => true,
-            ],
         ];
     }
 

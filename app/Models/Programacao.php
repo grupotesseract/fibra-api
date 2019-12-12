@@ -118,6 +118,14 @@ class Programacao extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function comentarios()
+    {
+        return $this->hasMany(\App\Models\Comentario::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
     public function fotos()
     {
         return $this->hasMany(\App\Models\Foto::class, 'programacao_id');

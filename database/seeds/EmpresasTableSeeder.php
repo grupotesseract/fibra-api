@@ -51,7 +51,6 @@ class EmpresasTableSeeder extends Seeder
                                                     'programacao_id' => $programacao->id,
                                                     'quantidade_substituida' => $qtdeSubstituida,
                                                     'material_id' => $materialId,
-                                                    'data_manutencao' => $randomDate,
                                                     'item_id' => $planta->itens->random(1)->first()->id,
                                                 ]
                                             );
