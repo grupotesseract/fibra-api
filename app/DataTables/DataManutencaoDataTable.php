@@ -29,7 +29,7 @@ class DataManutencaoDataTable extends DataTable
      */
     public function query(DataManutencao $model)
     {
-        return $model->newQuery();
+        return $model->with('item');
     }
 
     /**
@@ -42,17 +42,17 @@ class DataManutencaoDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['width' => '120px', 'printable' => false, 'title' => 'Ações'])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner btnAtualizaDataTable'],
+                    ['extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas'],
+                ],
+                'language' => [
+                    'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
                 ],
             ]);
     }
@@ -65,10 +65,28 @@ class DataManutencaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'programacao_id',
-            'item_id',
-            'data_inicio',
-            'data_fim'
+            
+            'nome' => [
+                'data' => 'item.nome',
+                'title' => 'Nome do Item',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataInicioFormatada' => [
+                'data' => 'dataInicioFormatada',
+                'title' => 'Data Inicio',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataFimFormatada' => [
+                'data' => 'dataFimFormatada',
+                'title' => 'Data Fim',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],      
         ];
     }
 

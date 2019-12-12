@@ -110,6 +110,14 @@ class Programacao extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function datasManutencoes()
+    {
+        return $this->hasMany(\App\Models\DataManutencao::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
     public function fotos()
     {
         return $this->hasMany(\App\Models\Foto::class, 'programacao_id');

@@ -24,8 +24,7 @@ class DataManutencao extends Model
     public $table = 'datas_manutencoes';
     
 
-    protected $dates = ['deleted_at'];
-
+    protected $dates = ['deleted_at', 'data_inicio', 'data_fim'];
 
 
     public $fillable = [
@@ -58,6 +57,11 @@ class DataManutencao extends Model
         'data_fim' => 'required'
     ];
 
+    public $appends = [
+        'dataInicioFormatada',
+        'dataFimFormatada',        
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -72,5 +76,27 @@ class DataManutencao extends Model
     public function item()
     {
         return $this->belongsTo(\App\Models\Item::class, 'item_id');
+    }
+
+    /**
+     * Acessor para Data Inicio  formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataInicioFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Fim  formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataFimFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim)->format('d/m/Y H:i:s');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComentarioDataTable;
+use App\DataTables\DataManutencaoDataTable;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
@@ -400,6 +401,25 @@ class ProgramacaoController extends AppBaseController
 
         return $datatable->addScope(new PorIdProgramacaoScope($id))
             ->render('programacoes.show_comentarios', compact('programacao'));
+    }
+
+    /**
+     * Metodo para servir a view de Datas de Manutenções de Itens de 1 Programação.
+     *
+     * @return View
+     */
+    public function getDatasManutencoes(DataManutencaoDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_datas_manutencoes', compact('programacao'));
     }
 
     /**

@@ -3,9 +3,9 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('datasManutencoes.index') }}">Data Manutencao</a>
+                <a href="{{ route('datasManutencoes.index') }}">Data da Manutenção</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">Detalhes</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,8 +14,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('datasManutencoes.index') }}" class="btn btn-light">Back</a>
+                                 <strong>Detalhes</strong>                                  
                              </div>
                              <div class="card-body">
                                  @include('datas_manutencoes.show_fields')

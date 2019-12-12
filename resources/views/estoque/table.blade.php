@@ -1,6 +1,7 @@
 @section('css')
-    @include('vendor.datatables.css')
+    @include('layouts.datatables_css')
 @endsection
+
 
 {!! $dataTable->table([
     'width' => '100%',
@@ -8,6 +9,6 @@
 ]) !!}
 
 @section('scripts')
-    @include('vendor.datatables.js')
+    @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
-@append
+@endsection
