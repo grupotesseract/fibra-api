@@ -77,3 +77,9 @@
     </a>
 </li>
  --}}
+<li class="nav-item {{ Request::is('datasManutencoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('datasManutencoes.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Datas Manutencoes</span>
+    </a>
+</li>
