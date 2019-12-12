@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico|cliente']], funct
     Route::apiResource('materiais', 'MaterialAPIController')->only([
         'index', 'show',
     ]);
+
+    Route::resource('comentarios', 'ComentarioAPIController');
 });
 
 /*
