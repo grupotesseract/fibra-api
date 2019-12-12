@@ -60,7 +60,7 @@
         !!}
         
         <tr>                
-            <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : '' }}</td>                
+            <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : $material->nome }}</td>                
             <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
             <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
             <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
