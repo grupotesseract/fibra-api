@@ -29,7 +29,7 @@ class ComentarioGeralDataTable extends DataTable
      */
     public function query(ComentarioGeral $model)
     {
-        return $model->with('item');
+        return $model->query();
     }
 
     /**

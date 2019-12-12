@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-    {!! Form::open(['route' => ['comentarios.store'], 'id' => 'form-add-comentario-geral']) !!}
+    {!! Form::open(['route' => ['programacoes.comentariosGerais', $programacao->id], 'id' => 'form-add-comentario-geral']) !!}
 
     {!! Form::hidden('programacao_id', $programacao->id, ['id' => 'programacao_id']) !!}
 
