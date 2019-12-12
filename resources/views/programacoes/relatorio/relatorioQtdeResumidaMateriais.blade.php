@@ -42,8 +42,15 @@
                 }
             )->get()->first();
 
-            $qtdeEstoqueInicial = $estoque->quantidade_inicial;
-            $qtdeEstoqueFinal = $estoque->quantidade_final;
+            if (!is_null($estoque))
+            {
+                $qtdeEstoqueInicial = $estoque->quantidade_inicial;
+                $qtdeEstoqueFinal = $estoque->quantidade_final;
+            }
+            else {
+                $qtdeEstoqueInicial = 0;
+                $qtdeEstoqueFinal = 0;
+            }
 
             $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
 
