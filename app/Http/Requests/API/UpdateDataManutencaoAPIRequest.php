@@ -25,7 +25,7 @@ class UpdateDataManutencaoAPIRequest extends APIRequest
     public function rules()
     {
         $rules = DataManutencao::$rules;
-        
+
         return $rules;
     }
 }

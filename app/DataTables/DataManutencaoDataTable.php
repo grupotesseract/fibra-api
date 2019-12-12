@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\DataManutencao;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class DataManutencaoDataTable extends DataTable
 {
@@ -65,7 +65,7 @@ class DataManutencaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            
+
             'nome' => [
                 'data' => 'item.nome',
                 'title' => 'Nome do Item',
@@ -86,7 +86,7 @@ class DataManutencaoDataTable extends DataTable
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-            ],      
+            ],
         ];
     }
 
@@ -97,6 +97,6 @@ class DataManutencaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'datas_manutencoesdatatable_' . time();
+        return 'datas_manutencoesdatatable_'.time();
     }
 }
