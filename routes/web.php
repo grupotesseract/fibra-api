@@ -60,6 +60,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.comentarios');
     Route::post('programacoes/{id}/comentarios', 'ProgramacaoController@postGerenciarComentarios')
         ->name('programacoes.comentarios');
+    Route::get('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@getGerenciarComentariosGerais')
+        ->name('programacoes.comentariosGerais');
+    Route::post('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@postGerenciarComentariosGerais')
+        ->name('programacoes.comentariosGerais');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');

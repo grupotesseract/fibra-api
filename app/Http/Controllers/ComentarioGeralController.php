@@ -72,7 +72,7 @@ class ComentarioGeralController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            Flash::error('Comentario Geral not found');
+            Flash::error('Comentario Geral não encontrado');
 
             return redirect(route('comentariosGerais.index'));
         }
@@ -92,7 +92,7 @@ class ComentarioGeralController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            Flash::error('Comentario Geral not found');
+            Flash::error('Comentario Geral não encontrado');
 
             return redirect(route('comentariosGerais.index'));
         }
@@ -113,14 +113,14 @@ class ComentarioGeralController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            Flash::error('Comentario Geral not found');
+            Flash::error('Comentario Geral não encontrado');
 
             return redirect(route('comentariosGerais.index'));
         }
 
         $comentarioGeral = $this->comentarioGeralRepository->update($request->all(), $id);
 
-        Flash::success('Comentario Geral updated successfully.');
+        Flash::success('Comentario Geral atualizado com sucesso.');
 
         return redirect(route('comentariosGerais.index'));
     }
@@ -137,14 +137,14 @@ class ComentarioGeralController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            Flash::error('Comentario Geral not found');
+            Flash::error('Comentario Geral não encontrado');
 
             return redirect(route('comentariosGerais.index'));
         }
 
         $this->comentarioGeralRepository->delete($id);
 
-        Flash::success('Comentario Geral deleted successfully.');
+        Flash::success('Comentario Geral removido com sucesso.');
 
         return redirect(route('comentariosGerais.index'));
     }

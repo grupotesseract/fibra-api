@@ -40,7 +40,7 @@ class ComentarioGeralAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($comentariosGerais->toArray(), 'Comentarios Gerais retrieved successfully');
+        return $this->sendResponse($comentariosGerais->toArray(), 'Listagem de Comentarios Gerais obtida com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
         $comentarioGeral = $this->comentarioGeralRepository->create($input);
 
-        return $this->sendResponse($comentarioGeral->toArray(), 'Comentario Geral saved successfully');
+        return $this->sendResponse($comentarioGeral->toArray(), 'Comentario Geral salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class ComentarioGeralAPIController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            return $this->sendError('Comentario Geral not found');
+            return $this->sendError('Comentario Geral não encontrado');
         }
 
-        return $this->sendResponse($comentarioGeral->toArray(), 'Comentario Geral retrieved successfully');
+        return $this->sendResponse($comentarioGeral->toArray(), 'Comentario Geral obtido com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class ComentarioGeralAPIController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            return $this->sendError('Comentario Geral not found');
+            return $this->sendError('Comentario Geral não encontrado');
         }
 
         $comentarioGeral = $this->comentarioGeralRepository->update($input, $id);
 
-        return $this->sendResponse($comentarioGeral->toArray(), 'ComentarioGeral updated successfully');
+        return $this->sendResponse($comentarioGeral->toArray(), 'Comentario Geral atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class ComentarioGeralAPIController extends AppBaseController
         $comentarioGeral = $this->comentarioGeralRepository->find($id);
 
         if (empty($comentarioGeral)) {
-            return $this->sendError('Comentario Geral not found');
+            return $this->sendError('Comentario Geral não encontrado');
         }
 
         $comentarioGeral->delete();
 
-        return $this->sendSuccess('Comentario Geral deleted successfully');
+        return $this->sendSuccess('Comentario Geral removido com sucesso');
     }
 }

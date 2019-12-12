@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\ComentarioGeral;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ComentarioGeralDataTable extends DataTable
 {
@@ -29,7 +29,7 @@ class ComentarioGeralDataTable extends DataTable
      */
     public function query(ComentarioGeral $model)
     {
-        return $model->newQuery();
+        return $model->with('item');
     }
 
     /**
@@ -48,11 +48,11 @@ class ComentarioGeralDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i> Atualizar', 'className' => 'btn btn-default btn-sm no-corner btnAtualizaDataTable'],
+                    ['extend' => 'colvis', 'text'    => '<i class="fa fa-filter"></i> Filtrar Colunas'],
+                ],
+                'language' => [
+                    'url' => url('//cdn.datatables.net/plug-ins/1.10.18/i18n/Portuguese-Brasil.json'),
                 ],
             ]);
     }
@@ -65,8 +65,7 @@ class ComentarioGeralDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'programacao_id',
-            'comentario'
+            'comentario',
         ];
     }
 
@@ -77,6 +76,6 @@ class ComentarioGeralDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'comentarios_geraisdatatable_' . time();
+        return 'comentarios_gerais_datatable_'.time();
     }
 }
