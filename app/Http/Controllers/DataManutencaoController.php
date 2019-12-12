@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DataManutencaoDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateDataManutencaoRequest;
 use App\Http\Requests\UpdateDataManutencaoRequest;
 use App\Repositories\DataManutencaoRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class DataManutencaoController extends AppBaseController
 {
-    /** @var  DataManutencaoRepository */
+    /** @var DataManutencaoRepository */
     private $dataManutencaoRepository;
 
     public function __construct(DataManutencaoRepository $dataManutencaoRepo)

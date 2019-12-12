@@ -6,14 +6,13 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class DataManutencao
- * @package App\Models
+ * Class DataManutencao.
  * @version December 12, 2019, 3:50 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
- * @property integer programacao_id
- * @property integer item_id
+ * @property int programacao_id
+ * @property int item_id
  * @property string data_inicio
  * @property string data_fim
  */
@@ -22,16 +21,14 @@ class DataManutencao extends Model
     use SoftDeletes;
 
     public $table = 'datas_manutencoes';
-    
 
     protected $dates = ['deleted_at', 'data_inicio', 'data_fim'];
-
 
     public $fillable = [
         'programacao_id',
         'item_id',
         'data_inicio',
-        'data_fim'
+        'data_fim',
     ];
 
     /**
@@ -42,11 +39,11 @@ class DataManutencao extends Model
     protected $casts = [
         'id' => 'integer',
         'programacao_id' => 'integer',
-        'item_id' => 'integer'
+        'item_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -54,12 +51,12 @@ class DataManutencao extends Model
         'programacao_id' => 'required',
         'item_id' => 'required',
         'data_inicio' => 'required',
-        'data_fim' => 'required'
+        'data_fim' => 'required',
     ];
 
     public $appends = [
         'dataInicioFormatada',
-        'dataFimFormatada',        
+        'dataFimFormatada',
     ];
 
     /**

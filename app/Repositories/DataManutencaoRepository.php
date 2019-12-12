@@ -6,11 +6,9 @@ use App\Models\DataManutencao;
 use App\Repositories\BaseRepository;
 
 /**
- * Class DataManutencaoRepository
- * @package App\Repositories
+ * Class DataManutencaoRepository.
  * @version December 12, 2019, 3:50 pm -03
-*/
-
+ */
 class DataManutencaoRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class DataManutencaoRepository extends BaseRepository
         'programacao_id',
         'item_id',
         'data_inicio',
-        'data_fim'
+        'data_fim',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class DataManutencaoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

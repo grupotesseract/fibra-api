@@ -33,7 +33,6 @@ class QuantidadeSubstituida extends Model
         'quantidade_substituida',
     ];
 
-    
     /**
      * The attributes that should be casted to native types.
      *
@@ -83,9 +82,6 @@ class QuantidadeSubstituida extends Model
         return $this->belongsTo(\App\Models\Material::class, 'material_id');
     }
 
-    
-
-    
     /**
      * Form Acessor para Data Inicio Prevista.
      *
