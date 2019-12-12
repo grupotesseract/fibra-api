@@ -52,3 +52,10 @@
     ]) !!}
     {!! Form::close() !!}
 </div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('plantas.programacoes', $programacao->planta_id) !!}">
+        <i class="fa fa-angle-double-left"></i> &nbsp;
+        <span> Voltar</span>
+    </a>
+</div>

@@ -448,7 +448,7 @@ class ProgramacaoController extends AppBaseController
      */
     public function postGerenciarComentariosGerais(CreateComentarioGeralRequest $request, $id)
     {
-        $result = $this->comentarioRepository->create($request->all());
+        $result = $this->comentarioGeralRepository->create($request->all());
 
         return $this->sendResponse($result, 'Comentário Geral adicionado com sucesso');
     }

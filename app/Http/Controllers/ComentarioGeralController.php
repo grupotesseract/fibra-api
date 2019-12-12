@@ -122,7 +122,7 @@ class ComentarioGeralController extends AppBaseController
 
         Flash::success('Comentario Geral atualizado com sucesso.');
 
-        return redirect(route('comentariosGerais.index'));
+        return redirect(route('programacoes.comentariosGerais', $comentarioGeral->programacao_id));
     }
 
     /**
@@ -146,6 +146,6 @@ class ComentarioGeralController extends AppBaseController
 
         Flash::success('Comentario Geral removido com sucesso.');
 
-        return redirect(route('comentariosGerais.index'));
+        return redirect(route('programacoes.comentariosGerais', $comentarioGeral->programacao_id));
     }
 }
