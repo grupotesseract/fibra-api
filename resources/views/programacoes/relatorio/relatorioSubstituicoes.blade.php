@@ -2,6 +2,7 @@
     <thead>
     
     <tr>
+        <th><strong>Cód. QRCode</strong></th>
         <th><strong>Descrição</strong></th>
         <th><strong>Circuito</strong></th>
         <th><strong>Quant.</strong></th>
@@ -73,6 +74,7 @@
         !!}
         
         <tr>                
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
             <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
             <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
             <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
