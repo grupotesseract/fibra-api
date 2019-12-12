@@ -45,6 +45,7 @@ class ProgramacaoRepository extends BaseRepository
      */
     public function sincronizaProgramação($programacao, $input)
     {
+        $programacao->update($input['programacao']);
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
             $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
@@ -76,5 +77,28 @@ class ProgramacaoRepository extends BaseRepository
 
         //PERSISTINDO ESTOQUE CALCULADO
         $programacao->estoques()->createMany($input['estoques']);
+    }
+
+    /**
+     * Metodo para gerar o relatório de fotos da programação.
+     *
+     * @return void
+     */
+    public function gerarRelatorioFotos($programacao)
+    {
+        $idsItemsComFoto = $programacao->fotos()->pluck('item_id')->unique();
+        $itens = $programacao->planta->itens->whereIn('id', $idsItemsComFoto);
+
+        $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
+        $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
+        $indice = 1;
+
+        foreach ($itens as $item) {
+            $fotos = $programacao->fotos->where('item_id', $item->id);
+            \App\Helpers\PhpWordHelper::addSecaoTitulo($section, $indice++, $item->nome);
+            \App\Helpers\PhpWordHelper::addSecaoFotos($section, $fotos);
+        }
+
+        return \App\Helpers\PhpWordHelper::salvarDoc($phpWord);
     }
 }

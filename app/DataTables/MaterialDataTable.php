@@ -29,7 +29,13 @@ class MaterialDataTable extends DataTable
      */
     public function query(Material $model)
     {
-        return $model->newQuery();
+        return $model->with(
+            [
+                'tipoMaterial' => function ($query) {
+                    $query->orderBy('tipo')->orderBy('nome');
+                },
+            ]
+        )->orderBy('nome');
     }
 
     /**
@@ -69,11 +75,29 @@ class MaterialDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+            'id' => [
+                'orderable' => false,
+                'filterable' => false,
+            ],
+
             'nome' => [
                 'data' => 'nome',
                 'title' => 'Nome',
-                'searchable' => false,
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'abreviacao' => [
+                'data' => 'abreviacao',
+                'title' => 'Abreviação',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipo_reator_qtde' => [
+                'data' => 'tipo_reator_qtde',
+                'title' => 'Qtde. Tipo Reator',
+                'searchable' => true,
                 'orderable' => false,
                 'filterable' => false,
             ],

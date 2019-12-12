@@ -16,7 +16,6 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Detalhes</strong>
-                            <a href="{!! url()->previous() !!}" class="btn btn-ghost-light">Voltar</a>
                         </div>
                         <div class="card-body">
                             @include('itens.show_fields')

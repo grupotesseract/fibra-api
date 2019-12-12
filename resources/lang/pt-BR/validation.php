@@ -151,6 +151,7 @@ return [
         'qnt_instalada' => 'quantidade instalada',
         'material_id' => 'material',
         'cidade_id' => 'cidade',
+        'role_id' => 'cargo',
     ],
 
 ];

@@ -13,6 +13,7 @@ $factory->define(QuantidadeSubstituida::class, function (Faker $faker) {
         'item_id' => Item::inRandomOrder()->first()->id,
         'material_id' => Material::inRandomOrder()->first()->id,
         'quantidade_substituida' => $faker->numberBetween($min = 50, $max = 100),
+        'data_manutencao' => $faker->date('Y-m-d H:i:s'),
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];

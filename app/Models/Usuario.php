@@ -32,6 +32,7 @@ class Usuario extends Authenticatable
     public $fillable = [
         'nome',
         'email',
+        'login',
         'email_verified_at',
         'password',
         'telefone',
@@ -49,6 +50,7 @@ class Usuario extends Authenticatable
         'id' => 'integer',
         'nome' => 'string',
         'email' => 'string',
+        'login' => 'string',
         'email_verified_at' => 'datetime',
         'password' => 'string',
         'telefone' => 'string',
@@ -64,15 +66,20 @@ class Usuario extends Authenticatable
      */
     public static $rules = [
         'nome' => 'required',
-        'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
+        'login' => 'required|unique:usuarios,login,NULL,id,deleted_at,NULL',
         'password' => 'required',
         'cidade_id' => 'required',
+        'role_id' => 'required',
     ];
 
     protected $hidden = [
         'password',
         'email_verified_at',
         'remember_token',
+    ];
+
+    public $appends = [
+        'role',
     ];
 
     /**
@@ -89,5 +96,17 @@ class Usuario extends Authenticatable
     public function liberacoesDocumentos()
     {
         return $this->belongsToMany(\App\Models\LiberacaoDocumento::class, 'usuarios_liberacoes', 'usuario_id', 'liberacao_documento_id');
+    }
+
+    /**
+     * Acessor para a informação de tipo do Tipo de Material.
+     *
+     * @return int
+     */
+    public function getRoleAttribute()
+    {
+        if (! is_null($this->roles->first())) {
+            return $this->roles->first()->name;
+        }
     }
 }

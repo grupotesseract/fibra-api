@@ -71,4 +71,22 @@ class Item extends Model
         return $this->belongsToMany(\App\Models\Material::class, 'itens_materiais', 'item_id', 'material_id')
             ->withPivot('quantidade_instalada');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quantidadesSubstituidas()
+    {
+        return $this->hasMany(\App\Models\QuantidadeSubstituida::class, 'item_id');
+    }
+
+    /**
+     * Relacionamento com Fotos.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fotos()
+    {
+        return $this->hasMany(\App\Models\Foto::class, 'item_id');
+    }
 }

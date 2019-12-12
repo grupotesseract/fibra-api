@@ -10,6 +10,7 @@ mix
   .js('resources/js/pages/EntradaMateriais.js', 'public/js/pages')
   .js('resources/js/pages/QuantidadesMinimas.js', 'public/js/pages')
   .js('resources/js/pages/QuantidadesSubstituidas.js', 'public/js/pages')
+  .js('resources/js/pages/Comentarios.js', 'public/js/pages')
   .js('resources/js/pages/Materiais.js', 'public/js/pages')
 
   .sass('resources/sass/app.scss', 'public/css')

@@ -10,6 +10,12 @@
     {!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Login Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('login', 'Login') !!}
+    {!! Form::text('login', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Senha') !!}
@@ -40,6 +46,11 @@
             'Model' => $usuario
         ])
     </div>
+    <div class="form-group col-sm-6">
+        @include('roles.select', [
+            'Model' => $usuario
+        ])
+    </div>
 
 @else
 
@@ -48,6 +59,9 @@
     </div>
     <div class="form-group col-sm-6">
         @include('cidades.select')
+    </div>
+    <div class="form-group col-sm-6">
+        @include('roles.select')
     </div>
 
 @endif

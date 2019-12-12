@@ -70,4 +70,10 @@
         <span>Entradas Materiais</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('comentarios*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('comentarios.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Comentarios</span>
+    </a>
+</li>
  --}}

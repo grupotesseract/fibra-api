@@ -76,6 +76,7 @@ class UsuarioDataTable extends DataTable
         return [
             'nome',
             'email',
+            'login',
             'telefone',
         ];
     }
