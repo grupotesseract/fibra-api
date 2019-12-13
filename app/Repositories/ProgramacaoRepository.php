@@ -69,7 +69,7 @@ class ProgramacaoRepository extends BaseRepository
         $programacao->comentarios()->createMany($input['comentarios']);
         $programacao->comentariosGerais()->create(
             [
-                'comentario' => $input['programacao']['comentarioGeral']
+                'comentario' => $input['programacao']['comentarioGeral'],
             ]
         );
 
