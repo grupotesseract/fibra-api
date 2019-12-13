@@ -1,7 +1,6 @@
 <!-- Programacao Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('programacao_id', 'Programacao Id:') !!}
-    {!! Form::text('programacao_id', null, ['class' => 'form-control']) !!}
+    {!! Form::hidden('programacao_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Comentario Field -->

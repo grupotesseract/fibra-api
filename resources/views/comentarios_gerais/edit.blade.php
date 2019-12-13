@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('comentariosGerais.index') !!}">Comentario Geral</a>
+             <a href="{!! route('comentariosGerais.index') !!}">Comentário Geral</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">Editar</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Comentario Geral</strong>
+                              <strong>Editar Comentário Geral</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($comentarioGeral, ['route' => ['comentariosGerais.update', $comentarioGeral->id], 'method' => 'patch']) !!}

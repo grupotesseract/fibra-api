@@ -5,7 +5,7 @@
             <li class="breadcrumb-item">
                 <a href="{{ route('comentariosGerais.index') }}">Comentario Geral</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">Detalhes</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,8 +14,7 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('comentariosGerais.index') }}" class="btn btn-light">Back</a>
+                                 <strong>Detalhes</strong>
                              </div>
                              <div class="card-body">
                                  @include('comentarios_gerais.show_fields')

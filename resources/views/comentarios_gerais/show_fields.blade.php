@@ -4,11 +4,6 @@
     <p>{{ $comentarioGeral->id }}</p>
 </div>
 
-<!-- Programacao Id Field -->
-<div class="form-group">
-    {!! Form::label('programacao_id', 'Programacao Id:') !!}
-    <p>{{ $comentarioGeral->programacao_id }}</p>
-</div>
 
 <!-- Comentario Field -->
 <div class="form-group">
@@ -18,13 +13,13 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $comentarioGeral->created_at }}</p>
+    {!! Form::label('created_at', 'Criado em:') !!}
+    <p>{{ $comentarioGeral->created_at->format('d/m/Y H:i:s') }}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $comentarioGeral->updated_at }}</p>
+    {!! Form::label('updated_at', 'Atualizado em:') !!}
+    <p>{{ $comentarioGeral->updated_at->format('d/m/Y H:i:s') }}</p>
 </div>
 
