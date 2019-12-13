@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
-use App\Models\Comentario;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\ComentarioGeral;
+use InfyOm\Generator\Request\APIRequest;
 
-class UpdateComentarioRequest extends FormRequest
+class UpdateComentarioGeralAPIRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateComentarioRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Comentario::$rules;
+        $rules = ComentarioGeral::$rules;
 
         return $rules;
     }
@@ -39,8 +39,6 @@ class UpdateComentarioRequest extends FormRequest
         return [
             'programacao_id.required' => 'O campo programação é obrigatório',
             'programacao_id.exists' => 'O campo programação é obrigatório',
-            'item_id.required' => 'O campo item é obrigatório',
-            'item_id.exists' => 'O campo item é obrigatório',
             'comentario.required' => 'O campo comentário é obrigatório',
         ];
     }

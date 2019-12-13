@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Comentario;
+use App\Models\ComentarioGeral;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateComentarioRequest extends FormRequest
+class UpdateComentarioGeralRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateComentarioRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Comentario::$rules;
+        $rules = ComentarioGeral::$rules;
 
         return $rules;
     }
@@ -39,8 +39,6 @@ class UpdateComentarioRequest extends FormRequest
         return [
             'programacao_id.required' => 'O campo programação é obrigatório',
             'programacao_id.exists' => 'O campo programação é obrigatório',
-            'item_id.required' => 'O campo item é obrigatório',
-            'item_id.exists' => 'O campo item é obrigatório',
             'comentario.required' => 'O campo comentário é obrigatório',
         ];
     }

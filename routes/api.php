@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico|cliente']], funct
     ]);
 
     Route::resource('comentarios', 'ComentarioAPIController');
+    Route::resource('comentarios_gerais', 'ComentarioGeralAPIController');
 });
 
 /*
