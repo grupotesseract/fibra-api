@@ -13,12 +13,6 @@
     {!! Form::text('quantidade_substituida', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Data Inicio Real Field -->
-<div class="form-group col-sm-3">
-    {!! Form::label('data_manutencao', 'Data da Manutenção') !!}
-    {!! Form::text('data_manutencao', null, ['class' => 'datepicker form-control','id'=>'data_manutencao']) !!}
-</div>
-
 <div class="form-group col-sm-12" style="min-height:150px"></div>
 
 <!-- Submit Field -->

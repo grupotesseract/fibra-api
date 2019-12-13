@@ -4,24 +4,6 @@
     <p>{!! $quantidadeSubstituida->id !!}</p>
 </div>
 
-<!-- Programacao Id Field -->
-<div class="form-group">
-    {!! Form::label('programacao_id', 'Programacao Id:') !!}
-    <p>{!! $quantidadeSubstituida->programacao_id !!}</p>
-</div>
-
-<!-- Item Id Field -->
-<div class="form-group">
-    {!! Form::label('item_id', 'Item Id:') !!}
-    <p>{!! $quantidadeSubstituida->item_id !!}</p>
-</div>
-
-<!-- Material Id Field -->
-<div class="form-group">
-    {!! Form::label('material_id', 'Material Id:') !!}
-    <p>{!! $quantidadeSubstituida->material_id !!}</p>
-</div>
-
 <!-- Quantidade Substituida Field -->
 <div class="form-group">
     {!! Form::label('quantidade_substituida', 'Quantidade Substituida:') !!}
@@ -30,13 +12,13 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $quantidadeSubstituida->created_at !!}</p>
+    {!! Form::label('created_at', 'Criado em:') !!}
+    <p>{!! $quantidadeSubstituida->created_at->format('d/m/Y H:i:s') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $quantidadeSubstituida->updated_at !!}</p>
+    {!! Form::label('updated_at', 'Atualizado em:') !!}
+    <p>{!! $quantidadeSubstituida->updated_at->format('d/m/Y H:i:s') !!}</p>
 </div>
 
