@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.relatorioFotos');
     Route::get('programacoes/{id}/comentarios', 'ProgramacaoController@getGerenciarComentarios')
         ->name('programacoes.comentarios');
+    Route::get('programacoes/{id}/datasManutencoes', 'ProgramacaoController@getDatasManutencoes')
+    ->name('programacoes.datasManutencoes');
     Route::post('programacoes/{id}/comentarios', 'ProgramacaoController@postGerenciarComentarios')
         ->name('programacoes.comentarios');
     Route::get('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@getGerenciarComentariosGerais')
@@ -80,3 +82,5 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('comentarios', 'ComentarioController');
     Route::resource('comentariosGerais', 'ComentarioGeralController');
 });
+
+Route::resource('datasManutencoes', 'DataManutencaoController');

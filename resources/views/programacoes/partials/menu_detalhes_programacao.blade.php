@@ -31,6 +31,13 @@
 </div>
 
 <div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.datasManutencoes', $programacao->id) !!}">
+        <i class="fa fa-clock-o"></i> &nbsp;
+        <span> Datas e Horários </span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
     <a class="btn btn-primary form-control" href="{!! route('programacoes.comentariosGerais', $programacao->id) !!}">
         <i class="fa fa-comments-o"></i> &nbsp;
         <span> Comentários Gerais</span>

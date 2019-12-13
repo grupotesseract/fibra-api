@@ -51,7 +51,6 @@ class EmpresasTableSeeder extends Seeder
                                                     'programacao_id' => $programacao->id,
                                                     'quantidade_substituida' => $qtdeSubstituida,
                                                     'material_id' => $materialId,
-                                                    'data_manutencao' => $randomDate,
                                                     'item_id' => $planta->itens->random(1)->first()->id,
                                                 ]
                                             );
@@ -67,6 +66,14 @@ class EmpresasTableSeeder extends Seeder
                                         }
                                     }
                                 )
+                            );
+
+                            //CRIANDO A PROGRAMAÇÃO ONDE SERÁ FEITO O SYNC
+                            $planta->programacoes()->create(
+                                [
+                                    'data_inicio_prevista' => \Carbon\Carbon::now()->addMonth(4),
+                                    'data_fim_prevista' => \Carbon\Carbon::now()->addMonth(4)->addDay(3),
+                                ]
                             );
 
                             foreach ($materiaisIds as $materialId) {

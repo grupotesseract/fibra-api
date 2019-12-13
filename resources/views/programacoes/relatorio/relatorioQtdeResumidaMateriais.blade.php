@@ -42,8 +42,15 @@
                 }
             )->get()->first();
 
-            $qtdeEstoqueInicial = $estoque->quantidade_inicial;
-            $qtdeEstoqueFinal = $estoque->quantidade_final;
+            if (!is_null($estoque))
+            {
+                $qtdeEstoqueInicial = $estoque->quantidade_inicial;
+                $qtdeEstoqueFinal = $estoque->quantidade_final;
+            }
+            else {
+                $qtdeEstoqueInicial = 0;
+                $qtdeEstoqueFinal = 0;
+            }
 
             $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
 
@@ -53,7 +60,7 @@
         !!}
         
         <tr>                
-            <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : '' }}</td>                
+            <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : $material->nome }}</td>                
             <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
             <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
             <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                

@@ -40,14 +40,12 @@ class QuantidadesSubstituidas {
     const item_id = $('#item_id').val();
     const select_materiais = $('#material_id');
     const quantidade = $('#quantidade');
-    const data_manutencao = $('#data_manutencao');
 
     const data = {
       material_id : select_materiais.val(),
       programacao_id : programacao_id,
       item_id : item_id,
       quantidade_substituida : quantidade.val(),
-      data_manutencao : data_manutencao.val(),
     };
 
     container_erros.slideUp().html('');

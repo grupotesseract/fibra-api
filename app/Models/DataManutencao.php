@@ -2,35 +2,33 @@
 
 namespace App\Models;
 
-use Collective\Html\Eloquent\FormAccessible;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class QuantidadeSubstituida.
- * @version October 23, 2019, 3:09 pm -03
+ * Class DataManutencao.
+ * @version December 12, 2019, 3:50 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
- * @property \App\Models\Material material
  * @property int programacao_id
  * @property int item_id
- * @property int material_id
- * @property int quantidade_substituida
+ * @property string data_inicio
+ * @property string data_fim
  */
-class QuantidadeSubstituida extends Model
+class DataManutencao extends Model
 {
-    use SoftDeletes, FormAccessible;
+    use SoftDeletes;
 
-    public $table = 'quantidades_substituidas';
+    public $table = 'datas_manutencoes';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'data_inicio', 'data_fim'];
 
     public $fillable = [
         'programacao_id',
         'item_id',
-        'material_id',
-        'quantidade_substituida',
+        'data_inicio',
+        'data_fim',
     ];
 
     /**
@@ -42,8 +40,6 @@ class QuantidadeSubstituida extends Model
         'id' => 'integer',
         'programacao_id' => 'integer',
         'item_id' => 'integer',
-        'material_id' => 'integer',
-        'quantidade_substituida' => 'integer',
     ];
 
     /**
@@ -52,10 +48,15 @@ class QuantidadeSubstituida extends Model
      * @var array
      */
     public static $rules = [
-        'item_id' => 'required|exists:itens,id',
-        'material_id' => 'required|exists:materiais,id',
-        'programacao_id' => 'required|exists:programacoes,id',
-        'quantidade_substituida' => 'required|integer',
+        'programacao_id' => 'required',
+        'item_id' => 'required',
+        'data_inicio' => 'required',
+        'data_fim' => 'required',
+    ];
+
+    public $appends = [
+        'dataInicioFormatada',
+        'dataFimFormatada',
     ];
 
     /**
@@ -75,21 +76,24 @@ class QuantidadeSubstituida extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function material()
-    {
-        return $this->belongsTo(\App\Models\Material::class, 'material_id');
-    }
-
-    /**
-     * Form Acessor para Data Inicio Prevista.
+     * Acessor para Data Inicio  formatada.
      *
      * @param string $value
      * @return Carbon
      */
-    public function formDataManutencaoAttribute($value)
+    public function getDataInicioFormatadaAttribute()
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_inicio)->format('d/m/Y H:i:s');
+    }
+
+    /**
+     * Acessor para Data Fim  formatada.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getDataFimFormatadaAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim)->format('d/m/Y H:i:s');
     }
 }

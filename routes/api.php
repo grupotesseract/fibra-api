@@ -73,3 +73,5 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
+
+Route::resource('datas_manutencoes', 'DataManutencaoAPIController');

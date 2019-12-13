@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Comentario;
+use App\Models\DataManutencao;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
-class ComentarioDataTable extends DataTable
+class DataManutencaoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class ComentarioDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'comentarios.datatables_actions');
+        return $dataTable->addColumn('action', 'datas_manutencoes.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Comentario $model
+     * @param \App\Models\DataManutencao $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Comentario $model)
+    public function query(DataManutencao $model)
     {
         return $model->with('item');
     }
@@ -65,6 +65,7 @@ class ComentarioDataTable extends DataTable
     protected function getColumns()
     {
         return [
+
             'nome' => [
                 'data' => 'item.nome',
                 'title' => 'Nome do Item',
@@ -72,7 +73,20 @@ class ComentarioDataTable extends DataTable
                 'orderable' => false,
                 'filterable' => false,
             ],
-            'comentario',
+            'dataInicioFormatada' => [
+                'data' => 'dataInicioFormatada',
+                'title' => 'Data Inicio',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'dataFimFormatada' => [
+                'data' => 'dataFimFormatada',
+                'title' => 'Data Fim',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
         ];
     }
 
@@ -83,6 +97,6 @@ class ComentarioDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'comentariosdatatable_'.time();
+        return 'datas_manutencoesdatatable_'.time();
     }
 }

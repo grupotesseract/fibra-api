@@ -110,9 +110,9 @@ class Programacao extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function fotos()
+    public function datasManutencoes()
     {
-        return $this->hasMany(\App\Models\Foto::class, 'programacao_id');
+        return $this->hasMany(\App\Models\DataManutencao::class);
     }
 
     /**
@@ -120,7 +120,15 @@ class Programacao extends Model
      **/
     public function comentarios()
     {
-        return $this->hasMany(\App\Models\Comentario::class, 'programacao_id');
+        return $this->hasMany(\App\Models\Comentario::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function fotos()
+    {
+        return $this->hasMany(\App\Models\Foto::class, 'programacao_id');
     }
 
     /**

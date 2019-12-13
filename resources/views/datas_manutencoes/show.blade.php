@@ -3,9 +3,9 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{!! route('programacoes.quantidadesSubstituidas', $quantidadeSubstituida->programacao_id) !!}">Quantidade Substituida</a>
+                <a href="{{ route('datasManutencoes.index') }}">Data da Manutenção</a>
             </li>
-            <li class="breadcrumb-item active">Detalhe</li>
+            <li class="breadcrumb-item active">Detalhes</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,10 +14,10 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Detalhes</strong>
+                                 <strong>Detalhes</strong>                                  
                              </div>
                              <div class="card-body">
-                                 @include('quantidades_substituidas.show_fields')
+                                 @include('datas_manutencoes.show_fields')
                              </div>
                          </div>
                      </div>
