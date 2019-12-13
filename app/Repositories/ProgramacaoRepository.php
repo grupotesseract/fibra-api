@@ -88,7 +88,7 @@ class ProgramacaoRepository extends BaseRepository
                 $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('base_id', $estoque['material_id'])->sum('quantidade_substituida_base');
             }
 
-            //ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
+            ///ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
             $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
             $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
         }
