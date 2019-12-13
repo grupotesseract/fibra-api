@@ -52,6 +52,7 @@ class EmpresaTransformer extends TransformerAbstract
 
             //Informações de Estoque obtidas através da Programação Anterior mais Recente
             $estoquePlanta = [];
+            $entradaMateriais = [];
             if (! is_null($planta->programacaoAnteriorMaisRecente)) {
                 foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
                     $estoquePlanta[] = [
