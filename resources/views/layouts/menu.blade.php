@@ -83,4 +83,11 @@
         <span>Datas Manutencoes</span>
     </a>
 </li>
---}}
+
+<li class="nav-item {{ Request::is('comentariosGerais*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('comentariosGerais.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Comentarios Gerais</span>
+    </a>
+</li>
+ --}}
