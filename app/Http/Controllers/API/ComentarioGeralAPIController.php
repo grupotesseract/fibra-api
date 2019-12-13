@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateComentarioGeralAPIRequest;
 use App\Http\Requests\API\UpdateComentarioGeralAPIRequest;
 use App\Models\ComentarioGeral;
 use App\Repositories\ComentarioGeralRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class ComentarioGeralController
- * @package App\Http\Controllers\API
+ * Class ComentarioGeralController.
  */
-
 class ComentarioGeralAPIController extends AppBaseController
 {
-    /** @var  ComentarioGeralRepository */
+    /** @var ComentarioGeralRepository */
     private $comentarioGeralRepository;
 
     public function __construct(ComentarioGeralRepository $comentarioGeralRepo)
@@ -27,7 +25,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
     /**
      * Display a listing of the ComentarioGeral.
-     * GET|HEAD /comentariosGerais
+     * GET|HEAD /comentariosGerais.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
     /**
      * Store a newly created ComentarioGeral in storage.
-     * POST /comentariosGerais
+     * POST /comentariosGerais.
      *
      * @param CreateComentarioGeralAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
     /**
      * Display the specified ComentarioGeral.
-     * GET|HEAD /comentariosGerais/{id}
+     * GET|HEAD /comentariosGerais/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
     /**
      * Update the specified ComentarioGeral in storage.
-     * PUT/PATCH /comentariosGerais/{id}
+     * PUT/PATCH /comentariosGerais/{id}.
      *
      * @param int $id
      * @param UpdateComentarioGeralAPIRequest $request
@@ -107,7 +105,7 @@ class ComentarioGeralAPIController extends AppBaseController
 
     /**
      * Remove the specified ComentarioGeral from storage.
-     * DELETE /comentariosGerais/{id}
+     * DELETE /comentariosGerais/{id}.
      *
      * @param int $id
      *
