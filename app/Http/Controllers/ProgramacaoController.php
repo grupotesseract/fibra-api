@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Exports\ProgramacaoExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\DataTables\ComentarioDataTable;
-use App\DataTables\ProgramacaoDataTable;
-use App\Repositories\ComentarioRepository;
-use App\Repositories\ComentarioGeralRepository;
-use App\Http\Controllers\AppBaseController;
-use App\Http\Requests\CreateEstoqueRequest;
-use App\Repositories\ProgramacaoRepository;
 use App\DataTables\ComentarioGeralDataTable;
-use App\Http\Requests\CreateComentarioRequest;
+use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
-use App\Http\Requests\CreateProgramacaoRequest;
-use App\Http\Requests\UpdateProgramacaoRequest;
-use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
-use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\DataTables\Scopes\PorIdProgramacaoScope;
+use App\Exports\ProgramacaoExport;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateComentarioGeralRequest;
-use App\Repositories\QuantidadeSubstituidaRepository;
-use App\DataTables\EntradaMateriaisProgramacaoDataTable;
+use App\Http\Requests\CreateComentarioRequest;
+use App\Http\Requests\CreateEntradaMaterialRequest;
+use App\Http\Requests\CreateEstoqueRequest;
+use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
+use App\Http\Requests\UpdateProgramacaoRequest;
+use App\Repositories\ComentarioGeralRepository;
+use App\Repositories\ComentarioRepository;
+use App\Repositories\ProgramacaoRepository;
+use App\Repositories\QuantidadeSubstituidaRepository;
+use Flash;
+use Maatwebsite\Excel\Facades\Excel;
+use Response;
 
 class ProgramacaoController extends AppBaseController
 {
@@ -39,7 +39,7 @@ class ProgramacaoController extends AppBaseController
 
     private $qntSubstituidaRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo,  ComentarioGeralRepository $comentarioGeralRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo, ComentarioGeralRepository $comentarioGeralRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
         $this->comentarioRepository = $comentarioRepo;

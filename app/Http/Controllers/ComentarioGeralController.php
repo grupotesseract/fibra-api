@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComentarioGeralDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateComentarioGeralRequest;
 use App\Http\Requests\UpdateComentarioGeralRequest;
 use App\Repositories\ComentarioGeralRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ComentarioGeralController extends AppBaseController
 {
-    /** @var  ComentarioGeralRepository */
+    /** @var ComentarioGeralRepository */
     private $comentarioGeralRepository;
 
     public function __construct(ComentarioGeralRepository $comentarioGeralRepo)
