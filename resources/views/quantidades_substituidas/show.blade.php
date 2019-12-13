@@ -15,7 +15,6 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Detalhes</strong>
-                                  <a href="{!! route('programacoes.quantidadesSubstituidas', $quantidadeSubstituida->programacao_id) !!}" class="btn btn-ghost-light">Back</a>
                              </div>
                              <div class="card-body">
                                  @include('quantidades_substituidas.show_fields')

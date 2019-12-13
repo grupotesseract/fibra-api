@@ -36,7 +36,6 @@ class CreateQuantidadeSubstituidaRequest extends FormRequest
     {
         return [
             'programacao_id.required' => 'O campo programação é obrigatório',
-            'data_manutencao.required' => 'O campo data da manutenção é obrigatório',
             'programacao_id.exists' => 'O campo programação é obrigatório',
             'material_id.required' => 'O campo material é obrigatório',
             'material_id.exists' => 'O valor do campo material já existe',

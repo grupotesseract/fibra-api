@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComentarioDataTable;
+use App\DataTables\ComentarioGeralDataTable;
+use App\DataTables\DataManutencaoDataTable;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
@@ -12,12 +14,14 @@ use App\DataTables\Scopes\PorIdProgramacaoScope;
 use App\Exports\ProgramacaoExport;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
+use App\Http\Requests\CreateComentarioGeralRequest;
 use App\Http\Requests\CreateComentarioRequest;
 use App\Http\Requests\CreateEntradaMaterialRequest;
 use App\Http\Requests\CreateEstoqueRequest;
 use App\Http\Requests\CreateProgramacaoRequest;
 use App\Http\Requests\CreateQuantidadeSubstituidaRequest;
 use App\Http\Requests\UpdateProgramacaoRequest;
+use App\Repositories\ComentarioGeralRepository;
 use App\Repositories\ComentarioRepository;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\QuantidadeSubstituidaRepository;
@@ -32,12 +36,15 @@ class ProgramacaoController extends AppBaseController
 
     private $comentarioRepository;
 
+    private $comentarioGeralRepository;
+
     private $qntSubstituidaRepository;
 
-    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo)
+    public function __construct(ProgramacaoRepository $programacaoRepo, QuantidadeSubstituidaRepository $quantidadeSubstituidaRepo, ComentarioRepository $comentarioRepo, ComentarioGeralRepository $comentarioGeralRepo)
     {
         $this->programacaoRepository = $programacaoRepo;
         $this->comentarioRepository = $comentarioRepo;
+        $this->comentarioGeralRepository = $comentarioGeralRepo;
         $this->qntSubstituidaRepository = $quantidadeSubstituidaRepo;
     }
 
@@ -384,7 +391,7 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Metodo para servir a view de QuantidadeSubstituida de Materiais de 1 Programação.
+     * Metodo para servir a view de comentarios de 1 Programação.
      *
      * @return View
      */
@@ -403,6 +410,25 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
+     * Metodo para servir a view de Datas de Manutenções de Itens de 1 Programação.
+     *
+     * @return View
+     */
+    public function getDatasManutencoes(DataManutencaoDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_datas_manutencoes', compact('programacao'));
+    }
+
+    /**
      * Recebe o POST de criar um novo comentario via ajax.
      *
      * @param CreateComentarioRequest $request
@@ -413,5 +439,37 @@ class ProgramacaoController extends AppBaseController
         $result = $this->comentarioRepository->create($request->all());
 
         return $this->sendResponse($result, 'Comentário adicionado com sucesso');
+    }
+
+    /**
+     * Metodo para servir a view de comentarios gerais de 1 Programação.
+     *
+     * @return View
+     */
+    public function getGerenciarComentariosGerais(ComentarioGeralDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_comentarios_gerais', compact('programacao'));
+    }
+
+    /**
+     * Recebe o POST de criar um novo comentario via ajax.
+     *
+     * @param CreateComentarioRequest $request
+     * @param mixed $id
+     */
+    public function postGerenciarComentariosGerais(CreateComentarioGeralRequest $request, $id)
+    {
+        $result = $this->comentarioGeralRepository->create($request->all());
+
+        return $this->sendResponse($result, 'Comentário Geral adicionado com sucesso');
     }
 }

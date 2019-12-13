@@ -24,11 +24,7 @@
         {!! Form::number('quantidade', null, ['class' => 'form-control', 'id' => 'quantidade']) !!}
     </div>
 
-    <!-- Data Inicio Real Field -->
-    <div class="form-group col-sm-2">
-        {!! Form::label('data_manutencao', 'Data da Manutenção') !!}
-        {!! Form::text('data_manutencao', null, ['class' => 'datepicker form-control','id' => 'data_manutencao']) !!}
-    </div>
+    
 
 
     <div class="form-group col-sm-1">

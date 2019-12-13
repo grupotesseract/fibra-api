@@ -64,6 +64,15 @@ class ProgramacaoRepository extends BaseRepository
         //QUANTIDADES SUBSTITUIDAS
         $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
 
+        //DATAS DAS MANUTENÇÕES
+        $programacao->datasManutencoes()->createMany($input['datasManutencoes']);
+        $programacao->comentarios()->createMany($input['comentarios']);
+        $programacao->comentariosGerais()->create(
+            [
+                'comentario' => $input['programacao']['comentarioGeral'],
+            ]
+        );
+
         //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
         //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
         foreach ($input['estoques'] as $key => $estoque) {

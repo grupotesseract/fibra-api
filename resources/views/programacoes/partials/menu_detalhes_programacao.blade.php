@@ -31,6 +31,20 @@
 </div>
 
 <div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.datasManutencoes', $programacao->id) !!}">
+        <i class="fa fa-clock-o"></i> &nbsp;
+        <span> Datas e Horários </span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.comentariosGerais', $programacao->id) !!}">
+        <i class="fa fa-comments-o"></i> &nbsp;
+        <span> Comentários Gerais</span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
     <a class="btn btn-primary form-control" href="{!! route('programacoes.export', $programacao->id) !!}">
         <i class="fa fa-book"></i> &nbsp;
         <span> Relatório Quantidades </span>
@@ -44,4 +58,11 @@
         'class' => 'btn btn-primary form-control'
     ]) !!}
     {!! Form::close() !!}
+</div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('plantas.programacoes', $programacao->planta_id) !!}">
+        <i class="fa fa-angle-double-left"></i> &nbsp;
+        <span> Voltar</span>
+    </a>
 </div>

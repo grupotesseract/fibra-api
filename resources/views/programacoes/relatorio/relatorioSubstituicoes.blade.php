@@ -2,20 +2,22 @@
     <thead>
     
     <tr>
+        <th><strong>Cód. QRCode</strong></th>
         <th><strong>Descrição</strong></th>
         <th><strong>Circuito</strong></th>
         <th><strong>Quant.</strong></th>
         <th><strong>Tipo</strong></th>
         <th><strong>Pot.(W)</strong></th>
-        <th><strong>Tensão</strong></th>
+        <th><strong>Tensão (V)</strong></th>
         <th><strong>Base/Tipo</strong></th>
         <th><strong>Reator/Tipo</strong></th>
         <th><strong>Lâmpada</strong></th>        
         <th><strong>Reator</strong></th>        
         <th><strong>Base</strong></th>        
         <th><strong>Data Manutenção</strong></th>                
-        <th><strong>Comentários</strong></th>                
-
+        <th><strong>Horário Início</strong></th>                
+        <th><strong>Horário Conclusão</strong></th>                
+        <th><strong>Comentários</strong></th>               
     </tr>
     </thead>
     <tbody>
@@ -47,7 +49,6 @@
             $primeiroMaterial = $materiais[0];
             $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->id)->get()->first();                    
             $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-            $data_manutencao = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->data_manutencao->format('d/m/Y H:i:s') : '';
             
             if(!is_null($primeiroMaterial->reator)) {
                 $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->reator->id)->get()->first();                    
@@ -67,11 +68,13 @@
 
             
             $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
+            $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
 
             $materiais->pull(0);
         !!}
         
         <tr>                
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
             <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
             <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
             <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
@@ -83,7 +86,9 @@
             <td>{{ $qtdeSubstLampada }} </td>      
             <td>{{ $querySubstReator }} </td>      
             <td>{{ $qtdeSubstBase }} </td> 
-            <td>{{ $data_manutencao }} </td> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('d/m/Y') : '' }} </th> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('H:i:s') : '' }} </th> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_fim->format('H:i:s') : '' }} </th> 
             <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($comentario) ? $comentario->comentario : '' }} </th> 
             
         </tr>
@@ -95,7 +100,6 @@
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
                 $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-                $data_manutencao = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->data_manutencao->format('d/m/Y H:i:s') : '';
                 
                 if(!is_null($material->reator)) {
                     $querySubstReator = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->reator->id)->get()->first();                    
@@ -112,6 +116,7 @@
                 else {
                     $qtdeSubstBase = '';
                 }
+
             !!}            
         
             <tr>                
@@ -124,8 +129,6 @@
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $querySubstReator }} </td>      
                 <td>{{ $qtdeSubstBase }} </td>
-                <td>{{ $data_manutencao }} </td>       
-
             </tr>  
         @endforeach        
         
