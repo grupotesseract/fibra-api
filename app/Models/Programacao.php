@@ -116,6 +116,22 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function comentarios()
+    {
+        return $this->hasMany(\App\Models\Comentario::class, 'programacao_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function comentariosGerais()
+    {
+        return $this->hasMany(\App\Models\ComentarioGeral::class, 'programacao_id');
+    }
+
+    /**
      * Mutator para o campo data_inicio_prevista.
      *
      * @param string $value
