@@ -28,12 +28,21 @@ class EmpresaTransformer extends TransformerAbstract
 
                 //Materiais Instalados de uma Planta
                 $materiais = [];
-                foreach ($item->materiais as $material) {
+                $materiaisArray = $item->materiais()->whereHas(
+                    'tipoMaterial', function ($query) {
+                        $query->where('tipo', 'Lâmpada');
+                    }
+                )->get();
+
+
+                foreach ($materiaisArray as $material) {
                     $materiais[] = [
                         'id' => $material->id,
                         'nome' => $material->nome,
                         'base' => $material->baseNome,
                         'reator' => $material->reatorNome,
+                        'base_id' => $material->base_id,
+                        'reator_id' => $material->reator_id,
                         'potencia' => $material->potenciaValor,
                         'tensao' => $material->tensaoValor,
                         'tipoMaterial' => $material->tipoMaterialNome,
