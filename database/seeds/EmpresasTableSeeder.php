@@ -72,7 +72,7 @@ class EmpresasTableSeeder extends Seeder
                             $planta->programacoes()->create(
                                 [
                                     'data_inicio_prevista' => \Carbon\Carbon::now()->addMonth(4),
-                                    'data_fim_prevista' => \Carbon\Carbon::now()->addMonth(4)->addDay(3)
+                                    'data_fim_prevista' => \Carbon\Carbon::now()->addMonth(4)->addDay(3),
                                 ]
                             );
 

@@ -72,10 +72,10 @@ class EmpresaTransformer extends TransformerAbstract
                         'reator' => $estoque->material->reatorNome,
                         'potencia' => $estoque->material->potenciaValor,
                         'tensao' => $estoque->material->tensaoValor,
-                        'tipoMaterial' => $estoque->material->tipoMaterialNome
+                        'tipoMaterial' => $estoque->material->tipoMaterialNome,
                     ];
                 }
-            }            
+            }
 
             $plantas[] = [
                 'id' => $planta->id,
