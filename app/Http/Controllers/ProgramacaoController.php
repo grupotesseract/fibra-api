@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComentarioDataTable;
-use App\DataTables\DataManutencaoDataTable;
 use App\DataTables\ComentarioGeralDataTable;
+use App\DataTables\DataManutencaoDataTable;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
