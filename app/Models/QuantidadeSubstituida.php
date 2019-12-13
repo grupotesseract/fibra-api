@@ -31,6 +31,10 @@ class QuantidadeSubstituida extends Model
         'item_id',
         'material_id',
         'quantidade_substituida',
+        'base_id',
+        'quantidade_substituida_base',
+        'reator_id',
+        'quantidade_substituida_reator',
     ];
 
     /**
@@ -44,6 +48,10 @@ class QuantidadeSubstituida extends Model
         'item_id' => 'integer',
         'material_id' => 'integer',
         'quantidade_substituida' => 'integer',
+        'base_id' => 'integer',
+        'quantidade_substituida_base' => 'integer',
+        'reator_id' => 'integer',
+        'quantidade_substituida_reator' => 'integer',
     ];
 
     /**
