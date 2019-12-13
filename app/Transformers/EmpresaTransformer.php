@@ -34,6 +34,8 @@ class EmpresaTransformer extends TransformerAbstract
                         'nome' => $material->nome,
                         'base' => $material->baseNome,
                         'reator' => $material->reatorNome,
+                        'potencia' => $material->potenciaValor,
+                        'tensao' => $material->tensaoValor,
                         'tipoMaterial' => $material->tipoMaterialNome,
                         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
                     ];
@@ -57,11 +59,23 @@ class EmpresaTransformer extends TransformerAbstract
                         'nome' => $estoque->material->nome,
                         'base' => $estoque->material->baseNome,
                         'reator' => $estoque->material->reatorNome,
+                        'potencia' => $estoque->material->potenciaValor,
+                        'tensao' => $estoque->material->tensaoValor,
                         'tipoMaterial' => $estoque->material->tipoMaterialNome,
                         'quantidade' => $estoque->quantidade_final,
                     ];
+
+                    $entradaMateriais[] = [
+                        'id' => $estoque->material_id,
+                        'nome' => $estoque->material->nome,
+                        'base' => $estoque->material->baseNome,
+                        'reator' => $estoque->material->reatorNome,
+                        'potencia' => $estoque->material->potenciaValor,
+                        'tensao' => $estoque->material->tensaoValor,
+                        'tipoMaterial' => $estoque->material->tipoMaterialNome
+                    ];
                 }
-            }
+            }            
 
             $plantas[] = [
                 'id' => $planta->id,
@@ -69,6 +83,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'proximaProgramacao' => $proximaProgramacao,
                 'itens' => $itens ?? null,
                 'estoque' => $estoquePlanta,
+                'entrada' => $entradaMateriais,
             ];
         }
 

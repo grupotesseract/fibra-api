@@ -68,6 +68,14 @@ class EmpresasTableSeeder extends Seeder
                                 )
                             );
 
+                            //CRIANDO A PROGRAMAÇÃO ONDE SERÁ FEITO O SYNC
+                            $planta->programacoes()->create(
+                                [
+                                    'data_inicio_prevista' => \Carbon\Carbon::now()->addMonth(4),
+                                    'data_fim_prevista' => \Carbon\Carbon::now()->addMonth(4)->addDay(3)
+                                ]
+                            );
+
                             foreach ($materiaisIds as $materialId) {
                                 \App\Models\QuantidadeMinima::create(
                                     [
