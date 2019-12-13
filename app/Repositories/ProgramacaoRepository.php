@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Material;
 use App\Models\Programacao;
 use App\Repositories\BaseRepository;
 
@@ -76,10 +77,18 @@ class ProgramacaoRepository extends BaseRepository
         //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
         //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
         foreach ($input['estoques'] as $key => $estoque) {
+            $material = Material::find($estoque['material_id']);
             $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
-            $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
+            
+            if ($material->tipoMaterial->tipo == 'Lâmpada') {
+                $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
+            } else if ($material->tipoMaterial->tipo == 'Reator') {
+                $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('reator_id', $estoque['material_id'])->sum('quantidade_substituida_reator');
+            } else {
+                $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('base_id', $estoque['material_id'])->sum('quantidade_substituida_base');
+            }
 
-            //ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
+            ///ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
             $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
             $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
         }
