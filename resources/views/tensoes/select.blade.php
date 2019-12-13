@@ -5,7 +5,7 @@
 <!-- Select de empresas  -->
 <div class="form-group">
     {!! Form::label('tensoes', 'Tensão') !!} <br>
-    {!! Form::select('tensao_id', $tensoes, $Model->tensao->id, ['class' => 'form-control select2']
+    {!! Form::select('tensao_id', [null => 'Selecionar'] + $tensoes, $Model->tensao->id, ['class' => 'form-control select2']
     ) !!}
 </div>
 
