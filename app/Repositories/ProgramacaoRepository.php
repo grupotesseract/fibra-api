@@ -80,10 +80,13 @@ class ProgramacaoRepository extends BaseRepository
             $material = Material::find($estoque['material_id']);
             $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
             
-            if ($material->tipoMaterial->tipo == 'Lâmpada') {
-                $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
-            } else if ($material->tipoMaterial->tipo == 'Reator') {
-                $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('reator_id', $estoque['material_id'])->sum('quantidade_substituida_reator');
+            if (!is_null($material->tipoMaterial)) {
+                
+                if ($material->tipoMaterial->tipo == 'Lâmpada') {
+                    $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
+                } else if ($material->tipoMaterial->tipo == 'Reator') {
+                    $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('reator_id', $estoque['material_id'])->sum('quantidade_substituida_reator');
+                }
             } else {
                 $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('base_id', $estoque['material_id'])->sum('quantidade_substituida_base');
             }

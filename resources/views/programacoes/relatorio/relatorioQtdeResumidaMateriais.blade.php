@@ -52,11 +52,13 @@
                 $qtdeEstoqueFinal = 0;
             }
 
-            if ($material->tipoMaterial->tipo === 'Lâmpada') {
-                $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
-            } else if ($material->tipoMaterial->tipo === 'Reator') {
-                $qtdeSubst = $programacao->quantidadesSubstituidas()->whereReatorId($material->id)->sum('quantidade_substituida_reator');
-            } else {
+            if (!is_null($material->tipoMaterial)) {
+                if ($material->tipoMaterial->tipo === 'Lâmpada') {
+                    $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
+                } else if ($material->tipoMaterial->tipo === 'Reator') {
+                    $qtdeSubst = $programacao->quantidadesSubstituidas()->whereReatorId($material->id)->sum('quantidade_substituida_reator');
+            }
+            else {
                 $qtdeSubst = $programacao->quantidadesSubstituidas()->whereBaseId($material->id)->sum('quantidade_substituida_base');
             }
 
