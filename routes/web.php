@@ -83,5 +83,4 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('comentariosGerais', 'ComentarioGeralController');
 });
 
-
 Route::resource('datasManutencoes', 'DataManutencaoController');

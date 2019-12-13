@@ -74,5 +74,4 @@ Route::fallback(function () {
     ], 404);
 });
 
-
 Route::resource('datas_manutencoes', 'DataManutencaoAPIController');

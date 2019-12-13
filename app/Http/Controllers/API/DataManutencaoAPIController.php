@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateDataManutencaoAPIRequest;
 use App\Http\Requests\API\UpdateDataManutencaoAPIRequest;
 use App\Models\DataManutencao;
 use App\Repositories\DataManutencaoRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class DataManutencaoController
- * @package App\Http\Controllers\API
+ * Class DataManutencaoController.
  */
-
 class DataManutencaoAPIController extends AppBaseController
 {
-    /** @var  DataManutencaoRepository */
+    /** @var DataManutencaoRepository */
     private $dataManutencaoRepository;
 
     public function __construct(DataManutencaoRepository $dataManutencaoRepo)
@@ -27,7 +25,7 @@ class DataManutencaoAPIController extends AppBaseController
 
     /**
      * Display a listing of the DataManutencao.
-     * GET|HEAD /datasManutencoes
+     * GET|HEAD /datasManutencoes.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class DataManutencaoAPIController extends AppBaseController
 
     /**
      * Store a newly created DataManutencao in storage.
-     * POST /datasManutencoes
+     * POST /datasManutencoes.
      *
      * @param CreateDataManutencaoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class DataManutencaoAPIController extends AppBaseController
 
     /**
      * Display the specified DataManutencao.
-     * GET|HEAD /datasManutencoes/{id}
+     * GET|HEAD /datasManutencoes/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class DataManutencaoAPIController extends AppBaseController
 
     /**
      * Update the specified DataManutencao in storage.
-     * PUT/PATCH /datasManutencoes/{id}
+     * PUT/PATCH /datasManutencoes/{id}.
      *
      * @param int $id
      * @param UpdateDataManutencaoAPIRequest $request
@@ -107,7 +105,7 @@ class DataManutencaoAPIController extends AppBaseController
 
     /**
      * Remove the specified DataManutencao from storage.
-     * DELETE /datasManutencoes/{id}
+     * DELETE /datasManutencoes/{id}.
      *
      * @param int $id
      *
