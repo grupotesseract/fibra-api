@@ -5,7 +5,7 @@
 <!-- Select de Materiais  -->
 <div class="form-group">
     {!! Form::label('materiais', 'Reator') !!} <br>
-    {!! Form::select('reator_id', $materiais, $Model->reator->id, ['class' =>"form-control select2 ".($classesExtras ?? '') ]
+    {!! Form::select('reator_id', [null => 'Selecionar'] + $materiais, $Model->reator->id, ['class' =>"form-control select2 ".($classesExtras ?? '') ]
     ) !!}
 </div>
 

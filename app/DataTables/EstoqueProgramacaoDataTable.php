@@ -65,28 +65,69 @@ class EstoqueProgramacaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'material_nome_potencia_tensao' => [
-                'data' => 'material.nomePotenciaTensao',
-                'title' => 'Material - Potência - Tensão',
+            
+            'nome' => [
+                'data' => 'material.nome',
+                'title' => 'Nome',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'abreviacao' => [
+                'data' => 'material.abreviacao',
+                'title' => 'Abreviação',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipo_reator_qtde' => [
+                'data' => 'material.tipo_reator_qtde',
+                'title' => 'Qtde. Tipo Reator',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'tipoMaterialTipo' => [
+                'data' => 'material.tipoMaterialTipo',
+                'title' => 'Tipo',
                 'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => true,
             ],
-            'material' => [
-                'data' => 'material.nome',
-                'title' => 'Material',
-                'searchable' => true,
+            'tipoMaterialNome' => [
+                'data' => 'material.tipoMaterialNome',
+                'title' => 'Tipo de Material',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
             ],
-            'material_id' => [
-                'title' => 'ID Material',
-                'searchable' => true,
+            'potenciaValor' => [
+                'data' => 'material.potenciaValor',
+                'title' => 'Potência',
+                'searchable' => false,
                 'orderable' => false,
                 'filterable' => false,
-                'visible' => false,
+            ],
+            'tensaoValor' => [
+                'data' => 'material.tensaoValor',
+                'title' => 'Tensão',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'baseNome' => [
+                'data' => 'material.baseNome',
+                'title' => 'Base',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
+            ],
+            'reatorNome' => [
+                'data' => 'material.reatorNome',
+                'title' => 'Reator',
+                'searchable' => false,
+                'orderable' => false,
+                'filterable' => false,
             ],
             'programacao_id' => [
                 'title' => 'ID Programação',
@@ -94,7 +135,7 @@ class EstoqueProgramacaoDataTable extends DataTable
                 'orderable' => false,
                 'filterable' => false,
                 'visible' => false,
-            ],
+            ],            
             'quantidade_inicial' => [
                 'data' => 'quantidade_inicial',
                 'title' => 'Qnt. Inicial',
