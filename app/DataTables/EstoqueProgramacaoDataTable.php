@@ -65,7 +65,7 @@ class EstoqueProgramacaoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            
+
             'nome' => [
                 'data' => 'material.nome',
                 'title' => 'Nome',
@@ -135,7 +135,7 @@ class EstoqueProgramacaoDataTable extends DataTable
                 'orderable' => false,
                 'filterable' => false,
                 'visible' => false,
-            ],            
+            ],
             'quantidade_inicial' => [
                 'data' => 'quantidade_inicial',
                 'title' => 'Qnt. Inicial',

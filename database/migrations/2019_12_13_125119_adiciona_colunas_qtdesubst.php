@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AdicionaColunasQtdesubst extends Migration
 {
@@ -21,7 +21,6 @@ class AdicionaColunasQtdesubst extends Migration
 
             $table->integer('quantidade_substituida_reator')->nullable();
             $table->integer('quantidade_substituida_base')->nullable();
-
         });
     }
 

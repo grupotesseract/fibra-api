@@ -176,7 +176,7 @@ class QuantidadeSubstituidaDataTable extends DataTable
                 'orderable' => true,
                 'filterable' => false,
                 'visible' => true,
-            ]
+            ],
         ];
     }
 
