@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Foto;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class FotoRepository.
