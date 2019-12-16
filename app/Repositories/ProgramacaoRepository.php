@@ -47,7 +47,7 @@ class ProgramacaoRepository extends BaseRepository
      */
     public function sincronizaProgramação($programacao, $input)
     {
-        Log::info('Input: '.json_decode($input));
+        Log::info('Input: '.json_encode($input));
         $programacao->update($input['programacao']);
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
