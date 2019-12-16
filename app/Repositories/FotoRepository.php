@@ -144,6 +144,7 @@ class FotoRepository extends BaseRepository
      */
     public function sincronizarFotos($idProgramacao, $idItem, $request)
     {
+        Log::info('Input Fotos: '.json_encode($request));
         $fotos = is_array($request) ? $request['fotos'] : $request->fotos;
         $arrayFotos = [];
 
