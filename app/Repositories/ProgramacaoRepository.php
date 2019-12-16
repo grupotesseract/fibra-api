@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Material;
 use App\Models\Programacao;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class ProgramacaoRepository.
@@ -46,6 +47,7 @@ class ProgramacaoRepository extends BaseRepository
      */
     public function sincronizaProgramação($programacao, $input)
     {
+        Log::info('Input: '.json_decode($input));
         $programacao->update($input['programacao']);
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
