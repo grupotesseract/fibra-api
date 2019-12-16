@@ -161,6 +161,22 @@ class QuantidadeSubstituidaDataTable extends DataTable
                 'filterable' => false,
                 'visible' => true,
             ],
+            'quantidade_substituida_base' => [
+                'data' => 'quantidade_substituida_base',
+                'title' => 'Qnt. Substituída Base',
+                'searchable' => true,
+                'orderable' => true,
+                'filterable' => false,
+                'visible' => true,
+            ],
+            'quantidade_substituida_reator' => [
+                'data' => 'quantidade_substituida_reator',
+                'title' => 'Qnt. Substituída Reator',
+                'searchable' => true,
+                'orderable' => true,
+                'filterable' => false,
+                'visible' => true,
+            ],
         ];
     }
 

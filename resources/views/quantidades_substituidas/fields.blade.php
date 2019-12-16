@@ -13,7 +13,29 @@
     {!! Form::text('quantidade_substituida', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group col-sm-12" style="min-height:150px"></div>
+<!-- Select Bases -->
+<div class="form-group col-sm-3">
+    @include('materiais.select_bases')
+</div>
+
+<!-- Quantidade Field -->
+<div class="form-group col-sm-3">
+    {!! Form::label('quantidade_substituida_base', 'Qnt. substituída Base') !!}
+    {!! Form::number('quantidade_substituida_base', null, ['class' => 'form-control', 'id' => 'quantidade_substituida_base']) !!}
+</div>
+
+<!-- Select Materiais -->
+<div class="form-group col-sm-3">
+    @include('materiais.select_reatores')
+</div>
+
+<!-- Quantidade Field -->
+<div class="form-group col-sm-3">
+    {!! Form::label('quantidade_substituida_reator', 'Qnt. substituída Reator') !!}
+    {!! Form::number('quantidade_substituida_reator', null, ['class' => 'form-control', 'id' => 'quantidade_substituida_reator']) !!}
+</div>
+
+{{-- <div class="form-group col-sm-12" style="min-height:150px"></div> --}}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
