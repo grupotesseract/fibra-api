@@ -19,9 +19,31 @@
     </div>
 
     <!-- Quantidade Field -->
-    <div class="form-group col-sm-2">
+    <div class="form-group col-sm-3">
         {!! Form::label('quantidade', 'Qnt. substituída') !!}
         {!! Form::number('quantidade', null, ['class' => 'form-control', 'id' => 'quantidade']) !!}
+    </div>
+
+    <!-- Select Bases -->
+    <div class="form-group col-sm-3">
+        @include('materiais.select_bases')
+    </div>
+
+    <!-- Quantidade Field -->
+    <div class="form-group col-sm-2">
+        {!! Form::label('quantidade_substituida_base', 'Qnt. substituída Base') !!}
+        {!! Form::number('quantidade_substituida_base', null, ['class' => 'form-control', 'id' => 'quantidade_substituida_base']) !!}
+    </div>
+
+    <!-- Select Materiais -->
+    <div class="form-group col-sm-3">
+        @include('materiais.select_reatores')
+    </div>
+
+    <!-- Quantidade Field -->
+    <div class="form-group col-sm-2">
+        {!! Form::label('quantidade_substituida_reator', 'Qnt. substituída Reator') !!}
+        {!! Form::number('quantidade_substituida_reator', null, ['class' => 'form-control', 'id' => 'quantidade_substituida_reator']) !!}
     </div>
 
     

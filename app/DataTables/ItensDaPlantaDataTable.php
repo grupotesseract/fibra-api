@@ -29,7 +29,7 @@ class ItensDaPlantaDataTable extends DataTable
      */
     public function query(Item $model)
     {
-        return $model->orderBy('nome');
+        return $model->orderBy('qrcode');
     }
 
     /**
@@ -68,8 +68,12 @@ class ItensDaPlantaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nome',
-            'qrcode',
+            'nome' => [
+                'orderable' => false
+            ],
+            'qrcode' => [
+                'orderable' => false
+            ],
             'circuito',
         ];
     }
