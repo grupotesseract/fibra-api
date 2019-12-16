@@ -24,6 +24,7 @@ class EmpresaTransformer extends TransformerAbstract
             ] : null;
 
             //Itens de uma Planta
+            $itens = [];
             foreach ($planta->itens as $item) {
 
                 //Materiais Instalados de uma Planta
