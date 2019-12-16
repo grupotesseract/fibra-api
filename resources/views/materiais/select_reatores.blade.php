@@ -14,7 +14,7 @@
 <!-- Select de Plantas  -->
 <div class="form-group">
     {!! Form::label('materiais', 'Reator') !!} <br>
-    {!! Form::select('reator_id', [''=>'']+$materiais, null, ['class' =>"form-control select2 ". ($classesExtras ?? '') ]
+    {!! Form::select('reator_id', [null => 'Selecionar'] + $materiais, null, ['id' => 'reator_id', 'class' =>"form-control select2 ". ($classesExtras ?? '') ]
     ) !!}
 </div>
 

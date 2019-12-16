@@ -40,12 +40,20 @@ class QuantidadesSubstituidas {
     const item_id = $('#item_id').val();
     const select_materiais = $('#material_id');
     const quantidade = $('#quantidade');
+    const select_base = $('#base_id');
+    const quantidade_substituida_base = $('#quantidade_substituida_base');
+    const select_reator = $('#reator_id');
+    const quantidade_substituida_reator = $('#quantidade_substituida_reator');
 
     const data = {
-      material_id : select_materiais.val(),
       programacao_id : programacao_id,
       item_id : item_id,
+      material_id : select_materiais.val(),
       quantidade_substituida : quantidade.val(),
+      base_id : select_base.val(),
+      quantidade_substituida_base : quantidade_substituida_base.val(),
+      reator_id : select_reator.val(),
+      quantidade_substituida_reator : quantidade_substituida_reator.val(),
     };
 
     container_erros.slideUp().html('');
