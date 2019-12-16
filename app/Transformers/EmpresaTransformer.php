@@ -34,7 +34,6 @@ class EmpresaTransformer extends TransformerAbstract
                     }
                 )->get();
 
-
                 foreach ($materiaisArray as $material) {
                     $materiais[] = [
                         'id' => $material->id,
