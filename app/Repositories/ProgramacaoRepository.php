@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Material;
 use App\Models\Programacao;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class ProgramacaoRepository.
@@ -46,6 +47,7 @@ class ProgramacaoRepository extends BaseRepository
      */
     public function sincronizaProgramação($programacao, $input)
     {
+        Log::info('Input: '.json_encode($input));
         $programacao->update($input['programacao']);
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
@@ -68,11 +70,14 @@ class ProgramacaoRepository extends BaseRepository
         //DATAS DAS MANUTENÇÕES
         $programacao->datasManutencoes()->createMany($input['datasManutencoes']);
         $programacao->comentarios()->createMany($input['comentarios']);
-        $programacao->comentariosGerais()->create(
-            [
-                'comentario' => $input['programacao']['comentarioGeral'],
-            ]
-        );
+
+        if (array_key_exists('comentarioGeral', $input['programacao'])) {
+            $programacao->comentariosGerais()->create(
+                [
+                    'comentario' => $input['programacao']['comentarioGeral'],
+                ]
+            );
+        }
 
         //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
         //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL

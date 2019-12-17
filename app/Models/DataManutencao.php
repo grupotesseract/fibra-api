@@ -96,4 +96,34 @@ class DataManutencao extends Model
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim)->format('d/m/Y H:i:s');
     }
+
+    /**
+     * Mutator pra data inicio.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataInicioAttribute($value)
+    {
+        try {
+            $this->attributes['data_inicio'] = \Carbon\Carbon::parse($value);
+        } catch (\Exception $e) {
+            $this->attributes['data_inicio'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        }
+    }
+
+    /**
+     * Mutator pra data fim.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataFimAttribute($value)
+    {
+        try {
+            $this->attributes['data_fim'] = \Carbon\Carbon::parse($value);
+        } catch (\Exception $e) {
+            $this->attributes['data_fim'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        }
+    }
 }
