@@ -71,9 +71,11 @@ class PhpWordHelper
                 $cell->addImage(
                     $foto->urlParaRelatorio,
                     [
-                        'height'        => 100,
+                        'height'        => 170,
+                        'width'         => 170,
                         'wrappingStyle' => 'inline',
                         'marginTop' => 100,
+                        'marginLeft' => 100,
                     ]
                 );
             }
