@@ -70,7 +70,7 @@ class ProgramacaoRepository extends BaseRepository
         //DATAS DAS MANUTENÇÕES
         $programacao->datasManutencoes()->createMany($input['datasManutencoes']);
         $programacao->comentarios()->createMany($input['comentarios']);
-        
+
         if (array_key_exists('comentarioGeral', $input['programacao'])) {
             $programacao->comentariosGerais()->create(
                 [

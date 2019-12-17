@@ -98,7 +98,7 @@ class DataManutencao extends Model
     }
 
     /**
-     * Mutator pra data inicio
+     * Mutator pra data inicio.
      *
      * @param Carbon $value
      * @return Carbon
@@ -113,7 +113,7 @@ class DataManutencao extends Model
     }
 
     /**
-     * Mutator pra data fim
+     * Mutator pra data fim.
      *
      * @param Carbon $value
      * @return Carbon
