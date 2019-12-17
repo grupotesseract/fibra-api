@@ -70,11 +70,14 @@ class ProgramacaoRepository extends BaseRepository
         //DATAS DAS MANUTENÇÕES
         $programacao->datasManutencoes()->createMany($input['datasManutencoes']);
         $programacao->comentarios()->createMany($input['comentarios']);
-        $programacao->comentariosGerais()->create(
-            [
-                'comentario' => $input['programacao']['comentarioGeral'],
-            ]
-        );
+        
+        if (array_key_exists('comentarioGeral', $input['programacao'])) {
+            $programacao->comentariosGerais()->create(
+                [
+                    'comentario' => $input['programacao']['comentarioGeral'],
+                ]
+            );
+        }
 
         //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
         //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
