@@ -69,10 +69,10 @@ class ItensDaPlantaDataTable extends DataTable
     {
         return [
             'nome' => [
-                'orderable' => false
+                'orderable' => false,
             ],
             'qrcode' => [
-                'orderable' => false
+                'orderable' => false,
             ],
             'circuito',
         ];
