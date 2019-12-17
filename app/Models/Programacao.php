@@ -195,7 +195,7 @@ class Programacao extends Model
      */
     public function setDataInicioPrevistaAttribute($value)
     {
-        $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::parse($value);
+        $this->attributes['data_inicio_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 
     /**
@@ -206,7 +206,7 @@ class Programacao extends Model
      */
     public function setDataFimPrevistaAttribute($value)
     {
-        $this->attributes['data_fim_prevista'] = \Carbon\Carbon::parse($value);
+        $this->attributes['data_fim_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 
     /**
@@ -217,7 +217,7 @@ class Programacao extends Model
      */
     public function setDataInicioRealAttribute($value)
     {
-        $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
+        $this->attributes['data_inicio_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 
     /**
@@ -228,6 +228,6 @@ class Programacao extends Model
      */
     public function setDataFimRealAttribute($value)
     {
-        $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
+        $this->attributes['data_fim_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 }
