@@ -29,7 +29,13 @@ class App {
         down: "icon-arrow-down-circle icons font-2xl"
       },
       sideBySide: true
-    })
+    }).on('dp.hide', function(e) {
+        var dateTime = moment($(this).val(), "DD/MM/YYYY HH:mm:ss");
+        var dateTimeAPI = moment(dateTime).format('YYYY-MM-DD HH:mm:ss');
+        $(this).next('input[type=hidden]').val(dateTimeAPI);
+      }
+    );
+
   }
 }
 
