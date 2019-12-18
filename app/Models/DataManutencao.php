@@ -105,11 +105,17 @@ class DataManutencao extends Model
      */
     public function setDataInicioAttribute($value)
     {
-        try {
-            $this->attributes['data_inicio'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_inicio'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
         }
+
+        $this->attributes['data_inicio'] = $dataDB;
     }
 
     /**
@@ -120,10 +126,16 @@ class DataManutencao extends Model
      */
     public function setDataFimAttribute($value)
     {
-        try {
-            $this->attributes['data_fim'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_fim'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
         }
+
+        $this->attributes['data_fim'] = $dataDB;
     }
 }
