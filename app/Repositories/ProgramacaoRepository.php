@@ -48,7 +48,9 @@ class ProgramacaoRepository extends BaseRepository
     public function sincronizaProgramação($programacao, $input)
     {
         Log::info('Input: '.json_encode($input));
+        //DADOS DA PROGRAMAÇÃO
         $programacao->update($input['programacao']);
+
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
             $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
@@ -68,9 +70,17 @@ class ProgramacaoRepository extends BaseRepository
         $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
 
         //DATAS DAS MANUTENÇÕES
-        $programacao->datasManutencoes()->createMany($input['datasManutencoes']);
+        
+        foreach ($input['datasManutencoes'] as $dataManutencao) {
+            if (array_key_exists('data_fim', $dataManutencao)) {    
+                $programacao->datasManutencoes()->create($dataManutencao);
+            }
+        }
+        
+        //COMENTÁRIOS DE UM ITEM        
         $programacao->comentarios()->createMany($input['comentarios']);
 
+        //COMENTÁRIOS GERAIS
         if (array_key_exists('comentarioGeral', $input['programacao'])) {
             $programacao->comentariosGerais()->create(
                 [
