@@ -70,14 +70,14 @@ class ProgramacaoRepository extends BaseRepository
         $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
 
         //DATAS DAS MANUTENÇÕES
-        
+
         foreach ($input['datasManutencoes'] as $dataManutencao) {
-            if (array_key_exists('data_fim', $dataManutencao)) {    
+            if (array_key_exists('data_fim', $dataManutencao)) {
                 $programacao->datasManutencoes()->create($dataManutencao);
             }
         }
-        
-        //COMENTÁRIOS DE UM ITEM        
+
+        //COMENTÁRIOS DE UM ITEM
         $programacao->comentarios()->createMany($input['comentarios']);
 
         //COMENTÁRIOS GERAIS

@@ -188,14 +188,14 @@ class Programacao extends Model
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataInicioPrevistaAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             if (strpos($value, 'T')) {
                 $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
             } else {
@@ -206,18 +206,17 @@ class Programacao extends Model
         }
 
         $this->attributes['data_inicio_prevista'] = $dataDB;
-        
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataFimPrevistaAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             if (strpos($value, 'T')) {
                 $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
             } else {
@@ -226,19 +225,19 @@ class Programacao extends Model
         } else {
             $dataDB = null;
         }
-        
+
         $this->attributes['data_fim_prevista'] = $dataDB;
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataInicioRealAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             if (strpos($value, 'T')) {
                 $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
             } else {
@@ -247,20 +246,19 @@ class Programacao extends Model
         } else {
             $dataDB = null;
         }
-        
-        
+
         $this->attributes['data_inicio_real'] = $dataDB;
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataFimRealAttribute($value)
     {
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             if (strpos($value, 'T')) {
                 $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
             } else {
@@ -269,7 +267,7 @@ class Programacao extends Model
         } else {
             $dataDB = null;
         }
-        
+
         $this->attributes['data_fim_real'] = $dataDB;
     }
 }
