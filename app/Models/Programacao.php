@@ -186,4 +186,48 @@ class Programacao extends Model
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
         }
     }
+
+    /**
+     * Mutator pra data
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataInicioPrevistaAttribute($value)
+    {
+        $this->attributes['data_inicio_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    /**
+     * Mutator pra data
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataFimPrevistaAttribute($value)
+    {
+        $this->attributes['data_fim_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    /**
+     * Mutator pra data
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataInicioRealAttribute($value)
+    {
+        $this->attributes['data_inicio_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    /**
+     * Mutator pra data
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataFimRealAttribute($value)
+    {
+        $this->attributes['data_fim_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
 }
