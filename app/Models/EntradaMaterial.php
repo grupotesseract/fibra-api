@@ -67,4 +67,6 @@ class EntradaMaterial extends Model
     {
         return $this->belongsTo(\App\Models\Material::class, 'material_id');
     }
+    
+    
 }
