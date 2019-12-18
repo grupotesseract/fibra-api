@@ -67,4 +67,17 @@ class EntradaMaterial extends Model
     {
         return $this->belongsTo(\App\Models\Material::class, 'material_id');
     }
+
+    
+    /**
+     * Accessor pra campo quantidade
+     *
+     * @param int $value
+     * @return int
+     */
+    public function setQuantidadeAttribute($value)
+    {
+        
+        $this->attributes['quantidade'] = is_null($value) ? 0 : $value;
+    }
 }
