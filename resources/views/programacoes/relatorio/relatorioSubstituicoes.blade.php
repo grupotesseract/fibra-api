@@ -67,7 +67,7 @@
             <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
             <td>{{ !is_null($primeiroMaterial->tensao) ? $primeiroMaterial->tensao->valor : '' }}</td>                
             <td>{{ !is_null($primeiroMaterial->base) ? $primeiroMaterial->base->abreviacao : '' }}</td>                
-            <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->tipoMaterial->abreviacao : '' }}</td>  
+            <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->tipo_reator_qtde.'x'.$primeiroMaterial->reator->potencia->valor : '' }}</td>  
             <td>{{ $qtdeSubstLampada }} </td>      
             <td>{{ $qtdeSubstReator }} </td>      
             <td>{{ $qtdeSubstBase }} </td> 
@@ -96,7 +96,7 @@
                 <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
                 <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
                 <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
-                <td>{{ !is_null($material->reator) ? $material->reator->tipoMaterial->abreviacao : '' }}</td>  
+                <td>{{ !is_null($material->reator) ? $material->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $qtdeSubstReator }} </td>      
                 <td>{{ $qtdeSubstBase }} </td>
