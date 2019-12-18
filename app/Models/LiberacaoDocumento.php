@@ -76,7 +76,7 @@ class LiberacaoDocumento extends Model
     }
 
     /**
-     * Mutator formatando DataHora
+     * Mutator formatando DataHora.
      *
      * @param Carbon $value
      * @return Carbon
