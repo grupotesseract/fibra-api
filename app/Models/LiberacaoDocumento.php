@@ -74,4 +74,25 @@ class LiberacaoDocumento extends Model
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_hora)->format('d/m/Y H:i:s');
     }
+
+    /**
+     * Mutator formatando DataHora
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataHoraAttribute($value)
+    {
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_hora'] = $dataDB;
+    }
 }
