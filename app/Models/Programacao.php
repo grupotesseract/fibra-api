@@ -188,46 +188,86 @@ class Programacao extends Model
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataInicioPrevistaAttribute($value)
     {
-        $this->attributes['data_inicio_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_inicio_prevista'] = $dataDB;
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataFimPrevistaAttribute($value)
     {
-        $this->attributes['data_fim_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_fim_prevista'] = $dataDB;
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataInicioRealAttribute($value)
     {
-        $this->attributes['data_inicio_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_inicio_real'] = $dataDB;
     }
 
     /**
-     * Mutator pra data
+     * Mutator pra data.
      *
      * @param Carbon $value
      * @return Carbon
      */
     public function setDataFimRealAttribute($value)
     {
-        $this->attributes['data_fim_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_fim_real'] = $dataDB;
     }
 }
