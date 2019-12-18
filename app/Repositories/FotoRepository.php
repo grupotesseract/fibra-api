@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Foto;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class FotoRepository.
@@ -144,6 +145,7 @@ class FotoRepository extends BaseRepository
      */
     public function sincronizarFotos($idProgramacao, $idItem, $request)
     {
+        Log::info('Input Fotos: '.json_encode($request));
         $fotos = is_array($request) ? $request['fotos'] : $request->fotos;
         $arrayFotos = [];
 

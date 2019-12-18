@@ -25,7 +25,7 @@ class EmpresaTransformer extends TransformerAbstract
 
             //Itens de uma Planta
             $itens = [];
-            foreach ($planta->itens as $item) {
+            foreach ($planta->itens()->orderBy('qrcode')->get() as $item) {
 
                 //Materiais Instalados de uma Planta
                 $materiais = [];

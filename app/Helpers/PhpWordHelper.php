@@ -62,18 +62,19 @@ class PhpWordHelper
     {
         $section->addTextBreak(1);
 
-        foreach ($fotos->chunk(3) as $linhaFotos) {
+        foreach ($fotos->chunk(2) as $linhaFotos) {
             $table = $section->addTable();
             $table->addRow(2400);
             foreach ($linhaFotos as $foto) {
-                $cell = $table->addCell(3566);
+                $cell = $table->addCell(5300);
                 $cell->addTextBreak(1);
                 $cell->addImage(
                     $foto->urlParaRelatorio,
                     [
-                        'height'        => 100,
+                        'height'        => 190,
                         'wrappingStyle' => 'inline',
                         'marginTop' => 100,
+                        'marginLeft' => 250,
                     ]
                 );
             }

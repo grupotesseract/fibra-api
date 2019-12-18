@@ -140,122 +140,6 @@ class Programacao extends Model
     }
 
     /**
-     * Mutator para o campo data_inicio_prevista.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function setDataInicioPrevistaAttribute($value)
-    {
-        try {
-            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_inicio_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
-        }
-    }
-
-    /**
-     * Mutator para o campo data_fim_prevista.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function setDataFimPrevistaAttribute($value)
-    {
-        try {
-            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::parse($value);
-        } catch (\Exception $e) {
-            $this->attributes['data_fim_prevista'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
-        }
-    }
-
-    /**
-     * Mutator para o campo data_inicio_real.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function setDataInicioRealAttribute($value)
-    {
-        if (! is_null($value)) {
-            try {
-                $this->attributes['data_inicio_real'] = \Carbon\Carbon::parse($value);
-            } catch (\Exception $e) {
-                $this->attributes['data_inicio_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
-            }
-        } else {
-            $this->attributes['data_inicio_real'] = null;
-        }
-    }
-
-    /**
-     * Mutator para o campo data_fim_real.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function setDataFimRealAttribute($value)
-    {
-        if (! is_null($value)) {
-            try {
-                $this->attributes['data_fim_real'] = \Carbon\Carbon::parse($value);
-            } catch (\Exception $e) {
-                $this->attributes['data_fim_real'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $value);
-            }
-        } else {
-            $this->attributes['data_fim_real'] = null;
-        }
-    }
-
-    /**
-     * Form Acessor para Data Inicio Prevista.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function formDataInicioPrevistaAttribute($value)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-    }
-
-    /**
-     * Form Acessor para Data Fim Prevista.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function formDataFimPrevistaAttribute($value)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-    }
-
-    /**
-     * Form Acessor para Data Inicio Real.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function formDataInicioRealAttribute($value)
-    {
-        if (! is_null($value)) {
-            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-        }
-    }
-
-    /**
-     * Form Acessor para Data Fim Real.
-     *
-     * @param string $value
-     * @return Carbon
-     */
-    public function formDataFimRealAttribute($value)
-    {
-        if (! is_null($value)) {
-            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-        }
-    }
-
-    /**
      * Acessor para Data Inicio Prevista formatada.
      *
      * @param string $value
@@ -301,5 +185,89 @@ class Programacao extends Model
         if (! is_null($this->data_fim_real)) {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->data_fim_real)->format('d/m/Y H:i:s');
         }
+    }
+
+    /**
+     * Mutator pra data.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataInicioPrevistaAttribute($value)
+    {
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_inicio_prevista'] = $dataDB;
+    }
+
+    /**
+     * Mutator pra data.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataFimPrevistaAttribute($value)
+    {
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_fim_prevista'] = $dataDB;
+    }
+
+    /**
+     * Mutator pra data.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataInicioRealAttribute($value)
+    {
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_inicio_real'] = $dataDB;
+    }
+
+    /**
+     * Mutator pra data.
+     *
+     * @param Carbon $value
+     * @return Carbon
+     */
+    public function setDataFimRealAttribute($value)
+    {
+        if (! is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_fim_real'] = $dataDB;
     }
 }
