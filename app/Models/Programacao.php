@@ -195,7 +195,18 @@ class Programacao extends Model
      */
     public function setDataInicioPrevistaAttribute($value)
     {
-        $this->attributes['data_inicio_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (!is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+
+        $this->attributes['data_inicio_prevista'] = $dataDB;
+        
     }
 
     /**
@@ -206,7 +217,17 @@ class Programacao extends Model
      */
     public function setDataFimPrevistaAttribute($value)
     {
-        $this->attributes['data_fim_prevista'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (!is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+        
+        $this->attributes['data_fim_prevista'] = $dataDB;
     }
 
     /**
@@ -217,7 +238,18 @@ class Programacao extends Model
      */
     public function setDataInicioRealAttribute($value)
     {
-        $this->attributes['data_inicio_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (!is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+        
+        
+        $this->attributes['data_inicio_real'] = $dataDB;
     }
 
     /**
@@ -228,6 +260,16 @@ class Programacao extends Model
      */
     public function setDataFimRealAttribute($value)
     {
-        $this->attributes['data_fim_real'] = !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+        if (!is_null($value)) {
+            if (strpos($value, 'T')) {
+                $dataDB = \Carbon\Carbon::parse($value)->setTimezone(-3);
+            } else {
+                $dataDB = \Carbon\Carbon::parse($value);
+            }
+        } else {
+            $dataDB = null;
+        }
+        
+        $this->attributes['data_fim_real'] = $dataDB;
     }
 }
