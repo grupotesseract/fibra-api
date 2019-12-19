@@ -46,21 +46,46 @@
     @foreach($itens as $item)
         {!! 
             $materiais = $item->materiais;
-
+            
             if ($item->materiais->count() > 0) {
                 $primeiroMaterial = $materiais[0];
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->id)->get()->first();                    
-                $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';            
-                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
-                
-                $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
-                $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
-
-                $materiais->pull(0);
+            } else {
+                $primeiroMaterial = null;
+                $querySubstLampada = null;
             }
+            
+            $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';            
+            $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
+            $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
+            
+            $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
+            $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
+
+            $materiais->pull(0);
         !!}
         
+        <tr>                
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->pivot->quantidade_instalada) ? $primeiroMaterial->pivot->quantidade_instalada : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->tensao) ? $primeiroMaterial->tensao->valor : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->base) ? $primeiroMaterial->base->abreviacao : '' }}</td>                
+            <td>{{ !is_null($primeiroMaterial) && !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->tipo_reator_qtde.'x'.$primeiroMaterial->reator->potencia->valor : '' }}</td>  
+            <td>{{ $qtdeSubstLampada }} </td>      
+            <td>{{ $qtdeSubstReator }} </td>      
+            <td>{{ $qtdeSubstBase }} </td> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('d/m/Y') : '' }} </th> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('H:i:s') : '' }} </th> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_fim->format('H:i:s') : '' }} </th> 
+            <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($comentario) ? $comentario->comentario : '' }} </th> 
+            
+        </tr>
+
+
         @if ($item->materiais->count() > 0)
             <tr>                
                 <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
