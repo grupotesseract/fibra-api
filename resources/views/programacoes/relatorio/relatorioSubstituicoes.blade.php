@@ -85,8 +85,6 @@
             
         </tr>
 
-
-        
         @foreach ($materiais as $material)
             
             {!!
@@ -108,7 +106,7 @@
                 <td>{{ $qtdeSubstReator }} </td>      
                 <td>{{ $qtdeSubstBase }} </td>
             </tr>  
-        @endforeach        
+        @endforeach  
         
     @endforeach
     </tbody>
