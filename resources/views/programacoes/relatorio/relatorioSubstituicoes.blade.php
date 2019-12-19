@@ -96,12 +96,15 @@
             !!}            
         
             <tr>                
-                <td>{{ $material->pivot->quantidade_instalada }}</td>                
-                <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->abreviacao : '' }}</td>                
-                <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
-                <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
-                <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
-                <td>{{ !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>  
+                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
+                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
+                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
+                <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
+                <td>{{ !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
+                <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
+                <td>{{ !is_null($primeiroMaterial->tensao) ? $primeiroMaterial->tensao->valor : '' }}</td>                
+                <td>{{ !is_null($primeiroMaterial->base) ? $primeiroMaterial->base->abreviacao : '' }}</td>                
+                <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->tipo_reator_qtde.'x'.$primeiroMaterial->reator->potencia->valor : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $qtdeSubstReator }} </td>      
                 <td>{{ $qtdeSubstBase }} </td>
