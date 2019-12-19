@@ -95,10 +95,7 @@
 
             !!}            
         
-            <tr>                
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->circuito }}</th>
+            <tr>                                
                 <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
                 <td>{{ !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
                 <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
