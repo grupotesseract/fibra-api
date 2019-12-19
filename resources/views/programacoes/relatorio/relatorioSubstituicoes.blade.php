@@ -85,8 +85,16 @@
             
         </tr>
 
+        @foreach ($materiais as $material)
+            
+            {!!
+                $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
+                $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
+                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
+                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
 
-        @if ($item->materiais->count() > 0)
+            !!}            
+        
             <tr>                
                 <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->qrcode }}</th>
                 <th rowspan="{{ $item->materiais->count() + 1 }}">{{ $item->nome }}</th>
@@ -99,36 +107,9 @@
                 <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->tipo_reator_qtde.'x'.$primeiroMaterial->reator->potencia->valor : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $qtdeSubstReator }} </td>      
-                <td>{{ $qtdeSubstBase }} </td> 
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('d/m/Y') : '' }} </th> 
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_inicio->format('H:i:s') : '' }} </th> 
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($dataManutencao) ? $dataManutencao->data_fim->format('H:i:s') : '' }} </th> 
-                <th rowspan="{{ $item->materiais->count() + 1 }}">{{ !is_null($comentario) ? $comentario->comentario : '' }} </th> 
-            </tr>
-            
-            @foreach ($materiais as $material)
-                
-                {!!
-                    $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
-                    $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-                    $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-                    $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
-
-                !!}            
-            
-                <tr>                
-                    <td>{{ $material->pivot->quantidade_instalada }}</td>                
-                    <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->abreviacao : '' }}</td>                
-                    <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
-                    <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
-                    <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
-                    <td>{{ !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>  
-                    <td>{{ $qtdeSubstLampada }} </td>      
-                    <td>{{ $qtdeSubstReator }} </td>      
-                    <td>{{ $qtdeSubstBase }} </td>
-                </tr>  
-            @endforeach  
-        @endif      
+                <td>{{ $qtdeSubstBase }} </td>
+            </tr>  
+        @endforeach  
         
     @endforeach
     </tbody>
