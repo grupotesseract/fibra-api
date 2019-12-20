@@ -50,6 +50,7 @@
             if ($item->materiais->count() > 0) {
                 $primeiroMaterial = $materiais[0];
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($primeiroMaterial->id)->get()->first();                    
+                $materiais->pull(0);
             } else {
                 $primeiroMaterial = null;
                 $querySubstLampada = null;
@@ -62,7 +63,7 @@
             $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
             $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
 
-            $materiais->pull(0);
+            
         !!}
         
         <tr>                
@@ -96,12 +97,12 @@
             !!}            
         
             <tr>                                
-                <td>{{ $primeiroMaterial->pivot->quantidade_instalada }}</td>                
-                <td>{{ !is_null($primeiroMaterial->tipoMaterial) ? $primeiroMaterial->tipoMaterial->abreviacao : '' }}</td>                
-                <td>{{ !is_null($primeiroMaterial->potencia) ? $primeiroMaterial->potencia->valor : '' }}</td>                
-                <td>{{ !is_null($primeiroMaterial->tensao) ? $primeiroMaterial->tensao->valor : '' }}</td>                
-                <td>{{ !is_null($primeiroMaterial->base) ? $primeiroMaterial->base->abreviacao : '' }}</td>                
-                <td>{{ !is_null($primeiroMaterial->reator) ? $primeiroMaterial->reator->tipo_reator_qtde.'x'.$primeiroMaterial->reator->potencia->valor : '' }}</td>  
+                <td>{{ $material->pivot->quantidade_instalada }}</td>                
+                <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->abreviacao : '' }}</td>                
+                <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
+                <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
+                <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
+                <td>{{ !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>  
                 <td>{{ $qtdeSubstLampada }} </td>      
                 <td>{{ $qtdeSubstReator }} </td>      
                 <td>{{ $qtdeSubstBase }} </td>
