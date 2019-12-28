@@ -100,8 +100,8 @@ class Foto extends Model
     {
         return 'http://res.cloudinary.com/'
             .config('cloudinary.CLOUDINARY_CLOUD_NAME')
-            .'/image/upload/q_auto/'
-            .urlencode("$this->cloudinary_id.jpeg");
+            .'/image/upload/q_auto'
+            .urlencode("/$this->cloudinary_id.jpeg");
     }
 
     /**

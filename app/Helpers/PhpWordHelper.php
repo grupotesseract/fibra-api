@@ -75,7 +75,7 @@ class PhpWordHelper
             }
 
             foreach ($linhaFotos as $foto) {
-                $cell = $table->addCell($comprimentoCelula, ['textAlign' => 'center']);
+                $cell = $table->addCell($comprimentoCelula);
                 $cell->addTextBreak(1);
                 $cell->addImage(
                     $foto->urlParaRelatorio,
@@ -84,7 +84,7 @@ class PhpWordHelper
                         'width'         => 160,
                         'wrappingStyle' => 'inline',
                         'marginTop' => 100,
-                        'marginLeft' => 100,
+                        'marginLeft' => 250,
                     ]
                 );
                 $cell->addTextBreak(1);
