@@ -45,9 +45,9 @@ class PhpWordHelper
         $table = $section->addTable();
         $table->addRow();
         $cell = $table->addCell(1000);
-        $cell->addText(' '.$numero, ['size' => 22]);
+        $cell->addText(' '.$numero, ['size' => 12]);
         $cell = $table->addCell(9700);
-        $cell->addText($texto, ['size' => 22]);
+        $cell->addText($texto, ['size' => 12]);
     }
 
     /**
@@ -65,19 +65,29 @@ class PhpWordHelper
         foreach ($fotos->chunk(3) as $linhaFotos) {
             $table = $section->addTable();
             $table->addRow(2400);
+            $comprimentoCelula = 3566;
+
+            if (count($linhaFotos) == 2 ){
+                $comprimentoCelula *= 1.5;
+            }
+            if (count($linhaFotos) == 1 ){
+                $comprimentoCelula *= 3;
+            }
+
             foreach ($linhaFotos as $foto) {
-                $cell = $table->addCell(3566);
+                $cell = $table->addCell($comprimentoCelula, ['textAlign' => 'center']);
                 $cell->addTextBreak(1);
                 $cell->addImage(
                     $foto->urlParaRelatorio,
                     [
-                        'height'        => 170,
-                        'width'         => 170,
+                        'alignment'         => 'center',
+                        'width'         => 160,
                         'wrappingStyle' => 'inline',
                         'marginTop' => 100,
                         'marginLeft' => 100,
                     ]
                 );
+                $cell->addTextBreak(1);
             }
             $section->addTextBreak(1);
         }
