@@ -67,10 +67,10 @@ class PhpWordHelper
             $table->addRow(2400);
             $comprimentoCelula = 3566;
 
-            if (count($linhaFotos) == 2 ){
+            if (count($linhaFotos) == 2) {
                 $comprimentoCelula *= 1.5;
             }
-            if (count($linhaFotos) == 1 ){
+            if (count($linhaFotos) == 1) {
                 $comprimentoCelula *= 3;
             }
 
