@@ -40,25 +40,28 @@ class RelatorioFotograficoRepository extends BaseRepository
 
 
     /**
-     * Metodo para gerar o relatório de fotos da programação.
+     * Metodo para gerar o arquivo docx do relatório de fotos
      *
      * @return void
      */
-    public function gerarRelatorioFotos($programacao)
+    public function gerarRelatorioFotos($relatorioFotografico)
     {
+        $programacao = $relatorioFotografico->programacao;
         $idsItemsComFoto = $programacao->fotos()->pluck('item_id')->unique();
         $itens = $programacao->planta->itens->whereIn('id', $idsItemsComFoto);
 
+        //Criando doc e container das secoes
         $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
         $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
         $indice = 1;
 
+        //Para cada item, criar secao titulo e secao fotos
         foreach ($itens as $item) {
             $fotos = $programacao->fotos->where('item_id', $item->id);
             \App\Helpers\PhpWordHelper::addSecaoTitulo($section, $indice++, $item->nome);
             \App\Helpers\PhpWordHelper::addSecaoFotos($section, $fotos);
         }
 
-        return \App\Helpers\PhpWordHelper::salvarDoc($phpWord);
+        return \App\Helpers\PhpWordHelper::salvarDoc($phpWord, $relatorioFotografico);
     }
 }

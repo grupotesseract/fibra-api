@@ -100,9 +100,9 @@ class PhpWordHelper
      *
      * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
-    public static function salvarDoc($phpWord)
+    public static function salvarDoc($phpWord, $relatorioFotografico)
     {
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save('relatorio.docx');
+        $objWriter->save($relatorioFotografico->pathArquivo);
     }
 }

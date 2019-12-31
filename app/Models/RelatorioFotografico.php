@@ -18,7 +18,7 @@ class RelatorioFotografico extends Model
     use SoftDeletes;
 
     public $table = 'relatorios_fotograficos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,4 +54,24 @@ class RelatorioFotografico extends Model
     {
         return $this->belongsTo(\App\Models\Programacao::class, 'programacao_id');
     }
+
+    /**
+     * Acessor para o nome do arquivo no storage.
+     */
+     public function getPathArquivoAttribute()
+     {
+        $pathStorage = 'relatorios-fotograficos';
+        $data = $this->created_at->format("Y-m-d");
+        $nomeArquivo = $data . "-PROG" . $this->programacao_id . ".docx";
+
+        return \Storage::path("$pathStorage/$nomeArquivo");
+     }
+
+    /**
+     * Acessor para determinar se o arquivo existe.
+     */
+     public function getDisponivelAttribute()
+     {
+        return \File::exists($this->pathArquivo);
+     }
 }

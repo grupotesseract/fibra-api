@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Programacao;
+use App\Models\RelatorioFotografico;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,16 +14,16 @@ class GerarRelatorioFotografico implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $programacao;
+    protected $relatorio;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(Programacao $programacao)
+    public function __construct(RelatorioFotografico $relatorio)
     {
-        $this->programacao = $programacao;
+        $this->relatorio = $relatorio;
     }
 
     /**
@@ -33,7 +33,6 @@ class GerarRelatorioFotografico implements ShouldQueue
      */
     public function handle(RelatorioFotograficoRepository $relatorioFotosRepo)
     {
-        \Log::info("\n## JOB GerarRelatorioFotografico disparado");
-        $relatorioFotosRepo->gerarRelatorioFotos($this->programacao);
+        $relatorioFotosRepo->gerarRelatorioFotos($this->relatorio);
     }
 }
