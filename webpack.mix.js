@@ -13,6 +13,7 @@ mix
   .js('resources/js/pages/Comentarios.js', 'public/js/pages')
   .js('resources/js/pages/ComentariosGerais.js', 'public/js/pages')
   .js('resources/js/pages/Materiais.js', 'public/js/pages')
+  .js('resources/js/pages/Programacao.js', 'public/js/pages')
 
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/pages/login.scss', 'public/css/pages')
