@@ -370,7 +370,6 @@ class ProgramacaoController extends AppBaseController
         return Excel::download(new ProgramacaoExport($programacao), $exportNomeArquivo);
     }
 
-
     /**
      * Metodo para servir a view de comentarios de 1 Programação.
      *

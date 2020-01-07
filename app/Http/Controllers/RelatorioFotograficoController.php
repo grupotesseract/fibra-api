@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Response;
-use App\Http\Requests;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\RelatorioFotograficoRepository;
+use Response;
 
 class RelatorioFotograficoController extends AppBaseController
 {
-
     public $relatorioFotograficoRepository;
     public $programacaoRepository;
 
@@ -36,14 +35,14 @@ class RelatorioFotograficoController extends AppBaseController
         //Se existir e estiver disponivel retornar URL para download
         if ($relatorio && $relatorio->disponivel) {
             return \Response::json([
-                'downloadURL' => route('relatorioFotografico.download', $programacao->id)
+                'downloadURL' => route('relatorioFotografico.download', $programacao->id),
             ]);
         }
 
         //Se nao existir, criar e disparar job
-        if (!$relatorio) {
+        if (! $relatorio) {
             $relatorio = $this->relatorioFotograficoRepository->create([
-                'programacao_id' => $programacao->id
+                'programacao_id' => $programacao->id,
             ]);
             \App\Jobs\GerarRelatorioFotografico::dispatch($relatorio);
         }
@@ -52,7 +51,7 @@ class RelatorioFotograficoController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer o download de um relatorio fotografico
+     * Metodo para fazer o download de um relatorio fotografico.
      *
      * @return void
      */

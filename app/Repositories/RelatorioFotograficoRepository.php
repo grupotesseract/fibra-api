@@ -6,22 +6,20 @@ use App\Models\RelatorioFotografico;
 use App\Repositories\BaseRepository;
 
 /**
- * Class RelatorioFotograficoRepository
- * @package App\Repositories
+ * Class RelatorioFotograficoRepository.
  * @version December 30, 2019, 10:12 pm -03
-*/
-
+ */
 class RelatorioFotograficoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'programacao_id'
+        'programacao_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -31,16 +29,15 @@ class RelatorioFotograficoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
         return RelatorioFotografico::class;
     }
 
-
     /**
-     * Metodo para gerar o arquivo docx do relatório de fotos
+     * Metodo para gerar o arquivo docx do relatório de fotos.
      *
      * @return void
      */
