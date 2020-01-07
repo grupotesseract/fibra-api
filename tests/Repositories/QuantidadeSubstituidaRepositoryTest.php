@@ -17,7 +17,7 @@ class QuantidadeSubstituidaRepositoryTest extends TestCase
      */
     protected $quantidadeSubstituidaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->quantidadeSubstituidaRepo = \App::make(QuantidadeSubstituidaRepository::class);

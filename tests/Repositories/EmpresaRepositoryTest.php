@@ -17,7 +17,7 @@ class EmpresaRepositoryTest extends TestCase
      */
     protected $empresaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->empresaRepo = \App::make(EmpresaRepository::class);

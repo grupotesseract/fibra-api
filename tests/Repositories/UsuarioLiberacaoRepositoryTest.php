@@ -17,7 +17,7 @@ class UsuarioLiberacaoRepositoryTest extends TestCase
      */
     protected $usuarioLiberacaoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->usuarioLiberacaoRepo = \App::make(UsuarioLiberacaoRepository::class);
