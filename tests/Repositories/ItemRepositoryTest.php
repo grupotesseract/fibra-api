@@ -17,7 +17,7 @@ class ItemRepositoryTest extends TestCase
      */
     protected $itemRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->itemRepo = \App::make(ItemRepository::class);

@@ -17,7 +17,7 @@ class TipoMaterialRepositoryTest extends TestCase
      */
     protected $tipoMaterialRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->tipoMaterialRepo = \App::make(TipoMaterialRepository::class);
