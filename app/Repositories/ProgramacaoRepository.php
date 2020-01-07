@@ -51,6 +51,9 @@ class ProgramacaoRepository extends BaseRepository
         //DADOS DA PROGRAMAÇÃO
         $programacao->update($input['programacao']);
 
+        //COMENTÁRIOS DE UM ITEM
+        $programacao->comentarios()->createMany($input['comentarios']);
+
         //LIBERAÇÕES DE DOCUMENTOS
         foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
             $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
@@ -77,8 +80,7 @@ class ProgramacaoRepository extends BaseRepository
             }
         }
 
-        //COMENTÁRIOS DE UM ITEM
-        $programacao->comentarios()->createMany($input['comentarios']);
+        
 
         //COMENTÁRIOS GERAIS
         if (array_key_exists('comentarioGeral', $input['programacao'])) {

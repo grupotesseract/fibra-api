@@ -67,4 +67,16 @@ class Comentario extends Model
     {
         return $this->belongsTo(\App\Models\Item::class, 'item_id');
     }
+
+    
+    /**
+     * Mutator pra inserir comentário vazio
+     *
+     * @param string $value
+     * @return string
+     */
+    public function setComentarioAttribute($value)
+    {
+        $this->attributes['comentario'] = !is_null($value) ? $value : '';
+    }
 }
