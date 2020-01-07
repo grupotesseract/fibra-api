@@ -17,7 +17,7 @@ class QuantidadeMinimaRepositoryTest extends TestCase
      */
     protected $quantidadeMinimaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->quantidadeMinimaRepo = \App::make(QuantidadeMinimaRepository::class);

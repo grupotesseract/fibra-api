@@ -17,7 +17,7 @@ class ComentarioRepositoryTest extends TestCase
      */
     protected $comentarioRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->comentarioRepo = \App::make(ComentarioRepository::class);
