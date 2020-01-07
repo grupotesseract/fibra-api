@@ -6,12 +6,11 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class RelatorioFotografico
- * @package App\Models
+ * Class RelatorioFotografico.
  * @version December 30, 2019, 10:11 pm -03
  *
  * @property \App\Models\Programacao programacao
- * @property integer programacao_id
+ * @property int programacao_id
  */
 class RelatorioFotografico extends Model
 {
@@ -19,13 +18,10 @@ class RelatorioFotografico extends Model
 
     public $table = 'relatorios_fotograficos';
 
-
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
-        'programacao_id'
+        'programacao_id',
     ];
 
     /**
@@ -35,16 +31,16 @@ class RelatorioFotografico extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'programacao_id' => 'integer'
+        'programacao_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'programacao_id' => 'required'
+        'programacao_id' => 'required',
     ];
 
     /**
@@ -58,20 +54,20 @@ class RelatorioFotografico extends Model
     /**
      * Acessor para o nome do arquivo no storage.
      */
-     public function getPathArquivoAttribute()
-     {
+    public function getPathArquivoAttribute()
+    {
         $pathStorage = 'relatorios-fotograficos';
-        $data = $this->created_at->format("Y-m-d");
-        $nomeArquivo = $data . "-PROG" . $this->programacao_id . ".docx";
+        $data = $this->created_at->format('Y-m-d');
+        $nomeArquivo = $data.'-PROG'.$this->programacao_id.'.docx';
 
         return \Storage::path("$pathStorage/$nomeArquivo");
-     }
+    }
 
     /**
      * Acessor para determinar se o arquivo existe.
      */
-     public function getDisponivelAttribute()
-     {
+    public function getDisponivelAttribute()
+    {
         return \File::exists($this->pathArquivo);
-     }
+    }
 }
