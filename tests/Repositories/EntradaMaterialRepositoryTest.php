@@ -17,7 +17,7 @@ class EntradaMaterialRepositoryTest extends TestCase
      */
     protected $entradaMaterialRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->entradaMaterialRepo = \App::make(EntradaMaterialRepository::class);

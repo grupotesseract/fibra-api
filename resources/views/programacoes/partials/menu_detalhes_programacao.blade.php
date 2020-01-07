@@ -52,7 +52,7 @@
 </div>
 
 <div class="px-5 py-2">
-    {!! Form::open(['route' => ['programacoes.relatorioFotos', $programacao->id]]) !!}
+    {!! Form::open(['route' => ['programacoes.relatorioFotos', $programacao->id], 'id' => 'download-relatorio-fotografico']) !!}
     {!! Form::button('<i class="fa fa-download"></i> &nbsp; Relatório Fotográfico', [
         'type' => 'submit',
         'class' => 'btn btn-primary form-control'
@@ -66,3 +66,10 @@
         <span> Voltar</span>
     </a>
 </div>
+
+
+@section('scripts')
+    <script src="/js/pages/Programacao.js"></script>
+@append
+
+

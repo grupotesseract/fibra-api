@@ -11,6 +11,7 @@
     "/js/pages/Materiais.js": "/js/pages/Materiais.js",
     "/js/pages/MateriaisItem.js": "/js/pages/MateriaisItem.js",
     "/js/pages/Plantas.js": "/js/pages/Plantas.js",
+    "/js/pages/Programacao.js": "/js/pages/Programacao.js",
     "/js/pages/QuantidadesMinimas.js": "/js/pages/QuantidadesMinimas.js",
     "/js/pages/QuantidadesSubstituidas.js": "/js/pages/QuantidadesSubstituidas.js"
 }

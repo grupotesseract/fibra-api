@@ -17,7 +17,7 @@ class TensaoRepositoryTest extends TestCase
      */
     protected $tensaoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->tensaoRepo = \App::make(TensaoRepository::class);

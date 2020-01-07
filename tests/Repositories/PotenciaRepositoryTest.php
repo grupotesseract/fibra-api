@@ -17,7 +17,7 @@ class PotenciaRepositoryTest extends TestCase
      */
     protected $potenciaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->potenciaRepo = \App::make(PotenciaRepository::class);

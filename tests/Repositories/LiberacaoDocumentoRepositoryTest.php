@@ -17,7 +17,7 @@ class LiberacaoDocumentoRepositoryTest extends TestCase
      */
     protected $liberacaoDocumentoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->liberacaoDocumentoRepo = \App::make(LiberacaoDocumentoRepository::class);
