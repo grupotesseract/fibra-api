@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Exports\ProgramacaoExport;
 use App\Models\RelatorioQuantidade;
 use App\Repositories\BaseRepository;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class RelatorioQuantidadeRepository
@@ -37,4 +39,17 @@ class RelatorioQuantidadeRepository extends BaseRepository
     {
         return RelatorioQuantidade::class;
     }
+
+    /**
+     * Metodo para gerar e salvar o arquivo do relatorio no filesystem
+     *
+     * @see Maatwebsite\Excel\Excel::store
+     * @return boolean | se salvou ou nao
+     */
+    public function gerarArquivoRelatorio($relatorioQuantidade)
+    {
+        $programacao = $relatorioQuantidade->programacao;
+        return Excel::store(new ProgramacaoExport($programacao), $relatorioQuantidade->pathExcel);
+    }
+
 }

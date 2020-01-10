@@ -23,9 +23,10 @@ class RelatorioFotograficoController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer download do relatório de fotos de uma programacao.
+     * Metodo para fazer checar se o arquivo do relatorio existe, se existir retorna a URL para download,
+     * se não existir dispara o job para geracao do arquivo de forma assíncrona
      *
-     * @return download
+     * @return JSON - contendo o indice 'downloadURL' se existir o arquivo.
      */
     public function confereRelatorioFotos($id)
     {
