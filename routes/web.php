@@ -52,8 +52,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.quantidadesSubstituidas');
     Route::post('programacoes/{id}/quantidades-substituidas', 'ProgramacaoController@postQuantidadesSubstituidas')
         ->name('programacoes.addQuantidadesSubstituidas');
-    Route::get('programacoes/{id}/export', 'ProgramacaoController@export')
-        ->name('programacoes.export');
+
+    Route::post('/programacoes/{id}/relatorio-quantidades', 'RelatorioQuantidadeController@confereExisteRelatorio')
+        ->name('programacoes.relatorioQuantidade');
+    Route::get('/programacoes/{id}/relatorio-quantidades-download', 'RelatorioQuantidadeController@downloadRelatorio')
+        ->name('relatorioQuantidade.download');
 
     Route::post('/programacoes/{id}/relatorio-fotos', 'RelatorioFotograficoController@confereRelatorioFotos')
         ->name('programacoes.relatorioFotos');

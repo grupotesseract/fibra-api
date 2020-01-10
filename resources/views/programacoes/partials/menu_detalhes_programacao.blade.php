@@ -45,10 +45,12 @@
 </div>
 
 <div class="px-5 py-2">
-    <a class="btn btn-primary form-control" href="{!! route('programacoes.export', $programacao->id) !!}">
-        <i class="fa fa-book"></i> &nbsp;
-        <span> Relatório Quantidades </span>
-    </a>
+    {!! Form::open(['route' => ['programacoes.relatorioQuantidade', $programacao->id], 'id' => 'download-relatorio-quantidades']) !!}
+    {!! Form::button('<i class="fa fa-book"></i> &nbsp; Relatório Quantidades ', [
+        'type' => 'submit',
+        'class' => 'btn btn-primary form-control'
+    ]) !!}
+    {!! Form::close() !!}
 </div>
 
 <div class="px-5 py-2">
