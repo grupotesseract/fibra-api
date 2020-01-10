@@ -8,14 +8,14 @@ use App\Repositories\RelatorioQuantidadeRepository;
 
 class RelatorioQuantidadeController extends AppBaseController
 {
-    /** @var  RelatorioQuantidadeRepository */
+    /** @var RelatorioQuantidadeRepository */
     private $relatorioQuantidadeRepository;
 
-    /** @var  ProgramacaoRepository */
+    /** @var ProgramacaoRepository */
     private $programacaoRepository;
 
     /**
-     * __construct
+     * __construct.
      *
      * @param ProgramacaoRepository $programacaoRepository
      * @param RelatorioQuantidadeRepository $relatorioQuantidadeRepo
@@ -28,7 +28,7 @@ class RelatorioQuantidadeController extends AppBaseController
 
     /**
      * Metodo para checar se o arquivo do relatorio existe, se existir retorna a URL para download
-     * Se não existir dispara o job para geracao do arquivo de forma assíncrona
+     * Se não existir dispara o job para geracao do arquivo de forma assíncrona.
      *
      * @return JSON - contendo o indice 'downloadURL' se existir o arquivo.
      */
@@ -56,7 +56,7 @@ class RelatorioQuantidadeController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer o download do arquivo do relatorio
+     * Metodo para fazer o download do arquivo do relatorio.
      *
      * @return void
      */

@@ -58,7 +58,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/programacoes/{id}/relatorio-quantidades-download', 'RelatorioQuantidadeController@downloadRelatorio')
         ->name('relatorioQuantidade.download');
 
-
     Route::post('/programacoes/{id}/relatorio-fotos', 'RelatorioFotograficoController@confereRelatorioFotos')
         ->name('programacoes.relatorioFotos');
     Route::get('/programacoes/{id}/relatorio-fotos-download', 'RelatorioFotograficoController@downloadRelatorioFotos')

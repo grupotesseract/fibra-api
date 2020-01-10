@@ -6,12 +6,11 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class RelatorioQuantidade
- * @package App\Models
+ * Class RelatorioQuantidade.
  * @version January 9, 2020, 7:49 pm -03
  *
  * @property \App\Models\Programacao programacao
- * @property integer programacao_id
+ * @property int programacao_id
  */
 class RelatorioQuantidade extends Model
 {
@@ -19,13 +18,10 @@ class RelatorioQuantidade extends Model
 
     public $table = 'relatorios_quantidades';
 
-
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
-        'programacao_id'
+        'programacao_id',
     ];
 
     /**
@@ -35,16 +31,16 @@ class RelatorioQuantidade extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'programacao_id' => 'integer'
+        'programacao_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'programacao_id' => 'required'
+        'programacao_id' => 'required',
     ];
 
     /**
@@ -56,15 +52,16 @@ class RelatorioQuantidade extends Model
     }
 
     /**
-     * Acessor para o nome do arquivo
+     * Acessor para o nome do arquivo.
      */
-     public function getNomeArquivoAttribute()
-     {
-         $programacao = $this->programacao;
-         $nomePlanta = $programacao->planta->nome;
-         $nomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
-         return $nomeArquivo;
-     }
+    public function getNomeArquivoAttribute()
+    {
+        $programacao = $this->programacao;
+        $nomePlanta = $programacao->planta->nome;
+        $nomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
+
+        return $nomeArquivo;
+    }
 
     /**
      * Acessor para o nome do arquivo no storage.
