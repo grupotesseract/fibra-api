@@ -10,18 +10,25 @@ class RelatorioQuantidadeController extends AppBaseController
 {
     /** @var  RelatorioQuantidadeRepository */
     private $relatorioQuantidadeRepository;
+
+    /** @var  ProgramacaoRepository */
     private $programacaoRepository;
 
+    /**
+     * __construct
+     *
+     * @param ProgramacaoRepository $programacaoRepository
+     * @param RelatorioQuantidadeRepository $relatorioQuantidadeRepo
+     */
     public function __construct(ProgramacaoRepository $programacaoRepository, RelatorioQuantidadeRepository $relatorioQuantidadeRepo)
     {
         $this->programacaoRepository = $programacaoRepository;
         $this->relatorioQuantidadeRepository = $relatorioQuantidadeRepo;
     }
 
-
     /**
-     * Metodo para fazer checar se o arquivo do relatorio existe, se existir retorna a URL para download,
-     * se não existir dispara o job para geracao do arquivo de forma assíncrona
+     * Metodo para checar se o arquivo do relatorio existe, se existir retorna a URL para download
+     * Se não existir dispara o job para geracao do arquivo de forma assíncrona
      *
      * @return JSON - contendo o indice 'downloadURL' se existir o arquivo.
      */
@@ -49,7 +56,7 @@ class RelatorioQuantidadeController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer o download de um relatorio fotografico.
+     * Metodo para fazer o download do arquivo do relatorio
      *
      * @return void
      */
