@@ -67,22 +67,21 @@
                 $qtdeNecessaria = $qtdeMinima - $qtdeEstoqueFinal;
 
 
-            !!}
-            
-            <tr>                
-                <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->nome : $material->nome }}</td>                
-                <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
-                <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
-                <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
-                <td>{{ !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>              
-                <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
-                <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
-                <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              
-                <td>{{ !is_null($qtdeEstoqueFinal) ? $qtdeEstoqueFinal : '' }}</td>              
-                <td>{{ !is_null($qtdeSubst) ? $qtdeSubst : '' }}</td>              
-                <td>{{ !is_null($qtdeNecessaria) && ($qtdeNecessaria > 0) ? $qtdeNecessaria : 0 }}</td>              
-            </tr>  
-        @endif
+        !!}
+        
+        <tr>                
+            <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->tipo ." ". $material->tipoMaterial->nome : $material->nome }}</td>                
+            <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
+            <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
+            <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
+            <td>{{ !is_null($material->reator) ? $material->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>              
+            <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
+            <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
+            <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              
+            <td>{{ !is_null($qtdeEstoqueFinal) ? $qtdeEstoqueFinal : '' }}</td>              
+            <td>{{ !is_null($qtdeSubst) ? $qtdeSubst : '' }}</td>              
+            <td>{{ !is_null($qtdeNecessaria) && ($qtdeNecessaria > 0) ? $qtdeNecessaria : 0 }}</td>              
+        </tr>  
 
     @endforeach        
         

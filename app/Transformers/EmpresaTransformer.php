@@ -64,8 +64,7 @@ class EmpresaTransformer extends TransformerAbstract
             $entradaMateriais = [];
             if (! is_null($planta->programacaoAnteriorMaisRecente)) {
                 foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
-                    
-                    if (!is_null($estoque->material)) {
+                    if (! is_null($estoque->material)) {
                         $estoquePlanta[] = [
                             'id' => $estoque->material_id,
                             'nome' => $estoque->material->nome,

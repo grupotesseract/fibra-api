@@ -20,10 +20,16 @@ class Programacao {
       this.URLRelatorio = event.target.action;
       this.submitDownloadAsync();
     })
+
+    $('#download-relatorio-quantidades').on('submit', event => {
+      event.preventDefault();
+      this.URLRelatorio = event.target.action;
+      this.submitDownloadAsync();
+    })
   }
 
   /**
-   * Metodo para fazer o download do relatorio fotografico
+   * Metodo para fazer o download do relatorio de forma assincrona
    */
   async submitDownloadAsync() {
     this.mostraLoading();

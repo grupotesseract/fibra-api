@@ -3,29 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AppBaseController;
-use App\Http\Requests;
 use App\Repositories\ProgramacaoRepository;
-use App\Repositories\RelatorioFotograficoRepository;
-use Response;
+use App\Repositories\RelatorioQuantidadeRepository;
 
-class RelatorioFotograficoController extends AppBaseController
+class RelatorioQuantidadeController extends AppBaseController
 {
-    /** @var RelatorioFotograficoRepository */
-    public $relatorioFotograficoRepository;
+    /** @var RelatorioQuantidadeRepository */
+    private $relatorioQuantidadeRepository;
 
     /** @var ProgramacaoRepository */
-    public $programacaoRepository;
+    private $programacaoRepository;
 
     /**
      * __construct.
      *
      * @param ProgramacaoRepository $programacaoRepository
-     * @param RelatorioFotograficoRepository $relatorioFotograficoRepository
+     * @param RelatorioQuantidadeRepository $relatorioQuantidadeRepo
      */
-    public function __construct(ProgramacaoRepository $programacaoRepository, RelatorioFotograficoRepository $relatorioFotograficoRepository)
+    public function __construct(ProgramacaoRepository $programacaoRepository, RelatorioQuantidadeRepository $relatorioQuantidadeRepo)
     {
         $this->programacaoRepository = $programacaoRepository;
-        $this->relatorioFotograficoRepository = $relatorioFotograficoRepository;
+        $this->relatorioQuantidadeRepository = $relatorioQuantidadeRepo;
     }
 
     /**
@@ -34,24 +32,24 @@ class RelatorioFotograficoController extends AppBaseController
      *
      * @return JSON - contendo o indice 'downloadURL' se existir o arquivo.
      */
-    public function confereRelatorioFotos($id)
+    public function confereExisteRelatorio($id)
     {
         $programacao = $this->programacaoRepository->find($id);
-        $relatorio = $programacao->relatorioFotografico;
+        $relatorio = $programacao->relatorioQuantidade;
 
         //Se existir e estiver disponivel retornar URL para download
         if ($relatorio && $relatorio->disponivel) {
             return \Response::json([
-                'downloadURL' => route('relatorioFotografico.download', $programacao->id),
+                'downloadURL' => route('relatorioQuantidade.download', $programacao->id),
             ]);
         }
 
         //Se nao existir, criar e disparar job
         if (! $relatorio) {
-            $relatorio = $this->relatorioFotograficoRepository->create([
+            $relatorio = $this->relatorioQuantidadeRepository->create([
                 'programacao_id' => $programacao->id,
             ]);
-            \App\Jobs\GerarRelatorioFotografico::dispatch($relatorio);
+            \App\Jobs\GerarRelatorioQuantidade::dispatch($relatorio);
         }
 
         return \Response::json([]);
@@ -62,12 +60,12 @@ class RelatorioFotograficoController extends AppBaseController
      *
      * @return void
      */
-    public function downloadRelatorioFotos($id)
+    public function downloadRelatorio($id)
     {
         $programacao = $this->programacaoRepository->find($id);
 
-        if ($programacao->relatorioFotografico) {
-            return \Response::download($programacao->relatorioFotografico->pathArquivo);
+        if ($programacao->relatorioQuantidade) {
+            return \Response::download($programacao->relatorioQuantidade->pathArquivo);
         }
     }
 }
