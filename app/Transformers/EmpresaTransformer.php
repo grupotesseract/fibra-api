@@ -64,28 +64,29 @@ class EmpresaTransformer extends TransformerAbstract
             $entradaMateriais = [];
             if (! is_null($planta->programacaoAnteriorMaisRecente)) {
                 foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
-                    $estoquePlanta[] = [
-                        'id' => $estoque->material_id,
-                        'nome' => $estoque->material->nome,
-                        'base' => $estoque->material->baseNome,
-                        'reator' => $estoque->material->reatorNome,
-                        'potencia' => $estoque->material->potenciaValor,
-                        'tensao' => $estoque->material->tensaoValor,
-                        'tipoMaterial' => $estoque->material->tipoMaterialNome,
-                        'tipoMaterialTipo' => $material->tipoMaterial->tipo,
-                        'quantidade' => $estoque->quantidade_final,
-                    ];
+                    
+                    if (!is_null($estoque->material)) {
+                        $estoquePlanta[] = [
+                            'id' => $estoque->material_id,
+                            'nome' => $estoque->material->nome,
+                            'base' => $estoque->material->baseNome,
+                            'reator' => $estoque->material->reatorNome,
+                            'potencia' => $estoque->material->potenciaValor,
+                            'tensao' => $estoque->material->tensaoValor,
+                            'tipoMaterial' => $estoque->material->tipoMaterialNome,
+                            'quantidade' => $estoque->quantidade_final,
+                        ];
 
-                    $entradaMateriais[] = [
-                        'id' => $estoque->material_id,
-                        'nome' => $estoque->material->nome,
-                        'base' => $estoque->material->baseNome,
-                        'reator' => $estoque->material->reatorNome,
-                        'potencia' => $estoque->material->potenciaValor,
-                        'tensao' => $estoque->material->tensaoValor,
-                        'tipoMaterial' => $estoque->material->tipoMaterialNome,
-                        'tipoMaterialTipo' => $material->tipoMaterial->tipo,
-                    ];
+                        $entradaMateriais[] = [
+                            'id' => $estoque->material_id,
+                            'nome' => $estoque->material->nome,
+                            'base' => $estoque->material->baseNome,
+                            'reator' => $estoque->material->reatorNome,
+                            'potencia' => $estoque->material->potenciaValor,
+                            'tensao' => $estoque->material->tensaoValor,
+                            'tipoMaterial' => $estoque->material->tipoMaterialNome,
+                        ];
+                    }
                 }
             }
 

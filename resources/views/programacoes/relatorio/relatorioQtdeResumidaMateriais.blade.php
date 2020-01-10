@@ -23,47 +23,48 @@
         
     @foreach ($materiais as $material)
         
-        {!!
-            $qtdeInstalada = $material->items()->whereHas(
-                'planta', function ($query) use ($programacao) { 
-                    $query->where('id',$programacao->planta->id); 
+        @if (!is_null($material))
+            {!!
+                $qtdeInstalada = $material->items()->whereHas(
+                    'planta', function ($query) use ($programacao) { 
+                        $query->where('id',$programacao->planta->id); 
+                    }
+                )->sum('quantidade_instalada');
+
+                $qtdeMinima = $programacao->planta->quantidadesMinimas()->whereHas(
+                    'material', function ($query) use ($material) {
+                        $query->where('id', $material->id);
+                    }
+                )->get()->first()->quantidade_minima;
+
+                $estoque = $material->estoques()->whereHas(
+                    'programacao', function ($query) use ($programacao) { 
+                        $query->where('id',$programacao->id); 
+                    }
+                )->get()->first();
+
+                if (!is_null($estoque))
+                {
+                    $qtdeEstoqueInicial = $estoque->quantidade_inicial;
+                    $qtdeEstoqueFinal = $estoque->quantidade_final;
                 }
-            )->sum('quantidade_instalada');
-
-            $qtdeMinima = $programacao->planta->quantidadesMinimas()->whereHas(
-                'material', function ($query) use ($material) {
-                    $query->where('id', $material->id);
+                else {
+                    $qtdeEstoqueInicial = 0;
+                    $qtdeEstoqueFinal = 0;
                 }
-            )->get()->first()->quantidade_minima;
 
-            $estoque = $material->estoques()->whereHas(
-                'programacao', function ($query) use ($programacao) { 
-                    $query->where('id',$programacao->id); 
+                if (!is_null($material->tipoMaterial)) {
+                    if ($material->tipoMaterial->tipo === 'Lâmpada') {
+                        $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
+                    } else if ($material->tipoMaterial->tipo === 'Reator') {
+                        $qtdeSubst = $programacao->quantidadesSubstituidas()->whereReatorId($material->id)->sum('quantidade_substituida_reator');
+                    }
                 }
-            )->get()->first();
-
-            if (!is_null($estoque))
-            {
-                $qtdeEstoqueInicial = $estoque->quantidade_inicial;
-                $qtdeEstoqueFinal = $estoque->quantidade_final;
-            }
-            else {
-                $qtdeEstoqueInicial = 0;
-                $qtdeEstoqueFinal = 0;
-            }
-
-            if (!is_null($material->tipoMaterial)) {
-                if ($material->tipoMaterial->tipo === 'Lâmpada') {
-                    $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
-                } else if ($material->tipoMaterial->tipo === 'Reator') {
-                    $qtdeSubst = $programacao->quantidadesSubstituidas()->whereReatorId($material->id)->sum('quantidade_substituida_reator');
+                else {
+                    $qtdeSubst = $programacao->quantidadesSubstituidas()->whereBaseId($material->id)->sum('quantidade_substituida_base');
                 }
-            }
-            else {
-                $qtdeSubst = $programacao->quantidadesSubstituidas()->whereBaseId($material->id)->sum('quantidade_substituida_base');
-            }
 
-            $qtdeNecessaria = $qtdeMinima - $qtdeEstoqueFinal;
+                $qtdeNecessaria = $qtdeMinima - $qtdeEstoqueFinal;
 
 
         !!}

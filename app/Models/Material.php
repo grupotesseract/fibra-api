@@ -230,12 +230,14 @@ class Material extends Model
      */
     public function getNomePotenciaTensaoAttribute()
     {
+        $reatorTipo = ! is_null($this->tipo_reator_qtde) && ! is_null($this->potenciaValor) ? "$this->tipo_reator_qtde"."x"."$this->potenciaValor" : ''; 
         $nome = ! is_null($this->nome) ? $this->nome : "$this->tipoMaterialTipo - $this->tipoMaterialNome";
         $potencia = ! is_null($this->potenciaValor) ? "- $this->potenciaValor W" : '';
         $tensao = ! is_null($this->tensaoValor) ? "- $this->tensaoValor V" : '';
         $base = ! is_null($this->baseNome) ? "- Base $this->baseNome" : '';
+
         $reator = ! is_null($this->reatorNome) ? "- Reator $this->reatorNome" : '';
 
-        return "$nome $potencia $tensao $base $reator";
+        return "$nome $reatorTipo $potencia $tensao $base $reator";
     }
 }

@@ -87,7 +87,7 @@ class Planta extends Model
      */
     public function proximaProgramacao()
     {
-        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->latest('data_inicio_prevista');
+        return $this->hasOne(\App\Models\Programacao::class, 'planta_id')->whereNull('data_fim_real')->oldest('data_inicio_prevista');
     }
 
     /**
