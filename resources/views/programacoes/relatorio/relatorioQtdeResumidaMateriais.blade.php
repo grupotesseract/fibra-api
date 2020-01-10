@@ -83,6 +83,8 @@
             <td>{{ !is_null($qtdeNecessaria) && ($qtdeNecessaria > 0) ? $qtdeNecessaria : 0 }}</td>              
         </tr>  
 
+        @endif
+
     @endforeach        
         
     </tbody>
