@@ -80,8 +80,6 @@ class ProgramacaoRepository extends BaseRepository
             }
         }
 
-        
-
         //COMENTÁRIOS GERAIS
         if (array_key_exists('comentarioGeral', $input['programacao'])) {
             $programacao->comentariosGerais()->create(
