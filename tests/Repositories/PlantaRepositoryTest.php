@@ -17,7 +17,7 @@ class PlantaRepositoryTest extends TestCase
      */
     protected $plantaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->plantaRepo = \App::make(PlantaRepository::class);

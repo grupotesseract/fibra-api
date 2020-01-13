@@ -6,27 +6,22 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Comentario.
- * @version December 10, 2019, 12:27 am -03
+ * Class RelatorioFotografico.
+ * @version December 30, 2019, 10:11 pm -03
  *
  * @property \App\Models\Programacao programacao
- * @property \App\Models\Item item
- * @property int item_id
  * @property int programacao_id
- * @property string comentario
  */
-class Comentario extends Model
+class RelatorioFotografico extends Model
 {
     use SoftDeletes;
 
-    public $table = 'comentarios';
+    public $table = 'relatorios_fotograficos';
 
     protected $dates = ['deleted_at'];
 
     public $fillable = [
-        'item_id',
         'programacao_id',
-        'comentario',
     ];
 
     /**
@@ -36,9 +31,7 @@ class Comentario extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'item_id' => 'integer',
         'programacao_id' => 'integer',
-        'comentario' => 'string',
     ];
 
     /**
@@ -47,9 +40,7 @@ class Comentario extends Model
      * @var array
      */
     public static $rules = [
-        'item_id' => 'required|exists:itens,id',
-        'programacao_id' => 'required|exists:programacoes,id',
-        'comentario' => 'required',
+        'programacao_id' => 'required',
     ];
 
     /**
@@ -61,21 +52,22 @@ class Comentario extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function item()
+     * Acessor para o nome do arquivo no storage.
+     */
+    public function getPathArquivoAttribute()
     {
-        return $this->belongsTo(\App\Models\Item::class, 'item_id');
+        $pathStorage = 'relatorios-fotograficos';
+        $data = $this->created_at->format('Y-m-d');
+        $nomeArquivo = $data.'-PROG'.$this->programacao_id.'.docx';
+
+        return \Storage::path("$pathStorage/$nomeArquivo");
     }
 
     /**
-     * Mutator pra inserir comentário vazio.
-     *
-     * @param string $value
-     * @return string
+     * Acessor para determinar se o arquivo existe.
      */
-    public function setComentarioAttribute($value)
+    public function getDisponivelAttribute()
     {
-        $this->attributes['comentario'] = ! is_null($value) ? $value : '';
+        return \File::exists($this->pathArquivo);
     }
 }

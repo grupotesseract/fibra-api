@@ -17,7 +17,7 @@ class ProgramacaoRepositoryTest extends TestCase
      */
     protected $programacaoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->programacaoRepo = \App::make(ProgramacaoRepository::class);

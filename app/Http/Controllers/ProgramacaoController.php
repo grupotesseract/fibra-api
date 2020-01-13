@@ -349,48 +349,6 @@ class ProgramacaoController extends AppBaseController
     }
 
     /**
-     * Metodo para gerar Excel de uma Programação.
-     *
-     * @param [type] $id
-     * @return Excel
-     */
-    public function export($id)
-    {
-        $programacao = $this->programacaoRepository->find($id);
-
-        if (empty($programacao)) {
-            Flash::error('Programação não encontrada');
-
-            return redirect(route('programacoes.index'));
-        }
-
-        $nomePlanta = $programacao->planta->nome;
-        $exportNomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
-
-        return Excel::download(new ProgramacaoExport($programacao), $exportNomeArquivo);
-    }
-
-    /**
-     * Metodo para fazer download do relatório de fotos de uma programacao.
-     *
-     * @return download
-     */
-    public function downloadRelatorioFotos($id)
-    {
-        $programacao = $this->programacaoRepository->find($id);
-
-        if (empty($programacao)) {
-            Flash::error('Programação não encontrada');
-
-            return redirect(route('programacoes.index'));
-        }
-
-        $this->programacaoRepository->gerarRelatorioFotos($programacao);
-
-        return \Response::download('relatorio.docx');
-    }
-
-    /**
      * Metodo para servir a view de comentarios de 1 Programação.
      *
      * @return View

@@ -17,7 +17,7 @@ class EstoqueRepositoryTest extends TestCase
      */
     protected $estoqueRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->estoqueRepo = \App::make(EstoqueRepository::class);

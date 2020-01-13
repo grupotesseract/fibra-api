@@ -64,8 +64,7 @@ class EmpresaTransformer extends TransformerAbstract
             $entradaMateriais = [];
             if (! is_null($planta->programacaoAnteriorMaisRecente)) {
                 foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
-                    
-                    if (!is_null($estoque->material)) {
+                    if (! is_null($estoque->material)) {
                         $estoquePlanta[] = [
                             'id' => $estoque->material_id,
                             'nome' => $estoque->material->nome,
@@ -74,6 +73,7 @@ class EmpresaTransformer extends TransformerAbstract
                             'potencia' => $estoque->material->potenciaValor,
                             'tensao' => $estoque->material->tensaoValor,
                             'tipoMaterial' => $estoque->material->tipoMaterialNome,
+                            'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
                             'quantidade' => $estoque->quantidade_final,
                         ];
 
@@ -85,6 +85,7 @@ class EmpresaTransformer extends TransformerAbstract
                             'potencia' => $estoque->material->potenciaValor,
                             'tensao' => $estoque->material->tensaoValor,
                             'tipoMaterial' => $estoque->material->tipoMaterialNome,
+                            'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
                         ];
                     }
                 }

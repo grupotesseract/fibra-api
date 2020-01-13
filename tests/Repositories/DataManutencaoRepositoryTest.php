@@ -17,7 +17,7 @@ class DataManutencaoRepositoryTest extends TestCase
      */
     protected $dataManutencaoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->dataManutencaoRepo = \App::make(DataManutencaoRepository::class);

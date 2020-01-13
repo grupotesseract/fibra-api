@@ -76,6 +76,22 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     **/
+    public function relatorioFotografico()
+    {
+        return $this->hasOne(\App\Models\RelatorioFotografico::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     **/
+    public function relatorioQuantidade()
+    {
+        return $this->hasOne(\App\Models\RelatorioQuantidade::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
     public function estoques()

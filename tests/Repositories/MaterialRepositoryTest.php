@@ -17,7 +17,7 @@ class MaterialRepositoryTest extends TestCase
      */
     protected $materialRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->materialRepo = \App::make(MaterialRepository::class);
