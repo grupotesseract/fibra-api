@@ -680,7 +680,6 @@
   border: 1px solid #aaa;
   border-radius: 4px;
   outline: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), to(#eeeeee));
   background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0); }
@@ -707,7 +706,6 @@
     top: 1px;
     right: 1px;
     width: 20px;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #eeeeee), to(#cccccc));
     background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0); }
@@ -748,7 +746,6 @@
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(50%, #eeeeee));
   background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0); }
@@ -757,7 +754,6 @@
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #eeeeee), to(white));
   background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0); }
@@ -1015,7 +1011,6 @@ body {
 
 body {
   background-color: #fff;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffffff), color-stop(#f6f6f6), color-stop(#eeeeee), color-stop(#e5e5e5), to(#dddddd));
   background-image: linear-gradient(to right bottom, #ffffff, #f6f6f6, #eeeeee, #e5e5e5, #dddddd);
 }
 
@@ -1034,7 +1029,6 @@ a:active {
 
 a {
   color: #3f505f;
-  -webkit-transition: color ease 0.25s;
   transition: color ease 0.25s;
 }
 
@@ -2055,7 +2049,6 @@ a:hover {
 .sidebar footer a {
   color: #fff;
   opacity: 0.2;
-  -webkit-transition: opacity ease 0.25s;
   transition: opacity ease 0.25s;
 }
 
@@ -2172,7 +2165,6 @@ label {
 }
 
 .pagination {
-  display: -webkit-box;
   display: flex;
   padding-left: 0;
   list-style: none;
