@@ -56,12 +56,18 @@
                 if (!is_null($material->tipoMaterial)) {
                     if ($material->tipoMaterial->tipo === 'Lâmpada') {
                         $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
+                        $reator = !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '';
+                        $base = !is_null($material->base) ? $material->base->abreviacao : '';
                     } else if ($material->tipoMaterial->tipo === 'Reator') {
                         $qtdeSubst = $programacao->quantidadesSubstituidas()->whereReatorId($material->id)->sum('quantidade_substituida_reator');
+                        $reator = $material->tipo_reator_qtde.'x'.$material->potencia->valor;
+                        $base = '';
                     }
                 }
                 else {
                     $qtdeSubst = $programacao->quantidadesSubstituidas()->whereBaseId($material->id)->sum('quantidade_substituida_base');
+                    $reator = '';
+                    $base = $material->abreviacao;
                 }
 
                 $qtdeNecessaria = $qtdeMinima - $qtdeEstoqueFinal;
@@ -73,8 +79,8 @@
             <td>{{ !is_null($material->tipoMaterial) ? $material->tipoMaterial->tipo ." ". $material->tipoMaterial->nome : $material->nome }}</td>                
             <td>{{ !is_null($material->tensao) ? $material->tensao->valor : '' }}</td>                
             <td>{{ !is_null($material->potencia) ? $material->potencia->valor : '' }}</td>                
-            <td>{{ !is_null($material->base) ? $material->base->abreviacao : '' }}</td>                
-            <td>{{ !is_null($material->reator) ? $material->reator->tipo_reator_qtde.'x'.$material->reator->potencia->valor : '' }}</td>              
+            <td>{{ $base }}</td>                
+            <td>{{ $reator }}</td>              
             <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
             <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              
