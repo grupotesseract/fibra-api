@@ -5,8 +5,8 @@ namespace App\Repositories;
 use App\Models\Material;
 use App\Models\Programacao;
 use App\Repositories\BaseRepository;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class ProgramacaoRepository.
@@ -49,15 +49,15 @@ class ProgramacaoRepository extends BaseRepository
     public function sincronizaProgramação($programacao, $input)
     {
         Log::info('Input: '.json_encode($input));
-        
+
         DB::transaction(function () use ($input, $programacao) {
-        
+
             //DADOS DA PROGRAMAÇÃO
             $programacao->update($input['programacao']);
-    
+
             //COMENTÁRIOS DE UM ITEM
             $programacao->comentarios()->createMany($input['comentarios']);
-    
+
             //LIBERAÇÕES DE DOCUMENTOS
             foreach ($input['liberacoesDocumentos'] as $inputLiberacaoDocumento) {
                 $liberacaoDocumento = $programacao->liberacoesDocumentos()->create(
@@ -65,25 +65,25 @@ class ProgramacaoRepository extends BaseRepository
                         'data_hora' => $inputLiberacaoDocumento['data_hora'],
                     ]
                 );
-    
+
                 //SYNC DOS COLABORADORES ASSOCIADOS A LIBERAÇÃO DO DOCUMENTO
                 $liberacaoDocumento->usuarios()->sync($inputLiberacaoDocumento['usuarios']);
             }
-    
+
             //ENTRADAS DE MATERIAIS
             $programacao->entradasMateriais()->createMany($input['entradas']);
-    
+
             //QUANTIDADES SUBSTITUIDAS
             $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
-    
+
             //DATAS DAS MANUTENÇÕES
-    
+
             foreach ($input['datasManutencoes'] as $dataManutencao) {
                 if (array_key_exists('data_fim', $dataManutencao)) {
                     $programacao->datasManutencoes()->create($dataManutencao);
                 }
             }
-    
+
             //COMENTÁRIOS GERAIS
             if (array_key_exists('comentarioGeral', $input['programacao'])) {
                 $programacao->comentariosGerais()->create(
@@ -92,13 +92,13 @@ class ProgramacaoRepository extends BaseRepository
                     ]
                 );
             }
-    
+
             //ATUALIZANDO INFORMAÇÕES DE ESTOQUE
             //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
             foreach ($input['estoques'] as $key => $estoque) {
                 $material = Material::find($estoque['material_id']);
                 $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
-    
+
                 if (! is_null($material->tipoMaterial)) {
                     if ($material->tipoMaterial->tipo == 'Lâmpada') {
                         $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
@@ -108,12 +108,12 @@ class ProgramacaoRepository extends BaseRepository
                 } else {
                     $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('base_id', $estoque['material_id'])->sum('quantidade_substituida_base');
                 }
-    
+
                 ///ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
                 $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
                 $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
             }
-    
+
             //PERSISTINDO ESTOQUE CALCULADO
             $programacao->estoques()->createMany($input['estoques']);
         });
