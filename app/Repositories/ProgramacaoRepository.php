@@ -97,7 +97,8 @@ class ProgramacaoRepository extends BaseRepository
             //ITERANDO POR CADA MATERIAL DO OBJETO DE ESTOQUE PRA CALCULO DO ESTOQUE FINAL
             foreach ($input['estoques'] as $key => $estoque) {
                 $material = Material::find($estoque['material_id']);
-                $qtdadeEntradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first()->quantidade;
+                $entradaMaterial = $programacao->entradasMateriais()->where('material_id', $estoque['material_id'])->get()->first();
+                $qtdadeEntradaMaterial = ! is_null($entradaMaterial) ? $entradaMaterial->quantidade : 0;
 
                 if (! is_null($material->tipoMaterial)) {
                     if ($material->tipoMaterial->tipo == 'Lâmpada') {
