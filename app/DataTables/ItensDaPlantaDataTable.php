@@ -68,6 +68,7 @@ class ItensDaPlantaDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id',
             'nome' => [
                 'orderable' => false,
             ],

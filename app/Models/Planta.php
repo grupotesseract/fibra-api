@@ -108,6 +108,11 @@ class Planta extends Model
         return $this->hasMany(\App\Models\Item::class, 'planta_id');
     }
 
+    /**
+     * Relacionamento com Quantidades Mínimas
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function quantidadesMinimas()
     {
         return $this->hasMany(\App\Models\QuantidadeMinima::class, 'planta_id');
