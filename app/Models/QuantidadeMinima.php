@@ -49,7 +49,7 @@ class QuantidadeMinima extends Model
     public static $rules = [
         'material_id' => 'required|exists:materiais,id',
         'planta_id' => 'required|exists:plantas,id',
-        'quantidade_minima' => 'required|integer|min:1',
+        'quantidade_minima' => 'required|integer',
     ];
 
     /**
