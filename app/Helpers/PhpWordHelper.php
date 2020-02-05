@@ -42,7 +42,7 @@ class PhpWordHelper
      */
     public static function addSecaoTitulo($section, $numero, $texto)
     {
-        $section->addText($numero .' - '. $texto, array("size" => 12), array('align' => 'center'));
+        $section->addText($numero.' - '.$texto, ['size' => 12], ['align' => 'center']);
     }
 
     /**
@@ -83,7 +83,7 @@ class PhpWordHelper
                     ]
                 );
                 $cell->addTextBreak(1);
-            }            
+            }
         }
 
         //$section->addTextBreak(1);

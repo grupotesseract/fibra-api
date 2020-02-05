@@ -71,7 +71,7 @@ class RelatorioQuantidadeController extends AppBaseController
     }
 
     /**
-     * Método de exclusão do relatório
+     * Método de exclusão do relatório.
      *
      * @param [type] $id
      * @return void
@@ -79,9 +79,10 @@ class RelatorioQuantidadeController extends AppBaseController
     public function deleteRelatorioQuantidades($id)
     {
         $programacao = $this->programacaoRepository->find($id);
-        $programacao->relatorioQuantidade()->delete();        
+        $programacao->relatorioQuantidade()->delete();
 
         Flash::success('Relatório excluído com sucesso');
+
         return view('programacoes.show')->with('programacao', $programacao);
     }
 }
