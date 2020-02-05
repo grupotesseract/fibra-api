@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\RelatorioFotograficoRepository;
 use Response;
+use Flash;
 
 class RelatorioFotograficoController extends AppBaseController
 {
@@ -69,5 +70,14 @@ class RelatorioFotograficoController extends AppBaseController
         if ($programacao->relatorioFotografico) {
             return \Response::download($programacao->relatorioFotografico->pathArquivo);
         }
+    }
+
+    public function deleteRelatorioFotos($id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+        $programacao->relatorioFotografico()->delete();        
+
+        Flash::success('Relatório excluído com sucesso');
+        return view('programacoes.show')->with('programacao', $programacao);
     }
 }
