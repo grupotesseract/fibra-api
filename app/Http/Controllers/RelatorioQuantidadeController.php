@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProgramacaoRepository;
 use App\Repositories\RelatorioQuantidadeRepository;
+use Flash;
 
 class RelatorioQuantidadeController extends AppBaseController
 {
@@ -67,5 +68,21 @@ class RelatorioQuantidadeController extends AppBaseController
         if ($programacao->relatorioQuantidade) {
             return \Response::download($programacao->relatorioQuantidade->pathArquivo);
         }
+    }
+
+    /**
+     * Método de exclusão do relatório.
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteRelatorioQuantidades($id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+        $programacao->relatorioQuantidade()->delete();
+
+        Flash::success('Relatório excluído com sucesso');
+
+        return view('programacoes.show')->with('programacao', $programacao);
     }
 }

@@ -9,6 +9,7 @@
         <th><strong>Quantidade Instalada</strong></th>        
         <th><strong>Quantidade Mínima para Manutenção</strong></th>        
         <th><strong>Quantidade em Estoque no Início da Manutenção</strong></th>        
+        <th><strong>Quantidade de Entrada de Material</strong></th>        
         <th><strong>Quantidade em Estoque no Final da Manutenção</strong></th>        
         <th><strong>Quantidade Materiais Substituídos</strong></th>        
         <th><strong>Materiais Necessários para Próxima Manutenção</strong></th>        
@@ -17,8 +18,15 @@
     <tbody>
     
     {!!
-        $materiais = $programacao->planta->quantidadesMinimas()->with(['material.reator', 'material.base', 'material.tensao', 'material.potencia', 'material.tipoMaterial'])->get()->pluck('material');
-        
+        $materiaisId = $programacao->planta->quantidadesMinimas()->get()->pluck('material.id');
+        $materiais = \App\Models\Material::with(
+            [
+                'tipoMaterial' => function ($query) {
+                    $query->orderBy('tipo');
+                },
+            ]
+        )->whereIn('id',$materiaisId)->orderBy('nome')->get();
+
     !!}
         
     @foreach ($materiais as $material)
@@ -43,6 +51,12 @@
                     }
                 )->get()->first();
 
+                $entrada = $material->entradas()->whereHas(
+                    'programacao', function ($query) use ($programacao) { 
+                        $query->where('id',$programacao->id); 
+                    }
+                )->get()->first();
+
                 if (!is_null($estoque))
                 {
                     $qtdeEstoqueInicial = $estoque->quantidade_inicial;
@@ -51,6 +65,14 @@
                 else {
                     $qtdeEstoqueInicial = 0;
                     $qtdeEstoqueFinal = 0;
+                }
+
+                if (!is_null($entrada))
+                {
+                    $qtdeEntrada = $entrada->quantidade;
+                }
+                else {
+                    $qtdeEntrada = 0;
                 }
 
                 if (!is_null($material->tipoMaterial)) {
@@ -84,6 +106,7 @@
             <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
             <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              
+            <td>{{ !is_null($qtdeEntrada) ? $qtdeEntrada : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueFinal) ? $qtdeEstoqueFinal : '' }}</td>              
             <td>{{ !is_null($qtdeSubst) ? $qtdeSubst : '' }}</td>              
             <td>{{ !is_null($qtdeNecessaria) && ($qtdeNecessaria > 0) ? $qtdeNecessaria : 0 }}</td>              
