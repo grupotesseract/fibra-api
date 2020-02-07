@@ -55,7 +55,7 @@ class RelatorioFotograficoRepository extends BaseRepository
         //Para cada item, criar secao titulo e secao fotos
         foreach ($itens as $item) {
             $fotos = $programacao->fotos->where('item_id', $item->id);
-            \App\Helpers\PhpWordHelper::addSecaoTitulo($section, $indice++, $item->nome);
+            \App\Helpers\PhpWordHelper::addSecaoTitulo($section, $item->qrcode, $item->nome);
             \App\Helpers\PhpWordHelper::addSecaoFotos($section, $fotos);
         }
 

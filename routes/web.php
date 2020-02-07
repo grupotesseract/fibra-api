@@ -60,6 +60,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::post('/programacoes/{id}/relatorio-fotos', 'RelatorioFotograficoController@confereRelatorioFotos')
         ->name('programacoes.relatorioFotos');
+    Route::get('/programacoes/{id}/relatorio-fotos/delete', 'RelatorioFotograficoController@deleteRelatorioFotos')
+        ->name('programacoes.deleteRelatorioFotos');
+    Route::get('/programacoes/{id}/relatorio-quantidades/delete', 'RelatorioQuantidadeController@deleteRelatorioQuantidades')
+        ->name('programacoes.deleteRelatorioQuantidades');
     Route::get('/programacoes/{id}/relatorio-fotos-download', 'RelatorioFotograficoController@downloadRelatorioFotos')
         ->name('relatorioFotografico.download');
 

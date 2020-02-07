@@ -42,12 +42,7 @@ class PhpWordHelper
      */
     public static function addSecaoTitulo($section, $numero, $texto)
     {
-        $table = $section->addTable();
-        $table->addRow();
-        $cell = $table->addCell(1000);
-        $cell->addText(' '.$numero, ['size' => 12]);
-        $cell = $table->addCell(9700);
-        $cell->addText($texto, ['size' => 12]);
+        $section->addText($numero.' - '.$texto, ['size' => 12], ['align' => 'center']);
     }
 
     /**
@@ -60,7 +55,7 @@ class PhpWordHelper
      */
     public static function addSecaoFotos($section, $fotos)
     {
-        $section->addTextBreak(1);
+        //$section->addTextBreak(1);
 
         foreach ($fotos->chunk(3) as $linhaFotos) {
             $table = $section->addTable();
@@ -76,23 +71,22 @@ class PhpWordHelper
 
             foreach ($linhaFotos as $foto) {
                 $cell = $table->addCell($comprimentoCelula);
-                $cell->addTextBreak(1);
+                //$cell->addTextBreak(1);
                 $cell->addImage(
                     $foto->urlParaRelatorio,
                     [
                         'alignment'         => 'center',
-                        'width'         => 160,
+                        'width'         => 155,
                         'wrappingStyle' => 'inline',
-                        'marginTop' => 100,
-                        'marginLeft' => 250,
+                        'marginTop' => 95,
+                        'marginLeft' => 200,
                     ]
                 );
                 $cell->addTextBreak(1);
             }
-            $section->addTextBreak(1);
         }
 
-        $section->addTextBreak(4);
+        //$section->addTextBreak(1);
     }
 
     /**

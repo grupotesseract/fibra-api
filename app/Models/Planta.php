@@ -109,7 +109,7 @@ class Planta extends Model
     }
 
     /**
-     * Relacionamento com Quantidades Mínimas
+     * Relacionamento com Quantidades Mínimas.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
