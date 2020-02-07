@@ -166,7 +166,7 @@ class Material extends Model
      */
     public function getTipoMaterialNomeAttribute()
     {
-        if ($this->tipoMaterial()->exists()) {
+        if ($this->tipoMaterial) {
             return $this->tipoMaterial->nome;
         }
     }
@@ -178,7 +178,7 @@ class Material extends Model
      */
     public function getTipoMaterialTipoAttribute()
     {
-        if ($this->tipoMaterial()->exists()) {
+        if ($this->tipoMaterial) {
             return $this->tipoMaterial->tipo;
         }
     }
@@ -190,7 +190,7 @@ class Material extends Model
      */
     public function getPotenciaValorAttribute()
     {
-        if ($this->potencia()->exists()) {
+        if ($this->potencia) {
             return $this->potencia->valor;
         }
     }
@@ -202,7 +202,7 @@ class Material extends Model
      */
     public function getTensaoValorAttribute()
     {
-        if ($this->tensao()->exists()) {
+        if ($this->tensao) {
             return $this->tensao->valor;
         }
     }
@@ -214,7 +214,7 @@ class Material extends Model
      */
     public function getBaseNomeAttribute()
     {
-        if ($this->base()->exists()) {
+        if ($this->base) {
             return $this->base->nomePotenciaTensao;
         }
     }
@@ -226,7 +226,7 @@ class Material extends Model
      */
     public function getReatorNomeAttribute()
     {
-        if ($this->reator()->exists()) {
+        if ($this->reator) {
             return $this->reator->nomePotenciaTensao;
         }
     }

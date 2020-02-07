@@ -77,6 +77,6 @@ class MaterialRepository extends BaseRepository
      */
     public function getArrayTodosMateriais()
     {
-        return $this->model()::orderBy('nome')->get()->pluck('nomePotenciaTensao', 'id')->toArray();
+        return $this->model()::with(['potencia','tensao','tipoMaterial','reator','base'])->orderBy('nome')->get()->pluck('nomePotenciaTensao', 'id')->toArray();
     }
 }
