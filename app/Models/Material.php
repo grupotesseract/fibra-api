@@ -132,6 +132,14 @@ class Material extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function entradas()
+    {
+        return $this->hasMany(\App\Models\EntradaMaterial::class);
+    }
+
+    /**
      * Programações relacionadas a esse material.
      *
      * @return Collection

@@ -62,6 +62,30 @@
     {!! Form::close() !!}
 </div>
 
+{{-- <div class="px-5 py-2">
+    {!! Form::open(['route' => ['programacoes.deleteRelatorioFotos', $programacao->id], 'id' => 'download-relatorio-fotografico']) !!}
+    {!! Form::button('<i class="fa fa-download"></i> &nbsp; Excluir Relatório Fotográfico', [
+        'type' => 'submit',
+        'class' => 'btn btn-primary form-control'
+    ]) !!}
+    {!! Form::close() !!}
+</div> --}}
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.deleteRelatorioFotos', $programacao->id) !!}">
+        <i class="fa fa-angle-double-left"></i> &nbsp;
+        <span> Excluir Relatório Fotográfico</span>
+    </a>
+</div>
+
+<div class="px-5 py-2">
+    <a class="btn btn-primary form-control" href="{!! route('programacoes.deleteRelatorioQuantidades', $programacao->id) !!}">
+        <i class="fa fa-angle-double-left"></i> &nbsp;
+        <span> Excluir Relatório de Quantidades</span>
+    </a>
+</div>
+
+
 <div class="px-5 py-2">
     <a class="btn btn-primary form-control" href="{!! route('plantas.programacoes', $programacao->planta_id) !!}">
         <i class="fa fa-angle-double-left"></i> &nbsp;
