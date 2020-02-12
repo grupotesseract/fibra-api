@@ -31,5 +31,8 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "select2": "^4.0.11",
     "sweetalert2": "^9.5.4"
+  },
+  "resolutions": {
+    "**/**/serialize-javascript": ">=2.1.1"
   }
 }
