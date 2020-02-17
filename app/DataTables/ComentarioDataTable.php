@@ -65,6 +65,13 @@ class ComentarioDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'qrcode' => [
+                'data' => 'item.qrcode',
+                'title' => 'QRCode',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'nome' => [
                 'data' => 'item.nome',
                 'title' => 'Nome do Item',

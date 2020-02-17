@@ -66,6 +66,13 @@ class DataManutencaoDataTable extends DataTable
     {
         return [
 
+            'qrcode' => [
+                'data' => 'item.qrcode',
+                'title' => 'QRCode',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'nome' => [
                 'data' => 'item.nome',
                 'title' => 'Nome do Item',

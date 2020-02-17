@@ -83,6 +83,7 @@ class MateriaisDoItemDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            
             'nome' => [
                 'data' => 'nome',
                 'title' => 'Nome',
