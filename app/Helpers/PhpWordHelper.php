@@ -76,7 +76,7 @@ class PhpWordHelper
                     $foto->urlParaRelatorio,
                     [
                         'alignment'         => 'center',
-                        'width'         => 155,
+                        'width'         => 150,
                         'wrappingStyle' => 'inline',
                         'marginTop' => 95,
                         'marginLeft' => 200,
