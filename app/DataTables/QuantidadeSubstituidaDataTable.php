@@ -75,6 +75,13 @@ class QuantidadeSubstituidaDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'qrcode' => [
+                'data' => 'item.qrcode',
+                'title' => 'QRCode',
+                'searchable' => true,
+                'orderable' => false,
+                'filterable' => false,
+            ],
             'item' => [
                 'data' => 'item.nome',
                 'title' => 'Item',
