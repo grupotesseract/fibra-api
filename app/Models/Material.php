@@ -136,7 +136,7 @@ class Material extends Model
      **/
     public function entradas()
     {
-        return $this->hasMany(\App\Models\EntradaMaterial::class);
+        return $this->hasMany(\App\Models\EntradaMaterial::class); 
     }
 
     /**

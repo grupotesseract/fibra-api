@@ -1,8 +1,8 @@
 <h1 align="center">Fibra API</h1>
 
 <p align="center">
-  Criado com muito ☕ por <a href="https://grupotesseract.com.br">Grupo Tesseract</a><br>
-  <img src="https://img.shields.io/badge/version-0.0.1-5B7587.svg" align="center" alt="Version 0.1.1"><br>
+  Criado com muito ☕ e ❤️ por <a href="https://grupotesseract.com.br">Grupo Tesseract</a><br>
+  <img src="https://img.shields.io/badge/version-0.0.1-5B7587.svg" align="center" alt="Version 0.1.1"/> <img src="https://app.buddy.works/thibraga06/fibra-api/pipelines/pipeline/207706/badge.svg?token=d828a2b54c431634212c4d91d8bdc78f317414296a7f5886bb2cd688aafa6c78" align="center"/><br>
   <br>
   <a href="#requisitos">Requisitos</a> •
   <a href="#instalação">Instalação</a>
