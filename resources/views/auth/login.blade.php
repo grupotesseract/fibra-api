@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} | Login na área administrativa</title>
     <meta name="description" content="Serviços Especializados de Engenharia Ltda.">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@2.1.16/dist/css/coreui.min.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
@@ -88,13 +88,6 @@
             </div>
         </div>
     </div>
-
-    <!-- CoreUI and necessary plugins-->
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script> --}}
 
     <script async src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.26.7"></script>
 </body>
