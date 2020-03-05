@@ -30,6 +30,10 @@ class Item extends Model
         'planta_id',
     ];
 
+    public $appends = [
+        'qrCodeNome',        
+    ];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -54,6 +58,7 @@ class Item extends Model
         'circuito' => 'required',
         'planta_id' => 'required',
     ];
+    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -88,5 +93,11 @@ class Item extends Model
     public function fotos()
     {
         return $this->hasMany(\App\Models\Foto::class, 'item_id');
+    }
+
+    
+    public function getQrCodeNomeAttribute()
+    {
+        return $this->qrcode . ' - ' . $this->nome;
     }
 }
