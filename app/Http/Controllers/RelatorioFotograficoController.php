@@ -83,7 +83,7 @@ class RelatorioFotograficoController extends AppBaseController
         } else {
             Flash::error('Não há relatório para ser excluído');
         }
-        
+
         return redirect('programacoes/'.$id);
     }
 }

@@ -31,7 +31,7 @@ class Item extends Model
     ];
 
     public $appends = [
-        'qrCodeNome',        
+        'qrCodeNome',
     ];
 
     /**
@@ -58,7 +58,6 @@ class Item extends Model
         'circuito' => 'required',
         'planta_id' => 'required',
     ];
-    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -95,9 +94,8 @@ class Item extends Model
         return $this->hasMany(\App\Models\Foto::class, 'item_id');
     }
 
-    
     public function getQrCodeNomeAttribute()
     {
-        return $this->qrcode . ' - ' . $this->nome;
+        return $this->qrcode.' - '.$this->nome;
     }
 }
