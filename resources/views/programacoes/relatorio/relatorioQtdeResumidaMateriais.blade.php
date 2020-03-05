@@ -18,7 +18,9 @@
     <tbody>
     
     {!!
-        $materiaisId = $programacao->planta->quantidadesMinimas()->get()->pluck('material.id');
+        $itensId = $programacao->planta->itens()->pluck('id');
+        $materiaisId = \DB::table('itens_materiais')->whereIn('item_id',$itensId)->pluck('material_id');
+        
         $materiais = \App\Models\Material::with(
             [
                 'tipoMaterial' => function ($query) {
