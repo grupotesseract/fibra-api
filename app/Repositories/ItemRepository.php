@@ -49,10 +49,10 @@ class ItemRepository extends BaseRepository
     {
         if ($plantaId) {
             return $this->model()::where('planta_id', $plantaId)
-                ->pluck('nome', 'id')->all();
+                ->get()->pluck('qrCodeNome', 'id')->all();
         }
 
-        return $this->model()::pluck('nome', 'id')->all();
+        return $this->model()::get()->pluck('qrCodeNome', 'id')->all();
     }
 
     /**
