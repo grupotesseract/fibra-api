@@ -79,7 +79,7 @@ class RelatorioQuantidadeController extends AppBaseController
     public function deleteRelatorioQuantidades($id)
     {
         $programacao = $this->programacaoRepository->find($id);
-        
+
         if ($programacao->relatorioQuantidade) {
             \File::delete($programacao->relatorioQuantidade->pathArquivo);
             $programacao->relatorioQuantidade()->delete();
@@ -87,7 +87,7 @@ class RelatorioQuantidadeController extends AppBaseController
         } else {
             Flash::error('Não há relatório para ser excluído');
         }
-        
+
         return redirect('programacoes/'.$id);
     }
 }
