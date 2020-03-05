@@ -79,10 +79,15 @@ class RelatorioQuantidadeController extends AppBaseController
     public function deleteRelatorioQuantidades($id)
     {
         $programacao = $this->programacaoRepository->find($id);
-        $programacao->relatorioQuantidade()->delete();
-
-        Flash::success('Relatório excluído com sucesso');
-
-        return view('programacoes.show')->with('programacao', $programacao);
+        
+        if ($programacao->relatorioQuantidade) {
+            \File::delete($programacao->relatorioQuantidade->pathArquivo);
+            $programacao->relatorioQuantidade()->delete();
+            Flash::success('Relatório excluído com sucesso');
+        } else {
+            Flash::error('Não há relatório para ser excluído');
+        }
+        
+        return redirect('programacoes/'.$id);
     }
 }

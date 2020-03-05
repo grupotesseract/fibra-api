@@ -75,10 +75,15 @@ class RelatorioFotograficoController extends AppBaseController
     public function deleteRelatorioFotos($id)
     {
         $programacao = $this->programacaoRepository->find($id);
-        $programacao->relatorioFotografico()->delete();
 
-        Flash::success('Relatório excluído com sucesso');
-
-        return view('programacoes.show')->with('programacao', $programacao);
+        if ($programacao->relatorioFotografico) {
+            \File::delete($programacao->relatorioFotografico->pathArquivo);
+            $programacao->relatorioFotografico()->delete();
+            Flash::success('Relatório excluído com sucesso');
+        } else {
+            Flash::error('Não há relatório para ser excluído');
+        }
+        
+        return redirect('programacoes/'.$id);
     }
 }
