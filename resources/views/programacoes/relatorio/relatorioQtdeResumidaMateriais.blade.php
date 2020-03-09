@@ -18,7 +18,9 @@
     <tbody>
     
     {!!
-        $materiaisId = $programacao->planta->quantidadesMinimas()->get()->pluck('material.id');
+        $itensId = $programacao->planta->itens()->pluck('id');
+        $materiaisId = \DB::table('itens_materiais')->whereIn('item_id',$itensId)->pluck('material_id');
+        
         $materiais = \App\Models\Material::with(
             [
                 'tipoMaterial' => function ($query) {
@@ -43,7 +45,7 @@
                     'material', function ($query) use ($material) {
                         $query->where('id', $material->id);
                     }
-                )->get()->first()->quantidade_minima;
+                )->get()->first();
 
                 $estoque = $material->estoques()->whereHas(
                     'programacao', function ($query) use ($programacao) { 
@@ -75,6 +77,16 @@
                     $qtdeEntrada = 0;
                 }
 
+                if (!is_null($qtdeMinima))
+                {
+                    $qtdeMinimaQnt = $qtdeMinima->quantidade_minima;
+                }
+                else {
+                    $qtdeEntrada = 0;
+                }
+
+
+
                 if (!is_null($material->tipoMaterial)) {
                     if ($material->tipoMaterial->tipo === 'Lâmpada') {
                         $qtdeSubst = $programacao->quantidadesSubstituidas()->whereMaterialId($material->id)->sum('quantidade_substituida');
@@ -92,7 +104,7 @@
                     $base = $material->abreviacao;
                 }
 
-                $qtdeNecessaria = $qtdeMinima - $qtdeEstoqueFinal;
+                $qtdeNecessaria = $qtdeMinimaQnt - $qtdeEstoqueFinal;
 
 
         !!}
@@ -104,7 +116,7 @@
             <td>{{ $base }}</td>                
             <td>{{ $reator }}</td>              
             <td>{{ !is_null($qtdeInstalada) ? $qtdeInstalada : '' }}</td>              
-            <td>{{ !is_null($qtdeMinima) ? $qtdeMinima : '' }}</td>              
+            <td>{{ !is_null($qtdeMinimaQnt) ? $qtdeMinimaQnt : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueInicial) ? $qtdeEstoqueInicial : '' }}</td>              
             <td>{{ !is_null($qtdeEntrada) ? $qtdeEntrada : '' }}</td>              
             <td>{{ !is_null($qtdeEstoqueFinal) ? $qtdeEstoqueFinal : '' }}</td>              
