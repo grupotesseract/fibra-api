@@ -20,14 +20,12 @@
     {!!
         $itensId = $programacao->planta->itens()->pluck('id');
         $materiaisId = \DB::table('itens_materiais')->whereIn('item_id',$itensId)->pluck('material_id');
-        
-        $materiais = \App\Models\Material::with(
-            [
-                'tipoMaterial' => function ($query) {
-                    $query->orderBy('tipo');
-                },
-            ]
-        )->whereIn('id',$materiaisId)->orderBy('nome')->get();
+        $materiaisIdQtde = $programacao->planta->quantidadesMinimas->pluck('material_id');
+        $materiaisId = array_merge($materiaisId->toArray(), $materiaisIdQtde->toArray());
+
+        $materiais = \App\Models\Material::with('tipoMaterial')->whereIn('id',$materiaisId)->orderBy('nome')->get()->sortBy(function($item) {
+            return $item->tipoMaterial->tipo.'-'.$item->tipoMaterial->nome;
+        });
 
     !!}
         
