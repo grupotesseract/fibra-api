@@ -81,7 +81,7 @@
                     $qtdeMinimaQnt = $qtdeMinima->quantidade_minima;
                 }
                 else {
-                    $qtdeEntrada = 0;
+                    $qtdeMinimaQnt = 0;
                 }
 
 
