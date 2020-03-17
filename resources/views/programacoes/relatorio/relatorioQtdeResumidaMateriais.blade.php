@@ -24,7 +24,8 @@
         $materiaisId = array_merge($materiaisId->toArray(), $materiaisIdQtde->toArray());
 
         $materiais = \App\Models\Material::with('tipoMaterial')->whereIn('id',$materiaisId)->orderBy('nome')->get()->sortBy(function($item) {
-            return $item->tipoMaterial->tipo.'-'.$item->tipoMaterial->nome;
+            $tipo = $item->tipoMaterial ? $item->tipoMaterial->tipo.'-'.$item->tipoMaterial->nome : $item->nome; 
+            return $tipo;
         });
 
     !!}
@@ -80,7 +81,7 @@
                     $qtdeMinimaQnt = $qtdeMinima->quantidade_minima;
                 }
                 else {
-                    $qtdeEntrada = 0;
+                    $qtdeMinimaQnt = 0;
                 }
 
 
