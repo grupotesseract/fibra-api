@@ -78,3 +78,6 @@ Route::fallback(function () {
 });
 
 Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
+
+
+Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');

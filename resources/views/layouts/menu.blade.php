@@ -91,3 +91,9 @@
     </a>
 </li>
  --}}
+<li class="nav-item {{ Request::is('manutencoesCivilEletrica*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('manutencoesCivilEletrica.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Manutencoes Civil Eletrica</span>
+    </a>
+</li>
