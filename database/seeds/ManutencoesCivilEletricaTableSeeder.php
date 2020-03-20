@@ -11,6 +11,6 @@ class ManutencoesCivilEletricaTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\ManutencaoCivilEletrica::class, 100)->create();
     }
 }

@@ -41,6 +41,11 @@ class ManutencaoCivilEletrica extends Model
 
 
     public $fillable = [
+        'problemas_encontrados',
+        'informacoes_adicionais',
+        'observacoes',
+        'obra_atividade',
+        'equipe_cliente',
         'data_hora_entrada',
         'data_hora_saida',
         'data_hora_inicio_lem',
@@ -66,7 +71,12 @@ class ManutencaoCivilEletrica extends Model
      *
      * @var array
      */
-    public static $rules = [
+    public static $rules = [        
+        'problemas_encontrados' => 'required',
+        'informacoes_adicionais' => 'required',
+        'observacoes' => 'required',
+        'obra_atividade' => 'required',
+        'equipe_cliente' => 'required',
         'data_hora_entrada' => 'required',
         'data_hora_saida' => 'required',
         'data_hora_inicio_atividades' => 'required',

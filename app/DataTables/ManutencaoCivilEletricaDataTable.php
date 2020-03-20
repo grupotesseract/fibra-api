@@ -29,7 +29,7 @@ class ManutencaoCivilEletricaDataTable extends DataTable
      */
     public function query(ManutencaoCivilEletrica $model)
     {
-        return $model->newQuery();
+        return $model->with('planta')->newQuery();
     }
 
     /**
@@ -68,7 +68,9 @@ class ManutencaoCivilEletricaDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [
+        return [            
+            'obra_atividade',
+            'equipe_cliente',            
             'data_hora_entrada',
             'data_hora_saida',
             'data_hora_inicio_lem',
@@ -76,7 +78,10 @@ class ManutencaoCivilEletricaDataTable extends DataTable
             'data_hora_inicio_let',
             'data_hora_final_let',
             'data_hora_inicio_atividades',
-            'planta_id'
+            'planta_id' => [
+                'data' => 'planta.nome',
+                'title' => 'Planta'
+            ]
         ];
     }
 

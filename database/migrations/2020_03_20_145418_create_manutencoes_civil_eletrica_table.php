@@ -15,6 +15,11 @@ class CreateManutencoesCivilEletricaTable extends Migration
     {
         Schema::create('manutencoes_civil_eletrica', function (Blueprint $table) {
             $table->bigInteger('id', true);
+            $table->text('problemas_encontrados');
+            $table->text('informacoes_adicionais');
+            $table->text('observacoes');
+            $table->string('obra_atividade');
+            $table->string('equipe_cliente');
             $table->timestamp('data_hora_entrada');
             $table->timestamp('data_hora_saida');
             $table->timestamp('data_hora_inicio_lem')->nullable();
