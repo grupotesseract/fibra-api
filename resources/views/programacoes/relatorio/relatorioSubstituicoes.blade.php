@@ -28,7 +28,7 @@
                         'materiais' => function ($query) {
                             $query->whereHas(
                                 'tipoMaterial', function ($query) {
-                                    $query->where('tipo', 'Lâmpada');
+                                    $query->whereIn('tipo', ['Lâmpada', 'Outros']);
                                 }
                             );
                         },

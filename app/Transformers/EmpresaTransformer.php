@@ -31,7 +31,7 @@ class EmpresaTransformer extends TransformerAbstract
                 $materiais = [];
                 $materiaisArray = $item->materiais()->whereHas(
                     'tipoMaterial', function ($query) {
-                        $query->where('tipo', 'Lâmpada');
+                        $query->whereIn('tipo', ['Lâmpada', 'Outros']);
                     }
                 )->get();
 
