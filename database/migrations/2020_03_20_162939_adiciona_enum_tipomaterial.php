@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AdicionaEnumTipomaterial extends Migration
 {
@@ -13,7 +13,7 @@ class AdicionaEnumTipomaterial extends Migration
      */
     public function up()
     {
-        \DB::statement("ALTER TABLE tipos_materiais DROP CONSTRAINT tipos_materiais_tipo_check");
+        \DB::statement('ALTER TABLE tipos_materiais DROP CONSTRAINT tipos_materiais_tipo_check');
     }
 
     /**
