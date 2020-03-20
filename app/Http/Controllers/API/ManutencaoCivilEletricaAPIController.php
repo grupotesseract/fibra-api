@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateManutencaoCivilEletricaAPIRequest;
 use App\Http\Requests\API\UpdateManutencaoCivilEletricaAPIRequest;
 use App\Models\ManutencaoCivilEletrica;
 use App\Repositories\ManutencaoCivilEletricaRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class ManutencaoCivilEletricaController
- * @package App\Http\Controllers\API
+ * Class ManutencaoCivilEletricaController.
  */
-
 class ManutencaoCivilEletricaAPIController extends AppBaseController
 {
-    /** @var  ManutencaoCivilEletricaRepository */
+    /** @var ManutencaoCivilEletricaRepository */
     private $manutencaoCivilEletricaRepository;
 
     public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo)
@@ -27,7 +25,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
     /**
      * Display a listing of the ManutencaoCivilEletrica.
-     * GET|HEAD /manutencoesCivilEletrica
+     * GET|HEAD /manutencoesCivilEletrica.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
     /**
      * Store a newly created ManutencaoCivilEletrica in storage.
-     * POST /manutencoesCivilEletrica
+     * POST /manutencoesCivilEletrica.
      *
      * @param CreateManutencaoCivilEletricaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
     /**
      * Display the specified ManutencaoCivilEletrica.
-     * GET|HEAD /manutencoesCivilEletrica/{id}
+     * GET|HEAD /manutencoesCivilEletrica/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
     /**
      * Update the specified ManutencaoCivilEletrica in storage.
-     * PUT/PATCH /manutencoesCivilEletrica/{id}
+     * PUT/PATCH /manutencoesCivilEletrica/{id}.
      *
      * @param int $id
      * @param UpdateManutencaoCivilEletricaAPIRequest $request
@@ -107,7 +105,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
     /**
      * Remove the specified ManutencaoCivilEletrica from storage.
-     * DELETE /manutencoesCivilEletrica/{id}
+     * DELETE /manutencoesCivilEletrica/{id}.
      *
      * @param int $id
      *

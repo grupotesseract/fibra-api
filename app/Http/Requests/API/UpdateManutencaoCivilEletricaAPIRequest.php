@@ -25,7 +25,7 @@ class UpdateManutencaoCivilEletricaAPIRequest extends APIRequest
     public function rules()
     {
         $rules = ManutencaoCivilEletrica::$rules;
-        
+
         return $rules;
     }
 }
