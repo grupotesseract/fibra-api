@@ -6,11 +6,9 @@ use App\Models\ManutencaoCivilEletrica;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ManutencaoCivilEletricaRepository
- * @package App\Repositories
+ * Class ManutencaoCivilEletricaRepository.
  * @version March 20, 2020, 2:54 pm -03
-*/
-
+ */
 class ManutencaoCivilEletricaRepository extends BaseRepository
 {
     /**
@@ -24,11 +22,11 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
         'data_hora_inicio_let',
         'data_hora_final_let',
         'data_hora_inicio_atividades',
-        'planta_id'
+        'planta_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -38,7 +36,7 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

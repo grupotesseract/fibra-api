@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\ManutencaoCivilEletrica;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ManutencaoCivilEletricaDataTable extends DataTable
 {
@@ -68,9 +68,9 @@ class ManutencaoCivilEletricaDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [            
+        return [
             'obra_atividade',
-            'equipe_cliente',            
+            'equipe_cliente',
             'data_hora_entrada',
             'data_hora_saida',
             'data_hora_inicio_lem',
@@ -80,8 +80,8 @@ class ManutencaoCivilEletricaDataTable extends DataTable
             'data_hora_inicio_atividades',
             'planta_id' => [
                 'data' => 'planta.nome',
-                'title' => 'Planta'
-            ]
+                'title' => 'Planta',
+            ],
         ];
     }
 
@@ -92,6 +92,6 @@ class ManutencaoCivilEletricaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'manutencoes_civil_eletricadatatable_' . time();
+        return 'manutencoes_civil_eletricadatatable_'.time();
     }
 }

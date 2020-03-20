@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ManutencaoCivilEletricaDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateManutencaoCivilEletricaRequest;
 use App\Http\Requests\UpdateManutencaoCivilEletricaRequest;
 use App\Repositories\ManutencaoCivilEletricaRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ManutencaoCivilEletricaController extends AppBaseController
 {
-    /** @var  ManutencaoCivilEletricaRepository */
+    /** @var ManutencaoCivilEletricaRepository */
     private $manutencaoCivilEletricaRepository;
 
     public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo)
