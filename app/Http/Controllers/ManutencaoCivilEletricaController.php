@@ -55,7 +55,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->create($input);
 
-        Flash::success('Manutencao Civil Eletrica saved successfully.');
+        Flash::success('Manutencao Civil Eletrica salva com sucesso.');
 
         return redirect(route('manutencoesCivilEletrica.index'));
     }
@@ -72,7 +72,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            Flash::error('Manutencao Civil Eletrica not found');
+            Flash::error('Manutencao Civil Eletrica não encontrada');
 
             return redirect(route('manutencoesCivilEletrica.index'));
         }
@@ -92,7 +92,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            Flash::error('Manutencao Civil Eletrica not found');
+            Flash::error('Manutencao Civil Eletrica não encontrada');
 
             return redirect(route('manutencoesCivilEletrica.index'));
         }
@@ -113,14 +113,14 @@ class ManutencaoCivilEletricaController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            Flash::error('Manutencao Civil Eletrica not found');
+            Flash::error('Manutencao Civil Eletrica não encontrada');
 
             return redirect(route('manutencoesCivilEletrica.index'));
         }
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->update($request->all(), $id);
 
-        Flash::success('Manutencao Civil Eletrica updated successfully.');
+        Flash::success('Manutencao Civil Eletrica atualizada com sucesso.');
 
         return redirect(route('manutencoesCivilEletrica.index'));
     }
@@ -137,14 +137,14 @@ class ManutencaoCivilEletricaController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            Flash::error('Manutencao Civil Eletrica not found');
+            Flash::error('Manutencao Civil Eletrica não encontrada');
 
             return redirect(route('manutencoesCivilEletrica.index'));
         }
 
         $this->manutencaoCivilEletricaRepository->delete($id);
 
-        Flash::success('Manutencao Civil Eletrica deleted successfully.');
+        Flash::success('Manutencao Civil Eletrica excluída com sucesso.');
 
         return redirect(route('manutencoesCivilEletrica.index'));
     }

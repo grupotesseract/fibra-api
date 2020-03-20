@@ -27,7 +27,16 @@ class ManutencaoCivilEletrica extends Model
     public $table = 'manutencoes_civil_eletrica';
     
 
-    protected $dates = ['deleted_at'];
+    protected $dates = [
+        'deleted_at',
+        'data_hora_entrada',
+        'data_hora_saida',
+        'data_hora_inicio_lem',
+        'data_hora_final_lem',
+        'data_hora_inicio_let',
+        'data_hora_final_let',
+        'data_hora_inicio_atividades'
+    ];
 
 
 

@@ -40,7 +40,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($manutencoesCivilEletrica->toArray(), 'Manutencoes Civil Eletrica retrieved successfully');
+        return $this->sendResponse($manutencoesCivilEletrica->toArray(), 'Manutencoes Civil Eletrica listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->create($input);
 
-        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'Manutencao Civil Eletrica saved successfully');
+        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'Manutencao Civil Eletrica salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            return $this->sendError('Manutencao Civil Eletrica not found');
+            return $this->sendError('Manutencao Civil Eletrica não encontrada');
         }
 
-        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'Manutencao Civil Eletrica retrieved successfully');
+        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'Manutencao Civil Eletrica listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            return $this->sendError('Manutencao Civil Eletrica not found');
+            return $this->sendError('Manutencao Civil Eletrica não encontrada');
         }
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->update($input, $id);
 
-        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'ManutencaoCivilEletrica updated successfully');
+        return $this->sendResponse($manutencaoCivilEletrica->toArray(), 'Manutencao Civil Eletrica atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
         if (empty($manutencaoCivilEletrica)) {
-            return $this->sendError('Manutencao Civil Eletrica not found');
+            return $this->sendError('Manutencao Civil Eletrica não encontrada');
         }
 
         $manutencaoCivilEletrica->delete();
 
-        return $this->sendSuccess('Manutencao Civil Eletrica deleted successfully');
+        return $this->sendSuccess('Manutencao Civil Eletrica excluída com sucesso');
     }
 }
