@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\ManutencaoCivilEletrica;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateManutencaoCivilEletricaRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,7 @@ class UpdateManutencaoCivilEletricaRequest extends FormRequest
     public function rules()
     {
         $rules = ManutencaoCivilEletrica::$rules;
-        
+
         return $rules;
     }
 }

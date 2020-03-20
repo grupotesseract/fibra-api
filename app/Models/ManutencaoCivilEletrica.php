@@ -6,8 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class ManutencaoCivilEletrica
- * @package App\Models
+ * Class ManutencaoCivilEletrica.
  * @version March 20, 2020, 2:54 pm -03
  *
  * @property \App\Models\Planta planta
@@ -18,14 +17,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string data_hora_inicio_let
  * @property string data_hora_final_let
  * @property string data_hora_inicio_atividades
- * @property integer planta_id
+ * @property int planta_id
  */
 class ManutencaoCivilEletrica extends Model
 {
     use SoftDeletes;
 
     public $table = 'manutencoes_civil_eletrica';
-    
 
     protected $dates = [
         'deleted_at',
@@ -35,10 +33,8 @@ class ManutencaoCivilEletrica extends Model
         'data_hora_final_lem',
         'data_hora_inicio_let',
         'data_hora_final_let',
-        'data_hora_inicio_atividades'
+        'data_hora_inicio_atividades',
     ];
-
-
 
     public $fillable = [
         'problemas_encontrados',
@@ -53,7 +49,7 @@ class ManutencaoCivilEletrica extends Model
         'data_hora_inicio_let',
         'data_hora_final_let',
         'data_hora_inicio_atividades',
-        'planta_id'
+        'planta_id',
     ];
 
     /**
@@ -63,15 +59,15 @@ class ManutencaoCivilEletrica extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'planta_id' => 'integer'
+        'planta_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
-    public static $rules = [        
+    public static $rules = [
         'problemas_encontrados' => 'required',
         'informacoes_adicionais' => 'required',
         'observacoes' => 'required',
@@ -80,7 +76,7 @@ class ManutencaoCivilEletrica extends Model
         'data_hora_entrada' => 'required',
         'data_hora_saida' => 'required',
         'data_hora_inicio_atividades' => 'required',
-        'planta_id' => 'required'
+        'planta_id' => 'required',
     ];
 
     /**

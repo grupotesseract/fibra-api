@@ -7,7 +7,6 @@ use App\Models\Planta;
 use Faker\Generator as Faker;
 
 $factory->define(ManutencaoCivilEletrica::class, function (Faker $faker) {
-
     return [
         'problemas_encontrados' => $faker->text,
         'informacoes_adicionais' => $faker->text,
@@ -23,6 +22,6 @@ $factory->define(ManutencaoCivilEletrica::class, function (Faker $faker) {
         'data_hora_inicio_atividades' => $faker->date('Y-m-d H:i:s'),
         'planta_id' => Planta::inRandomOrder()->first()->id,
         'created_at' => $faker->date('Y-m-d H:i:s'),
-        'updated_at' => $faker->date('Y-m-d H:i:s')
+        'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
 });
