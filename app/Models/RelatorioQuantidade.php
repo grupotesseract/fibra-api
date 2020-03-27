@@ -56,9 +56,8 @@ class RelatorioQuantidade extends Model
      */
     public function getNomeArquivoAttribute()
     {
-        $programacao = $this->programacao;
-        $nomePlanta = $programacao->planta->nome;
-        $nomeArquivo = "$nomePlanta $programacao->data_inicio_real-$programacao->data_fim_real.xls";
+        $data = $this->created_at->format('Y-m-d');
+        $nomeArquivo = $data.'-PROG'.$this->programacao_id.'-QNTDS.xls';
 
         return $nomeArquivo;
     }
