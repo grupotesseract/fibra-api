@@ -6,29 +6,25 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class UsuarioManutencao
- * @package App\Models
+ * Class UsuarioManutencao.
  * @version March 27, 2020, 4:30 pm -03
  *
  * @property \App\Models\ManutencaoCivilEletrica manutencao
  * @property \App\Models\Usuario usuario
- * @property integer manutencao_id
- * @property integer usuario_id
+ * @property int manutencao_id
+ * @property int usuario_id
  */
 class UsuarioManutencao extends Model
 {
     use SoftDeletes;
 
     public $table = 'usuarios_manutencoes';
-    
 
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
         'manutencao_id',
-        'usuario_id'
+        'usuario_id',
     ];
 
     /**
@@ -39,17 +35,17 @@ class UsuarioManutencao extends Model
     protected $casts = [
         'id' => 'integer',
         'manutencao_id' => 'integer',
-        'usuario_id' => 'integer'
+        'usuario_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'manutencao_id' => 'required',
-        'usuario_id' => 'required'
+        'usuario_id' => 'required',
     ];
 
     /**
