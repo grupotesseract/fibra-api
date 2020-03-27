@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UsuarioManutencaoDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateUsuarioManutencaoRequest;
 use App\Http\Requests\UpdateUsuarioManutencaoRequest;
 use App\Repositories\UsuarioManutencaoRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class UsuarioManutencaoController extends AppBaseController
 {
-    /** @var  UsuarioManutencaoRepository */
+    /** @var UsuarioManutencaoRepository */
     private $usuarioManutencaoRepository;
 
     public function __construct(UsuarioManutencaoRepository $usuarioManutencaoRepo)

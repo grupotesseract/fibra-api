@@ -6,11 +6,9 @@ use App\Models\UsuarioManutencao;
 use App\Repositories\BaseRepository;
 
 /**
- * Class UsuarioManutencaoRepository
- * @package App\Repositories
+ * Class UsuarioManutencaoRepository.
  * @version March 27, 2020, 4:30 pm -03
-*/
-
+ */
 class UsuarioManutencaoRepository extends BaseRepository
 {
     /**
@@ -18,11 +16,11 @@ class UsuarioManutencaoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'manutencao_id',
-        'usuario_id'
+        'usuario_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -32,7 +30,7 @@ class UsuarioManutencaoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

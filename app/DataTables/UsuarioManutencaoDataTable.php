@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\UsuarioManutencao;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class UsuarioManutencaoDataTable extends DataTable
 {
@@ -70,7 +70,7 @@ class UsuarioManutencaoDataTable extends DataTable
     {
         return [
             'manutencao_id',
-            'usuario_id'
+            'usuario_id',
         ];
     }
 
@@ -81,6 +81,6 @@ class UsuarioManutencaoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'usuarios_manutencoesdatatable_' . time();
+        return 'usuarios_manutencoesdatatable_'.time();
     }
 }
