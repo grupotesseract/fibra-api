@@ -11,6 +11,6 @@ class UsuariosManutencoesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\UsuarioManutencao::class, 20)->create();
     }
 }

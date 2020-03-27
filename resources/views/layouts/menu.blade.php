@@ -97,9 +97,9 @@
         <span>Manutencoes Civil Eletrica</span>
     </a>
 </li> --}}
-<li class="nav-item {{ Request::is('usuariosManutencoes*') ? 'active' : '' }}">
+{{-- <li class="nav-item {{ Request::is('usuariosManutencoes*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('usuariosManutencoes.index') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Usuarios Manutencoes</span>
     </a>
-</li>
+</li> --}}

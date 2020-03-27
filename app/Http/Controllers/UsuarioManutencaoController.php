@@ -55,7 +55,7 @@ class UsuarioManutencaoController extends AppBaseController
 
         $usuarioManutencao = $this->usuarioManutencaoRepository->create($input);
 
-        Flash::success('Usuario Manutencao saved successfully.');
+        Flash::success('Usuario Manutencao salvo com sucesso.');
 
         return redirect(route('usuariosManutencoes.index'));
     }
@@ -72,7 +72,7 @@ class UsuarioManutencaoController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            Flash::error('Usuario Manutencao not found');
+            Flash::error('Usuario Manutencao não encontrado');
 
             return redirect(route('usuariosManutencoes.index'));
         }
@@ -92,7 +92,7 @@ class UsuarioManutencaoController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            Flash::error('Usuario Manutencao not found');
+            Flash::error('Usuario Manutencao não encontrado');
 
             return redirect(route('usuariosManutencoes.index'));
         }
@@ -113,14 +113,14 @@ class UsuarioManutencaoController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            Flash::error('Usuario Manutencao not found');
+            Flash::error('Usuario Manutencao não encontrado');
 
             return redirect(route('usuariosManutencoes.index'));
         }
 
         $usuarioManutencao = $this->usuarioManutencaoRepository->update($request->all(), $id);
 
-        Flash::success('Usuario Manutencao updated successfully.');
+        Flash::success('Usuario Manutencao atualizado com sucesso.');
 
         return redirect(route('usuariosManutencoes.index'));
     }
@@ -137,14 +137,14 @@ class UsuarioManutencaoController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            Flash::error('Usuario Manutencao not found');
+            Flash::error('Usuario Manutencao não encontrado');
 
             return redirect(route('usuariosManutencoes.index'));
         }
 
         $this->usuarioManutencaoRepository->delete($id);
 
-        Flash::success('Usuario Manutencao deleted successfully.');
+        Flash::success('Usuario Manutencao excluído com sucesso.');
 
         return redirect(route('usuariosManutencoes.index'));
     }

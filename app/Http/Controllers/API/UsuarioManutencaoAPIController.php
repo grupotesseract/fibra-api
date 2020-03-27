@@ -40,7 +40,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($usuariosManutencoes->toArray(), 'Usuarios Manutencoes retrieved successfully');
+        return $this->sendResponse($usuariosManutencoes->toArray(), 'Usuarios Manutencoes listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
         $usuarioManutencao = $this->usuarioManutencaoRepository->create($input);
 
-        return $this->sendResponse($usuarioManutencao->toArray(), 'Usuario Manutencao saved successfully');
+        return $this->sendResponse($usuarioManutencao->toArray(), 'Usuario Manutencao salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class UsuarioManutencaoAPIController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            return $this->sendError('Usuario Manutencao not found');
+            return $this->sendError('Usuario Manutencao não encontrado');
         }
 
-        return $this->sendResponse($usuarioManutencao->toArray(), 'Usuario Manutencao retrieved successfully');
+        return $this->sendResponse($usuarioManutencao->toArray(), 'Usuario Manutencao listado com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class UsuarioManutencaoAPIController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            return $this->sendError('Usuario Manutencao not found');
+            return $this->sendError('Usuario Manutencao não encontrado');
         }
 
         $usuarioManutencao = $this->usuarioManutencaoRepository->update($input, $id);
 
-        return $this->sendResponse($usuarioManutencao->toArray(), 'UsuarioManutencao updated successfully');
+        return $this->sendResponse($usuarioManutencao->toArray(), 'Usuario Manutencao atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class UsuarioManutencaoAPIController extends AppBaseController
         $usuarioManutencao = $this->usuarioManutencaoRepository->find($id);
 
         if (empty($usuarioManutencao)) {
-            return $this->sendError('Usuario Manutencao not found');
+            return $this->sendError('Usuario Manutencao não encontrado');
         }
 
         $usuarioManutencao->delete();
 
-        return $this->sendSuccess('Usuario Manutencao deleted successfully');
+        return $this->sendSuccess('Usuario Manutencao excluído com sucesso');
     }
 }
