@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
+
+namespace Tests\Repositories;
 
 use App\Models\AtividadeRealizada;
 use App\Repositories\AtividadeRealizadaRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class AtividadeRealizadaRepositoryTest extends TestCase
 {
@@ -15,7 +17,7 @@ class AtividadeRealizadaRepositoryTest extends TestCase
      */
     protected $atividadeRealizadaRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->atividadeRealizadaRepo = \App::make(AtividadeRealizadaRepository::class);

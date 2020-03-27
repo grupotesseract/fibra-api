@@ -25,7 +25,7 @@ class UpdateAtividadeRealizadaAPIRequest extends APIRequest
     public function rules()
     {
         $rules = AtividadeRealizada::$rules;
-        
+
         return $rules;
     }
 }

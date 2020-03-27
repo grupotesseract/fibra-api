@@ -6,11 +6,9 @@ use App\Models\AtividadeRealizada;
 use App\Repositories\BaseRepository;
 
 /**
- * Class AtividadeRealizadaRepository
- * @package App\Repositories
+ * Class AtividadeRealizadaRepository.
  * @version March 27, 2020, 3:31 pm -03
-*/
-
+ */
 class AtividadeRealizadaRepository extends BaseRepository
 {
     /**
@@ -19,11 +17,11 @@ class AtividadeRealizadaRepository extends BaseRepository
     protected $fieldSearchable = [
         'texto',
         'status',
-        'manutencao_id'
+        'manutencao_id',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -33,7 +31,7 @@ class AtividadeRealizadaRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
