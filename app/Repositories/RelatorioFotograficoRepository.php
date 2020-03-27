@@ -45,12 +45,11 @@ class RelatorioFotograficoRepository extends BaseRepository
     {
         $programacao = $relatorioFotografico->programacao;
         $idsItemsComFoto = $programacao->fotos()->pluck('item_id')->unique();
-        $itens = $programacao->planta->itens->whereIn('id', $idsItemsComFoto);
+        $itens = $programacao->planta->itens()->whereIn('id', $idsItemsComFoto)->orderBy('qrcode')->get();
 
         //Criando doc e container das secoes
         $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
         $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
-        $indice = 1;
 
         //Para cada item, criar secao titulo e secao fotos
         foreach ($itens as $item) {
