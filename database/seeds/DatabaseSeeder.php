@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
             $this->call(ManutencoesCivilEletricaTableSeeder::class);
-        \$this->call(AtividadesRealizadasTableSeeder::class);
+            $this->call(AtividadesRealizadasTableSeeder::class);
         }
     }
 }

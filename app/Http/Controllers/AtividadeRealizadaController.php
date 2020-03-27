@@ -55,7 +55,7 @@ class AtividadeRealizadaController extends AppBaseController
 
         $atividadeRealizada = $this->atividadeRealizadaRepository->create($input);
 
-        Flash::success('Atividade Realizada saved successfully.');
+        Flash::success('Atividade Realizada salva com sucesso.');
 
         return redirect(route('atividadesRealizadas.index'));
     }
@@ -72,7 +72,7 @@ class AtividadeRealizadaController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            Flash::error('Atividade Realizada not found');
+            Flash::error('Atividade Realizada não encontrada');
 
             return redirect(route('atividadesRealizadas.index'));
         }
@@ -92,7 +92,7 @@ class AtividadeRealizadaController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            Flash::error('Atividade Realizada not found');
+            Flash::error('Atividade Realizada não encontrada');
 
             return redirect(route('atividadesRealizadas.index'));
         }
@@ -113,14 +113,14 @@ class AtividadeRealizadaController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            Flash::error('Atividade Realizada not found');
+            Flash::error('Atividade Realizada não encontrada');
 
             return redirect(route('atividadesRealizadas.index'));
         }
 
         $atividadeRealizada = $this->atividadeRealizadaRepository->update($request->all(), $id);
 
-        Flash::success('Atividade Realizada updated successfully.');
+        Flash::success('Atividade Realizada atualizada com sucesso.');
 
         return redirect(route('atividadesRealizadas.index'));
     }
@@ -137,14 +137,14 @@ class AtividadeRealizadaController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            Flash::error('Atividade Realizada not found');
+            Flash::error('Atividade Realizada não encontrada');
 
             return redirect(route('atividadesRealizadas.index'));
         }
 
         $this->atividadeRealizadaRepository->delete($id);
 
-        Flash::success('Atividade Realizada deleted successfully.');
+        Flash::success('Atividade Realizada excluída com sucesso.');
 
         return redirect(route('atividadesRealizadas.index'));
     }

@@ -40,7 +40,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($atividadesRealizadas->toArray(), 'Atividades Realizadas retrieved successfully');
+        return $this->sendResponse($atividadesRealizadas->toArray(), 'Atividades Realizadas listadas com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
         $atividadeRealizada = $this->atividadeRealizadaRepository->create($input);
 
-        return $this->sendResponse($atividadeRealizada->toArray(), 'Atividade Realizada saved successfully');
+        return $this->sendResponse($atividadeRealizada->toArray(), 'Atividade Realizada salva com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class AtividadeRealizadaAPIController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            return $this->sendError('Atividade Realizada not found');
+            return $this->sendError('Atividade Realizada não encontrada');
         }
 
-        return $this->sendResponse($atividadeRealizada->toArray(), 'Atividade Realizada retrieved successfully');
+        return $this->sendResponse($atividadeRealizada->toArray(), 'Atividade Realizada listada com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class AtividadeRealizadaAPIController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            return $this->sendError('Atividade Realizada not found');
+            return $this->sendError('Atividade Realizada não encontrada');
         }
 
         $atividadeRealizada = $this->atividadeRealizadaRepository->update($input, $id);
 
-        return $this->sendResponse($atividadeRealizada->toArray(), 'AtividadeRealizada updated successfully');
+        return $this->sendResponse($atividadeRealizada->toArray(), 'Atividade Realizada atualizada com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class AtividadeRealizadaAPIController extends AppBaseController
         $atividadeRealizada = $this->atividadeRealizadaRepository->find($id);
 
         if (empty($atividadeRealizada)) {
-            return $this->sendError('Atividade Realizada not found');
+            return $this->sendError('Atividade Realizada não encontrada');
         }
 
         $atividadeRealizada->delete();
 
-        return $this->sendSuccess('Atividade Realizada deleted successfully');
+        return $this->sendSuccess('Atividade Realizada excluída com sucesso');
     }
 }

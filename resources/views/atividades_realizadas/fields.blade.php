@@ -22,6 +22,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('atividadesRealizadas.index') }}" class="btn btn-secondary">Cancel</a>
+    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('atividadesRealizadas.index') }}" class="btn btn-secondary">Cancelar</a>
 </div>
