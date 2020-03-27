@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateAtividadeRealizadaAPIRequest;
 use App\Http\Requests\API\UpdateAtividadeRealizadaAPIRequest;
 use App\Models\AtividadeRealizada;
 use App\Repositories\AtividadeRealizadaRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class AtividadeRealizadaController
- * @package App\Http\Controllers\API
+ * Class AtividadeRealizadaController.
  */
-
 class AtividadeRealizadaAPIController extends AppBaseController
 {
-    /** @var  AtividadeRealizadaRepository */
+    /** @var AtividadeRealizadaRepository */
     private $atividadeRealizadaRepository;
 
     public function __construct(AtividadeRealizadaRepository $atividadeRealizadaRepo)
@@ -27,7 +25,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
     /**
      * Display a listing of the AtividadeRealizada.
-     * GET|HEAD /atividadesRealizadas
+     * GET|HEAD /atividadesRealizadas.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
     /**
      * Store a newly created AtividadeRealizada in storage.
-     * POST /atividadesRealizadas
+     * POST /atividadesRealizadas.
      *
      * @param CreateAtividadeRealizadaAPIRequest $request
      *
@@ -62,7 +60,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
     /**
      * Display the specified AtividadeRealizada.
-     * GET|HEAD /atividadesRealizadas/{id}
+     * GET|HEAD /atividadesRealizadas/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
     /**
      * Update the specified AtividadeRealizada in storage.
-     * PUT/PATCH /atividadesRealizadas/{id}
+     * PUT/PATCH /atividadesRealizadas/{id}.
      *
      * @param int $id
      * @param UpdateAtividadeRealizadaAPIRequest $request
@@ -107,7 +105,7 @@ class AtividadeRealizadaAPIController extends AppBaseController
 
     /**
      * Remove the specified AtividadeRealizada from storage.
-     * DELETE /atividadesRealizadas/{id}
+     * DELETE /atividadesRealizadas/{id}.
      *
      * @param int $id
      *

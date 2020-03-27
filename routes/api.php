@@ -81,5 +81,4 @@ Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
 
 Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');
 
-
 Route::resource('atividades_realizadas', 'AtividadeRealizadaAPIController');

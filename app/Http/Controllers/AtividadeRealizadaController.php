@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AtividadeRealizadaDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateAtividadeRealizadaRequest;
 use App\Http\Requests\UpdateAtividadeRealizadaRequest;
 use App\Repositories\AtividadeRealizadaRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class AtividadeRealizadaController extends AppBaseController
 {
-    /** @var  AtividadeRealizadaRepository */
+    /** @var AtividadeRealizadaRepository */
     private $atividadeRealizadaRepository;
 
     public function __construct(AtividadeRealizadaRepository $atividadeRealizadaRepo)

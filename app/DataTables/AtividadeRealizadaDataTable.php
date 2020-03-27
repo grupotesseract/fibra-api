@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\AtividadeRealizada;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class AtividadeRealizadaDataTable extends DataTable
 {
@@ -71,7 +71,7 @@ class AtividadeRealizadaDataTable extends DataTable
         return [
             'texto',
             'status',
-            'manutencao_id'
+            'manutencao_id',
         ];
     }
 
@@ -82,6 +82,6 @@ class AtividadeRealizadaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'atividades_realizadasdatatable_' . time();
+        return 'atividades_realizadasdatatable_'.time();
     }
 }
