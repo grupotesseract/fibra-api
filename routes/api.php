@@ -34,6 +34,10 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
         'throttle:500,1',
     ]);
     Route::post('sync/programacoes/{id}', 'ProgramacaoAPIController@syncProgramacoes');
+    Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
+    Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');
+    Route::resource('usuarios_manutencoes', 'UsuarioManutencaoAPIController');
+    Route::resource('atividades_realizadas', 'AtividadeRealizadaAPIController');
 });
 
 /*
@@ -76,9 +80,3 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
-
-Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
-
-Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');
-
-Route::resource('atividades_realizadas', 'AtividadeRealizadaAPIController');
