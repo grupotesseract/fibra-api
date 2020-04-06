@@ -1,10 +1,12 @@
-<?php namespace Tests\Repositories;
+<?php
+
+namespace Tests\Repositories;
 
 use App\Models\UsuarioManutencao;
 use App\Repositories\UsuarioManutencaoRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 use Tests\ApiTestTrait;
+use Tests\TestCase;
 
 class UsuarioManutencaoRepositoryTest extends TestCase
 {
@@ -15,7 +17,7 @@ class UsuarioManutencaoRepositoryTest extends TestCase
      */
     protected $usuarioManutencaoRepo;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->usuarioManutencaoRepo = \App::make(UsuarioManutencaoRepository::class);

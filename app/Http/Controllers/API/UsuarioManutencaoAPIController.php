@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateUsuarioManutencaoAPIRequest;
 use App\Http\Requests\API\UpdateUsuarioManutencaoAPIRequest;
 use App\Models\UsuarioManutencao;
 use App\Repositories\UsuarioManutencaoRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class UsuarioManutencaoController
- * @package App\Http\Controllers\API
+ * Class UsuarioManutencaoController.
  */
-
 class UsuarioManutencaoAPIController extends AppBaseController
 {
-    /** @var  UsuarioManutencaoRepository */
+    /** @var UsuarioManutencaoRepository */
     private $usuarioManutencaoRepository;
 
     public function __construct(UsuarioManutencaoRepository $usuarioManutencaoRepo)
@@ -27,7 +25,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
     /**
      * Display a listing of the UsuarioManutencao.
-     * GET|HEAD /usuariosManutencoes
+     * GET|HEAD /usuariosManutencoes.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
     /**
      * Store a newly created UsuarioManutencao in storage.
-     * POST /usuariosManutencoes
+     * POST /usuariosManutencoes.
      *
      * @param CreateUsuarioManutencaoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
     /**
      * Display the specified UsuarioManutencao.
-     * GET|HEAD /usuariosManutencoes/{id}
+     * GET|HEAD /usuariosManutencoes/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
     /**
      * Update the specified UsuarioManutencao in storage.
-     * PUT/PATCH /usuariosManutencoes/{id}
+     * PUT/PATCH /usuariosManutencoes/{id}.
      *
      * @param int $id
      * @param UpdateUsuarioManutencaoAPIRequest $request
@@ -107,7 +105,7 @@ class UsuarioManutencaoAPIController extends AppBaseController
 
     /**
      * Remove the specified UsuarioManutencao from storage.
-     * DELETE /usuariosManutencoes/{id}
+     * DELETE /usuariosManutencoes/{id}.
      *
      * @param int $id
      *

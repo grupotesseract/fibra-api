@@ -25,7 +25,7 @@ class UpdateUsuarioManutencaoAPIRequest extends APIRequest
     public function rules()
     {
         $rules = UsuarioManutencao::$rules;
-        
+
         return $rules;
     }
 }

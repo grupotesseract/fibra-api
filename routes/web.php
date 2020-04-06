@@ -97,4 +97,3 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('usuariosManutencoes', 'UsuarioManutencaoController');
     Route::resource('atividadesRealizadas', 'AtividadeRealizadaController');
 });
-
