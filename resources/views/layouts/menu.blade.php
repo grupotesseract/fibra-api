@@ -103,3 +103,9 @@
         <span>Usuarios Manutencoes</span>
     </a>
 </li> --}}
+{{-- <li class="nav-item {{ Request::is('atividadesRealizadas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('atividadesRealizadas.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Atividades Realizadas</span>
+    </a>
+</li> --}}

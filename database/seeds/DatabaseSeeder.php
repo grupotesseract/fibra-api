@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             $this->call(UsuariosLiberacoesTableSeeder::class);
             $this->call(ManutencoesCivilEletricaTableSeeder::class);
             $this->call(UsuariosManutencoesTableSeeder::class);
+            $this->call(AtividadesRealizadasTableSeeder::class);
         }
     }
 }
