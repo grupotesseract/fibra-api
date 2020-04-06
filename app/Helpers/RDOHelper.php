@@ -136,22 +136,17 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente=[])
     {
-
         // Create a new table style
         $table_style = new \PhpOffice\PhpWord\Style\Table;
         $table_style->setBorderSize(1);
         $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
         $table_style->setWidth(100 * 48);
         $table_style->setCellMarginLeft(80);
-
-        $firstRowStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'left',
-        ];
+        $comprimentoCelula=100*48;
 
         $table = $section->addTable($table_style);
 
-        $fontStyle = [
+        $fontStylePrimeiraLinha = [
             'name' => 'Calibri',
             'allCaps' => true,
             'bold' => true,
@@ -160,7 +155,6 @@ class RDOHelper extends PhpWordHelper
             'size' => 11
         ];
 
-        $comprimentoCelula=100*48;
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
@@ -172,7 +166,7 @@ class RDOHelper extends PhpWordHelper
         ];
 
         $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $fontStyle, ['alignment' => 'left']);
+        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $fontStylePrimeiraLinha, ['alignment' => 'left']);
 
         $fontStyle = [
             'name' => 'Calibri',
@@ -183,20 +177,15 @@ class RDOHelper extends PhpWordHelper
             'size' => 11
         ];
 
-        $table->addRow(40);
-        $cell = $table->addCell($comprimentoCelula);
-        $cell->addText('LALALA', $fontStyle, ['alignment' => 'center']);
+        array_push($arrEquipeCliente, ' ');
+        foreach ($arrEquipeCliente as $nomePessoa) {
+            $table->addRow(40);
+            $this->addPaddingTabela($table);
+            $cell = $table->addCell($comprimentoCelula);
+            $cell->addText($nomePessoa, $fontStyle, ['alignment' => 'center']);
+        }
 
     }
-
-    //criarSecaoEquipeFibra
-    //criarSecaoDocumentacoesExpedidas
-    //criarSecaoAtividadesRealizadas
-    //criarSecaoProblemasEncontrados
-    //criarSecaoInformacoesAdicionais
-    //criarSecaoObservacoes
-    //criarSecaoFotos
-    //criarSecaoResponsaveis
 
     /**
      * Metodo para salvar o docx no arquivo relatorio.docx.
@@ -215,7 +204,7 @@ class RDOHelper extends PhpWordHelper
     }
 
     /**
-     * undocumented function
+     * Metodo para adicionar uma celula na tabela, sem bordas, para dar um padding
      *
      * @return void
      */
@@ -235,4 +224,14 @@ class RDOHelper extends PhpWordHelper
         $table->addCell(100*2, $semBordas);
 
     }
+
+    //criarSecaoEquipeFibra
+    //criarSecaoDocumentacoesExpedidas
+    //criarSecaoAtividadesRealizadas
+    //criarSecaoProblemasEncontrados
+    //criarSecaoInformacoesAdicionais
+    //criarSecaoObservacoes
+    //criarSecaoFotos
+    //criarSecaoResponsaveis
+
 }
