@@ -71,14 +71,14 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable($table_style);
 
-        $table->addRow(100);
-        $comprimentoCelula = 100;
+        $table->addRow(200);
+        $comprimentoCelula = 200;
         $cell = $table->addCell($comprimentoCelula);
         $cell->addImage(
-            "http://res.cloudinary.com/tesseract/image/upload/c_scale,h_36/v1568214892/fibra-api/logo_transparente.png",
+            "http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png",
             [
-                'alignment'         => 'left',
-                'width'         => 150,
+                'alignment'     => 'left',
+                'width'         => 200,
                 'wrappingStyle' => 'inline',
             ]
         );
@@ -132,7 +132,8 @@ class RDOHelper extends PhpWordHelper
     /**
      * Cria a secao com tabela listando a equipe do cliente
      *
-     * @return void
+     * @param \PhpOffice\PhpWord\Element\Section $section
+     * @param mixed $arrEquipeCliente - Array com os nomes dos coloboradores
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente=[])
     {
@@ -142,6 +143,8 @@ class RDOHelper extends PhpWordHelper
         $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
         $table_style->setWidth(100 * 48);
         $table_style->setCellMarginLeft(80);
+        $table_style->setCellMarginTop(20);
+        $table_style->setCellMarginBottom(20);
         $comprimentoCelula=100*48;
 
         $table = $section->addTable($table_style);
@@ -159,6 +162,7 @@ class RDOHelper extends PhpWordHelper
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
+        //Estilo da celula do cabeçalho
         $cellStyle = [
             'bgColor' => 'eeeeee',
             'alignment' => 'left',
@@ -168,16 +172,21 @@ class RDOHelper extends PhpWordHelper
         $cell = $table->addCell($comprimentoCelula, $cellStyle);
         $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $fontStylePrimeiraLinha, ['alignment' => 'left']);
 
+        //Estilo da fonte das linhas da tabela
         $fontStyle = [
             'name' => 'Calibri',
             'allCaps' => true,
-            'bold' => true,
+            'bold' => false,
             'align' => 'center',
             'color' => '000000',
             'size' => 11
         ];
 
+
+        //incluindo uma ultima linha em branco na tabela
         array_push($arrEquipeCliente, ' ');
+
+        //itera sob o array e imprime em linhas da tabela.
         foreach ($arrEquipeCliente as $nomePessoa) {
             $table->addRow(40);
             $this->addPaddingTabela($table);
