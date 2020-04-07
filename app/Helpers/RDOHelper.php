@@ -31,29 +31,6 @@ class RDOHelper extends PhpWordHelper
             'borderBottomColor' => '000000',
         ]);
     }
-    /**
-     * undocumented function
-     *
-     * @return void
-     */
-    public static function configuraEstilosTabelas($phpWord)
-    {
-        // Create a new table style
-        $table_style = new \PhpOffice\PhpWord\Style\Table;
-        $table_style->setBorderSize(1);
-        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 48);
-        $table_style->setCellMarginLeft(80);
-
-        $firstRowStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'left',
-        ];
-
-        $phpWord->addTableStyle('TabelaEquipe', $table_style, $firstRowStyle);
-
-    }
-
 
     /**
      * Cria o cabeçalho com o logo
@@ -62,12 +39,8 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarCabecalhoLogo($section)
     {
-        // Create a new table style
-        $table_style = new \PhpOffice\PhpWord\Style\Table;
+        $table_style = $this->getEstiloTabelaPadrao();
         $table_style->setBorderColor('ffffff');
-        $table_style->setBorderSize(1);
-        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 50);
 
         $table = $section->addTable($table_style);
 
@@ -82,7 +55,7 @@ class RDOHelper extends PhpWordHelper
                 'wrappingStyle' => 'inline',
             ]
         );
-        $section->addTextBreak(2);
+        $section->addTextBreak(1);
     }
 
     /**
@@ -92,11 +65,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoRetanguloAzul($section, $texto='')
     {
-        // Create a new table style
-        $table_style = new \PhpOffice\PhpWord\Style\Table;
-        $table_style->setBorderSize(1);
-        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 48);
+        $table_style = $this->getEstiloTabelaPadrao();
         $table_style->setCellMargin(80);
 
         $table = $section->addTable($table_style);
@@ -125,7 +94,7 @@ class RDOHelper extends PhpWordHelper
         $cell = $table->addCell($comprimentoCelula, $cellStyle);
         $cell->addText($texto, $fontStyle, ['alignment' => 'center']);
 
-        $section->addTextBreak(1);
+        $section->addTextBreak(1, ['size' => 5]);
     }
 
 
@@ -137,6 +106,8 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente=[])
     {
+        $section->addTextBreak(1, ['size' => 5]);
+
         // Create a new table style
         $estiloTabela = $this->getEstiloTabelaPadrao();
         $comprimentoCelula=100*48;
@@ -509,17 +480,67 @@ class RDOHelper extends PhpWordHelper
 
 
     /**
-     * Metodo para adicionar a secao Problemas encontrados ao relatorio
+     * Metodo para adicionar a secao Problemas Encontrados ao relatorio
      *
      * @param mixed $section
      * @param mixed $arrAtividades
      */
     public function criarSecaoProblemas($section, $arrProblemas=[])
     {
-        if (empty($arrProblemas)) {
-            $arrProblemas = [
-                'Problema 1',
-                'Problema 2',
+        $this->createTabelaNumerada($section, 'Problemas Encontrados', $arrProblemas);
+    }
+
+    /**
+     * Metodo para adicionar a secao Informações Adicionais ao relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrAtividades
+     */
+    public function criarSecaoInformacoes($section, $arrInformacoes=[])
+    {
+        $this->createTabelaNumerada($section, 'Informações Adicionais', $arrInformacoes);
+    }
+
+    /**
+     * Metodo para adicionar a secao Observações ao relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrAtividades
+     */
+    public function criarSecaoObservacoes($section, $arrObs=[])
+    {
+        $this->createTabelaNumerada($section, 'Observações', $arrObs);
+    }
+
+    /**
+     * Retorna o estilo da tabela padrão para ser utilizada na criação de uma nova tabela
+     *
+     * @return \PhpOffice\PhpWord\Style\Table;
+     */
+    public function getEstiloTabelaPadrao()
+    {
+        $table_style = new \PhpOffice\PhpWord\Style\Table;
+        $table_style->setBorderSize(1);
+        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
+        $table_style->setWidth(100 * 48);
+        $table_style->setCellMarginLeft(80);
+        $table_style->setCellMarginTop(20);
+        $table_style->setCellMarginBottom(20);
+
+        return $table_style;
+    }
+
+    /**
+     * Metodo para encapsular a criacao das tabelas utilizadas nas secões
+     * 'Problemas Encontrados', 'Informações' e 'Observações'
+     *
+     * @return void
+     */
+    public function createTabelaNumerada($section, $titulo, $itens)
+    {
+        if (empty($itens)) {
+            $itens = [
+                'N/A',
             ];
         }
 
@@ -549,7 +570,7 @@ class RDOHelper extends PhpWordHelper
         $this->addPaddingTabela($table);
 
         $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText('Problemas encontrados', $fontStylePrimeiraLinha, ['alignment' => 'center']);
+        $cell->addText($titulo, $fontStylePrimeiraLinha, ['alignment' => 'center']);
 
         //Estilo da fonte das linhas da tabela
         $estiloLinhaComum = [
@@ -567,41 +588,32 @@ class RDOHelper extends PhpWordHelper
         ];
 
         //itera sob o array e imprime em linhas da tabela.
-        foreach ($arrProblemas as $textoProblema) {
+        foreach ($itens as $item) {
 
             $table->addRow(40);
             $this->addPaddingTabela($table);
 
             $cell = $table->addCell($comprimentoCelula);
-            $cell->addListItem($textoProblema, 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
+            $cell->addListItem($item, 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
         }
 
         $section->addTextBreak(1);
 
     }
 
-    //criarSecaoInformacoesAdicionais
-    //criarSecaoObservacoes
-    //criarSecaoFotos
-    //criarSecaoResponsaveis
 
     /**
-     * Retorna o estilo da tabela padrão para ser utilizada na criação de uma nova tabela
+     * Metodo para incluir o footer com o contador de paginas
      *
-     * @return \PhpOffice\PhpWord\Style\Table;
+     * @return void
      */
-    public function getEstiloTabelaPadrao()
+    public function criarFooter($section)
     {
-        $table_style = new \PhpOffice\PhpWord\Style\Table;
-        $table_style->setBorderSize(1);
-        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 48);
-        $table_style->setCellMarginLeft(80);
-        $table_style->setCellMarginTop(20);
-        $table_style->setCellMarginBottom(20);
-
-        return $table_style;
+        $footer = $section->addFooter();
+        $footer->addPreserveText('Página {PAGE} de {NUMPAGES}.', null, ['alignment' => 'right']);
     }
 
+    //criarSecaoFotos
+    //criarSecaoResponsaveis
 
 }
