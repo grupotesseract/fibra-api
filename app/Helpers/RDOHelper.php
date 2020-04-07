@@ -9,6 +9,35 @@ namespace App\Helpers;
 class RDOHelper extends PhpWordHelper
 {
 
+    public $estiloTextoCabecalhoTabela = [
+        'name' => 'Calibri',
+        'allCaps' => true,
+        'bold' => true,
+        'align' => 'left',
+        'color' => '000000',
+        'size' => 11
+    ];
+
+    public $estiloCelulaCabecalhoTabela = [
+        'bgColor' => 'eeeeee',
+        'alignment' => 'left',
+        'valign' => 'center'
+    ];
+
+    public $estiloTextoTabela = [
+        'name' => 'Calibri',
+        'allCaps' => true,
+        'bold' => false,
+        'align' => 'left',
+        'color' => '000000',
+        'size' => 11
+    ];
+
+    public $estiloLista = [
+        'bold' => true,
+        'listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED
+    ];
+
     /**
      * Retorna uma instancia de section do PhpWord já com as margens do documento.
      *
@@ -76,13 +105,13 @@ class RDOHelper extends PhpWordHelper
 
         $comprimentoCelula = 100*45;
 
-        $cellStyle = [
+        $estiloCelulaRetangulo = [
             'bgColor' => '4f81bd',
             'alignment' => 'center',
             'valign' => 'center'
         ];
 
-        $fontStyle = [
+        $estiloTextoRetangulo = [
             'name' => 'Calibri',
             'allCaps' => true,
             'bold' => true,
@@ -91,8 +120,8 @@ class RDOHelper extends PhpWordHelper
             'size' => 12
         ];
 
-        $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText($texto, $fontStyle, ['alignment' => 'center']);
+        $cell = $table->addCell($comprimentoCelula, $estiloCelulaRetangulo);
+        $cell->addText($texto, $estiloTextoRetangulo, ['alignment' => 'center']);
 
         $section->addTextBreak(1, ['size' => 5]);
     }
@@ -114,39 +143,11 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable($estiloTabela);
 
-        $fontStylePrimeiraLinha = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'left',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        //Estilo da celula do cabeçalho
-        $cellStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'left',
-            'valign' => 'center'
-        ];
-
-        $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $fontStylePrimeiraLinha, ['alignment' => 'left']);
-
-        //Estilo da fonte das linhas da tabela
-        $fontStyle = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => false,
-            'align' => 'center',
-            'color' => '000000',
-            'size' => 11
-        ];
-
+        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         //incluindo uma ultima linha em branco na tabela
         array_push($arrEquipeCliente, ' ');
@@ -156,7 +157,7 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(40);
             $this->addPaddingTabela($table);
             $cell = $table->addCell($comprimentoCelula);
-            $cell->addText($nomePessoa, $fontStyle, ['alignment' => 'center']);
+            $cell->addText($nomePessoa, $this->estiloTextoTabela, ['alignment' => 'center']);
         }
 
         $section->addTextBreak(1);
@@ -196,29 +197,11 @@ class RDOHelper extends PhpWordHelper
         $estiloTabela = $this->getEstiloTabelaPadrao();
         $table = $section->addTable($estiloTabela);
 
-        $fontStylePrimeiraLinha = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'left',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        //Estilo da celula do cabeçalho
-        $cellStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'left',
-            'valign' => 'center'
-        ];
-
-        $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText('EQUIPE FIBRA ENGENHARIA', $fontStylePrimeiraLinha, ['alignment' => 'left']);
-
+        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('EQUIPE FIBRA ENGENHARIA', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         //Estilo da fonte do segundo cabeçalho
         $estiloSegundoCabecalho = [
@@ -248,16 +231,6 @@ class RDOHelper extends PhpWordHelper
         $cell = $table->addCell($comprimentoCelula*0.15);
         $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
-        //Estilo da fonte das linhas da tabela
-        $estiloLinhaComum = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => false,
-            'align' => 'center',
-            'color' => '000000',
-            'size' => 11
-        ];
-
         //itera sob o array e imprime em linhas da tabela.
         foreach ($arrEquipeFibra as $key => $tecnicoHorarios) {
 
@@ -265,19 +238,19 @@ class RDOHelper extends PhpWordHelper
             $this->addPaddingTabela($table);
 
             $cell = $table->addCell($comprimentoCelula*0.4);
-            $cell->addText($arrEquipeFibra[$key]['nome'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
             $cell = $table->addCell($comprimentoCelula*0.15);
-            $cell->addText($arrEquipeFibra[$key]['entrada1'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
             $cell = $table->addCell($comprimentoCelula*0.15);
-            $cell->addText($arrEquipeFibra[$key]['saida1'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['saida1'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
             $cell = $table->addCell($comprimentoCelula*0.15);
-            $cell->addText($arrEquipeFibra[$key]['entrada2'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['entrada2'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
             $cell = $table->addCell($comprimentoCelula*0.15);
-            $cell->addText($arrEquipeFibra[$key]['saida2'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['saida2'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
         }
 
@@ -349,37 +322,11 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable($estiloTabela);
 
-        $fontStylePrimeiraLinha = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'left',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-        //Estilo da celula do cabeçalho
-        $cellStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'left',
-            'valign' => 'center'
-        ];
-
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText('DOCUMENTAÇÕES EXPEDIDAS NO DIA', $fontStylePrimeiraLinha, ['alignment' => 'left']);
-
-        //Estilo da fonte das linhas da tabela
-        $fontStyle = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'center',
-            'color' => '000000',
-            'size' => 11
-        ];
+        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('DOCUMENTAÇÕES EXPEDIDAS NO DIA', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
@@ -387,7 +334,7 @@ class RDOHelper extends PhpWordHelper
         $cell = $table->addCell($comprimentoCelula);
 
         foreach($arrLinhasTexto as $linhaTexto) {
-            $cell->addText($linhaTexto, $fontStyle, ['alignment' => 'left']);
+            $cell->addText($linhaTexto, $this->estiloTextoTabela, ['alignment' => 'left']);
         }
 
         $section->addTextBreak(1);
@@ -421,45 +368,14 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable($estiloTabela);
 
-        $fontStylePrimeiraLinha = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'center',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-        //Estilo da celula do cabeçalho
-        $cellStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'center',
-            'valign' => 'center'
-        ];
-
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula*0.75, $cellStyle);
-        $cell->addText('Atividades Realizadas no dia', $fontStylePrimeiraLinha, ['alignment' => 'center']);
+        $cell = $table->addCell($comprimentoCelula*0.75, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('Atividades Realizadas no dia', $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.25, $cellStyle);
-        $cell->addText('Status (Em Andamento ou Concluída)', $fontStylePrimeiraLinha, ['alignment' => 'center']);
-
-        //Estilo da fonte das linhas da tabela
-        $estiloLinhaComum = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => false,
-            'align' => 'left',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-        $estiloLista = [
-            'bold' => false,
-            'listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED
-        ];
+        $cell = $table->addCell($comprimentoCelula*0.25, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('Status (Em Andamento ou Concluída)', $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
         //itera sob o array e imprime em linhas da tabela.
         foreach ($arrAtividades as $key => $atividade) {
@@ -468,10 +384,10 @@ class RDOHelper extends PhpWordHelper
             $this->addPaddingTabela($table);
 
             $cell = $table->addCell($comprimentoCelula*0.8);
-            $cell->addListItem($arrAtividades[$key]['atividade'], 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
+            $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->estiloTextoTabela, $this->estiloLista, ['alignment' => 'left']);
 
             $cell = $table->addCell($comprimentoCelula*0.2);
-            $cell->addText($arrAtividades[$key]['status'], $estiloLinhaComum, ['alignment' => 'center']);
+            $cell->addText($arrAtividades[$key]['status'], $this->estiloTextoTabela, ['alignment' => 'center']);
         }
 
         $section->addTextBreak(1);
@@ -490,6 +406,7 @@ class RDOHelper extends PhpWordHelper
         $this->createTabelaNumerada($section, 'Problemas Encontrados', $arrProblemas);
     }
 
+
     /**
      * Metodo para adicionar a secao Informações Adicionais ao relatorio
      *
@@ -500,6 +417,7 @@ class RDOHelper extends PhpWordHelper
     {
         $this->createTabelaNumerada($section, 'Informações Adicionais', $arrInformacoes);
     }
+
 
     /**
      * Metodo para adicionar a secao Observações ao relatorio
@@ -550,42 +468,11 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable($estiloTabela);
 
-        $fontStylePrimeiraLinha = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => true,
-            'align' => 'center',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-        //Estilo da celula do cabeçalho
-        $cellStyle = [
-            'bgColor' => 'eeeeee',
-            'alignment' => 'center',
-            'valign' => 'center'
-        ];
-
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $cellStyle);
-        $cell->addText($titulo, $fontStylePrimeiraLinha, ['alignment' => 'center']);
-
-        //Estilo da fonte das linhas da tabela
-        $estiloLinhaComum = [
-            'name' => 'Calibri',
-            'allCaps' => true,
-            'bold' => false,
-            'align' => 'left',
-            'color' => '000000',
-            'size' => 11
-        ];
-
-        $estiloLista = [
-            'bold' => false,
-            'listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED
-        ];
+        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText($titulo, $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
         //itera sob o array e imprime em linhas da tabela.
         foreach ($itens as $item) {
@@ -594,13 +481,12 @@ class RDOHelper extends PhpWordHelper
             $this->addPaddingTabela($table);
 
             $cell = $table->addCell($comprimentoCelula);
-            $cell->addListItem($item, 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
+            $cell->addListItem($item, 0, $this->estiloTextoTabela, $this->estiloLista, ['alignment' => 'left']);
         }
 
         $section->addTextBreak(1);
 
     }
-
 
     /**
      * Metodo para incluir o footer com o contador de paginas
