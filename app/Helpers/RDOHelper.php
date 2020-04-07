@@ -138,16 +138,10 @@ class RDOHelper extends PhpWordHelper
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente=[])
     {
         // Create a new table style
-        $table_style = new \PhpOffice\PhpWord\Style\Table;
-        $table_style->setBorderSize(1);
-        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 48);
-        $table_style->setCellMarginLeft(80);
-        $table_style->setCellMarginTop(20);
-        $table_style->setCellMarginBottom(20);
+        $estiloTabela = $this->getEstiloTabelaPadrao();
         $comprimentoCelula=100*48;
 
-        $table = $section->addTable($table_style);
+        $table = $section->addTable($estiloTabela);
 
         $fontStylePrimeiraLinha = [
             'name' => 'Calibri',
@@ -194,7 +188,131 @@ class RDOHelper extends PhpWordHelper
             $cell->addText($nomePessoa, $fontStyle, ['alignment' => 'center']);
         }
 
+        $section->addTextBreak(1);
+
     }
+
+
+    /**
+     * Cria a secao com tabela listando a equipe da fibra e seus horarios
+     *
+     * @param \PhpOffice\PhpWord\Element\Section $section
+     * @param mixed $arrEquipeCliente - Array dos tecnicos e seus horarios.
+     */
+    public function criarSecaoEquipeFibra($section, $arrEquipeFibra=[])
+    {
+        if (empty($arrEquipeFibra)) {
+            $arrEquipeFibra = [
+                [
+                    'nome' => 'Tecnico 1',
+                    'entrada1' => 'xxx',
+                    'saida1' => 'xxx',
+                    'entrada2' => 'yyy',
+                    'saida2' => 'yyy',
+                ],
+                [
+                    'nome' => 'Tecnico 2',
+                    'entrada1' => 'xxx',
+                    'saida1' => 'xxx',
+                    'entrada2' => 'yyy',
+                    'saida2' => 'yyy',
+                ],
+            ];
+        }
+
+        $comprimentoCelula=100*48;
+
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+        $table = $section->addTable($estiloTabela);
+
+        $fontStylePrimeiraLinha = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'left',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        //Estilo da celula do cabeçalho
+        $cellStyle = [
+            'bgColor' => 'eeeeee',
+            'alignment' => 'left',
+            'valign' => 'center'
+        ];
+
+        $cell = $table->addCell($comprimentoCelula, $cellStyle);
+        $cell->addText('EQUIPE FIBRA ENGENHARIA', $fontStylePrimeiraLinha, ['alignment' => 'left']);
+
+
+        //Estilo da fonte do segundo cabeçalho
+        $estiloSegundoCabecalho = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'center',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($comprimentoCelula*0.4);
+        $cell->addText('COLABORADOR', $estiloSegundoCabecalho, ['alignment' => 'center']);
+
+        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
+
+        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
+
+        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
+
+        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
+
+        //Estilo da fonte das linhas da tabela
+        $estiloLinhaComum = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => false,
+            'align' => 'center',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        //itera sob o array e imprime em linhas da tabela.
+        foreach ($arrEquipeFibra as $key => $tecnicoHorarios) {
+
+            $table->addRow(40);
+            $this->addPaddingTabela($table);
+
+            $cell = $table->addCell($comprimentoCelula*0.4);
+            $cell->addText($arrEquipeFibra[$key]['nome'], $estiloLinhaComum, ['alignment' => 'center']);
+
+            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell->addText($arrEquipeFibra[$key]['entrada1'], $estiloLinhaComum, ['alignment' => 'center']);
+
+            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell->addText($arrEquipeFibra[$key]['saida1'], $estiloLinhaComum, ['alignment' => 'center']);
+
+            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell->addText($arrEquipeFibra[$key]['entrada2'], $estiloLinhaComum, ['alignment' => 'center']);
+
+            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell->addText($arrEquipeFibra[$key]['saida2'], $estiloLinhaComum, ['alignment' => 'center']);
+
+        }
+
+        $section->addTextBreak(1);
+    }
+
 
     /**
      * Metodo para salvar o docx no arquivo relatorio.docx.
@@ -234,7 +352,6 @@ class RDOHelper extends PhpWordHelper
 
     }
 
-    //criarSecaoEquipeFibra
     //criarSecaoDocumentacoesExpedidas
     //criarSecaoAtividadesRealizadas
     //criarSecaoProblemasEncontrados
@@ -242,5 +359,27 @@ class RDOHelper extends PhpWordHelper
     //criarSecaoObservacoes
     //criarSecaoFotos
     //criarSecaoResponsaveis
+    //
+
+
+
+    /**
+     * Retorna o estilo da tabela padrão para ser utilizada na criação de uma nova tabela
+     *
+     * @return \PhpOffice\PhpWord\Style\Table;
+     */
+    public function getEstiloTabelaPadrao()
+    {
+        $table_style = new \PhpOffice\PhpWord\Style\Table;
+        $table_style->setBorderSize(1);
+        $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
+        $table_style->setWidth(100 * 48);
+        $table_style->setCellMarginLeft(80);
+        $table_style->setCellMarginTop(20);
+        $table_style->setCellMarginBottom(20);
+
+        return $table_style;
+    }
+
 
 }
