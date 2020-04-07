@@ -352,16 +352,238 @@ class RDOHelper extends PhpWordHelper
 
     }
 
-    //criarSecaoDocumentacoesExpedidas
-    //criarSecaoAtividadesRealizadas
-    //criarSecaoProblemasEncontrados
+    /**
+     * Metodo para adicionar a secao Documentacoes Expedidas ao relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrLinhasTexto - Array das linhas dessa seção
+     */
+    public function criarSecaoDocumentacoes($section, $arrLinhasTexto=[])
+    {
+        if (empty($arrLinhasTexto)) {
+            $arrLinhasTexto = [
+                "",
+                "IT: ___________________________________.",
+                "LEM/LET:_____________________________. ",
+                "OS:__________________________________. ",
+                "Início da Liberação LEM/LET: ____h____min, Término da Liberação: ____h____min.",
+                "Início da Atividade: ____h____min.",
+                "",
+            ];
+        }
+
+        // Create a new table style
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+        $comprimentoCelula=100*48;
+
+        $table = $section->addTable($estiloTabela);
+
+        $fontStylePrimeiraLinha = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'left',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        //Estilo da celula do cabeçalho
+        $cellStyle = [
+            'bgColor' => 'eeeeee',
+            'alignment' => 'left',
+            'valign' => 'center'
+        ];
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($comprimentoCelula, $cellStyle);
+        $cell->addText('DOCUMENTAÇÕES EXPEDIDAS NO DIA', $fontStylePrimeiraLinha, ['alignment' => 'left']);
+
+        //Estilo da fonte das linhas da tabela
+        $fontStyle = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'center',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($comprimentoCelula);
+
+        foreach($arrLinhasTexto as $linhaTexto) {
+            $cell->addText($linhaTexto, $fontStyle, ['alignment' => 'left']);
+        }
+
+        $section->addTextBreak(1);
+
+    }
+
+    /**
+     * Metodo para adicionar a secao Atividades Realizadas ao relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrAtividades
+     */
+    public function criarSecaoAtividades($section, $arrAtividades=[])
+    {
+        if (empty($arrAtividades)) {
+            $arrAtividades = [
+                [
+                    "atividade" => 'Atividade X',
+                    "status" => 'Em Andamento',
+                ],
+                [
+                    "atividade" => 'Atividade Y',
+                    "status" => 'Concluída',
+                ],
+            ];
+        }
+
+        // Create a new table style
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+        $comprimentoCelula=100*48;
+
+        $table = $section->addTable($estiloTabela);
+
+        $fontStylePrimeiraLinha = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'center',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        //Estilo da celula do cabeçalho
+        $cellStyle = [
+            'bgColor' => 'eeeeee',
+            'alignment' => 'center',
+            'valign' => 'center'
+        ];
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($comprimentoCelula*0.75, $cellStyle);
+        $cell->addText('Atividades Realizadas no dia', $fontStylePrimeiraLinha, ['alignment' => 'center']);
+
+        $cell = $table->addCell($comprimentoCelula*0.25, $cellStyle);
+        $cell->addText('Status (Em Andamento ou Concluída)', $fontStylePrimeiraLinha, ['alignment' => 'center']);
+
+        //Estilo da fonte das linhas da tabela
+        $estiloLinhaComum = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => false,
+            'align' => 'left',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        $estiloLista = [
+            'bold' => false,
+            'listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED
+        ];
+
+        //itera sob o array e imprime em linhas da tabela.
+        foreach ($arrAtividades as $key => $atividade) {
+
+            $table->addRow(40);
+            $this->addPaddingTabela($table);
+
+            $cell = $table->addCell($comprimentoCelula*0.8);
+            $cell->addListItem($arrAtividades[$key]['atividade'], 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
+
+            $cell = $table->addCell($comprimentoCelula*0.2);
+            $cell->addText($arrAtividades[$key]['status'], $estiloLinhaComum, ['alignment' => 'center']);
+        }
+
+        $section->addTextBreak(1);
+
+    }
+
+
+    /**
+     * Metodo para adicionar a secao Problemas encontrados ao relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrAtividades
+     */
+    public function criarSecaoProblemas($section, $arrProblemas=[])
+    {
+        if (empty($arrProblemas)) {
+            $arrProblemas = [
+                'Problema 1',
+                'Problema 2',
+            ];
+        }
+
+        // Create a new table style
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+        $comprimentoCelula=100*48;
+
+        $table = $section->addTable($estiloTabela);
+
+        $fontStylePrimeiraLinha = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => true,
+            'align' => 'center',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        //Estilo da celula do cabeçalho
+        $cellStyle = [
+            'bgColor' => 'eeeeee',
+            'alignment' => 'center',
+            'valign' => 'center'
+        ];
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($comprimentoCelula, $cellStyle);
+        $cell->addText('Problemas encontrados', $fontStylePrimeiraLinha, ['alignment' => 'center']);
+
+        //Estilo da fonte das linhas da tabela
+        $estiloLinhaComum = [
+            'name' => 'Calibri',
+            'allCaps' => true,
+            'bold' => false,
+            'align' => 'left',
+            'color' => '000000',
+            'size' => 11
+        ];
+
+        $estiloLista = [
+            'bold' => false,
+            'listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER_NESTED
+        ];
+
+        //itera sob o array e imprime em linhas da tabela.
+        foreach ($arrProblemas as $textoProblema) {
+
+            $table->addRow(40);
+            $this->addPaddingTabela($table);
+
+            $cell = $table->addCell($comprimentoCelula);
+            $cell->addListItem($textoProblema, 0, $estiloLinhaComum, $estiloLista, ['alignment' => 'left']);
+        }
+
+        $section->addTextBreak(1);
+
+    }
+
     //criarSecaoInformacoesAdicionais
     //criarSecaoObservacoes
     //criarSecaoFotos
     //criarSecaoResponsaveis
-    //
-
-
 
     /**
      * Retorna o estilo da tabela padrão para ser utilizada na criação de uma nova tabela
