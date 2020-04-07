@@ -4,10 +4,12 @@ namespace App\Helpers;
 
 /**
  * Classe para intermediar a comunicação com o PhpWord facilitando a construçao
- * das seções do relatorio diario de obra
+ * das seções do Relatorio Diario de Obra (RDO)
  */
-class RDOHelper extends PhpWordHelper
+class RDOHelper extends PhpWordHelpe
 {
+
+    public $medidaFullWidth = 4800;
 
     public $estiloTextoCabecalhoTabela = [
         'name' => 'Calibri',
@@ -46,10 +48,10 @@ class RDOHelper extends PhpWordHelper
     public static function addContainerSecoes($phpWord)
     {
         return $phpWord->addSection([
-            'marginLeft' => 700,
-            'marginRight' => 700,
-            'marginTop' => 700,
-            'marginBottom' => 700,
+            'marginLeft' => 350,
+            'marginRight' => 350,
+            'marginTop' => 350,
+            'marginBottom' => 350,
             'borderLeftSize' => 1,
             'borderRightSize' => 1,
             'borderTopSize' => 1,
@@ -74,8 +76,7 @@ class RDOHelper extends PhpWordHelper
         $table = $section->addTable($table_style);
 
         $table->addRow(200);
-        $comprimentoCelula = 200;
-        $cell = $table->addCell($comprimentoCelula);
+        $cell = $table->addCell($this->medidaFullWidth);
         $cell->addImage(
             "http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png",
             [
@@ -103,8 +104,6 @@ class RDOHelper extends PhpWordHelper
 
         $this->addPaddingTabela($table);
 
-        $comprimentoCelula = 100*45;
-
         $estiloCelulaRetangulo = [
             'bgColor' => '4f81bd',
             'alignment' => 'center',
@@ -120,7 +119,7 @@ class RDOHelper extends PhpWordHelper
             'size' => 12
         ];
 
-        $cell = $table->addCell($comprimentoCelula, $estiloCelulaRetangulo);
+        $cell = $table->addCell($this->medidaFullWidth, $estiloCelulaRetangulo);
         $cell->addText($texto, $estiloTextoRetangulo, ['alignment' => 'center']);
 
         $section->addTextBreak(1, ['size' => 5]);
@@ -132,21 +131,21 @@ class RDOHelper extends PhpWordHelper
      *
      * @param \PhpOffice\PhpWord\Element\Section $section
      * @param mixed $arrEquipeCliente - Array com os nomes dos coloboradores
+     *
+     * @return void
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente=[])
     {
         $section->addTextBreak(1, ['size' => 5]);
 
-        // Create a new table style
         $estiloTabela = $this->getEstiloTabelaPadrao();
-        $comprimentoCelula=100*48;
 
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth, $this->estiloCelulaCabecalhoTabela);
         $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         //incluindo uma ultima linha em branco na tabela
@@ -156,7 +155,7 @@ class RDOHelper extends PhpWordHelper
         foreach ($arrEquipeCliente as $nomePessoa) {
             $table->addRow(40);
             $this->addPaddingTabela($table);
-            $cell = $table->addCell($comprimentoCelula);
+            $cell = $table->addCell($this->medidaFullWidth);
             $cell->addText($nomePessoa, $this->estiloTextoTabela, ['alignment' => 'center']);
         }
 
@@ -170,6 +169,8 @@ class RDOHelper extends PhpWordHelper
      *
      * @param \PhpOffice\PhpWord\Element\Section $section
      * @param mixed $arrEquipeCliente - Array dos tecnicos e seus horarios.
+     *
+     * @return void
      */
     public function criarSecaoEquipeFibra($section, $arrEquipeFibra=[])
     {
@@ -192,15 +193,13 @@ class RDOHelper extends PhpWordHelper
             ];
         }
 
-        $comprimentoCelula=100*48;
-
         $estiloTabela = $this->getEstiloTabelaPadrao();
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth, $this->estiloCelulaCabecalhoTabela);
         $cell->addText('EQUIPE FIBRA ENGENHARIA', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         //Estilo da fonte do segundo cabeçalho
@@ -216,19 +215,19 @@ class RDOHelper extends PhpWordHelper
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula*0.4);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
         $cell->addText('COLABORADOR', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell = $table->addCell($this->medidaFullWidth*0.15);
         $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell = $table->addCell($this->medidaFullWidth*0.15);
         $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell = $table->addCell($this->medidaFullWidth*0.15);
         $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.15);
+        $cell = $table->addCell($this->medidaFullWidth*0.15);
         $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
 
         //itera sob o array e imprime em linhas da tabela.
@@ -237,19 +236,19 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(40);
             $this->addPaddingTabela($table);
 
-            $cell = $table->addCell($comprimentoCelula*0.4);
+            $cell = $table->addCell($this->medidaFullWidth*0.4);
             $cell->addText($arrEquipeFibra[$key]['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
-            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell = $table->addCell($this->medidaFullWidth*0.15);
             $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
-            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell = $table->addCell($this->medidaFullWidth*0.15);
             $cell->addText($arrEquipeFibra[$key]['saida1'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
-            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell = $table->addCell($this->medidaFullWidth*0.15);
             $cell->addText($arrEquipeFibra[$key]['entrada2'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
-            $cell = $table->addCell($comprimentoCelula*0.15);
+            $cell = $table->addCell($this->medidaFullWidth*0.15);
             $cell->addText($arrEquipeFibra[$key]['saida2'], $this->estiloTextoTabela, ['alignment' => 'center']);
 
         }
@@ -262,6 +261,8 @@ class RDOHelper extends PhpWordHelper
      * Metodo para salvar o docx no arquivo relatorio.docx.
      *
      * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     *
+     * @return void
      */
     public static function salvarDoc($phpWord, $pathArquivo='')
     {
@@ -274,33 +275,14 @@ class RDOHelper extends PhpWordHelper
         $objWriter->save($path);
     }
 
-    /**
-     * Metodo para adicionar uma celula na tabela, sem bordas, para dar um padding
-     *
-     * @return void
-     */
-    public function addPaddingTabela($table)
-    {
-        $semBordas = [
-            'borderLeftSize' => 1,
-            'borderRightSize' => 1,
-            'borderTopSize' => 1,
-            'borderBottomSize' => 1,
-            'borderLeftColor' => 'ffffff',
-            'borderRightColor' => 'ffffff',
-            'borderTopColor' => 'ffffff',
-            'borderBottomColor' => 'ffffff',
-        ];
-
-        $table->addCell(100*2, $semBordas);
-
-    }
 
     /**
      * Metodo para adicionar a secao Documentacoes Expedidas ao relatorio
      *
      * @param mixed $section
      * @param mixed $arrLinhasTexto - Array das linhas dessa seção
+     *
+     * @return void
      */
     public function criarSecaoDocumentacoes($section, $arrLinhasTexto=[])
     {
@@ -316,22 +298,19 @@ class RDOHelper extends PhpWordHelper
             ];
         }
 
-        // Create a new table style
         $estiloTabela = $this->getEstiloTabelaPadrao();
-        $comprimentoCelula=100*48;
-
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth, $this->estiloCelulaCabecalhoTabela);
         $cell->addText('DOCUMENTAÇÕES EXPEDIDAS NO DIA', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula);
+        $cell = $table->addCell($this->medidaFullWidth);
 
         foreach($arrLinhasTexto as $linhaTexto) {
             $cell->addText($linhaTexto, $this->estiloTextoTabela, ['alignment' => 'left']);
@@ -362,19 +341,16 @@ class RDOHelper extends PhpWordHelper
             ];
         }
 
-        // Create a new table style
         $estiloTabela = $this->getEstiloTabelaPadrao();
-        $comprimentoCelula=100*48;
-
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula*0.75, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth*0.75, $this->estiloCelulaCabecalhoTabela);
         $cell->addText('Atividades Realizadas no dia', $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
-        $cell = $table->addCell($comprimentoCelula*0.25, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth*0.25, $this->estiloCelulaCabecalhoTabela);
         $cell->addText('Status (Em Andamento ou Concluída)', $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
         //itera sob o array e imprime em linhas da tabela.
@@ -383,10 +359,10 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(40);
             $this->addPaddingTabela($table);
 
-            $cell = $table->addCell($comprimentoCelula*0.8);
+            $cell = $table->addCell($this->medidaFullWidth*0.8);
             $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->estiloTextoTabela, $this->estiloLista, ['alignment' => 'left']);
 
-            $cell = $table->addCell($comprimentoCelula*0.2);
+            $cell = $table->addCell($this->medidaFullWidth*0.2);
             $cell->addText($arrAtividades[$key]['status'], $this->estiloTextoTabela, ['alignment' => 'center']);
         }
 
@@ -431,6 +407,130 @@ class RDOHelper extends PhpWordHelper
     }
 
     /**
+     * Metodo para incluir a secao Relatorio Fotografico ao relatorio
+     *
+     * @return void
+     */
+    public function criarSecaoFotos($section, $arrFotos=[])
+    {
+        $section->addTextBreak(3);
+
+        if (empty($arrFotos)) {
+            $arrFotos = [
+                'http://via.placeholder.com/200x120',
+                'http://via.placeholder.com/200x120',
+            ];
+        }
+
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+        $table = $section->addTable($estiloTabela);
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table);
+
+        $cell = $table->addCell($this->medidaFullWidth, $this->estiloCelulaCabecalhoTabela);
+        $cell->addText('RELATÓRIO FOTOGRÁFICO', $this->estiloTextoCabecalhoTabela, ['alignment' => 'left']);
+        $section->addTextBreak(1);
+
+        $estiloTabela->setBorderColor('ffffff');
+        $table = $section->addTable($estiloTabela);
+
+        foreach ($arrFotos as $urlFoto) {
+            $table->addRow(250);
+            $cell = $table->addCell($this->medidaFullWidth);
+            $cell->addImage(
+                $urlFoto,
+                [
+                    'alignment'     => 'center',
+                    'width'         => 200,
+                    'wrappingStyle' => 'inline',
+                ]
+            );
+            $cell->addTextBreak(1);
+        }
+
+        $section->addTextBreak(3);
+    }
+
+    /**
+     * Metodo para incluir a secaos dos responsaveis no relatorio
+     *
+     * @param mixed $section
+     * @param mixed $arrResponsaveis
+     *
+     * @return void
+     */
+    public function criarSecaoResponsaveis($section, $arrResponsaveis=[])
+    {
+        if (empty($arrResponsaveis)) {
+            $arrResponsaveis = [
+                'fibra' => [
+                    'nome' => 'Nome Responsavel Fibra',
+                    'empresa' => 'FIBRA Serviços Especializados de Engenharia Ltda'
+                ],
+                'cliente' => [
+                    'nome' => 'Nome Responsavel Cliente',
+                    'empresa' => 'Empresa Cliente'
+                ]
+            ];
+        }
+
+        $semBordas = [
+            'borderLeftSize' => 1,
+            'borderRightSize' => 1,
+            'borderTopSize' => 1,
+            'borderBottomSize' => 1,
+            'borderLeftColor' => 'ffffff',
+            'borderRightColor' => 'ffffff',
+            'borderTopColor' => 'ffffff',
+            'borderBottomColor' => 'ffffff',
+        ];
+
+        $estiloTabela = $this->getEstiloTabelaPadrao();
+
+        $table = $section->addTable($estiloTabela);
+
+        $table->addRow(40);
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText($arrResponsaveis['fibra']['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
+
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText($arrResponsaveis['cliente']['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
+
+        $table->addRow(40);
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText($arrResponsaveis['fibra']['empresa'], $this->estiloTextoTabela, ['alignment' => 'center']);
+
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText($arrResponsaveis['cliente']['empresa'], $this->estiloTextoTabela, ['alignment' => 'center']);
+
+        $table->addRow(40);
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText("Responsável pela execução", $this->estiloTextoTabela, ['alignment' => 'center']);
+
+        $table->addCell($this->medidaFullWidth*0.1, $semBordas);
+        $cell = $table->addCell($this->medidaFullWidth*0.4);
+        $cell->addText("Gestor do projeto", $this->estiloTextoTabela, ['alignment' => 'center']);
+    }
+
+
+    /**
+     * Metodo para incluir o footer com o contador de paginas
+     *
+     * @return void
+     */
+    public function criarFooter($section)
+    {
+        $footer = $section->addFooter();
+        $footer->addPreserveText('Página {PAGE} de {NUMPAGES}.', null, ['alignment' => 'right']);
+    }
+
+    /**
      * Retorna o estilo da tabela padrão para ser utilizada na criação de uma nova tabela
      *
      * @return \PhpOffice\PhpWord\Style\Table;
@@ -440,7 +540,7 @@ class RDOHelper extends PhpWordHelper
         $table_style = new \PhpOffice\PhpWord\Style\Table;
         $table_style->setBorderSize(1);
         $table_style->setUnit(\PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT);
-        $table_style->setWidth(100 * 48);
+        $table_style->setWidth($this->medidaFullWidth);
         $table_style->setCellMarginLeft(80);
         $table_style->setCellMarginTop(20);
         $table_style->setCellMarginBottom(20);
@@ -462,16 +562,13 @@ class RDOHelper extends PhpWordHelper
             ];
         }
 
-        // Create a new table style
         $estiloTabela = $this->getEstiloTabelaPadrao();
-        $comprimentoCelula=100*48;
-
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
         $this->addPaddingTabela($table);
 
-        $cell = $table->addCell($comprimentoCelula, $this->estiloCelulaCabecalhoTabela);
+        $cell = $table->addCell($this->medidaFullWidth, $this->estiloCelulaCabecalhoTabela);
         $cell->addText($titulo, $this->estiloTextoCabecalhoTabela, ['alignment' => 'center']);
 
         //itera sob o array e imprime em linhas da tabela.
@@ -480,26 +577,33 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(40);
             $this->addPaddingTabela($table);
 
-            $cell = $table->addCell($comprimentoCelula);
+            $cell = $table->addCell($this->medidaFullWidth);
             $cell->addListItem($item, 0, $this->estiloTextoTabela, $this->estiloLista, ['alignment' => 'left']);
         }
 
         $section->addTextBreak(1);
-
     }
 
+
     /**
-     * Metodo para incluir o footer com o contador de paginas
+     * Metodo para adicionar uma celula na tabela, sem bordas, para dar um padding
      *
      * @return void
      */
-    public function criarFooter($section)
+    public function addPaddingTabela($table)
     {
-        $footer = $section->addFooter();
-        $footer->addPreserveText('Página {PAGE} de {NUMPAGES}.', null, ['alignment' => 'right']);
+        $semBordas = [
+            'borderLeftSize' => 1,
+            'borderRightSize' => 1,
+            'borderTopSize' => 1,
+            'borderBottomSize' => 1,
+            'borderLeftColor' => 'ffffff',
+            'borderRightColor' => 'ffffff',
+            'borderTopColor' => 'ffffff',
+            'borderBottomColor' => 'ffffff',
+        ];
+
+        $table->addCell(100*2, $semBordas);
+
     }
-
-    //criarSecaoFotos
-    //criarSecaoResponsaveis
-
 }
