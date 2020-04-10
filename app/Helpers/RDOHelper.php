@@ -6,7 +6,7 @@ namespace App\Helpers;
  * Classe para intermediar a comunicação com o PhpWord facilitando a construçao
  * das seções do Relatorio Diario de Obra (RDO)
  */
-class RDOHelper extends PhpWordHelpe
+class RDOHelper extends PhpWordHelper
 {
 
     public $medidaFullWidth = 4800;
