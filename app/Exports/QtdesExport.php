@@ -61,6 +61,8 @@ class QtdesExport implements FromView, WithEvents
                 //Alterando alinhamentos específicos
                 $event->sheet->getStyle("A3:A$maxLinha")->getAlignment()
                     ->setHorizontal('center')->setVertical('center');
+                $event->sheet->getStyle("$maxColuna"."2:A$maxLinha")->getAlignment()
+                    ->setVertical('center')->setHorizontal('left')->setWrapText(true);
 
                 $event->sheet->getStyle("B3:B$maxLinha")->getAlignment()
                     ->setVertical('center');
@@ -88,8 +90,8 @@ class QtdesExport implements FromView, WithEvents
                 $event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
 
                 //exemplo formatacao celula por celula de uma coluna
-                for ($i = 3; $i < $maxLinha; $i++) {
-                    $colunas = ['J', 'K', 'L'];
+                for ($i = 3; $i <= $maxLinha; $i++) {
+                    $colunas = ["J","K","L"];
 
                     foreach ($colunas as $coluna) {
                         $valorCelula = $event->sheet->getCell("$coluna$i")->getValue();

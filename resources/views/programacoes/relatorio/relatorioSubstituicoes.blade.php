@@ -57,8 +57,8 @@
             }
             
             $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';            
-            $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-            $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
+            $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) && $primeiroMaterial->reator ? $querySubstLampada->quantidade_substituida_reator : '';                    
+            $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) && $primeiroMaterial->base ? $querySubstLampada->quantidade_substituida_base : '';                    
             
             $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
             $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
@@ -91,8 +91,8 @@
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
                 $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
+                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) && $material->reator ? $querySubstLampada->quantidade_substituida_reator : '';                    
+                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) &&  $material->base ? $querySubstLampada->quantidade_substituida_base : '';                    
 
             !!}            
         
