@@ -24,7 +24,7 @@ class QtdesExport implements FromView, WithEvents
     }
 
     /**
-     * Metodo chamado para registrar os eventos no processo de montagem da planilha
+     * Metodo chamado para registrar os eventos no processo de montagem da planilha.
      *
      * No AfterSheet é possivel aplicar regras de estilo após a view ter sido 'parseada'
      *
@@ -33,7 +33,7 @@ class QtdesExport implements FromView, WithEvents
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class    => function(AfterSheet $event) {
+            AfterSheet::class    => function (AfterSheet $event) {
 
                 //Ultima linha ex: 99
                 $maxLinha = $event->getDelegate()->getHighestRow() + 1;
@@ -55,7 +55,7 @@ class QtdesExport implements FromView, WithEvents
                     ->setSize(8);
 
                 //Alterando alinhamento no cabeçalho
-                $event->sheet->getStyle("A2:$maxColuna"."2")->getAlignment()
+                $event->sheet->getStyle("A2:$maxColuna".'2')->getAlignment()
                     ->setHorizontal('center')->setVertical('center');
 
                 //Alterando alinhamentos específicos
@@ -69,7 +69,7 @@ class QtdesExport implements FromView, WithEvents
                     ->setHorizontal('center')->setVertical('center');
 
                 //Aplicando borda no cabeçalho
-                $event->sheet->getStyle("A2:$maxColuna"."2")
+                $event->sheet->getStyle("A2:$maxColuna".'2')
                     ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
                 $event->sheet->getStyle("A3:$maxColuna$maxLinha")
@@ -84,28 +84,26 @@ class QtdesExport implements FromView, WithEvents
                 $event->sheet->getColumnDimension('O')->setWidth(15);
                 $event->sheet->getColumnDimension($maxColuna)->setWidth(52);
 
-
                 //incluindo filtro na range
                 $event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
 
                 //exemplo formatacao celula por celula de uma coluna
                 for ($i = 3; $i < $maxLinha; $i++) {
-                    $colunas = ["J","K","L"];
+                    $colunas = ['J', 'K', 'L'];
 
                     foreach ($colunas as $coluna) {
                         $valorCelula = $event->sheet->getCell("$coluna$i")->getValue();
                         //\Log::info("\n ## VALOR CELULA $coluna$i:" . $valorCelula);
-    
+
                         //Se tiver valor na celula (string || numero>0)
-                        if (!is_null($valorCelula) && $valorCelula >= 0) {
-    
+                        if (! is_null($valorCelula) && $valorCelula >= 0) {
+
                             //pinta o BG da celula de amarelo
                             $event->sheet->getStyle("$coluna$i")->getFill()
                                 ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                                 ->getStartColor()->setARGB('FFFFFF00');
                         }
                     }
-
                 }
             },
         ];
