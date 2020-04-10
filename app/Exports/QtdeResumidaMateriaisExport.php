@@ -24,7 +24,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
     }
 
     /**
-     * Metodo chamado para registrar os eventos no processo de montagem da planilha
+     * Metodo chamado para registrar os eventos no processo de montagem da planilha.
      *
      * No AfterSheet é possivel aplicar regras de estilo após a view ter sido 'parseada'
      *
@@ -33,7 +33,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class    => function(AfterSheet $event) {
+            AfterSheet::class    => function (AfterSheet $event) {
 
                 //Ultima linha ex: 99
                 $maxLinha = $event->getDelegate()->getHighestRow();
@@ -41,7 +41,6 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 //Ultima coluna ex: F
                 $maxColuna = $event->getDelegate()->getHighestColumn();
 
-                
                 //settando height da linha 1 (cabeçalho)
                 $event->sheet->getRowDimension('1')->setRowHeight(30);
 
@@ -50,7 +49,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                     ->setSize(8);
 
                 //Alterando alinhamento no cabeçalho
-                $event->sheet->getStyle("A1:$maxColuna"."2")->getAlignment()
+                $event->sheet->getStyle("A1:$maxColuna".'2')->getAlignment()
                     ->setVertical('center')->setHorizontal('center')->setWrapText(true);
 
                 //Alterando alinhamentos específicos
@@ -61,7 +60,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                     ->setHorizontal('center')->setVertical('center');
 
                 //Aplicando borda no cabeçalho
-                $event->sheet->getStyle("A1:$maxColuna"."2")
+                $event->sheet->getStyle("A1:$maxColuna".'2')
                     ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
                 //Aplicando borda no conteúdo
@@ -71,7 +70,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 //incluindo filtro na range
                 $event->sheet->setAutoFilter("A1:$maxColuna$maxLinha");
 
-                $event->sheet->getColumnDimension('A')->setWidth(15);              
+                $event->sheet->getColumnDimension('A')->setWidth(15);
 
                 $event->sheet->getColumnDimension('F')->setWidth(15);
                 $event->sheet->getStyle("F1:F$maxLinha")->getFill()
@@ -87,7 +86,6 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 $event->sheet->getStyle("H1:H$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                     ->getStartColor()->setARGB('FFEBEBE0');
-
 
                 $event->sheet->getColumnDimension('I')->setWidth(15);
                 $event->sheet->getStyle("I1:I$maxLinha")->getFill()
