@@ -13,7 +13,7 @@
 <!-- Tipo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tipo', 'Tipo') !!}
-    {!! Form::select('tipo', ['Lâmpada' => 'Lâmpada', 'Reator' => 'Reator'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('tipo', ['Lâmpada' => 'Lâmpada', 'Reator' => 'Reator', 'Outros' => 'Outros'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
