@@ -54,7 +54,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
 
                 //Alterando alinhamentos específicos
                 $event->sheet->getStyle("A2:A$maxLinha")->getAlignment()
-                    ->setVertical('center')->setHorizontal('left');
+                    ->setVertical('center')->setHorizontal('left')->setWrapText(true);
 
                 $event->sheet->getStyle("B2:$maxColuna$maxLinha")->getAlignment()
                     ->setHorizontal('center')->setVertical('center');
@@ -70,7 +70,7 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 //incluindo filtro na range
                 $event->sheet->setAutoFilter("A1:$maxColuna$maxLinha");
 
-                $event->sheet->getColumnDimension('A')->setWidth(15);
+                $event->sheet->getColumnDimension('A')->setWidth(20);
 
                 $event->sheet->getColumnDimension('F')->setWidth(15);
                 $event->sheet->getStyle("F1:F$maxLinha")->getFill()
