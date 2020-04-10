@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Exports\ProgramacaoExport;
+use App\Exports\QtdesExport;
 use App\Models\RelatorioQuantidade;
 use App\Repositories\BaseRepository;
 use Maatwebsite\Excel\Facades\Excel;
@@ -46,8 +46,8 @@ class RelatorioQuantidadeRepository extends BaseRepository
      */
     public function gerarArquivoRelatorio($relatorioQuantidade)
     {
-        $programacao = $relatorioQuantidade->programacao;
+        $Qtdes = $this->app->make('App\Exports\ProgramacaoExport', ['programacao' => $relatorioQuantidade->programacao]);
 
-        return Excel::store(new ProgramacaoExport($programacao), $relatorioQuantidade->pathExcel);
+        return Excel::store($Qtdes, $relatorioQuantidade->pathExcel);
     }
 }
