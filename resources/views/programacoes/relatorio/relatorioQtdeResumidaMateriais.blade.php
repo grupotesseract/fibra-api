@@ -5,7 +5,7 @@
         <th><strong>Tensão</strong></th>
         <th><strong>Pot.(W)</strong></th>
         <th><strong>Base</strong></th>
-        <th><strong>Reatores</strong></th>        
+        <th><strong>Reator</strong></th>        
         <th><strong>Quantidade Instalada</strong></th>        
         <th><strong>Quantidade Mínima para Manutenção</strong></th>        
         <th><strong>Quantidade em Estoque no Início da Manutenção</strong></th>        

@@ -31,8 +31,8 @@ class GerarRelatorioQuantidade implements ShouldQueue
      *
      * @return void
      */
-    public function handle(RelatorioQuantidadeRepository $relatorioRepo)
+    public function handle(RelatorioQuantidadeRepository $repo)
     {
-        $relatorioRepo->gerarArquivoRelatorio($this->relatorio);
+        $repo->gerarArquivoRelatorio($this->relatorio);
     }
 }
