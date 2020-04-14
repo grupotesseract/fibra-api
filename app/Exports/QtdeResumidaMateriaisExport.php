@@ -40,72 +40,79 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
 
                 //Ultima coluna ex: F
                 $maxColuna = $event->getDelegate()->getHighestColumn();
-
-                //settando height da linha 1 (cabeçalho)
-                $event->sheet->getRowDimension('1')->setRowHeight(30);
+                $event->sheet->getRowDimension('1')->setRowHeight(35);
 
                 //Alterando tamanho da fonte no cabeçalho
-                $event->sheet->getStyle("A1:$maxColuna$maxLinha")->getFont()
+                $event->sheet->getStyle('A1')->getFont()
+                    ->setSize(10);
+                $event->sheet->getStyle("A2:A$maxLinha")->getFont()
+                    ->setSize(9);
+                $event->sheet->getStyle("B1:E$maxLinha")->getFont()
                     ->setSize(8);
+                $event->sheet->getStyle('F1:L1')->getFont()
+                    ->setSize(7);
+                $event->sheet->getStyle("F2:L$maxLinha")->getFont()
+                    ->setSize(10);
 
                 //Alterando alinhamento no cabeçalho
                 $event->sheet->getStyle("A1:$maxColuna".'2')->getAlignment()
                     ->setVertical('center')->setHorizontal('center')->setWrapText(true);
 
                 //Alterando alinhamentos específicos
-                $event->sheet->getStyle("A2:A$maxLinha")->getAlignment()
-                    ->setVertical('center')->setHorizontal('left')->setWrapText(true);
-
-                $event->sheet->getStyle("B2:$maxColuna$maxLinha")->getAlignment()
-                    ->setHorizontal('center')->setVertical('center');
-
-                //Aplicando borda no cabeçalho
-                $event->sheet->getStyle("A1:$maxColuna".'2')
-                    ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+                $event->sheet->getStyle("A2:$maxColuna$maxLinha")->getAlignment()
+                    ->setHorizontal('center')->setVertical('center')->setWrapText(true);
 
                 //Aplicando borda no conteúdo
-                $event->sheet->getStyle("A2:$maxColuna$maxLinha")
+                $event->sheet->getStyle("A1:$maxColuna$maxLinha")
                     ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
                 //incluindo filtro na range
-                $event->sheet->setAutoFilter("A1:$maxColuna$maxLinha");
+                //$event->sheet->setAutoFilter("A1:$maxColuna$maxLinha");
 
-                $event->sheet->getColumnDimension('A')->setWidth(20);
+                $event->sheet->getColumnDimension('A')->setWidth(17);
+                $event->sheet->getColumnDimension('B')->setWidth(6);
+                $event->sheet->getColumnDimension('C')->setWidth(6);
+                $event->sheet->getColumnDimension('D')->setWidth(6);
+                $event->sheet->getColumnDimension('E')->setWidth(6);
+                $event->sheet->getColumnDimension('F')->setWidth(8);
+                $event->sheet->getColumnDimension('G')->setWidth(8);
+                $event->sheet->getColumnDimension('H')->setWidth(8);
+                $event->sheet->getColumnDimension('I')->setWidth(8);
+                $event->sheet->getColumnDimension('J')->setWidth(8);
+                $event->sheet->getColumnDimension('K')->setWidth(8);
+                $event->sheet->getColumnDimension('L')->setWidth(8);
 
-                $event->sheet->getColumnDimension('F')->setWidth(15);
-                $event->sheet->getStyle("F1:F$maxLinha")->getFill()
+                $event->sheet->getStyle('A1:L1')->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFFCF78D');
+                    ->getStartColor()->setARGB('FF9BC2E6');
 
-                $event->sheet->getColumnDimension('G')->setWidth(15);
-                $event->sheet->getStyle("G1:G$maxLinha")->getFill()
+                $event->sheet->getStyle("F2:F$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFFFE6FF');
+                    ->getStartColor()->setARGB('FFFCE4D6');
 
-                $event->sheet->getColumnDimension('H')->setWidth(15);
-                $event->sheet->getStyle("H1:H$maxLinha")->getFill()
+                $event->sheet->getStyle("G2:G$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFEBEBE0');
+                    ->getStartColor()->setARGB('FFD9E1F2');
 
-                $event->sheet->getColumnDimension('I')->setWidth(15);
-                $event->sheet->getStyle("I1:I$maxLinha")->getFill()
+                $event->sheet->getStyle("H2:H$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFEBEBE0');
+                    ->getStartColor()->setARGB('FFE2EFD9');
 
-                $event->sheet->getColumnDimension('J')->setWidth(15);
-                $event->sheet->getStyle("J1:J$maxLinha")->getFill()
+                $event->sheet->getStyle("I2:I$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFEBEBE0');
+                    ->getStartColor()->setARGB('FFE2EFD9');
 
-                $event->sheet->getColumnDimension('K')->setWidth(15);
-                $event->sheet->getStyle("K1:K$maxLinha")->getFill()
+                $event->sheet->getStyle("J2:J$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFE6F2FF');
+                    ->getStartColor()->setARGB('FFE2EFD9');
 
-                $event->sheet->getColumnDimension('L')->setWidth(20);
-                $event->sheet->getStyle("L1:L$maxLinha")->getFill()
+                $event->sheet->getStyle("K2:K$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('FFFFE6E6');
+                    ->getStartColor()->setARGB('FFFFFF00');
+
+                $event->sheet->getStyle("L2:L$maxLinha")->getFill()
+                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                    ->getStartColor()->setARGB('FFFFCCCC');
             },
         ];
     }
