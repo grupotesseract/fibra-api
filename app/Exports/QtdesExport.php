@@ -46,7 +46,7 @@ class QtdesExport implements FromView, WithEvents
 
                 //MERGE EM ALGUMAS CÉLULAS
                 $event->sheet->mergeCells('A1:P1');
-                $event->sheet->getCell('A1')->setValue($this->programacao->planta->nome." - ".$this->programacao->data_inicio_prevista->format('m/Y'));
+                $event->sheet->getCell('A1')->setValue($this->programacao->planta->nome.' - '.$this->programacao->data_inicio_prevista->format('m/Y'));
                 $event->sheet->mergeCells('A2:A3');
                 $event->sheet->getCell('A2')->setValue('Cód. Qrcode');
                 $event->sheet->mergeCells('B2:B3');
@@ -70,7 +70,6 @@ class QtdesExport implements FromView, WithEvents
                 $event->sheet->getRowDimension('3')->setRowHeight(25);
                 $event->sheet->getRowDimension('1')->setRowHeight(25);
 
-
                 //FONTES
                 $event->sheet->getStyle("A2:A$maxLinha")->getFont()
                     ->setSize(8);
@@ -80,17 +79,16 @@ class QtdesExport implements FromView, WithEvents
                     ->setSize(7);
                 $event->sheet->getStyle("D2:I$maxLinha")->getFont()
                     ->setSize(8);
-                $event->sheet->getStyle("J2")->getFont()
+                $event->sheet->getStyle('J2')->getFont()
                     ->setSize(9);
-                $event->sheet->getStyle("J3:L3")->getFont()
+                $event->sheet->getStyle('J3:L3')->getFont()
                     ->setSize(9);
                 $event->sheet->getStyle("J4:L$maxLinha")->getFont()
                     ->setSize(10);
                 $event->sheet->getStyle("M2:P$maxLinha")->getFont()
                     ->setSize(9);
-                
-                
-                //ALINHAMENTOS                
+
+                //ALINHAMENTOS
                 $event->sheet->getStyle("A1:A$maxLinha")->getAlignment()
                     ->setHorizontal('center')->setVertical('center')->setWrapText(true);
                 $event->sheet->getStyle("B2:B$maxLinha")->getAlignment()
@@ -101,14 +99,12 @@ class QtdesExport implements FromView, WithEvents
                 //Aplicando borda no cabeçalho
                 $event->sheet->getStyle("A1:$maxColuna$maxLinha")
                     ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-                
+
                 $event->sheet->getStyle("J2:M$maxLinha")
                     ->getBorders()->getOutline()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
 
-                
                 $event->sheet->getStyle("A1:$maxColuna".'2')
                     ->getFont()->setBold(true);
-                
 
                 //settando width das colunas A,B, C
                 $event->sheet->getColumnDimension('A')->setWidth(5);
@@ -132,7 +128,7 @@ class QtdesExport implements FromView, WithEvents
                 //$event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
 
                 //CORES
-                $event->sheet->getStyle("A1:P3")->getFill()
+                $event->sheet->getStyle('A1:P3')->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                     ->getStartColor()->setARGB('FF9BC2E6');
 
@@ -141,7 +137,6 @@ class QtdesExport implements FromView, WithEvents
                     ->getStartColor()->setARGB('FFFFFF00');
 
                 for ($i = 4; $i <= $maxLinha; $i++) {
-                    
                     $valorCelula = $event->sheet->getCell("H$i")->getValue();
                     if (! is_null($valorCelula) && $valorCelula !== '') {
                         //pinta o BG da celula de amarelo
