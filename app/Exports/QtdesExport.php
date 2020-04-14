@@ -36,75 +36,129 @@ class QtdesExport implements FromView, WithEvents
             AfterSheet::class    => function (AfterSheet $event) {
 
                 //Ultima linha ex: 99
-                $maxLinha = $event->getDelegate()->getHighestRow() + 1;
+                $maxLinha = $event->getDelegate()->getHighestRow() + 2;
 
                 //Ultima coluna ex: F
                 $maxColuna = $event->getDelegate()->getHighestColumn();
 
                 //Inserindo respiro
-                $event->sheet->insertNewRowBefore(1, 1);
+                $event->sheet->insertNewRowBefore(1, 2);
 
-                //settando height da linha 1 (respiro)
+                //MERGE EM ALGUMAS CÉLULAS
+                $event->sheet->mergeCells('A1:P1');
+                $event->sheet->getCell('A1')->setValue($this->programacao->planta->nome.' - '.$this->programacao->data_inicio_prevista->format('m/Y'));
+                $event->sheet->mergeCells('A2:A3');
+                $event->sheet->getCell('A2')->setValue('Cód. Qrcode');
+                $event->sheet->mergeCells('B2:B3');
+                $event->sheet->getCell('B2')->setValue('Descrição');
+                $event->sheet->mergeCells('C2:C3');
+                $event->sheet->getCell('C2')->setValue('Circuito');
+                $event->sheet->mergeCells('D2:I2');
+                $event->sheet->getCell('D2')->setValue('Lâmpada');
+                $event->sheet->mergeCells('J2:L2');
+                $event->sheet->getCell('J2')->setValue('Quantidade Substituída');
+                $event->sheet->mergeCells('M2:M3');
+                $event->sheet->getCell('M2')->setValue('Data Manutenção');
+                $event->sheet->mergeCells('N2:N3');
+                $event->sheet->getCell('N2')->setValue('Horário Início');
+                $event->sheet->mergeCells('O2:O3');
+                $event->sheet->getCell('O2')->setValue('Horário Conclusão');
+                $event->sheet->mergeCells('P2:P3');
+                $event->sheet->getCell('P2')->setValue('Comentários');
+
+                //settando height da linha 3 (cabeçalho)
+                $event->sheet->getRowDimension('3')->setRowHeight(25);
                 $event->sheet->getRowDimension('1')->setRowHeight(25);
 
-                //settando height da linha 2 (cabeçalho)
-                $event->sheet->getRowDimension('2')->setRowHeight(25);
-
-                //Alterando tamanho da fonte no cabeçalho
-                $event->sheet->getStyle("A2:$maxColuna$maxLinha")->getFont()
+                //FONTES
+                $event->sheet->getStyle("A2:A$maxLinha")->getFont()
                     ->setSize(8);
+                $event->sheet->getStyle("B2:B$maxLinha")->getFont()
+                    ->setSize(10);
+                $event->sheet->getStyle("C2:C$maxLinha")->getFont()
+                    ->setSize(7);
+                $event->sheet->getStyle("D2:I$maxLinha")->getFont()
+                    ->setSize(8);
+                $event->sheet->getStyle('J2')->getFont()
+                    ->setSize(9);
+                $event->sheet->getStyle('J3:L3')->getFont()
+                    ->setSize(9);
+                $event->sheet->getStyle("J4:L$maxLinha")->getFont()
+                    ->setSize(10);
+                $event->sheet->getStyle("M2:P$maxLinha")->getFont()
+                    ->setSize(9);
 
-                //Alterando alinhamento no cabeçalho
-                $event->sheet->getStyle("A2:$maxColuna".'2')->getAlignment()
-                    ->setHorizontal('center')->setVertical('center');
-
-                //Alterando alinhamentos específicos
-                $event->sheet->getStyle("A3:A$maxLinha")->getAlignment()
-                    ->setHorizontal('center')->setVertical('center');
-                $event->sheet->getStyle("$maxColuna"."2:A$maxLinha")->getAlignment()
-                    ->setVertical('center')->setHorizontal('left')->setWrapText(true);
-
-                $event->sheet->getStyle("B3:B$maxLinha")->getAlignment()
-                    ->setVertical('center');
-
-                $event->sheet->getStyle("C3:$maxColuna$maxLinha")->getAlignment()
-                    ->setHorizontal('center')->setVertical('center');
+                //ALINHAMENTOS
+                $event->sheet->getStyle("A1:A$maxLinha")->getAlignment()
+                    ->setHorizontal('center')->setVertical('center')->setWrapText(true);
+                $event->sheet->getStyle("B2:B$maxLinha")->getAlignment()
+                    ->setHorizontal('left')->setVertical('center')->setWrapText(true);
+                $event->sheet->getStyle("C2:$maxColuna$maxLinha")->getAlignment()
+                    ->setHorizontal('center')->setVertical('center')->setWrapText(true);
 
                 //Aplicando borda no cabeçalho
-                $event->sheet->getStyle("A2:$maxColuna".'2')
-                    ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-
-                $event->sheet->getStyle("A3:$maxColuna$maxLinha")
+                $event->sheet->getStyle("A1:$maxColuna$maxLinha")
                     ->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
+                $event->sheet->getStyle("J2:M$maxLinha")
+                    ->getBorders()->getOutline()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+
+                $event->sheet->getStyle("A1:$maxColuna".'2')
+                    ->getFont()->setBold(true);
+
                 //settando width das colunas A,B, C
-                $event->sheet->getColumnDimension('A')->setWidth(15);
-                $event->sheet->getColumnDimension('B')->setWidth(48);
-                $event->sheet->getColumnDimension('C')->setWidth(10);
-                $event->sheet->getColumnDimension('M')->setWidth(15);
-                $event->sheet->getColumnDimension('N')->setWidth(15);
-                $event->sheet->getColumnDimension('O')->setWidth(15);
-                $event->sheet->getColumnDimension($maxColuna)->setWidth(52);
+                $event->sheet->getColumnDimension('A')->setWidth(5);
+                $event->sheet->getColumnDimension('B')->setWidth(27);
+                $event->sheet->getColumnDimension('C')->setWidth(7.29);
+                $event->sheet->getColumnDimension('D')->setWidth(6);
+                $event->sheet->getColumnDimension('E')->setWidth(6);
+                $event->sheet->getColumnDimension('F')->setWidth(6);
+                $event->sheet->getColumnDimension('G')->setWidth(6);
+                $event->sheet->getColumnDimension('H')->setWidth(6);
+                $event->sheet->getColumnDimension('I')->setWidth(6);
+                $event->sheet->getColumnDimension('J')->setWidth(6);
+                $event->sheet->getColumnDimension('K')->setWidth(6);
+                $event->sheet->getColumnDimension('L')->setWidth(6);
+                $event->sheet->getColumnDimension('M')->setWidth(9);
+                $event->sheet->getColumnDimension('N')->setWidth(9);
+                $event->sheet->getColumnDimension('O')->setWidth(9);
+                $event->sheet->getColumnDimension('P')->setWidth(40);
 
                 //incluindo filtro na range
-                $event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
+                //$event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
 
-                //exemplo formatacao celula por celula de uma coluna
-                for ($i = 3; $i <= $maxLinha; $i++) {
-                    $colunas = ["J","K","L"];
+                //CORES
+                $event->sheet->getStyle('A1:P3')->getFill()
+                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                    ->getStartColor()->setARGB('FF9BC2E6');
 
-                    foreach ($colunas as $coluna) {
-                        $valorCelula = $event->sheet->getCell("$coluna$i")->getValue();
-                        //\Log::info("\n ## VALOR CELULA $coluna$i:" . $valorCelula);
+                $event->sheet->getStyle("J4:J$maxLinha")->getFill()
+                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                    ->getStartColor()->setARGB('FFFFFF00');
 
-                        //Se tiver valor na celula (string || numero>0)
-                        if (! is_null($valorCelula) && $valorCelula >= 0) {
+                for ($i = 4; $i <= $maxLinha; $i++) {
+                    $valorCelula = $event->sheet->getCell("H$i")->getValue();
+                    if (! is_null($valorCelula) && $valorCelula !== '') {
+                        //pinta o BG da celula de amarelo
+                        $event->sheet->getStyle("L$i")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFFFFF00');
+                    } else {
+                        $event->sheet->getStyle("L$i")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFA6A6A6');
+                    }
 
-                            //pinta o BG da celula de amarelo
-                            $event->sheet->getStyle("$coluna$i")->getFill()
-                                ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                                ->getStartColor()->setARGB('FFFFFF00');
-                        }
+                    $valorCelula = $event->sheet->getCell("I$i")->getValue();
+                    if (! is_null($valorCelula) && $valorCelula !== '') {
+                        //pinta o BG da celula de amarelo
+                        $event->sheet->getStyle("K$i")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFFFFF00');
+                    } else {
+                        $event->sheet->getStyle("K$i")->getFill()
+                            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                            ->getStartColor()->setARGB('FFA6A6A6');
                     }
                 }
             },

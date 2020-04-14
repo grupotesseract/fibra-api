@@ -9,9 +9,9 @@
         <th><strong>Tipo</strong></th>
         <th><strong>Pot.(W)</strong></th>
         <th><strong>Tensão (V)</strong></th>
-        <th><strong>Base/Tipo</strong></th>
-        <th><strong>Reator/Tipo</strong></th>
-        <th><strong>Lâmpada</strong></th>        
+        <th><strong>Base</strong></th>
+        <th><strong>Reator</strong></th>
+        <th><strong>Lâmp.</strong></th>        
         <th><strong>Reator</strong></th>        
         <th><strong>Base</strong></th>        
         <th><strong>Data Manutenção</strong></th>                
