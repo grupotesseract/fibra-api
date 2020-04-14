@@ -68,6 +68,7 @@ class QtdesExport implements FromView, WithEvents
 
                 //settando height da linha 3 (cabeçalho)
                 $event->sheet->getRowDimension('3')->setRowHeight(25);
+                $event->sheet->getRowDimension('1')->setRowHeight(25);
 
 
                 //FONTES
@@ -131,6 +132,10 @@ class QtdesExport implements FromView, WithEvents
                 //$event->sheet->setAutoFilter("A2:$maxColuna$maxLinha");
 
                 //CORES
+                $event->sheet->getStyle("A1:P3")->getFill()
+                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                    ->getStartColor()->setARGB('FF9BC2E6');
+
                 $event->sheet->getStyle("J4:J$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                     ->getStartColor()->setARGB('FFFFFF00');
