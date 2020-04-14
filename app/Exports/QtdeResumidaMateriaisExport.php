@@ -43,13 +43,13 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 $event->sheet->getRowDimension('1')->setRowHeight(35);
 
                 //Alterando tamanho da fonte no cabeçalho
-                $event->sheet->getStyle("A1")->getFont()
+                $event->sheet->getStyle('A1')->getFont()
                     ->setSize(10);
                 $event->sheet->getStyle("A2:A$maxLinha")->getFont()
                     ->setSize(9);
                 $event->sheet->getStyle("B1:E$maxLinha")->getFont()
                     ->setSize(8);
-                $event->sheet->getStyle("F1:L1")->getFont()
+                $event->sheet->getStyle('F1:L1')->getFont()
                     ->setSize(7);
                 $event->sheet->getStyle("F2:L$maxLinha")->getFont()
                     ->setSize(10);
@@ -58,10 +58,9 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 $event->sheet->getStyle("A1:$maxColuna".'2')->getAlignment()
                     ->setVertical('center')->setHorizontal('center')->setWrapText(true);
 
-                //Alterando alinhamentos específicos                
+                //Alterando alinhamentos específicos
                 $event->sheet->getStyle("A2:$maxColuna$maxLinha")->getAlignment()
                     ->setHorizontal('center')->setVertical('center')->setWrapText(true);
-
 
                 //Aplicando borda no conteúdo
                 $event->sheet->getStyle("A1:$maxColuna$maxLinha")
@@ -83,11 +82,9 @@ class QtdeResumidaMateriaisExport implements FromView, WithEvents
                 $event->sheet->getColumnDimension('K')->setWidth(8);
                 $event->sheet->getColumnDimension('L')->setWidth(8);
 
-
-                $event->sheet->getStyle("A1:L1")->getFill()
+                $event->sheet->getStyle('A1:L1')->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                     ->getStartColor()->setARGB('FF9BC2E6');
-
 
                 $event->sheet->getStyle("F2:F$maxLinha")->getFill()
                     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
