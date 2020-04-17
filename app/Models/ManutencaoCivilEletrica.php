@@ -89,4 +89,14 @@ class ManutencaoCivilEletrica extends Model
     {
         return $this->belongsTo(\App\Models\Planta::class, 'planta_id');
     }
+
+    /**
+     * Relacionamento com Atividades Realizadas.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function atividadesRealizadas()
+    {
+        return $this->hasMany(\App\Models\AtividadeRealizada::class, 'manutencao_id');
+    }
 }

@@ -72,6 +72,7 @@ class PlantaRepository extends BaseRepository
 
         DB::transaction(function () use ($input, $planta, &$manutencaoCivilEletrica) {
             $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
+            $manutencaoCivilEletrica->atividadesRealizadas()->createMany($input['atividades_realizadas']);
         });
         
         return $manutencaoCivilEletrica;
