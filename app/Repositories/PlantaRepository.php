@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Planta;
 use App\Repositories\BaseRepository;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 /**
  * Class PlantaRepository.
  * @version September 9, 2019, 4:03 pm -03
@@ -64,12 +65,12 @@ class PlantaRepository extends BaseRepository
     /**
      * Método responsável por persistir informações de RDO ao banco.
      */
-    public function sincronizaRdo($planta, $input)
+    public function syncRdo($planta, $input)
     {
         Log::info('Input: '.json_encode($input));
 
         DB::transaction(function () use ($input, $planta) {
-            
+            $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
         });
     }
 }

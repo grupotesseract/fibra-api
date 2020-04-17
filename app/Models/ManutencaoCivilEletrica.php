@@ -52,7 +52,7 @@ class ManutencaoCivilEletrica extends Model
         'it',
         'lem',
         'let',
-        'os'
+        'os',
     ];
 
     /**

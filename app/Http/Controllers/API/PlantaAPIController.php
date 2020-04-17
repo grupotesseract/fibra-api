@@ -137,9 +137,7 @@ class PlantaAPIController extends AppBaseController
     {
         $input = $request->all();
         $planta = $this->plantaRepository->find($idPlanta);
-        
-        dump($planta);
-        dd($input);
+        $this->plantaRepository->syncRdo($planta, $input);       
 
         return $this->sendResponse($planta->toArray(), 'RDO sincronizado com sucesso');
     }

@@ -117,4 +117,14 @@ class Planta extends Model
     {
         return $this->hasMany(\App\Models\QuantidadeMinima::class, 'planta_id');
     }
+
+    /**
+     * Relacionamento com Manutenção Civil Elétrica.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function manutencoesCivilEletrica()
+    {
+        return $this->hasMany(\App\Models\ManutencaoCivilEletrica::class, 'planta_id');
+    }
 }
