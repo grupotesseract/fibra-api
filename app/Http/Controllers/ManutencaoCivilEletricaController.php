@@ -57,7 +57,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
 
         Flash::success('Manutencao Civil Eletrica salva com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
     /**
@@ -115,14 +115,14 @@ class ManutencaoCivilEletricaController extends AppBaseController
         if (empty($manutencaoCivilEletrica)) {
             Flash::error('Manutencao Civil Eletrica não encontrada');
 
-            return redirect(route('manutencoesCivilEletrica.index'));
+            return redirect()->back();
         }
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->update($request->all(), $id);
 
         Flash::success('Manutencao Civil Eletrica atualizada com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
     /**
@@ -139,14 +139,14 @@ class ManutencaoCivilEletricaController extends AppBaseController
         if (empty($manutencaoCivilEletrica)) {
             Flash::error('Manutencao Civil Eletrica não encontrada');
 
-            return redirect(route('manutencoesCivilEletrica.index'));
+            return redirect()->back();
         }
 
         $this->manutencaoCivilEletricaRepository->delete($id);
 
         Flash::success('Manutencao Civil Eletrica excluída com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
     public function downloadRelatorio($id) 
