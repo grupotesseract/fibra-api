@@ -170,6 +170,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeFibra($section, $manutencaoCivilEletrica = null)
     {
+        $arrEquipeFibra = [];
         if (!$manutencaoCivilEletrica) {
             $arrEquipeFibra = [
                 [
@@ -343,6 +344,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoAtividades($section, $manutencaoCivilEletrica = null)
     {
+        $arrAtividades = [];
         if (!$manutencaoCivilEletrica) {
             $arrAtividades = [
                 [
