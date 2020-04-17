@@ -49,7 +49,10 @@ class ManutencaoCivilEletrica extends Model
         'data_hora_inicio_let',
         'data_hora_final_let',
         'data_hora_inicio_atividades',
-        'planta_id',
+        'it',
+        'lem',
+        'let',
+        'os'
     ];
 
     /**
