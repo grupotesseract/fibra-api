@@ -266,6 +266,7 @@ class RDOHelper extends PhpWordHelper
 
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($path);
+        return $path;
     }
 
     /**

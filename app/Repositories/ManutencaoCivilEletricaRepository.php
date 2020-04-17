@@ -42,4 +42,43 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
     {
         return ManutencaoCivilEletrica::class;
     }
+
+    /**
+     * Método para emissão do RDO
+     *
+     * @param ManutencaoCivilEletrica $manutencaoCivilEletrica
+     * @return Object
+     */
+    public function relatorioRDO($manutencaoCivilEletrica) {
+        //inicializando                                   
+        $rdo = new \App\Helpers\RDOHelper();
+        $doc = $rdo::criarDoc();           
+
+        //pagina 1                         
+        $section = $rdo::addContainerSecoes($doc); 
+        $rdo->criarCabecalhoLogo($section);
+        $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
+        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->planta->nome);
+        $rdo->criarSecaoRetanguloAzul($section, 'dd/mm/YYYY - DIA-DA-SEMANA'); 
+        $rdo->criarSecaoEquipeCliente($section, ['Pessoa1', 'Pessoa2']);       
+        $rdo->criarSecaoEquipeFibra($section);     
+        $rdo->criarSecaoDocumentacoes($section);     
+        $rdo->criarSecaoAtividades($section);      
+        $rdo->criarSecaoProblemas($section);       
+        $rdo->criarSecaoInformacoes($section);     
+        $rdo->criarSecaoObservacoes($section);     
+        $rdo->criarFooter($section);       
+
+        //pagina 2                         
+        $section = $rdo::addContainerSecoes($doc); 
+        $rdo->criarCabecalhoLogo($section);
+        $rdo->criarSecaoRetanguloAzul($section, 'Local: Xpto Xabaleu');
+        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: XXX LLL YYY');
+        $rdo->criarSecaoRetanguloAzul($section, 'dd/mm/YYYY - DIA-DA-SEMANA'); 
+        $rdo->criarSecaoFotos($section);   
+        $rdo->criarSecaoResponsaveis($section);    
+        $rdo->criarFooter($section);       
+
+        return $rdo::salvarDoc($doc);        
+    }
 }
