@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
         'uses' => 'ProgramacaoAPIController@syncProgramacaoItemFotos',
         'throttle:500,1',
     ]);
-    
+
     Route::post('sync/programacoes/{id}', 'ProgramacaoAPIController@syncProgramacoes');
     Route::post('sync/plantas/rdo/{idPlanta}', 'PlantaAPIController@syncRdo');
     Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
