@@ -57,7 +57,7 @@ class AtividadeRealizadaController extends AppBaseController
 
         Flash::success('Atividade Realizada salva com sucesso.');
 
-        return redirect(route('atividadesRealizadas.index'));
+        return redirect(route('manutencoesCivilEletrica.show', $atividadeRealizada->manutencao_id));
     }
 
     /**
@@ -74,7 +74,7 @@ class AtividadeRealizadaController extends AppBaseController
         if (empty($atividadeRealizada)) {
             Flash::error('Atividade Realizada não encontrada');
 
-            return redirect(route('atividadesRealizadas.index'));
+            return redirect()->back();
         }
 
         return view('atividades_realizadas.show')->with('atividadeRealizada', $atividadeRealizada);
@@ -94,7 +94,7 @@ class AtividadeRealizadaController extends AppBaseController
         if (empty($atividadeRealizada)) {
             Flash::error('Atividade Realizada não encontrada');
 
-            return redirect(route('atividadesRealizadas.index'));
+            return redirect()->back();
         }
 
         return view('atividades_realizadas.edit')->with('atividadeRealizada', $atividadeRealizada);
@@ -115,14 +115,14 @@ class AtividadeRealizadaController extends AppBaseController
         if (empty($atividadeRealizada)) {
             Flash::error('Atividade Realizada não encontrada');
 
-            return redirect(route('atividadesRealizadas.index'));
+            return redirect()->back();
         }
 
         $atividadeRealizada = $this->atividadeRealizadaRepository->update($request->all(), $id);
 
         Flash::success('Atividade Realizada atualizada com sucesso.');
 
-        return redirect(route('atividadesRealizadas.index'));
+        return redirect(route('manutencoesCivilEletrica.show', $atividadeRealizada->manutencao_id));
     }
 
     /**
@@ -139,13 +139,13 @@ class AtividadeRealizadaController extends AppBaseController
         if (empty($atividadeRealizada)) {
             Flash::error('Atividade Realizada não encontrada');
 
-            return redirect(route('atividadesRealizadas.index'));
+            return redirect()->back();
         }
 
         $this->atividadeRealizadaRepository->delete($id);
 
         Flash::success('Atividade Realizada excluída com sucesso.');
 
-        return redirect(route('atividadesRealizadas.index'));
+        return redirect(route('manutencoesCivilEletrica.show', $atividadeRealizada->manutencao_id));
     }
 }

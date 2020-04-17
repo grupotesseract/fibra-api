@@ -31,7 +31,7 @@
                             <div class="px-5 py-2">
                                 <a class="btn btn-primary form-control" href="{!! route('manutencoesCivilEletrica.create', ['planta_id' => $planta->id, 'empresa_id' => $planta->empresa_id]) !!}">
                                     <i class="fa fa-plus"></i> &nbsp;
-                                    <span> Adicionar Manuntenção Civil/Elétrica </span>
+                                    <span> Adicionar Manutenção Civil/Elétrica </span>
                                 </a>
                             </div>
                             <div class="px-5 py-2">
