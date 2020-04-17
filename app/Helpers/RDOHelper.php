@@ -341,9 +341,9 @@ class RDOHelper extends PhpWordHelper
      * @param mixed $section
      * @param mixed $arrAtividades
      */
-    public function criarSecaoAtividades($section, $arrAtividades = [])
+    public function criarSecaoAtividades($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrAtividades)) {
+        if (!$manutencaoCivilEletrica) {
             $arrAtividades = [
                 [
                     'atividade' => 'Atividade X',
@@ -354,6 +354,14 @@ class RDOHelper extends PhpWordHelper
                     'status' => 'Concluída',
                 ],
             ];
+        } else {
+            $atividadesRealizadas = $manutencaoCivilEletrica->atividadesRealizadas;
+            foreach ($atividadesRealizadas as $atividadeRealizada) {
+                $arrAtividades[] = [
+                    'atividade' => $atividadeRealizada->texto,
+                    'status' => $atividadeRealizada->status ? 'CONCLUÍDA' : 'EM ANDAMENTO'
+                ];
+            }
         }
 
         $estiloTabela = $this->getEstiloTabelaPadrao();
@@ -470,9 +478,9 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoResponsaveis($section, $arrResponsaveis = [])
+    public function criarSecaoResponsaveis($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrResponsaveis)) {
+        if (!$manutencaoCivilEletrica) {
             $arrResponsaveis = [
                 'fibra' => [
                     'nome' => 'Nome Responsavel Fibra',
@@ -481,6 +489,17 @@ class RDOHelper extends PhpWordHelper
                 'cliente' => [
                     'nome' => 'Nome Responsavel Cliente',
                     'empresa' => 'Empresa Cliente',
+                ],
+            ];
+        } else {
+            $arrResponsaveis = [
+                'fibra' => [
+                    'nome' => 'Thiago Pessutto Ruiz',
+                    'empresa' => 'FIBRA Serviços Especializados de Engenharia Ltda',
+                ],
+                'cliente' => [
+                    'nome' => $manutencaoCivilEletrica->equipe_cliente,
+                    'empresa' => $manutencaoCivilEletrica->planta->empresa->nome,
                 ],
             ];
         }

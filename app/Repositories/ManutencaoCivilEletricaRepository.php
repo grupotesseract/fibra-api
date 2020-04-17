@@ -73,20 +73,20 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
         $rdo->criarSecaoEquipeCliente($section, [$manutencaoCivilEletrica->equipe_cliente]);
         $rdo->criarSecaoEquipeFibra($section, $manutencaoCivilEletrica);
         $rdo->criarSecaoDocumentacoes($section, $manutencaoCivilEletrica);     
-        $rdo->criarSecaoAtividades($section);      
-        $rdo->criarSecaoProblemas($section);       
-        $rdo->criarSecaoInformacoes($section);     
-        $rdo->criarSecaoObservacoes($section);     
+        $rdo->criarSecaoAtividades($section, $manutencaoCivilEletrica);
+        $rdo->criarSecaoProblemas($section, [$manutencaoCivilEletrica->problemas_encontrados]);
+        $rdo->criarSecaoInformacoes($section, [$manutencaoCivilEletrica->informacoes_adicionais]);
+        $rdo->criarSecaoObservacoes($section, [$manutencaoCivilEletrica->observacoes]);
         $rdo->criarFooter($section);       
 
         //pagina 2                         
         $section = $rdo::addContainerSecoes($doc); 
         $rdo->criarCabecalhoLogo($section);
-        $rdo->criarSecaoRetanguloAzul($section, 'Local: Xpto Xabaleu');
-        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: XXX LLL YYY');
-        $rdo->criarSecaoRetanguloAzul($section, 'dd/mm/YYYY - DIA-DA-SEMANA'); 
-        $rdo->criarSecaoFotos($section);   
-        $rdo->criarSecaoResponsaveis($section);    
+        $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
+        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
+        $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') .' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
+        $rdo->criarSecaoFotos($section);
+        $rdo->criarSecaoResponsaveis($section, $manutencaoCivilEletrica);   
         $rdo->criarFooter($section);       
 
         return $rdo::salvarDoc($doc);        
