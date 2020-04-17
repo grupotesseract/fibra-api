@@ -68,9 +68,13 @@ class PlantaRepository extends BaseRepository
     public function syncRdo($planta, $input)
     {
         Log::info('Input: '.json_encode($input));
+        $manutencaoCivilEletrica = null;
 
-        DB::transaction(function () use ($input, $planta) {
-            $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
+        DB::transaction(function () use ($input, $planta, &$manutencaoCivilEletrica) {
+            $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
         });
+        
+        return $manutencaoCivilEletrica;
+        
     }
 }
