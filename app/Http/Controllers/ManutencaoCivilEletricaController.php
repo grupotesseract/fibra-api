@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use App\Http\Requests;
-use App\Http\Controllers\AppBaseController;
 use App\DataTables\AtividadeRealizadaDataTable;
 use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\Scopes\PorIdManCivilEletricaScope;
-use App\Repositories\ManutencaoCivilEletricaRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
 use App\Http\Requests\CreateManutencaoCivilEletricaRequest;
 use App\Http\Requests\UpdateManutencaoCivilEletricaRequest;
+use App\Repositories\ManutencaoCivilEletricaRepository;
+use Flash;
+use Response;
 
 class ManutencaoCivilEletricaController extends AppBaseController
 {
@@ -153,7 +153,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
     }
 
     /**
-     * Metodo para fazer o download do relatório de manutencao civil eletrica
+     * Metodo para fazer o download do relatório de manutencao civil eletrica.
      *
      * @param mixed $id
      */
