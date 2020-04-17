@@ -3,7 +3,7 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('manutencoesCivilEletrica.index') }}">Manutenção Civil Elétrica</a>
+              <a href="{!! route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id) !!}">Manutencao Civil/Elétrica</a>
             </li>
             <li class="breadcrumb-item active">Detalhes</li>
      </ol>
@@ -15,7 +15,7 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Detalhes</strong>
-                                  <a href="{{ route('manutencoesCivilEletrica.index') }}" class="btn btn-light">Voltar</a>
+                                  <a href="{!! route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id) !!}" class="btn btn-light">Voltar</a>
                              </div>
                              <div class="card-body">
                                  @include('manutencoes_civil_eletrica.show_fields')
