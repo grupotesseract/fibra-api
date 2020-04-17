@@ -171,7 +171,7 @@ class RDOHelper extends PhpWordHelper
     public function criarSecaoEquipeFibra($section, $manutencaoCivilEletrica = null)
     {
         $arrEquipeFibra = [];
-        if (!$manutencaoCivilEletrica) {
+        if (! $manutencaoCivilEletrica) {
             $arrEquipeFibra = [
                 [
                     'nome' => 'Tecnico 1',
@@ -278,6 +278,7 @@ class RDOHelper extends PhpWordHelper
 
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($path);
+
         return $path;
     }
 
@@ -291,7 +292,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoDocumentacoes($section, $manutencaoCivilEletrica = null)
     {
-        if (!$manutencaoCivilEletrica) {
+        if (! $manutencaoCivilEletrica) {
             $arrLinhasTexto = [
                 '',
                 'IT: ___________________________________.',
@@ -307,10 +308,10 @@ class RDOHelper extends PhpWordHelper
                 "IT: $manutencaoCivilEletrica->it.",
                 "LEM: $manutencaoCivilEletrica->lem.",
                 "LET: $manutencaoCivilEletrica->let.",
-                "OS: $manutencaoCivilEletrica->os.",                
-                "Início da Liberação LEM: ".$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').", Término da Liberação: ".$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').".",
-                "Início da Liberação LET: ".$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').", Término da Liberação: ".$manutencaoCivilEletrica->data_hora_final_let->format('H:i').".",
-                "Início da Atividade: ".$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
+                "OS: $manutencaoCivilEletrica->os.",
+                'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').'.',
+                'Início da Liberação LET: '.$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_let->format('H:i').'.',
+                'Início da Atividade: '.$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
                 '',
             ];
         }
@@ -345,7 +346,7 @@ class RDOHelper extends PhpWordHelper
     public function criarSecaoAtividades($section, $manutencaoCivilEletrica = null)
     {
         $arrAtividades = [];
-        if (!$manutencaoCivilEletrica) {
+        if (! $manutencaoCivilEletrica) {
             $arrAtividades = [
                 [
                     'atividade' => 'Atividade X',
@@ -361,7 +362,7 @@ class RDOHelper extends PhpWordHelper
             foreach ($atividadesRealizadas as $atividadeRealizada) {
                 $arrAtividades[] = [
                     'atividade' => $atividadeRealizada->texto,
-                    'status' => $atividadeRealizada->status ? 'CONCLUÍDA' : 'EM ANDAMENTO'
+                    'status' => $atividadeRealizada->status ? 'CONCLUÍDA' : 'EM ANDAMENTO',
                 ];
             }
         }
@@ -482,7 +483,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoResponsaveis($section, $manutencaoCivilEletrica = null)
     {
-        if (!$manutencaoCivilEletrica) {
+        if (! $manutencaoCivilEletrica) {
             $arrResponsaveis = [
                 'fibra' => [
                     'nome' => 'Nome Responsavel Fibra',

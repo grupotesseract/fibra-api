@@ -149,7 +149,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
         return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
-    public function downloadRelatorio($id) 
+    public function downloadRelatorio($id)
     {
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
@@ -160,7 +160,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
         }
 
         $rdo = $this->manutencaoCivilEletricaRepository->relatorioRDO($manutencaoCivilEletrica);
-        
+
         return \Response::download($rdo);
     }
 }
