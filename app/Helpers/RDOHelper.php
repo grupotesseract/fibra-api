@@ -168,9 +168,9 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoEquipeFibra($section, $arrEquipeFibra = [])
+    public function criarSecaoEquipeFibra($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrEquipeFibra)) {
+        if (!$manutencaoCivilEletrica) {
             $arrEquipeFibra = [
                 [
                     'nome' => 'Tecnico 1',
@@ -187,6 +187,17 @@ class RDOHelper extends PhpWordHelper
                     'saida2' => 'yyy',
                 ],
             ];
+        } else {
+            $equipeFibra = $manutencaoCivilEletrica->usuarios()->with('usuario')->get()->pluck('usuario.nome')->toArray();
+            foreach ($equipeFibra as $equipe) {
+                $arrEquipeFibra[] = [
+                    'nome' => $equipe,
+                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada->format('H:i'),
+                    'saida1' => '12:00',
+                    'entrada2' => '13:00',
+                    'saida2' => $manutencaoCivilEletrica->data_hora_saida->format('H:i'),
+                ];
+            }
         }
 
         $estiloTabela = $this->getEstiloTabelaPadrao();
