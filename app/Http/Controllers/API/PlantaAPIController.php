@@ -126,4 +126,21 @@ class PlantaAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Planta excluída com sucesso');
     }
+
+    /**
+     * Sincronização da programação e quantidades inseridas pelos técnicos.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function syncRdo($idPlanta, Request $request)
+    {
+        $input = $request->all();
+        $planta = $this->plantaRepository->find($idPlanta);
+        
+        dump($planta);
+        dd($input);
+
+        return $this->sendResponse($planta->toArray(), 'RDO sincronizado com sucesso');
+    }
 }

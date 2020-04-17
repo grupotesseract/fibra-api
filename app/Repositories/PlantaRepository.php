@@ -60,4 +60,16 @@ class PlantaRepository extends BaseRepository
             ::pluck('nome', 'id')
             ->all();
     }
+
+    /**
+     * Método responsável por persistir informações de RDO ao banco.
+     */
+    public function sincronizaRdo($planta, $input)
+    {
+        Log::info('Input: '.json_encode($input));
+
+        DB::transaction(function () use ($input, $planta) {
+            
+        });
+    }
 }
