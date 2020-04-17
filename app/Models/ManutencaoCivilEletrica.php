@@ -100,4 +100,14 @@ class ManutencaoCivilEletrica extends Model
     {
         return $this->hasMany(\App\Models\AtividadeRealizada::class, 'manutencao_id');
     }
+
+    /**
+     * Relacionamento com Usuarios.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usuarios()
+    {
+        return $this->hasMany(\App\Models\UsuarioManutencao::class, 'manutencao_id');
+    }
 }

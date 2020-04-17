@@ -148,4 +148,19 @@ class ManutencaoCivilEletricaController extends AppBaseController
 
         return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
+
+    public function downloadRelatorio($id)
+    {
+        $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
+
+        if (empty($manutencaoCivilEletrica)) {
+            Flash::error('Manutencao Civil Eletrica não encontrada');
+
+            return redirect(route('manutencoesCivilEletrica.index'));
+        }
+
+        $rdo = $this->manutencaoCivilEletricaRepository->relatorioRDO($manutencaoCivilEletrica);
+
+        return \Response::download($rdo);
+    }
 }
