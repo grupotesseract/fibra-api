@@ -288,9 +288,9 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoDocumentacoes($section, $arrLinhasTexto = [])
+    public function criarSecaoDocumentacoes($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrLinhasTexto)) {
+        if (!$manutencaoCivilEletrica) {
             $arrLinhasTexto = [
                 '',
                 'IT: ___________________________________.',
@@ -298,6 +298,18 @@ class RDOHelper extends PhpWordHelper
                 'OS:__________________________________. ',
                 'Início da Liberação LEM/LET: ____h____min, Término da Liberação: ____h____min.',
                 'Início da Atividade: ____h____min.',
+                '',
+            ];
+        } else {
+            $arrLinhasTexto = [
+                '',
+                "IT: $manutencaoCivilEletrica->it.",
+                "LEM: $manutencaoCivilEletrica->lem.",
+                "LET: $manutencaoCivilEletrica->let.",
+                "OS: $manutencaoCivilEletrica->os.",                
+                "Início da Liberação LEM: ".$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').", Término da Liberação: ".$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').".",
+                "Início da Liberação LET: ".$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').", Término da Liberação: ".$manutencaoCivilEletrica->data_hora_final_let->format('H:i').".",
+                "Início da Atividade: ".$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
                 '',
             ];
         }

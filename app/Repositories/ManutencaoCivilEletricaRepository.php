@@ -72,7 +72,7 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
         $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') .' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoEquipeCliente($section, [$manutencaoCivilEletrica->equipe_cliente]);
         $rdo->criarSecaoEquipeFibra($section, $manutencaoCivilEletrica);
-        $rdo->criarSecaoDocumentacoes($section);     
+        $rdo->criarSecaoDocumentacoes($section, $manutencaoCivilEletrica);     
         $rdo->criarSecaoAtividades($section);      
         $rdo->criarSecaoProblemas($section);       
         $rdo->criarSecaoInformacoes($section);     
