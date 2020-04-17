@@ -11,6 +11,16 @@ use App\Repositories\BaseRepository;
  */
 class ManutencaoCivilEletricaRepository extends BaseRepository
 {
+    const DIASSEMANA = [
+        'Sunday' => 'DOMINGO',
+        'Monday' => 'SEGUNDA-FEIRA',
+        'Tuesday' => 'TERÇA-FEIRA',
+        'Wednesday' => 'QUARTA-FEIRA',
+        'Thursday' => 'QUINTA-FEIRA',
+        'Friday' => 'SEXTA-FEIRA',
+        'Saturday' => 'SÁBADO',
+    ];
+    
     /**
      * @var array
      */
@@ -52,14 +62,14 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
     public function relatorioRDO($manutencaoCivilEletrica) {
         //inicializando                                   
         $rdo = new \App\Helpers\RDOHelper();
-        $doc = $rdo::criarDoc();           
+        $doc = $rdo::criarDoc();
 
         //pagina 1                         
         $section = $rdo::addContainerSecoes($doc); 
         $rdo->criarCabecalhoLogo($section);
         $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
-        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->planta->nome);
-        $rdo->criarSecaoRetanguloAzul($section, 'dd/mm/YYYY - DIA-DA-SEMANA'); 
+        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
+        $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') .' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoEquipeCliente($section, ['Pessoa1', 'Pessoa2']);       
         $rdo->criarSecaoEquipeFibra($section);     
         $rdo->criarSecaoDocumentacoes($section);     
