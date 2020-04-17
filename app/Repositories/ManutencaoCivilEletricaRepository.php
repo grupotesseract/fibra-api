@@ -60,35 +60,35 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
      * @return Object
      */
     public function relatorioRDO($manutencaoCivilEletrica) {
-        //inicializando                                   
+        
         $rdo = new \App\Helpers\RDOHelper();
         $doc = $rdo::criarDoc();
 
-        //pagina 1                         
-        $section = $rdo::addContainerSecoes($doc); 
+        //pagina 1
+        $section = $rdo::addContainerSecoes($doc);
         $rdo->criarCabecalhoLogo($section);
         $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
         $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
         $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') .' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoEquipeCliente($section, [$manutencaoCivilEletrica->equipe_cliente]);
         $rdo->criarSecaoEquipeFibra($section, $manutencaoCivilEletrica);
-        $rdo->criarSecaoDocumentacoes($section, $manutencaoCivilEletrica);     
+        $rdo->criarSecaoDocumentacoes($section, $manutencaoCivilEletrica);
         $rdo->criarSecaoAtividades($section, $manutencaoCivilEletrica);
         $rdo->criarSecaoProblemas($section, [$manutencaoCivilEletrica->problemas_encontrados]);
         $rdo->criarSecaoInformacoes($section, [$manutencaoCivilEletrica->informacoes_adicionais]);
         $rdo->criarSecaoObservacoes($section, [$manutencaoCivilEletrica->observacoes]);
-        $rdo->criarFooter($section);       
+        $rdo->criarFooter($section);
 
-        //pagina 2                         
+        //pagina 2      
         $section = $rdo::addContainerSecoes($doc); 
         $rdo->criarCabecalhoLogo($section);
         $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
         $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
         $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') .' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoFotos($section);
-        $rdo->criarSecaoResponsaveis($section, $manutencaoCivilEletrica);   
-        $rdo->criarFooter($section);       
+        $rdo->criarSecaoResponsaveis($section, $manutencaoCivilEletrica);  
+        $rdo->criarFooter($section);
 
-        return $rdo::salvarDoc($doc);        
+        return $rdo::salvarDoc($doc);
     }
 }
