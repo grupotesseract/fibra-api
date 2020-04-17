@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('plantas.quantidadesMinimas');
     Route::post('plantas/{id}/quantidades-minimas', 'PlantaController@postQuantidadesMinimasPlanta')
         ->name('plantas.addQuantidadesMinimas');
+    Route::get('plantas/{id}/manutencoes-civil-eletrica', 'PlantaController@getManCivilEletricaPlanta')
+        ->name('plantas.manutencoesCivilEletrica');
 
     Route::resource('itens', 'ItemController');
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')

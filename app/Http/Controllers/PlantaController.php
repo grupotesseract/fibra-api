@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\ItensDaPlantaDataTable;
 use App\DataTables\PlantaDataTable;
 use App\DataTables\ProgramacoesDaPlantaDataTable;
+use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\QuantidadeMinimaDataTable;
 use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Http\Controllers\AppBaseController;
@@ -254,5 +255,27 @@ class PlantaController extends AppBaseController
         $result = $this->qntMinimaRepository->create($request->all());
 
         return $this->sendResponse($result, 'Quantidade mínima adicionada com sucesso');
+    }
+
+
+
+    /**
+     * Metodo para servir a view com a datatable de manutencoes civil eletrica de uma planta.
+     *
+     * @param ItensDaPlantaDataTable $datatable
+     * @param mixed $id
+     */
+    public function getManCivilEletricaPlanta(ManutencaoCivilEletricaDataTable $datatable, $id)
+    {
+        $planta = $this->plantaRepository->find($id);
+
+        if (empty($planta)) {
+            Flash::error('Planta não encontrada');
+
+            return redirect(route('plantas.index'));
+        }
+
+        return $datatable->addScope(new PorIdPlantaScope($id))
+                         ->render('plantas.show_man_civil_eletrica', compact('planta'));
     }
 }
