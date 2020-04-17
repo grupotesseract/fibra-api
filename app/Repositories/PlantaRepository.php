@@ -4,8 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Planta;
 use App\Repositories\BaseRepository;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 /**
  * Class PlantaRepository.
  * @version September 9, 2019, 4:03 pm -03
@@ -74,8 +75,7 @@ class PlantaRepository extends BaseRepository
             $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
             $manutencaoCivilEletrica->atividadesRealizadas()->createMany($input['atividades_realizadas']);
         });
-        
+
         return $manutencaoCivilEletrica;
-        
     }
 }
