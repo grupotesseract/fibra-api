@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ItensDaPlantaDataTable;
+use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\PlantaDataTable;
 use App\DataTables\ProgramacoesDaPlantaDataTable;
-use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\QuantidadeMinimaDataTable;
 use App\DataTables\Scopes\PorIdPlantaScope;
 use App\Http\Controllers\AppBaseController;
@@ -256,8 +256,6 @@ class PlantaController extends AppBaseController
 
         return $this->sendResponse($result, 'Quantidade mínima adicionada com sucesso');
     }
-
-
 
     /**
      * Metodo para servir a view com a datatable de manutencoes civil eletrica de uma planta.
