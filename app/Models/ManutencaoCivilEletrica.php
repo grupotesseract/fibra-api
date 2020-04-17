@@ -53,6 +53,7 @@ class ManutencaoCivilEletrica extends Model
         'lem',
         'let',
         'os',
+        'planta_id',
     ];
 
     /**
