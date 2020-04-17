@@ -49,7 +49,10 @@ class ManutencaoCivilEletrica extends Model
         'data_hora_inicio_let',
         'data_hora_final_let',
         'data_hora_inicio_atividades',
-        'planta_id',
+        'it',
+        'lem',
+        'let',
+        'os',
     ];
 
     /**
@@ -85,5 +88,15 @@ class ManutencaoCivilEletrica extends Model
     public function planta()
     {
         return $this->belongsTo(\App\Models\Planta::class, 'planta_id');
+    }
+
+    /**
+     * Relacionamento com Atividades Realizadas.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function atividadesRealizadas()
+    {
+        return $this->hasMany(\App\Models\AtividadeRealizada::class, 'manutencao_id');
     }
 }
