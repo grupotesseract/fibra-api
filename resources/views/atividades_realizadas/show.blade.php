@@ -3,7 +3,7 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('atividadesRealizadas.index') }}">Atividade Realizada</a>
+                <a href="{{ route('manutencoesCivilEletrica.show', $atividadeRealizada->manutencao_id) }}">Atividade Realizada</a>
             </li>
             <li class="breadcrumb-item active">Detalhes</li>
      </ol>
@@ -15,7 +15,7 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Detalhes</strong>
-                                  <a href="{{ route('atividadesRealizadas.index') }}" class="btn btn-light">Voltar</a>
+                                  <a href="{{ route('manutencoesCivilEletrica.show', $atividadeRealizada->manutencao_id) }}" class="btn btn-light">Voltar</a>
                              </div>
                              <div class="card-body">
                                  @include('atividades_realizadas.show_fields')

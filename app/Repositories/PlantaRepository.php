@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Planta;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class PlantaRepository.
@@ -59,5 +61,22 @@ class PlantaRepository extends BaseRepository
         return $this->model()
             ::pluck('nome', 'id')
             ->all();
+    }
+
+    /**
+     * Método responsável por persistir informações de RDO ao banco.
+     */
+    public function syncRdo($planta, $input)
+    {
+        Log::info('Input: '.json_encode($input));
+        $manutencaoCivilEletrica = null;
+
+        DB::transaction(function () use ($input, $planta, &$manutencaoCivilEletrica) {
+            $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
+            $manutencaoCivilEletrica->atividadesRealizadas()->createMany($input['atividades_realizadas']);
+            $manutencaoCivilEletrica->usuarios()->createMany($input['usuarios_manutencao']);
+        });
+
+        return $manutencaoCivilEletrica;
     }
 }

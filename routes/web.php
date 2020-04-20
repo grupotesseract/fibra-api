@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('plantas.quantidadesMinimas');
     Route::post('plantas/{id}/quantidades-minimas', 'PlantaController@postQuantidadesMinimasPlanta')
         ->name('plantas.addQuantidadesMinimas');
+    Route::get('plantas/{id}/manutencoes-civil-eletrica', 'PlantaController@getManCivilEletricaPlanta')
+        ->name('plantas.manutencoesCivilEletrica');
 
     Route::resource('itens', 'ItemController');
     Route::post('itens/{id}/materiais', 'ItemController@postAssociarMaterial')
@@ -67,6 +69,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/programacoes/{id}/relatorio-fotos-download', 'RelatorioFotograficoController@downloadRelatorioFotos')
         ->name('relatorioFotografico.download');
 
+    Route::get('/plantas/rdo/{idRdo}/relatorio-download', 'ManutencaoCivilEletricaController@downloadRelatorio')
+        ->name('relatorioRdo.download');
+
     Route::get('programacoes/{id}/comentarios', 'ProgramacaoController@getGerenciarComentarios')
         ->name('programacoes.comentarios');
     Route::get('programacoes/{id}/datasManutencoes', 'ProgramacaoController@getDatasManutencoes')
@@ -95,5 +100,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('datasManutencoes', 'DataManutencaoController');
     Route::resource('manutencoesCivilEletrica', 'ManutencaoCivilEletricaController');
     Route::resource('usuariosManutencoes', 'UsuarioManutencaoController');
+
     Route::resource('atividadesRealizadas', 'AtividadeRealizadaController');
 });

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AtividadeRealizadaDataTable;
 use App\DataTables\ManutencaoCivilEletricaDataTable;
+use App\DataTables\Scopes\PorIdManCivilEletricaScope;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateManutencaoCivilEletricaRequest;
@@ -57,7 +59,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
 
         Flash::success('Manutencao Civil Eletrica salva com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
     /**
@@ -67,7 +69,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(AtividadeRealizadaDataTable $dataTable, $id)
     {
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
 
@@ -77,7 +79,8 @@ class ManutencaoCivilEletricaController extends AppBaseController
             return redirect(route('manutencoesCivilEletrica.index'));
         }
 
-        return view('manutencoes_civil_eletrica.show')->with('manutencaoCivilEletrica', $manutencaoCivilEletrica);
+        return $dataTable->addScope(new PorIdManCivilEletricaScope($id))
+            ->render('manutencoes_civil_eletrica.show', compact('manutencaoCivilEletrica'));
     }
 
     /**
@@ -115,14 +118,14 @@ class ManutencaoCivilEletricaController extends AppBaseController
         if (empty($manutencaoCivilEletrica)) {
             Flash::error('Manutencao Civil Eletrica não encontrada');
 
-            return redirect(route('manutencoesCivilEletrica.index'));
+            return redirect()->back();
         }
 
         $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->update($request->all(), $id);
 
         Flash::success('Manutencao Civil Eletrica atualizada com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
     }
 
     /**
@@ -139,13 +142,33 @@ class ManutencaoCivilEletricaController extends AppBaseController
         if (empty($manutencaoCivilEletrica)) {
             Flash::error('Manutencao Civil Eletrica não encontrada');
 
-            return redirect(route('manutencoesCivilEletrica.index'));
+            return redirect()->back();
         }
 
         $this->manutencaoCivilEletricaRepository->delete($id);
 
         Flash::success('Manutencao Civil Eletrica excluída com sucesso.');
 
-        return redirect(route('manutencoesCivilEletrica.index'));
+        return redirect(route('plantas.manutencoesCivilEletrica', $manutencaoCivilEletrica->planta_id));
+    }
+
+    /**
+     * Metodo para fazer o download do relatório de manutencao civil eletrica.
+     *
+     * @param mixed $id
+     */
+    public function downloadRelatorio($id)
+    {
+        $manutencaoCivilEletrica = $this->manutencaoCivilEletricaRepository->find($id);
+
+        if (empty($manutencaoCivilEletrica)) {
+            Flash::error('Manutencao Civil Eletrica não encontrada');
+
+            return redirect(route('manutencoesCivilEletrica.index'));
+        }
+
+        $rdo = $this->manutencaoCivilEletricaRepository->relatorioRDO($manutencaoCivilEletrica);
+
+        return \Response::download($rdo);
     }
 }

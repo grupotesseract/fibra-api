@@ -168,9 +168,10 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoEquipeFibra($section, $arrEquipeFibra = [])
+    public function criarSecaoEquipeFibra($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrEquipeFibra)) {
+        $arrEquipeFibra = [];
+        if (! $manutencaoCivilEletrica) {
             $arrEquipeFibra = [
                 [
                     'nome' => 'Tecnico 1',
@@ -187,6 +188,17 @@ class RDOHelper extends PhpWordHelper
                     'saida2' => 'yyy',
                 ],
             ];
+        } else {
+            $equipeFibra = $manutencaoCivilEletrica->usuarios()->with('usuario')->get()->pluck('usuario.nome')->toArray();
+            foreach ($equipeFibra as $equipe) {
+                $arrEquipeFibra[] = [
+                    'nome' => $equipe,
+                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada->format('H:i'),
+                    'saida1' => '12:00',
+                    'entrada2' => '13:00',
+                    'saida2' => $manutencaoCivilEletrica->data_hora_saida->format('H:i'),
+                ];
+            }
         }
 
         $estiloTabela = $this->getEstiloTabelaPadrao();
@@ -266,6 +278,8 @@ class RDOHelper extends PhpWordHelper
 
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($path);
+
+        return $path;
     }
 
     /**
@@ -276,9 +290,9 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoDocumentacoes($section, $arrLinhasTexto = [])
+    public function criarSecaoDocumentacoes($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrLinhasTexto)) {
+        if (! $manutencaoCivilEletrica) {
             $arrLinhasTexto = [
                 '',
                 'IT: ___________________________________.',
@@ -286,6 +300,18 @@ class RDOHelper extends PhpWordHelper
                 'OS:__________________________________. ',
                 'Início da Liberação LEM/LET: ____h____min, Término da Liberação: ____h____min.',
                 'Início da Atividade: ____h____min.',
+                '',
+            ];
+        } else {
+            $arrLinhasTexto = [
+                '',
+                "IT: $manutencaoCivilEletrica->it.",
+                "LEM: $manutencaoCivilEletrica->lem.",
+                "LET: $manutencaoCivilEletrica->let.",
+                "OS: $manutencaoCivilEletrica->os.",
+                'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').'.',
+                'Início da Liberação LET: '.$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_let->format('H:i').'.',
+                'Início da Atividade: '.$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
                 '',
             ];
         }
@@ -317,9 +343,10 @@ class RDOHelper extends PhpWordHelper
      * @param mixed $section
      * @param mixed $arrAtividades
      */
-    public function criarSecaoAtividades($section, $arrAtividades = [])
+    public function criarSecaoAtividades($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrAtividades)) {
+        $arrAtividades = [];
+        if (! $manutencaoCivilEletrica) {
             $arrAtividades = [
                 [
                     'atividade' => 'Atividade X',
@@ -330,6 +357,14 @@ class RDOHelper extends PhpWordHelper
                     'status' => 'Concluída',
                 ],
             ];
+        } else {
+            $atividadesRealizadas = $manutencaoCivilEletrica->atividadesRealizadas;
+            foreach ($atividadesRealizadas as $atividadeRealizada) {
+                $arrAtividades[] = [
+                    'atividade' => $atividadeRealizada->texto,
+                    'status' => $atividadeRealizada->status ? 'CONCLUÍDA' : 'EM ANDAMENTO',
+                ];
+            }
         }
 
         $estiloTabela = $this->getEstiloTabelaPadrao();
@@ -446,9 +481,9 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoResponsaveis($section, $arrResponsaveis = [])
+    public function criarSecaoResponsaveis($section, $manutencaoCivilEletrica = null)
     {
-        if (empty($arrResponsaveis)) {
+        if (! $manutencaoCivilEletrica) {
             $arrResponsaveis = [
                 'fibra' => [
                     'nome' => 'Nome Responsavel Fibra',
@@ -457,6 +492,17 @@ class RDOHelper extends PhpWordHelper
                 'cliente' => [
                     'nome' => 'Nome Responsavel Cliente',
                     'empresa' => 'Empresa Cliente',
+                ],
+            ];
+        } else {
+            $arrResponsaveis = [
+                'fibra' => [
+                    'nome' => 'Thiago Pessutto Ruiz',
+                    'empresa' => 'FIBRA Serviços Especializados de Engenharia Ltda',
+                ],
+                'cliente' => [
+                    'nome' => $manutencaoCivilEletrica->equipe_cliente,
+                    'empresa' => $manutencaoCivilEletrica->planta->empresa->nome,
                 ],
             ];
         }
