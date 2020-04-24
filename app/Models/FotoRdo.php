@@ -20,7 +20,7 @@ class FotoRdo extends Model
     use SoftDeletes;
 
     public $table = 'fotos_rdo';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -59,5 +59,49 @@ class FotoRdo extends Model
     public function manutencao()
     {
         return $this->belongsTo(\App\Models\ManutencaoCivilEletrica::class, 'manutencao_id');
+    }
+
+    /**
+     * Acessor para o path completo da foto no filesystem.
+     */
+    public function getPathCompletoAttribute()
+    {
+        return storage_path().'/app/'.$this->path;
+    }
+
+    /**
+     * getURLCloudinaryAttribute.
+     *
+     * @return string
+     */
+    public function getURLCloudinaryAttribute()
+    {
+        return 'https://res.cloudinary.com/'
+            .config('cloudinary.CLOUDINARY_CLOUD_NAME')
+            .'/image/upload/f_auto,q_auto/'
+            ."$this->cloudinary_id";
+    }
+
+    /**
+     * Acessor para a URL sem SSL do cloudinary com o encoding de caracteres e extensao .jpeg.
+     *
+     * @return string
+     */
+    public function getURLParaRelatorioAttribute()
+    {
+        return 'http://res.cloudinary.com/'
+            .config('cloudinary.CLOUDINARY_CLOUD_NAME')
+            .'/image/upload/q_auto'
+            .urlencode("/$this->cloudinary_id.jpeg");
+    }
+
+    /**
+     * Path de pastas no Cloudinary.
+     *
+     * @return string
+     */
+    public function getPathCloudinaryAttribute()
+    {
+        return "MANUTENCAO_$this->manutencao_id/";
     }
 }
