@@ -109,3 +109,9 @@
         <span>Atividades Realizadas</span>
     </a>
 </li> --}}
+{{-- <li class="nav-item {{ Request::is('itensAlterados*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('itensAlterados.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Itens Alterados</span>
+    </a>
+</li> --}}

@@ -156,6 +156,14 @@ class Programacao extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function itensAlterados()
+    {
+        return $this->hasMany(\App\Models\ItemAlterado::class, 'programacao_id');
+    }
+
+    /**
      * Acessor para Data Inicio Prevista formatada.
      *
      * @param string $value
