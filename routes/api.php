@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
     Route::resource('atividades_realizadas', 'AtividadeRealizadaAPIController');
 
     Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');
-    Route::post('manutencoes_civil_eletrica/{idManutencao}/fotos', [
+    Route::post('sync/plantas/rdo/{idManutencao}/fotos', [
         'uses' => 'ManutencaoCivilEletricaAPIController@syncFotos',
         'throttle:500,1',
     ]);
