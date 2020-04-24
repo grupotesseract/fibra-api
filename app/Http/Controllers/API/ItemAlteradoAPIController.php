@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateItemAlteradoAPIRequest;
 use App\Http\Requests\API\UpdateItemAlteradoAPIRequest;
 use App\Models\ItemAlterado;
 use App\Repositories\ItemAlteradoRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class ItemAlteradoController
- * @package App\Http\Controllers\API
+ * Class ItemAlteradoController.
  */
-
 class ItemAlteradoAPIController extends AppBaseController
 {
-    /** @var  ItemAlteradoRepository */
+    /** @var ItemAlteradoRepository */
     private $itemAlteradoRepository;
 
     public function __construct(ItemAlteradoRepository $itemAlteradoRepo)
@@ -27,7 +25,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
     /**
      * Display a listing of the ItemAlterado.
-     * GET|HEAD /itensAlterados
+     * GET|HEAD /itensAlterados.
      *
      * @param Request $request
      * @return Response
@@ -45,7 +43,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
     /**
      * Store a newly created ItemAlterado in storage.
-     * POST /itensAlterados
+     * POST /itensAlterados.
      *
      * @param CreateItemAlteradoAPIRequest $request
      *
@@ -62,7 +60,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
     /**
      * Display the specified ItemAlterado.
-     * GET|HEAD /itensAlterados/{id}
+     * GET|HEAD /itensAlterados/{id}.
      *
      * @param int $id
      *
@@ -82,7 +80,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
     /**
      * Update the specified ItemAlterado in storage.
-     * PUT/PATCH /itensAlterados/{id}
+     * PUT/PATCH /itensAlterados/{id}.
      *
      * @param int $id
      * @param UpdateItemAlteradoAPIRequest $request
@@ -107,7 +105,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
     /**
      * Remove the specified ItemAlterado from storage.
-     * DELETE /itensAlterados/{id}
+     * DELETE /itensAlterados/{id}.
      *
      * @param int $id
      *

@@ -6,34 +6,30 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class ItemAlterado
- * @package App\Models
+ * Class ItemAlterado.
  * @version April 24, 2020, 3:13 pm -03
  *
  * @property \App\Models\Programacao programacao
  * @property \App\Models\Item item
  * @property \App\Models\Material material
- * @property integer programacao_id
- * @property integer item_id
- * @property integer material_id
- * @property integer quantidade_instalada
+ * @property int programacao_id
+ * @property int item_id
+ * @property int material_id
+ * @property int quantidade_instalada
  */
 class ItemAlterado extends Model
 {
     use SoftDeletes;
 
     public $table = 'itens_alterados';
-    
 
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'programacao_id',
         'item_id',
         'material_id',
-        'quantidade_instalada'
+        'quantidade_instalada',
     ];
 
     /**
@@ -46,11 +42,11 @@ class ItemAlterado extends Model
         'programacao_id' => 'integer',
         'item_id' => 'integer',
         'material_id' => 'integer',
-        'quantidade_instalada' => 'integer'
+        'quantidade_instalada' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -58,7 +54,7 @@ class ItemAlterado extends Model
         'programacao_id' => 'required',
         'item_id' => 'required',
         'material_id' => 'required',
-        'quantidade_instalada' => 'required'
+        'quantidade_instalada' => 'required',
     ];
 
     /**

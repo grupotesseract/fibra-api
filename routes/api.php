@@ -83,5 +83,4 @@ Route::fallback(function () {
     ], 404);
 });
 
-
 Route::resource('itens_alterados', 'ItemAlteradoAPIController');

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ItemAlteradoDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateItemAlteradoRequest;
 use App\Http\Requests\UpdateItemAlteradoRequest;
 use App\Repositories\ItemAlteradoRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ItemAlteradoController extends AppBaseController
 {
-    /** @var  ItemAlteradoRepository */
+    /** @var ItemAlteradoRepository */
     private $itemAlteradoRepository;
 
     public function __construct(ItemAlteradoRepository $itemAlteradoRepo)

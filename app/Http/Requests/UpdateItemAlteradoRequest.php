@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\ItemAlterado;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateItemAlteradoRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,7 @@ class UpdateItemAlteradoRequest extends FormRequest
     public function rules()
     {
         $rules = ItemAlterado::$rules;
-        
+
         return $rules;
     }
 }

@@ -25,7 +25,7 @@ class UpdateItemAlteradoAPIRequest extends APIRequest
     public function rules()
     {
         $rules = ItemAlterado::$rules;
-        
+
         return $rules;
     }
 }
