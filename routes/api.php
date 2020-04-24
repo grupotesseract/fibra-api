@@ -82,3 +82,6 @@ Route::fallback(function () {
         'message' => 'Rota não encontrada',
     ], 404);
 });
+
+
+Route::resource('itens_alterados', 'ItemAlteradoAPIController');
