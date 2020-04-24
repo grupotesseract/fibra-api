@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\ItemAlterado;
-use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ItemAlteradoDataTable extends DataTable
 {
@@ -161,7 +161,7 @@ class ItemAlteradoDataTable extends DataTable
                 'filterable' => false,
                 'visible' => false,
             ],
-            'quantidade_instalada'
+            'quantidade_instalada',
         ];
     }
 
@@ -172,6 +172,6 @@ class ItemAlteradoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'itens_alteradosdatatable_' . time();
+        return 'itens_alteradosdatatable_'.time();
     }
 }

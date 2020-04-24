@@ -6,11 +6,9 @@ use App\Models\ItemAlterado;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ItemAlteradoRepository
- * @package App\Repositories
+ * Class ItemAlteradoRepository.
  * @version April 24, 2020, 3:13 pm -03
-*/
-
+ */
 class ItemAlteradoRepository extends BaseRepository
 {
     /**
@@ -20,11 +18,11 @@ class ItemAlteradoRepository extends BaseRepository
         'programacao_id',
         'item_id',
         'material_id',
-        'quantidade_instalada'
+        'quantidade_instalada',
     ];
 
     /**
-     * Return searchable fields
+     * Return searchable fields.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class ItemAlteradoRepository extends BaseRepository
     }
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
