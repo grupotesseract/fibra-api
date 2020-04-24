@@ -53,8 +53,6 @@ class SincronizarFotos extends Command
             }
         });
 
-
-
         /** Envio das fotos representadas pelo App\Models\FotoRdo **/
         $fotoRdoRepository = new \App\Repositories\FotoRdoRepository(app());
         $fotoRdosLocais = $fotoRdoRepository->model()::whereNull('cloudinary_id')->get();

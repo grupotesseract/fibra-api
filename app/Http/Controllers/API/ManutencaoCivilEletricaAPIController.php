@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use Response;
-use Illuminate\Http\Request;
-use App\Repositories\FotoRdoRepository;
-use App\Models\ManutencaoCivilEletrica;
 use App\Http\Controllers\AppBaseController;
-use App\Repositories\ManutencaoCivilEletricaRepository;
 use App\Http\Requests\API\CreateManutencaoCivilEletricaAPIRequest;
 use App\Http\Requests\API\UpdateManutencaoCivilEletricaAPIRequest;
+use App\Models\ManutencaoCivilEletrica;
+use App\Repositories\FotoRdoRepository;
+use App\Repositories\ManutencaoCivilEletricaRepository;
+use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class ManutencaoCivilEletricaController.
@@ -23,12 +23,12 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
     private $fotoRdoRepository;
 
     /**
-     * __construct
+     * __construct.
      *
      * @param ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo
      * @param FotoRdoRepository $fotoRepo
      */
-    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo, FotoRdoRepository $fotoRepo )
+    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo, FotoRdoRepository $fotoRepo)
     {
         $this->manutencaoCivilEletricaRepository = $manutencaoCivilEletricaRepo;
         $this->fotoRdoRepository = $fotoRepo;
@@ -139,7 +139,7 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
     }
 
     /**
-     * Sincronização das fotos do RDO dessa ManutencaoCivilEletrica
+     * Sincronização das fotos do RDO dessa ManutencaoCivilEletrica.
      *
      * @param int $idManutencao
      * @param Request $request
