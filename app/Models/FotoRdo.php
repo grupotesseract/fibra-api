@@ -6,14 +6,13 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class FotoRdo
- * @package App\Models
+ * Class FotoRdo.
  * @version April 24, 2020, 2:50 pm -03
  *
  * @property \App\Models\ManutencaoCivilEletrica manutencao
  * @property string cloudinary_id
  * @property string path
- * @property integer manutencao_id
+ * @property int manutencao_id
  */
 class FotoRdo extends Model
 {
@@ -21,15 +20,12 @@ class FotoRdo extends Model
 
     public $table = 'fotos_rdo';
 
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'cloudinary_id',
         'path',
-        'manutencao_id'
+        'manutencao_id',
     ];
 
     /**
@@ -41,16 +37,16 @@ class FotoRdo extends Model
         'id' => 'integer',
         'cloudinary_id' => 'string',
         'path' => 'string',
-        'manutencao_id' => 'integer'
+        'manutencao_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'manutencao_id' => 'required'
+        'manutencao_id' => 'required',
     ];
 
     /**

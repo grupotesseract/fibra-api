@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateFotosRdoTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
