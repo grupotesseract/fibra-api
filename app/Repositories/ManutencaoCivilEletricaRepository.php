@@ -63,6 +63,7 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
     {
         $rdo = new \App\Helpers\RDOHelper();
         $doc = $rdo::criarDoc();
+        $arrURLFotos = $manutencaoCivilEletrica->fotos->pluck('URLParaRelatorio')->all();
 
         //pagina 1
         $section = $rdo::addContainerSecoes($doc);
@@ -85,7 +86,7 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
         $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
         $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
         $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y').' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
-        $rdo->criarSecaoFotos($section);
+        $rdo->criarSecaoFotos($section, $arrURLFotos);
         $rdo->criarSecaoResponsaveis($section, $manutencaoCivilEletrica);
         $rdo->criarFooter($section);
 
