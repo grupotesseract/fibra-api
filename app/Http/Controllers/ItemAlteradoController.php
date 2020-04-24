@@ -55,7 +55,7 @@ class ItemAlteradoController extends AppBaseController
 
         $itemAlterado = $this->itemAlteradoRepository->create($input);
 
-        Flash::success('Item Alterado saved successfully.');
+        Flash::success('Item Alterado salvo com sucesso.');
 
         return redirect(route('itensAlterados.index'));
     }
@@ -72,7 +72,7 @@ class ItemAlteradoController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            Flash::error('Item Alterado not found');
+            Flash::error('Item Alterado não encontrado');
 
             return redirect(route('itensAlterados.index'));
         }
@@ -92,7 +92,7 @@ class ItemAlteradoController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            Flash::error('Item Alterado not found');
+            Flash::error('Item Alterado não encontrado');
 
             return redirect(route('itensAlterados.index'));
         }
@@ -113,14 +113,14 @@ class ItemAlteradoController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            Flash::error('Item Alterado not found');
+            Flash::error('Item Alterado não encontrado');
 
             return redirect(route('itensAlterados.index'));
         }
 
         $itemAlterado = $this->itemAlteradoRepository->update($request->all(), $id);
 
-        Flash::success('Item Alterado updated successfully.');
+        Flash::success('Item Alterado atualizado com sucesso.');
 
         return redirect(route('itensAlterados.index'));
     }
@@ -137,14 +137,14 @@ class ItemAlteradoController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            Flash::error('Item Alterado not found');
+            Flash::error('Item Alterado não encontrado');
 
             return redirect(route('itensAlterados.index'));
         }
 
         $this->itemAlteradoRepository->delete($id);
 
-        Flash::success('Item Alterado deleted successfully.');
+        Flash::success('Item Alterado excluído com sucesso.');
 
         return redirect(route('itensAlterados.index'));
     }

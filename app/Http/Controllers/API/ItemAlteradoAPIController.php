@@ -40,7 +40,7 @@ class ItemAlteradoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($itensAlterados->toArray(), 'Itens Alterados retrieved successfully');
+        return $this->sendResponse($itensAlterados->toArray(), 'Itens Alterados listados com sucesso');
     }
 
     /**
@@ -57,7 +57,7 @@ class ItemAlteradoAPIController extends AppBaseController
 
         $itemAlterado = $this->itemAlteradoRepository->create($input);
 
-        return $this->sendResponse($itemAlterado->toArray(), 'Item Alterado saved successfully');
+        return $this->sendResponse($itemAlterado->toArray(), 'Item Alterado salvo com sucesso');
     }
 
     /**
@@ -74,10 +74,10 @@ class ItemAlteradoAPIController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            return $this->sendError('Item Alterado not found');
+            return $this->sendError('Item Alterado não encontrado');
         }
 
-        return $this->sendResponse($itemAlterado->toArray(), 'Item Alterado retrieved successfully');
+        return $this->sendResponse($itemAlterado->toArray(), 'Item Alterado listado com sucesso');
     }
 
     /**
@@ -97,12 +97,12 @@ class ItemAlteradoAPIController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            return $this->sendError('Item Alterado not found');
+            return $this->sendError('Item Alterado não encontrado');
         }
 
         $itemAlterado = $this->itemAlteradoRepository->update($input, $id);
 
-        return $this->sendResponse($itemAlterado->toArray(), 'ItemAlterado updated successfully');
+        return $this->sendResponse($itemAlterado->toArray(), 'Item Alterado atualizado com sucesso');
     }
 
     /**
@@ -121,11 +121,11 @@ class ItemAlteradoAPIController extends AppBaseController
         $itemAlterado = $this->itemAlteradoRepository->find($id);
 
         if (empty($itemAlterado)) {
-            return $this->sendError('Item Alterado not found');
+            return $this->sendError('Item Alterado não encontrado');
         }
 
         $itemAlterado->delete();
 
-        return $this->sendSuccess('Item Alterado deleted successfully');
+        return $this->sendSuccess('Item Alterado excluído com sucesso');
     }
 }

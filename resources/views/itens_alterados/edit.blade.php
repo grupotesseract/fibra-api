@@ -5,7 +5,7 @@
           <li class="breadcrumb-item">
              <a href="{!! route('itensAlterados.index') !!}">Item Alterado</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">Editar</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Item Alterado</strong>
+                              <strong>Editar Item Alterado</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($itemAlterado, ['route' => ['itensAlterados.update', $itemAlterado->id], 'method' => 'patch']) !!}
