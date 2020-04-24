@@ -11,6 +11,6 @@ class ItensAlteradosTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(App\Models\ItemAlterado::class, 100)->create();
     }
 }
