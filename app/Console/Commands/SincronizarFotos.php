@@ -37,6 +37,7 @@ class SincronizarFotos extends Command
      */
     public function handle()
     {
+        /** Envio das fotos representadas pelo App\Models\Foto **/
         $fotoRepository = new \App\Repositories\FotoRepository(app());
         $fotosLocais = $fotoRepository->model()::whereNull('cloudinary_id')->get();
 
@@ -49,6 +50,23 @@ class SincronizarFotos extends Command
             $enviou = $fotoRepository->enviarCloudinary($Foto, $Foto->id, $pathCloudinary);
             if ($enviou) {
                 $fotoRepository->deleteLocal($Foto->id);
+            }
+        });
+
+
+
+        /** Envio das fotos representadas pelo App\Models\FotoRdo **/
+        $fotoRdoRepository = new \App\Repositories\FotoRdoRepository(app());
+        $fotoRdosLocais = $fotoRdoRepository->model()::whereNull('cloudinary_id')->get();
+
+        \Log::info('[SincronizaFotoRdos] FotoRdos para enviar: '.$fotoRdosLocais->count());
+        $fotoRdosLocais->each(function ($FotoRdo) use ($fotoRdoRepository) {
+            $ambiente = \App::environment();
+            $pathCloudinary = "$ambiente/$FotoRdo->pathCloudinary";
+
+            $enviou = $fotoRdoRepository->enviarCloudinary($FotoRdo, $FotoRdo->id, $pathCloudinary);
+            if ($enviou) {
+                $fotoRdoRepository->deleteLocal($FotoRdo->id);
             }
         });
     }
