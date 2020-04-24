@@ -75,6 +75,9 @@ class ProgramacaoRepository extends BaseRepository
 
             //QUANTIDADES SUBSTITUIDAS
             $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
+            
+            //ITENS ALTERADOS
+            $programacao->itensAlterados()->createMany($input['itensAlterados']);
 
             //DATAS DAS MANUTENÇÕES
 
