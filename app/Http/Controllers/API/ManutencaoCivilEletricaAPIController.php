@@ -6,6 +6,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateManutencaoCivilEletricaAPIRequest;
 use App\Http\Requests\API\UpdateManutencaoCivilEletricaAPIRequest;
 use App\Models\ManutencaoCivilEletrica;
+use App\Repositories\FotoRdoRepository;
 use App\Repositories\ManutencaoCivilEletricaRepository;
 use Illuminate\Http\Request;
 use Response;
@@ -18,9 +19,19 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
     /** @var ManutencaoCivilEletricaRepository */
     private $manutencaoCivilEletricaRepository;
 
-    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo)
+    /** @var FotoRdoRepository */
+    private $fotoRdoRepository;
+
+    /**
+     * __construct.
+     *
+     * @param ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo
+     * @param FotoRdoRepository $fotoRepo
+     */
+    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo, FotoRdoRepository $fotoRepo)
     {
         $this->manutencaoCivilEletricaRepository = $manutencaoCivilEletricaRepo;
+        $this->fotoRdoRepository = $fotoRepo;
     }
 
     /**
@@ -125,5 +136,24 @@ class ManutencaoCivilEletricaAPIController extends AppBaseController
         $manutencaoCivilEletrica->delete();
 
         return $this->sendSuccess('Manutencao Civil Eletrica excluída com sucesso');
+    }
+
+    /**
+     * Sincronização das fotos do RDO dessa ManutencaoCivilEletrica.
+     *
+     * @param int $idManutencao
+     * @param Request $request
+     * @return Response - Fotos criadas
+     */
+    public function syncFotos($idManutencao, Request $request)
+    {
+        $manutencao = $this->manutencaoCivilEletricaRepository->find($idManutencao);
+        if (empty($manutencao)) {
+            return $this->sendError('Manutenção Civil Eletrica não encontrada');
+        }
+
+        $fotos = $this->fotoRdoRepository->sincronizarFotos($idManutencao, $request);
+
+        return $this->sendResponse($fotos, 'Fotos da manutenção salvas com sucesso');
     }
 }

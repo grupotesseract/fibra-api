@@ -103,3 +103,5 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::resource('atividadesRealizadas', 'AtividadeRealizadaController');
 });
+
+Route::resource('itensAlterados', 'ItemAlteradoController');
