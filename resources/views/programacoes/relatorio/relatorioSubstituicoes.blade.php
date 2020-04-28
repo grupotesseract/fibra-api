@@ -9,9 +9,9 @@
         <th><strong>Tipo</strong></th>
         <th><strong>Pot.(W)</strong></th>
         <th><strong>Tensão (V)</strong></th>
-        <th><strong>Base/Tipo</strong></th>
-        <th><strong>Reator/Tipo</strong></th>
-        <th><strong>Lâmpada</strong></th>        
+        <th><strong>Base</strong></th>
+        <th><strong>Reator</strong></th>
+        <th><strong>Lâmp.</strong></th>        
         <th><strong>Reator</strong></th>        
         <th><strong>Base</strong></th>        
         <th><strong>Data Manutenção</strong></th>                
@@ -28,7 +28,7 @@
                         'materiais' => function ($query) {
                             $query->whereHas(
                                 'tipoMaterial', function ($query) {
-                                    $query->where('tipo', 'Lâmpada');
+                                    $query->whereIn('tipo', ['Lâmpada', 'Outros']);
                                 }
                             );
                         },
@@ -57,8 +57,8 @@
             }
             
             $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';            
-            $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-            $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
+            $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) && $primeiroMaterial->reator ? $querySubstLampada->quantidade_substituida_reator : '';                    
+            $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) && $primeiroMaterial->base ? $querySubstLampada->quantidade_substituida_base : '';                    
             
             $comentario = \App\Models\Comentario::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
             $dataManutencao = \App\Models\DataManutencao::where('programacao_id',$programacao->id)->where('item_id', $item->id)->first();
@@ -91,8 +91,8 @@
             {!!
                 $querySubstLampada = $programacao->quantidadesSubstituidas()->whereItemId($item->id)->whereMaterialId($material->id)->get()->first();                    
                 $qtdeSubstLampada = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida : '';
-                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_reator : '';                    
-                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) ? $querySubstLampada->quantidade_substituida_base : '';                    
+                $qtdeSubstReator = !is_null($querySubstLampada) && !empty($querySubstLampada) && $material->reator ? $querySubstLampada->quantidade_substituida_reator : '';                    
+                $qtdeSubstBase = !is_null($querySubstLampada) && !empty($querySubstLampada) &&  $material->base ? $querySubstLampada->quantidade_substituida_base : '';                    
 
             !!}            
         

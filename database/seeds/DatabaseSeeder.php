@@ -30,6 +30,10 @@ class DatabaseSeeder extends Seeder
             $this->call(EmpresasTableSeeder::class);
             $this->call(LiberacoesDocumentosTableSeeder::class);
             $this->call(UsuariosLiberacoesTableSeeder::class);
+            $this->call(ManutencoesCivilEletricaTableSeeder::class);
+            $this->call(UsuariosManutencoesTableSeeder::class);
+            $this->call(AtividadesRealizadasTableSeeder::class);
+            $this->call(ItensAlteradosTableSeeder::class);
         }
     }
 }

@@ -33,7 +33,18 @@ Route::group(['middleware' => ['auth:api', 'role:admin|tecnico']], function () {
         'uses' => 'ProgramacaoAPIController@syncProgramacaoItemFotos',
         'throttle:500,1',
     ]);
+
     Route::post('sync/programacoes/{id}', 'ProgramacaoAPIController@syncProgramacoes');
+    Route::post('sync/plantas/rdo/{idPlanta}', 'PlantaAPIController@syncRdo');
+    Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
+    Route::resource('usuarios_manutencoes', 'UsuarioManutencaoAPIController');
+    Route::resource('atividades_realizadas', 'AtividadeRealizadaAPIController');
+
+    Route::resource('manutencoes_civil_eletrica', 'ManutencaoCivilEletricaAPIController');
+    Route::post('sync/plantas/rdo/{idManutencao}/fotos', [
+        'uses' => 'ManutencaoCivilEletricaAPIController@syncFotos',
+        'throttle:500,1',
+    ]);
 });
 
 /*
@@ -77,4 +88,4 @@ Route::fallback(function () {
     ], 404);
 });
 
-Route::resource('datas_manutencoes', 'DataManutencaoAPIController');
+Route::resource('itens_alterados', 'ItemAlteradoAPIController');
