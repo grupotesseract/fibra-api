@@ -24,7 +24,7 @@ class RDOHelper extends PhpWordHelper
         'bgColor' => 'eeeeee',
         'alignment' => 'left',
         'valign' => 'center',
-        'cellMargin' => 30
+        'cellMargin' => 30,
     ];
 
     public $estiloTextoTabela = [
@@ -57,7 +57,7 @@ class RDOHelper extends PhpWordHelper
         'borderTopColor' => '000000',
         'borderBottomColor' => 'ffffff',
         'valign' => 'center',
-        'cellMargin' => 30
+        'cellMargin' => 30,
     ];
 
     public $estiloLista = [
@@ -86,7 +86,6 @@ class RDOHelper extends PhpWordHelper
             'borderTopColor' => '000000',
             'borderBottomColor' => '000000',
         ]);
-
     }
 
     /**
@@ -110,7 +109,7 @@ class RDOHelper extends PhpWordHelper
             [
                 'alignment'     => 'left',
                 'width'         => 150,
-                'wrappingStyle' => 'inline'
+                'wrappingStyle' => 'inline',
             ]
         );
         $section->addTextBreak(1);
@@ -132,7 +131,6 @@ class RDOHelper extends PhpWordHelper
 
         $this->addPaddingTabela($table, 2.7);
 
-
         $estiloCelulaRetangulo = [
             'bgColor' => '4f81bd',
             'alignment' => 'center',
@@ -149,7 +147,7 @@ class RDOHelper extends PhpWordHelper
             'size' => 11,
         ];
 
-        $cell = $table->addCell($this->medidaFullWidth-300, $estiloCelulaRetangulo);
+        $cell = $table->addCell($this->medidaFullWidth - 300, $estiloCelulaRetangulo);
         $cell->addText($texto, $estiloTextoRetangulo, ['alignment' => 'center']);
 
         $section->addTextBreak(1, ['size' => 2]);
@@ -650,7 +648,7 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function addPaddingTabela($table, $tamanho=3)
+    public function addPaddingTabela($table, $tamanho = 3)
     {
         $semBordas = [
             'borderLeftSize' => 1,

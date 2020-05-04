@@ -79,7 +79,7 @@ class ManutencaoCivilEletrica extends Model
         'it' => 'string',
         'lem' => 'string',
         'let' => 'string',
-        'os' => 'string'
+        'os' => 'string',
     ];
 
     /**
