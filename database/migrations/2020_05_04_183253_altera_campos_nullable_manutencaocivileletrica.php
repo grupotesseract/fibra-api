@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AlteraCamposNullableManutencaocivileletrica extends Migration
 {
@@ -18,7 +18,7 @@ class AlteraCamposNullableManutencaocivileletrica extends Migration
             $table->text('informacoes_adicionais')->nullable()->change();
             $table->text('observacoes')->nullable()->change();
             $table->string('obra_atividade')->nullable()->change();
-            $table->string('equipe_cliente')->nullable()->change();            
+            $table->string('equipe_cliente')->nullable()->change();
         });
     }
 
