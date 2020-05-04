@@ -69,17 +69,17 @@ class ManutencaoCivilEletrica extends Model
         'observacoes' => 'string',
         'obra_atividade' => 'string',
         'equipe_cliente' => 'string',
-        'data_hora_entrada' => 'string',
-        'data_hora_saida' => 'string',
-        'data_hora_inicio_lem' => 'string',
-        'data_hora_final_lem' => 'string',
-        'data_hora_inicio_let' => 'string',
-        'data_hora_final_let' => 'string',
-        'data_hora_inicio_atividades' => 'string',
+        'data_hora_entrada' => 'datetime',
+        'data_hora_saida' => 'datetime',
+        'data_hora_inicio_lem' => 'datetime',
+        'data_hora_final_lem' => 'datetime',
+        'data_hora_inicio_let' => 'datetime',
+        'data_hora_final_let' => 'datetime',
+        'data_hora_inicio_atividades' => 'datetime',
         'it' => 'string',
         'lem' => 'string',
         'let' => 'string',
-        'os' => 'string'
+        'os' => 'string',
     ];
 
     /**
