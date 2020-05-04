@@ -193,10 +193,10 @@ class RDOHelper extends PhpWordHelper
             foreach ($equipeFibra as $equipe) {
                 $arrEquipeFibra[] = [
                     'nome' => $equipe,
-                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada->format('H:i'),
+                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
                     'saida1' => '12:00',
                     'entrada2' => '13:00',
-                    'saida2' => $manutencaoCivilEletrica->data_hora_saida->format('H:i'),
+                    'saida2' => $manutencaoCivilEletrica->data_hora_saida ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
                 ];
             }
         }
@@ -309,9 +309,9 @@ class RDOHelper extends PhpWordHelper
                 "LEM: $manutencaoCivilEletrica->lem.",
                 "LET: $manutencaoCivilEletrica->let.",
                 "OS: $manutencaoCivilEletrica->os.",
-                'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').'.',
-                'Início da Liberação LET: '.$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_let->format('H:i').'.',
-                'Início da Atividade: '.$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
+                'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : ''.', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : ''.'.',
+                'Início da Liberação LET: '.$manutencaoCivilEletrica->data_hora_inicio_let ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : ''.', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_let ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : ''.'.',
+                'Início da Atividade: '.$manutencaoCivilEletrica->data_hora_inicio_atividades ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '',
                 '',
             ];
         }
