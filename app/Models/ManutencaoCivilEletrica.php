@@ -64,6 +64,22 @@ class ManutencaoCivilEletrica extends Model
     protected $casts = [
         'id' => 'integer',
         'planta_id' => 'integer',
+        'problemas_encontrados' => 'string',
+        'informacoes_adicionais' => 'string',
+        'observacoes' => 'string',
+        'obra_atividade' => 'string',
+        'equipe_cliente' => 'string',
+        'data_hora_entrada' => 'datetime',
+        'data_hora_saida' => 'datetime',
+        'data_hora_inicio_lem' => 'datetime',
+        'data_hora_final_lem' => 'datetime',
+        'data_hora_inicio_let' => 'datetime',
+        'data_hora_final_let' => 'datetime',
+        'data_hora_inicio_atividades' => 'datetime',
+        'it' => 'string',
+        'lem' => 'string',
+        'let' => 'string',
+        'os' => 'string',
     ];
 
     /**
