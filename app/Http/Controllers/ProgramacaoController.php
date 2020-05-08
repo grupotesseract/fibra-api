@@ -7,6 +7,7 @@ use App\DataTables\ComentarioGeralDataTable;
 use App\DataTables\DataManutencaoDataTable;
 use App\DataTables\EntradaMateriaisProgramacaoDataTable;
 use App\DataTables\EstoqueProgramacaoDataTable;
+use App\DataTables\ItemAlteradoDataTable;
 use App\DataTables\LiberacaoDocumentoDataTable;
 use App\DataTables\ProgramacaoDataTable;
 use App\DataTables\QuantidadeSubstituidaDataTable;
@@ -174,6 +175,27 @@ class ProgramacaoController extends AppBaseController
         Flash::success('Programação excluída com sucesso');
 
         return redirect(route('plantas.programacoes', $programacao->planta_id));
+    }
+
+    /**
+     * Metodo para servir a view de Itens Alterados de 1 Programação.
+     *
+     * @return void
+     */
+    public function getItensAlterados(ItemAlteradoDataTable $datatable, $id)
+    {
+        $programacao = $this->programacaoRepository->find($id);
+
+        if (empty($programacao)) {
+            Flash::error('Programação não encontrada');
+
+            return redirect(route('programacoes.index'));
+        }
+
+        $datatable->programacaoID = $id;
+
+        return $datatable->addScope(new PorIdProgramacaoScope($id))
+            ->render('programacoes.show_itens_alterados', compact('programacao'));
     }
 
     /**

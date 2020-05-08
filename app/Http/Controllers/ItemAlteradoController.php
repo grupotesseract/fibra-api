@@ -150,7 +150,7 @@ class ItemAlteradoController extends AppBaseController
     }
 
     /**
-     * Método pra consolidar a alteração feita em um item
+     * Método pra consolidar a alteração feita em um item.
      *
      * @param int $id
      * @return Response
@@ -170,6 +170,5 @@ class ItemAlteradoController extends AppBaseController
         Flash::success('Item Alterado consolidado com sucesso.');
 
         return redirect(route('itensAlterados.index'));
-
     }
 }
