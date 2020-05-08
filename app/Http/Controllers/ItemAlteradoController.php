@@ -120,9 +120,7 @@ class ItemAlteradoController extends AppBaseController
 
         $itemAlterado = $this->itemAlteradoRepository->update($request->all(), $id);
 
-        Flash::success('Item Alterado atualizado com sucesso.');
-
-        return redirect(route('itensAlterados.index'));
+        return redirect(route('programacoes.itensAlterados', ['id' => $itemAlterado->programacao_id]));
     }
 
     /**
@@ -169,6 +167,6 @@ class ItemAlteradoController extends AppBaseController
 
         Flash::success('Item Alterado consolidado com sucesso.');
 
-        return redirect(route('itensAlterados.index'));
+        return redirect(route('programacoes.itensAlterados', ['id' => $itemAlterado->programacao_id]));
     }
 }
