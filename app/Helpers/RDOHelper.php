@@ -17,12 +17,14 @@ class RDOHelper extends PhpWordHelper
         'align' => 'left',
         'color' => '000000',
         'size' => 11,
+        'valign' => 'center',
     ];
 
     public $estiloCelulaCabecalhoTabela = [
         'bgColor' => 'eeeeee',
         'alignment' => 'left',
         'valign' => 'center',
+        'cellMargin' => 30,
     ];
 
     public $estiloTextoTabela = [
@@ -30,8 +32,32 @@ class RDOHelper extends PhpWordHelper
         'allCaps' => true,
         'bold' => false,
         'align' => 'left',
+        'valign' => 'center',
         'color' => '000000',
         'size' => 11,
+    ];
+
+    public $estiloTextoAssinatura = [
+        'name' => 'Calibri',
+        'allCaps' => true,
+        'bold' => false,
+        'align' => 'center',
+        'valign' => 'center',
+        'color' => '000000',
+        'size' => 11,
+    ];
+
+    public $estiloCelulaAssinatura = [
+        'borderLeftSize' => 1,
+        'borderRightSize' => 1,
+        'borderTopSize' => 1,
+        'borderBottomSize' => 1,
+        'borderLeftColor' => 'ffffff',
+        'borderRightColor' => 'ffffff',
+        'borderTopColor' => '000000',
+        'borderBottomColor' => 'ffffff',
+        'valign' => 'center',
+        'cellMargin' => 30,
     ];
 
     public $estiloLista = [
@@ -72,15 +98,17 @@ class RDOHelper extends PhpWordHelper
         $table_style = $this->getEstiloTabelaPadrao();
         $table_style->setBorderColor('ffffff');
 
-        $table = $section->addTable($table_style);
+        $section->addTextBreak(1);
 
+        $table = $section->addTable($table_style);
         $table->addRow(200);
+        $this->addPaddingTabela($table);
         $cell = $table->addCell($this->medidaFullWidth);
         $cell->addImage(
             'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png',
             [
                 'alignment'     => 'left',
-                'width'         => 200,
+                'width'         => 150,
                 'wrappingStyle' => 'inline',
             ]
         );
@@ -95,13 +123,13 @@ class RDOHelper extends PhpWordHelper
     public function criarSecaoRetanguloAzul($section, $texto = '')
     {
         $table_style = $this->getEstiloTabelaPadrao();
-        $table_style->setCellMargin(80);
+        $table_style->setCellMargin(50);
 
         $table = $section->addTable($table_style);
 
-        $table->addRow(80);
+        $table->addRow(50);
 
-        $this->addPaddingTabela($table);
+        $this->addPaddingTabela($table, 2.7);
 
         $estiloCelulaRetangulo = [
             'bgColor' => '4f81bd',
@@ -114,14 +142,15 @@ class RDOHelper extends PhpWordHelper
             'allCaps' => true,
             'bold' => true,
             'align' => 'center',
+            'valign' => 'center',
             'color' => 'FFFFFF',
-            'size' => 12,
+            'size' => 11,
         ];
 
-        $cell = $table->addCell($this->medidaFullWidth, $estiloCelulaRetangulo);
+        $cell = $table->addCell($this->medidaFullWidth - 300, $estiloCelulaRetangulo);
         $cell->addText($texto, $estiloTextoRetangulo, ['alignment' => 'center']);
 
-        $section->addTextBreak(1, ['size' => 5]);
+        $section->addTextBreak(1, ['size' => 2]);
     }
 
     /**
@@ -193,10 +222,10 @@ class RDOHelper extends PhpWordHelper
             foreach ($equipeFibra as $equipe) {
                 $arrEquipeFibra[] = [
                     'nome' => $equipe,
-                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada->format('H:i'),
+                    'entrada1' => ! is_null($manutencaoCivilEletrica->data_hora_entrada) ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
                     'saida1' => '12:00',
                     'entrada2' => '13:00',
-                    'saida2' => $manutencaoCivilEletrica->data_hora_saida->format('H:i'),
+                    'saida2' => ! is_null($manutencaoCivilEletrica->data_hora_saida) ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
                 ];
             }
         }
@@ -303,15 +332,20 @@ class RDOHelper extends PhpWordHelper
                 '',
             ];
         } else {
+            $inicioLiberacaoLEM = ! is_null($manutencaoCivilEletrica->data_hora_inicio_lem) ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
+            $finalLiberacaoLEM = ! is_null($manutencaoCivilEletrica->data_hora_final_lem) ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    ';
+            $inicioLiberacaoLET = ! is_null($manutencaoCivilEletrica->data_hora_inicio_let) ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
+            $finalLiberacaoLET = ! is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
+            $inicioAtividade = ! is_null($manutencaoCivilEletrica->data_hora_inicio_atividades) ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
             $arrLinhasTexto = [
                 '',
                 "IT: $manutencaoCivilEletrica->it.",
                 "LEM: $manutencaoCivilEletrica->lem.",
                 "LET: $manutencaoCivilEletrica->let.",
                 "OS: $manutencaoCivilEletrica->os.",
-                'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i').'.',
-                'Início da Liberação LET: '.$manutencaoCivilEletrica->data_hora_inicio_let->format('H:i').', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_let->format('H:i').'.',
-                'Início da Atividade: '.$manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i'),
+                'Início da Liberação LEM: '.$inicioLiberacaoLEM.', Término da Liberação: '.$finalLiberacaoLEM.'.',
+                'Início da Liberação LET: '.$inicioLiberacaoLET.', Término da Liberação: '.$finalLiberacaoLET.'.',
+                'Início da Atividade: '.$inicioAtividade,
                 '',
             ];
         }
@@ -438,8 +472,8 @@ class RDOHelper extends PhpWordHelper
 
         if (empty($arrFotos)) {
             $arrFotos = [
-                'http://via.placeholder.com/200x120',
-                'http://via.placeholder.com/200x120',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
             ];
         }
 
@@ -463,7 +497,7 @@ class RDOHelper extends PhpWordHelper
                 $urlFoto,
                 [
                     'alignment'     => 'center',
-                    'width'         => 200,
+                    'width'         => 150,
                     'wrappingStyle' => 'inline',
                 ]
             );
@@ -523,31 +557,31 @@ class RDOHelper extends PhpWordHelper
         $table = $section->addTable($estiloTabela);
 
         $table->addRow(40);
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText($arrResponsaveis['fibra']['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
+        $this->addPaddingTabela($table, 1.2);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $this->estiloCelulaAssinatura);
+        $cell->addText($arrResponsaveis['fibra']['nome'], $this->estiloTextoAssinatura, ['alignment' => 'center']);
 
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText($arrResponsaveis['cliente']['nome'], $this->estiloTextoTabela, ['alignment' => 'center']);
-
-        $table->addRow(40);
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText($arrResponsaveis['fibra']['empresa'], $this->estiloTextoTabela, ['alignment' => 'center']);
-
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText($arrResponsaveis['cliente']['empresa'], $this->estiloTextoTabela, ['alignment' => 'center']);
+        $this->addPaddingTabela($table, 1.8);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $this->estiloCelulaAssinatura);
+        $cell->addText($arrResponsaveis['cliente']['nome'], $this->estiloTextoAssinatura, ['alignment' => 'center']);
 
         $table->addRow(40);
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText('Responsável pela execução', $this->estiloTextoTabela, ['alignment' => 'center']);
+        $this->addPaddingTabela($table, 1.2);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
+        $cell->addText($arrResponsaveis['fibra']['empresa'], $this->estiloTextoAssinatura, ['alignment' => 'center']);
 
-        $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
-        $cell = $table->addCell($this->medidaFullWidth * 0.4);
-        $cell->addText('Gestor do projeto', $this->estiloTextoTabela, ['alignment' => 'center']);
+        $this->addPaddingTabela($table, 1.8);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
+        $cell->addText($arrResponsaveis['cliente']['empresa'], $this->estiloTextoAssinatura, ['alignment' => 'center']);
+
+        $table->addRow(40);
+        $this->addPaddingTabela($table, 1.2);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
+        $cell->addText('Responsável pela execução', $this->estiloTextoAssinatura, ['alignment' => 'center']);
+
+        $this->addPaddingTabela($table, 1.8);
+        $cell = $table->addCell($this->medidaFullWidth * 0.1, $semBordas);
+        $cell->addText('Gestor do projeto', $this->estiloTextoAssinatura, ['alignment' => 'center']);
     }
 
     /**
@@ -619,7 +653,7 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function addPaddingTabela($table)
+    public function addPaddingTabela($table, $tamanho = 3)
     {
         $semBordas = [
             'borderLeftSize' => 1,
@@ -632,6 +666,6 @@ class RDOHelper extends PhpWordHelper
             'borderBottomColor' => 'ffffff',
         ];
 
-        $table->addCell(100 * 2, $semBordas);
+        $table->addCell(100 * $tamanho, $semBordas);
     }
 }

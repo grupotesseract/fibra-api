@@ -51,11 +51,25 @@ class AtividadeRealizada extends Model
         'manutencao_id' => 'required',
     ];
 
+    public $appends = [
+        'status_formatado',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function manutencao()
     {
         return $this->belongsTo(\App\Models\ManutencaoCivilEletrica::class, 'manutencao_id');
+    }
+
+    /**
+     * Acessor para a informação de Tensão.
+     *
+     * @return int
+     */
+    public function getStatusFormatadoAttribute()
+    {
+        return $this->status ? 'CONCLUÍDA' : 'PENDENTE';
     }
 }
