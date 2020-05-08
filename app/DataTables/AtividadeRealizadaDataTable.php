@@ -69,8 +69,9 @@ class AtividadeRealizadaDataTable extends DataTable
     {
         return [
             'texto',
-            'status',
-            'manutencao_id',
+            'status' => [
+                'data' => 'status_formatado',
+            ],
         ];
     }
 
