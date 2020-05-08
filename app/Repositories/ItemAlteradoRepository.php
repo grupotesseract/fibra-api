@@ -38,4 +38,21 @@ class ItemAlteradoRepository extends BaseRepository
     {
         return ItemAlterado::class;
     }
+
+    /**
+     * Método para consolidar item a partir de um item alterado
+     *
+     * @param ItemAlterado $itemAlterado
+     * @return void
+     */
+    public function consolida($itemAlterado)
+    {
+        $itemAlterado->item->materiais()->syncWithoutDetaching(
+            [
+                $itemAlterado->material_id => [
+                    'quantidade_instalada' => $itemAlterado->quantidade_instalada
+                ]
+            ]
+        );        
+    }
 }

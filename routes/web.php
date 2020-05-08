@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.comentariosGerais');
     Route::post('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@postGerenciarComentariosGerais')
         ->name('programacoes.comentariosGerais');
+    
+    Route::get('/consolidaItem/{id}', 'ItemAlteradoController@consolida');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
