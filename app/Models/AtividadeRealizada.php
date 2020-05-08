@@ -52,7 +52,7 @@ class AtividadeRealizada extends Model
     ];
 
     public $appends = [
-        'status_formatado',        
+        'status_formatado',
     ];
 
     /**

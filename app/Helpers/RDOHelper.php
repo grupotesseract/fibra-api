@@ -222,10 +222,10 @@ class RDOHelper extends PhpWordHelper
             foreach ($equipeFibra as $equipe) {
                 $arrEquipeFibra[] = [
                     'nome' => $equipe,
-                    'entrada1' => !is_null($manutencaoCivilEletrica->data_hora_entrada) ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
+                    'entrada1' => ! is_null($manutencaoCivilEletrica->data_hora_entrada) ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
                     'saida1' => '12:00',
                     'entrada2' => '13:00',
-                    'saida2' => !is_null($manutencaoCivilEletrica->data_hora_saida) ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
+                    'saida2' => ! is_null($manutencaoCivilEletrica->data_hora_saida) ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
                 ];
             }
         }
@@ -332,11 +332,11 @@ class RDOHelper extends PhpWordHelper
                 '',
             ];
         } else {
-            $inicioLiberacaoLEM = !is_null($manutencaoCivilEletrica->data_hora_inicio_lem) ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
-            $finalLiberacaoLEM = !is_null($manutencaoCivilEletrica->data_hora_final_lem) ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    ';
-            $inicioLiberacaoLET = !is_null($manutencaoCivilEletrica->data_hora_inicio_let) ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
-            $finalLiberacaoLET = !is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
-            $inicioAtividade = !is_null($manutencaoCivilEletrica->data_hora_inicio_atividades) ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
+            $inicioLiberacaoLEM = ! is_null($manutencaoCivilEletrica->data_hora_inicio_lem) ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
+            $finalLiberacaoLEM = ! is_null($manutencaoCivilEletrica->data_hora_final_lem) ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    ';
+            $inicioLiberacaoLET = ! is_null($manutencaoCivilEletrica->data_hora_inicio_let) ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
+            $finalLiberacaoLET = ! is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
+            $inicioAtividade = ! is_null($manutencaoCivilEletrica->data_hora_inicio_atividades) ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
             $arrLinhasTexto = [
                 '',
                 "IT: $manutencaoCivilEletrica->it.",

@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('programacoes/{id}/itens-alterados', 'ProgramacaoController@getItensAlterados')
         ->name('programacoes.itensAlterados');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')
-        ->name('programacoes.liberacoesDocumentos');    
+        ->name('programacoes.liberacoesDocumentos');
     Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')
         ->name('programacoes.estoque');
     Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')
@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.comentariosGerais');
     Route::post('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@postGerenciarComentariosGerais')
         ->name('programacoes.comentariosGerais');
-    
+
     Route::get('/itemAlterado/consolida/{id}', 'ItemAlteradoController@consolida');
 
     Route::resource('usuarios', 'UsuarioController');

@@ -70,7 +70,7 @@ class AtividadeRealizadaDataTable extends DataTable
         return [
             'texto',
             'status' => [
-                'data' => 'status_formatado'
+                'data' => 'status_formatado',
             ],
         ];
     }
