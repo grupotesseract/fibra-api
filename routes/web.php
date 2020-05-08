@@ -40,8 +40,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::put('itens/{id_item}/materiais/{id_material}/edit', 'ItemController@putEditarQuantidadeMaterial')->name('itens.materiais.update');
 
     Route::resource('programacoes', 'ProgramacaoController');
+    Route::get('programacoes/{id}/itens-alterados', 'ProgramacaoController@getItensAlterados')
+        ->name('programacoes.itensAlterados');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')
-        ->name('programacoes.liberacoesDocumentos');
+        ->name('programacoes.liberacoesDocumentos');    
     Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')
         ->name('programacoes.estoque');
     Route::post('programacoes/{id}/estoque', 'ProgramacaoController@postAdicionarEstoque')
