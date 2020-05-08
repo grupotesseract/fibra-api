@@ -9,9 +9,13 @@ use App\Models\Programacao;
 use Faker\Generator as Faker;
 
 $factory->define(ItemAlterado::class, function (Faker $faker) {
+    $programacao = Programacao::inRandomOrder()->get()->first();
+    $planta = $programacao->planta;
+    $item = $planta->itens()->inRandomOrder()->get()->first();
+    
     return [
-        'programacao_id' => Programacao::inRandomOrder()->get()->first()->id,
-        'item_id' => Item::inRandomOrder()->get()->first()->id,
+        'programacao_id' => $programacao->id,
+        'item_id' => $item->id,
         'material_id' => Material::inRandomOrder()->get()->first()->id,
         'quantidade_instalada' => $faker->randomDigitNotNull,
         'created_at' => $faker->date('Y-m-d H:i:s'),
