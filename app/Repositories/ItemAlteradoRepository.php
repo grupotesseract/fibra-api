@@ -40,7 +40,7 @@ class ItemAlteradoRepository extends BaseRepository
     }
 
     /**
-     * Método para consolidar item a partir de um item alterado
+     * Método para consolidar item a partir de um item alterado.
      *
      * @param ItemAlterado $itemAlterado
      * @return void
@@ -50,9 +50,9 @@ class ItemAlteradoRepository extends BaseRepository
         $itemAlterado->item->materiais()->syncWithoutDetaching(
             [
                 $itemAlterado->material_id => [
-                    'quantidade_instalada' => $itemAlterado->quantidade_instalada
-                ]
+                    'quantidade_instalada' => $itemAlterado->quantidade_instalada,
+                ],
             ]
-        );        
+        );
     }
 }
