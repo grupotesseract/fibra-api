@@ -12,7 +12,7 @@ $factory->define(ItemAlterado::class, function (Faker $faker) {
     $programacao = Programacao::inRandomOrder()->get()->first();
     $planta = $programacao->planta;
     $item = $planta->itens()->inRandomOrder()->get()->first();
-    
+
     return [
         'programacao_id' => $programacao->id,
         'item_id' => $item->id,
