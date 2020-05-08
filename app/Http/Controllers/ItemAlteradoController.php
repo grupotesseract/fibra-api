@@ -148,4 +148,28 @@ class ItemAlteradoController extends AppBaseController
 
         return redirect(route('itensAlterados.index'));
     }
+
+    /**
+     * Método pra consolidar a alteração feita em um item
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function consolida($id)
+    {
+        $itemAlterado = $this->itemAlteradoRepository->find($id);
+
+        if (empty($itemAlterado)) {
+            Flash::error('Item Alterado não encontrado');
+
+            return redirect(route('itensAlterados.index'));
+        }
+
+        $this->itemAlteradoRepository->consolida($itemAlterado);
+
+        Flash::success('Item Alterado consolidado com sucesso.');
+
+        return redirect(route('itensAlterados.index'));
+
+    }
 }
