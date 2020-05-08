@@ -19,6 +19,24 @@
             {!! Form::textarea('observacoes', null, ['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
+        <!-- IT Field -->
+        <div class="form-group col-sm-12">
+            {!! Form::label('it', 'IT:') !!}
+            {!! Form::textarea('it', null, ['class' => 'form-control', 'rows' => 4]) !!}
+        </div>
+
+        <!-- LEM Field -->
+        <div class="form-group col-sm-12">
+            {!! Form::label('lem', 'LEM:') !!}
+            {!! Form::textarea('lem', null, ['class' => 'form-control', 'rows' => 4]) !!}
+        </div>
+
+        <!-- LET Field -->
+        <div class="form-group col-sm-12">
+            {!! Form::label('let', 'LET:') !!}
+            {!! Form::textarea('lem', null, ['class' => 'form-control', 'rows' => 4]) !!}
+        </div>
+
         <!-- Obra Atividade Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('obra_atividade', 'Obra Atividade:') !!}
