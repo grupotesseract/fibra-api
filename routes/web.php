@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::put('itens/{id_item}/materiais/{id_material}/edit', 'ItemController@putEditarQuantidadeMaterial')->name('itens.materiais.update');
 
     Route::resource('programacoes', 'ProgramacaoController');
+    Route::get('programacoes/{id}/itens-alterados', 'ProgramacaoController@getItensAlterados')
+        ->name('programacoes.itensAlterados');
     Route::get('programacoes/{id}/liberacoes-documentos', 'ProgramacaoController@getLiberacoesDocumentos')
         ->name('programacoes.liberacoesDocumentos');
     Route::get('programacoes/{id}/estoque', 'ProgramacaoController@getGerenciarEstoque')
@@ -82,6 +84,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         ->name('programacoes.comentariosGerais');
     Route::post('programacoes/{id}/comentarios-gerais', 'ProgramacaoController@postGerenciarComentariosGerais')
         ->name('programacoes.comentariosGerais');
+
+    Route::get('/itemAlterado/consolida/{id}', 'ItemAlteradoController@consolida')
+        ->name('itensAlterados.consolida');
 
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
