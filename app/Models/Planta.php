@@ -127,4 +127,17 @@ class Planta extends Model
     {
         return $this->hasMany(\App\Models\ManutencaoCivilEletrica::class, 'planta_id');
     }
+
+    /**
+     * Atividades Realizadas de uma Planta
+     */
+    public function atividadesRealizadas()
+    {
+        return $this->hasManyThrough(
+            \App\Models\AtividadeRealizada::class,
+            \App\Models\ManutencaoCivilEletrica::class,
+            'planta_id',
+            'manutencao_id'           
+        );
+    }
 }
