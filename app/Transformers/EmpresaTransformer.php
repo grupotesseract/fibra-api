@@ -29,7 +29,7 @@ class EmpresaTransformer extends TransformerAbstract
 
                 //Materiais Instalados de uma Planta
                 $materiais = [];
-                
+
                 $materiaisQuery = $item->materiais();
 
                 $materiaisArray = $materiaisQuery->whereHas(
@@ -124,7 +124,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'itens' => $itens ?? null,
                 'estoque' => $estoquePlanta,
                 'entrada' => $entradaMateriais,
-                'atividadesPendentes' => $atividadesPendentes
+                'atividadesPendentes' => $atividadesPendentes,
             ];
         }
 
