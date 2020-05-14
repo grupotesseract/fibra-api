@@ -29,14 +29,36 @@ class EmpresaTransformer extends TransformerAbstract
 
                 //Materiais Instalados de uma Planta
                 $materiais = [];
-                $materiaisArray = $item->materiais()->whereHas(
+
+                $materiaisQuery = $item->materiais();
+
+                $materiaisArray = $materiaisQuery->whereHas(
                     'tipoMaterial', function ($query) {
                         $query->whereIn('tipo', ['Lâmpada', 'Outros']);
                     }
                 )->get();
 
+                $todosMateriais = [];
+
+                $todosMateriaisArray = $materiaisQuery->get();
+
                 foreach ($materiaisArray as $material) {
                     $materiais[] = [
+                        'id' => $material->id,
+                        'nome' => $material->nome,
+                        'base' => $material->baseNome,
+                        'reator' => $material->reatorNome,
+                        'base_id' => $material->base_id,
+                        'reator_id' => $material->reator_id,
+                        'potencia' => $material->potenciaValor,
+                        'tensao' => $material->tensaoValor,
+                        'tipoMaterial' => $material->tipoMaterialNome,
+                        'quantidadeInstalada' => $material->pivot->quantidade_instalada,
+                    ];
+                }
+
+                foreach ($todosMateriaisArray as $material) {
+                    $todosMateriais[] = [
                         'id' => $material->id,
                         'nome' => $material->nome,
                         'base' => $material->baseNome,
@@ -56,6 +78,7 @@ class EmpresaTransformer extends TransformerAbstract
                     'qrcode' => $item->qrcode,
                     'circuito' => $item->circuito,
                     'materiais' => $materiais ?? null,
+                    'todosMateriais' => $todosMateriaisArray ?? null,
                 ];
             }
 
@@ -91,6 +114,9 @@ class EmpresaTransformer extends TransformerAbstract
                 }
             }
 
+            //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
+            $atividadesPendentes = $planta->atividadesRealizadas()->whereStatus(false)->get();
+
             $plantas[] = [
                 'id' => $planta->id,
                 'nome' => $planta->nome,
@@ -98,6 +124,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'itens' => $itens ?? null,
                 'estoque' => $estoquePlanta,
                 'entrada' => $entradaMateriais,
+                'atividadesPendentes' => $atividadesPendentes,
             ];
         }
 
