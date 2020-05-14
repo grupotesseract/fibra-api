@@ -114,6 +114,9 @@ class EmpresaTransformer extends TransformerAbstract
                 }
             }
 
+            //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
+            $atividadesPendentes = $planta->atividadesRealizadas()->whereStatus(false)->get();
+
             $plantas[] = [
                 'id' => $planta->id,
                 'nome' => $planta->nome,
@@ -121,6 +124,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'itens' => $itens ?? null,
                 'estoque' => $estoquePlanta,
                 'entrada' => $entradaMateriais,
+                'atividadesPendentes' => $atividadesPendentes
             ];
         }
 
