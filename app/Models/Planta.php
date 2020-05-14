@@ -129,7 +129,7 @@ class Planta extends Model
     }
 
     /**
-     * Atividades Realizadas de uma Planta
+     * Atividades Realizadas de uma Planta.
      */
     public function atividadesRealizadas()
     {
@@ -137,7 +137,7 @@ class Planta extends Model
             \App\Models\AtividadeRealizada::class,
             \App\Models\ManutencaoCivilEletrica::class,
             'planta_id',
-            'manutencao_id'           
+            'manutencao_id'
         );
     }
 }
