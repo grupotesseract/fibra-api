@@ -14,7 +14,9 @@ class EmpresaTransformer extends TransformerAbstract
      */
     public function transform(Empresa $empresa)
     {
-        foreach ($empresa->plantas as $planta) {
+        $plantasDB = $empresa->plantas;
+
+        foreach ($plantasDB as $planta) {
 
             //Programação mais Recente
             $proximaProgramacao = ! is_null($planta->proximaProgramacao) ? [
@@ -25,7 +27,8 @@ class EmpresaTransformer extends TransformerAbstract
 
             //Itens de uma Planta
             $itens = [];
-            foreach ($planta->itens()->orderBy('qrcode')->get() as $item) {
+            $itenBD = $planta->itens()->orderBy('qrcode')->get(); 
+            foreach ($itenBD as $item) {
 
                 //Materiais Instalados de uma Planta
                 $materiais = [];
@@ -78,7 +81,7 @@ class EmpresaTransformer extends TransformerAbstract
                     'qrcode' => $item->qrcode,
                     'circuito' => $item->circuito,
                     'materiais' => $materiais ?? null,
-                    'todosMateriais' => $todosMateriaisArray ?? null,
+                    'todosMateriais' => $todosMateriais ?? null,
                 ];
             }
 
@@ -115,7 +118,15 @@ class EmpresaTransformer extends TransformerAbstract
             }
 
             //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
-            $atividadesPendentes = $planta->atividadesRealizadas()->whereStatus(false)->get();
+            $atividadesPendentesDB = $planta->atividadesRealizadas()->whereStatus(false)->get();
+            $atividadesPendentes = [];
+            
+            foreach ($atividadesPendentesDB as $atividadePendentesDB) {
+                $atividadesPendentes[] = [
+                    'id' => $atividadePendentesDB->id,
+                    'texto' => $atividadePendentesDB->texto,
+                ];
+            }
 
             $plantas[] = [
                 'id' => $planta->id,
@@ -126,6 +137,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'entrada' => $entradaMateriais,
                 'atividadesPendentes' => $atividadesPendentes,
             ];
+            
         }
 
         //Montagem final da Resposta da API
