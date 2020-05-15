@@ -31,34 +31,34 @@ class EmpresaTransformer extends TransformerAbstract
             foreach ($itenBD as $item) {
 
                 //Materiais Instalados de uma Planta
-                // $materiais = [];
+                $materiais = [];
 
                 $materiaisQuery = $item->materiais();
 
-                // $materiaisArray = $materiaisQuery->whereHas(
-                //     'tipoMaterial', function ($query) {
-                //         $query->whereIn('tipo', ['Lâmpada', 'Outros']);
-                //     }
-                // )->get();
+                $materiaisArray = $materiaisQuery->whereHas(
+                    'tipoMaterial', function ($query) {
+                        $query->whereIn('tipo', ['Lâmpada', 'Outros']);
+                    }
+                )->get();
 
                 $todosMateriais = [];
 
                 $todosMateriaisArray = $materiaisQuery->get();
 
-                // foreach ($materiaisArray as $material) {
-                //     $materiais[] = [
-                //         'id' => $material->id,
-                //         'nome' => $material->nome,
-                //         'base' => $material->baseNome,
-                //         'reator' => $material->reatorNome,
-                //         'base_id' => $material->base_id,
-                //         'reator_id' => $material->reator_id,
-                //         'potencia' => $material->potenciaValor,
-                //         'tensao' => $material->tensaoValor,
-                //         'tipoMaterial' => $material->tipoMaterialNome,
-                //         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
-                //     ];
-                // }
+                foreach ($materiaisArray as $material) {
+                    $materiais[] = [
+                        'id' => $material->id,
+                        'nome' => $material->nome,
+                        'base' => $material->baseNome,
+                        'reator' => $material->reatorNome,
+                        'base_id' => $material->base_id,
+                        'reator_id' => $material->reator_id,
+                        'potencia' => $material->potenciaValor,
+                        'tensao' => $material->tensaoValor,
+                        'tipoMaterial' => $material->tipoMaterialNome,
+                        'quantidadeInstalada' => $material->pivot->quantidade_instalada,
+                    ];
+                }
 
                 foreach ($todosMateriaisArray as $material) {
                     $todosMateriais[] = [
@@ -80,8 +80,8 @@ class EmpresaTransformer extends TransformerAbstract
                     'nome' => $item->nome,
                     'qrcode' => $item->qrcode,
                     'circuito' => $item->circuito,
-                    //'materiais' => $materiais ?? null,
-                    'materiais' => $todosMateriais ?? null,
+                    'materiais' => $materiais ?? null,
+                    'todosMateriais' => $todosMateriais ?? null,
                 ];
             }
 
