@@ -1,0 +1,252 @@
+@import '../global/variables';
+@import '../global/typography';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/images';
+@import '~@coreui/coreui/scss/variables';
+@import '~@coreui/coreui/scss/mixins';
+
+$border-radius: 3px;
+
+.relatorio-fotografico {
+  background-color: #fff;
+
+  .row {
+    margin-bottom: 1rem;
+  }
+
+  .sheet {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .logo {
+    @extend .img-fluid;
+    height: 50px;
+  }
+
+  .box {
+    border-radius: $border-radius;
+    margin-top: 0.5rem;
+    padding: 4px 10px;
+    background-color: #4f80bd;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+
+    caption, th, td {
+      padding: 2px 14px;
+      height: 22px;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+
+    caption {
+      background-color: #c8ced3;
+      border: 1px solid #c8ced3;
+      border-radius: $border-radius $border-radius 0 0;
+      color: #444;
+      caption-side: top;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    thead th {
+      background-color: #c8ced3;
+
+      @media print {
+        background-color: #c8ced3 !important;
+      }
+
+      small {
+        display: block;
+        line-height: 1.35;
+        opacity: 0.8;
+      }
+
+      &:first-child {
+        border-top-left-radius: $border-radius;
+      }
+
+      &:last-child {
+        border-top-right-radius: $border-radius;
+      }
+    }
+
+    caption ~ thead th {
+      background-color: transparent;
+
+      @media print {
+        background-color: transparent !important;
+      }
+
+      &:first-child {
+        border-top-left-radius: 0;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0;
+      }
+    }
+
+    th,
+    td {
+      border: 1px solid #c8ced3;
+      border-top: 0;
+
+      &:not(:first-child) {
+        border-left: 0;
+      }
+    }
+
+    td {
+      color: #444;
+    }
+
+    tbody {
+      tr:last-child {
+        td {
+          &:first-child {
+            border-bottom-left-radius: $border-radius;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: $border-radius;
+          }
+        }
+      }
+    }
+  }
+
+  .info {
+    opacity: 0.65;
+    position: fixed;
+    top: 12em;
+    left: 5%;
+    transition: opacity ease 0.5s;
+    z-index: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    > p {
+      font-size: 11px;
+      width: 220px;
+      position: relative;
+      border-radius: $border-radius;
+      color: #444;
+
+      &::first-line {
+        font-weight: 600;
+        color: #666;
+      }
+
+      > i {
+        font-size: 21px;
+        opacity: 0.7;
+        float: left;
+        font-style: normal;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .badge {
+    font-size: 10px;
+
+    @media print {
+      border: 0;
+    }
+  }
+
+  .badge-warning {
+    background-color: #e2af36;
+    color: #fff;
+  }
+
+  ol {
+    padding-left: 15px;
+    margin-bottom: 0;
+  }
+
+  // Form related
+  form {
+    margin: 10px 0;
+  }
+
+  label {
+    font-weight: 600;
+    line-height: 1.1;
+    margin-right: 6px;
+  }
+
+  .form-inline {
+    margin-bottom: 0.2rem;
+    width: 40%;
+
+    &.wide {
+      width: 85%;
+    }
+  }
+
+  .form-control[readonly] {
+    cursor: default;
+
+    &:active {
+      outline: none;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .form-control-plaintext {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #999;
+    border-radius: 0;
+    color: #444;
+    height: 20px;
+    padding-left: 15px;
+    padding-right: 5px;
+
+    &:only-of-type {
+      flex-grow: 1;
+    }
+  }
+
+  // Rodapé
+  footer {
+    align-self: flex-end;
+    margin-top: auto;
+    font-size: 11px;
+  }
+}
+
+// Print related
+@page {
+  size: A4;
+}
+
+body {
+  color-adjust: exact;
+}
+
+@media print {
+  // Override Bootstrap body rule
+  body {
+    min-width: initial !important;
+  }
+}
