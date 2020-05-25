@@ -31,19 +31,12 @@ class EmpresaTransformer extends TransformerAbstract
             foreach ($itenBD as $item) {
 
                 //Materiais Instalados de uma Planta
-                $materiais = [];
-
-                $materiaisQuery = $item->materiais();
-
-                $materiaisArray = $materiaisQuery->whereHas(
+                $materiaisArray = $item->materiais()->whereHas(
                     'tipoMaterial', function ($query) {
                         $query->whereIn('tipo', ['Lâmpada', 'Outros']);
                     }
                 )->get();
-
-                $todosMateriais = [];
-
-                $todosMateriaisArray = $materiaisQuery->get();
+                $materiais = [];                
 
                 foreach ($materiaisArray as $material) {
                     $materiais[] = [
@@ -59,6 +52,9 @@ class EmpresaTransformer extends TransformerAbstract
                         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
                     ];
                 }
+
+                $todosMateriaisArray = $item->materiais()->get();
+                $todosMateriais = [];
 
                 foreach ($todosMateriaisArray as $material) {
                     $todosMateriais[] = [
