@@ -27,7 +27,7 @@ class EmpresaTransformer extends TransformerAbstract
 
             //Itens de uma Planta
             $itens = [];
-            $itenBD = $planta->itens()->orderBy('qrcode')->get(); 
+            $itenBD = $planta->itens()->orderBy('qrcode')->get();
             foreach ($itenBD as $item) {
 
                 //Materiais Instalados de uma Planta
@@ -120,7 +120,7 @@ class EmpresaTransformer extends TransformerAbstract
             //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
             $atividadesPendentesDB = $planta->atividadesRealizadas()->whereStatus(false)->get();
             $atividadesPendentes = [];
-            
+
             foreach ($atividadesPendentesDB as $atividadePendentesDB) {
                 $atividadesPendentes[] = [
                     'id' => $atividadePendentesDB->id,
@@ -137,7 +137,7 @@ class EmpresaTransformer extends TransformerAbstract
                 'entrada' => $entradaMateriais,
                 'atividadesPendentes' => $atividadesPendentes,
             ];
-            
+
         }
 
         //Montagem final da Resposta da API
