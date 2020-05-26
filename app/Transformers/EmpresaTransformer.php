@@ -137,7 +137,6 @@ class EmpresaTransformer extends TransformerAbstract
                 'entrada' => $entradaMateriais,
                 'atividadesPendentes' => $atividadesPendentes,
             ];
-
         }
 
         //Montagem final da Resposta da API
