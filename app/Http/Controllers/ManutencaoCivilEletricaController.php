@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AtividadeRealizadaDataTable;
+use App\DataTables\FotosRDODatatable;
 use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\Scopes\PorIdManCivilEletricaScope;
 use App\Http\Controllers\AppBaseController;
@@ -32,6 +33,17 @@ class ManutencaoCivilEletricaController extends AppBaseController
     public function index(ManutencaoCivilEletricaDataTable $manutencaoCivilEletricaDataTable)
     {
         return $manutencaoCivilEletricaDataTable->render('manutencoes_civil_eletrica.index');
+    }
+
+    /**
+     * Display a listing of photos of the ManutencaoCivilEletrica.
+     *
+     * @param ManutencaoCivilEletricaDataTable $manutencaoCivilEletricaDataTable
+     * @return Response
+     */
+    public function indexFotos(FotosRDODatatable $fotosRDODatatable, $idManutencaoRdo)
+    {
+        return $fotosRDODatatable->addScope(new PorIdManCivilEletricaScope($idManutencaoRdo))->render('fotosRdo.index');
     }
 
     /**
