@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-12">
         <table class="table">
             <caption>Equipe de Fiscalização Cliente</caption>
@@ -17,4 +17,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>

@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-12">
         <table class="table">
             <thead>
@@ -35,4 +35,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>

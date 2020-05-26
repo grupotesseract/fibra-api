@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-12">
         <div class="box">
             Local: "selecionar tela"
@@ -16,4 +16,4 @@
             23/05/2020 - SÁBADO
         </div>
     </div>
-</div>
+</section>

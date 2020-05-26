@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-12">
         <table class="table">
             <caption>Documentações Expedidas no Dia</caption>
@@ -82,4 +82,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>

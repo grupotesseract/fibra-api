@@ -14,13 +14,14 @@
 </head>
 
 <body class="A4 relatorio-fotografico">
+
     {{-- Página 1/2 --}}
     <section class="sheet">
 
         {{-- Logo --}}
         @include('relatorio-fotografico/1_logo')
 
-        {{--  Cabeçalho --}}
+        {{-- Cabeçalho --}}
         @include('relatorio-fotografico/2_cabecalho')
 
         {{-- Equipe de Fiscalização Cliente --}}
@@ -44,10 +45,10 @@
         {{-- Observações --}}
         @include('relatorio-fotografico/9_observacoes')
 
-        {{-- Rodapé --}}
-        @component('relatorio-fotografico/rodape')
-            Página 1 de 2
-        @endcomponent
+        <footer>
+            Página <b>1</b> de <b>2</b>
+        </footer>
+
     </section>
 
     {{-- Página 2/2 --}}
@@ -56,13 +57,18 @@
         {{-- Logo --}}
         @include('relatorio-fotografico/1_logo')
 
-        {{--  Cabeçalho --}}
+        {{-- Cabeçalho --}}
         @include('relatorio-fotografico/2_cabecalho')
 
-        {{-- Rodapé --}}
-        @component('relatorio-fotografico/rodape')
-            Página 2 de 2
-        @endcomponent
+        {{-- Relatório Fotográfico --}}
+        @include('relatorio-fotografico/10_relatorio-fotografico')
+
+        {{-- Assinaturas --}}
+        @include('relatorio-fotografico/11_assinaturas')
+
+        <footer>
+            Página <b>2</b> de <b>2</b>
+        </footer>
 
     </section>
 
@@ -79,5 +85,6 @@
     @if (env('APP_ENV') === 'local')
         <script async src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.26.7"></script>
     @endif
+
 </body>
 </html>

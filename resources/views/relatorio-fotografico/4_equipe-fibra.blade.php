@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-12">
         <table class="table text-center">
             <caption>Equipe Fibra Engenharia</caption>
@@ -29,4 +29,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>

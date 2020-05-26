@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-4">
         <img src="https://res.cloudinary.com/tesseract/image/upload/v1590161681/fibra-api/fibraheader.png"
             class="logo"
@@ -10,4 +10,4 @@
             class="img-fluid"
             alt="Logo da Fibra" />
     </div>
-</div>
+</section>
