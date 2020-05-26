@@ -18,12 +18,11 @@ class FotosRDODatatable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', function ($row) {
-            return view('fotosRdo.datatables_actions')->with([
+        return $dataTable->addColumn('foto', function ($row) {
+            return view('fotosRdo.showPhoto')->with([
                 'UrlParaRelatorio' => $row->UrlParaRelatorio,
-                'id' => $row->id
             ])->render();
-        });        
+        })->addColumn('action', 'fotosRdo.datatables_actions')->rawColumns(['foto', 'action']); 
     }
 
     /**
@@ -73,7 +72,8 @@ class FotosRDODatatable extends DataTable
     protected function getColumns()
     {
         return [
-            'id'            
+            'id',
+            'foto'
         ];
     }
 
