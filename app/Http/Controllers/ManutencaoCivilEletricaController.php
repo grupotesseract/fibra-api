@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AtividadeRealizadaDataTable;
+use App\DataTables\FotosRDODatatable;
 use App\DataTables\ManutencaoCivilEletricaDataTable;
 use App\DataTables\Scopes\PorIdManCivilEletricaScope;
 use App\Http\Controllers\AppBaseController;
-use App\Http\Requests;
 use App\Http\Requests\CreateManutencaoCivilEletricaRequest;
 use App\Http\Requests\UpdateManutencaoCivilEletricaRequest;
+use App\Repositories\FotoRdoRepository;
 use App\Repositories\ManutencaoCivilEletricaRepository;
 use Flash;
 use Response;
@@ -17,10 +18,12 @@ class ManutencaoCivilEletricaController extends AppBaseController
 {
     /** @var ManutencaoCivilEletricaRepository */
     private $manutencaoCivilEletricaRepository;
+    private $fotoRdoRepository;
 
-    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo)
+    public function __construct(ManutencaoCivilEletricaRepository $manutencaoCivilEletricaRepo, FotoRdoRepository $fotoRdoRepo)
     {
         $this->manutencaoCivilEletricaRepository = $manutencaoCivilEletricaRepo;
+        $this->fotoRdoRepository = $fotoRdoRepo;
     }
 
     /**
@@ -32,6 +35,40 @@ class ManutencaoCivilEletricaController extends AppBaseController
     public function index(ManutencaoCivilEletricaDataTable $manutencaoCivilEletricaDataTable)
     {
         return $manutencaoCivilEletricaDataTable->render('manutencoes_civil_eletrica.index');
+    }
+
+    /**
+     * Display a listing of photos of the ManutencaoCivilEletrica.
+     *
+     * @param ManutencaoCivilEletricaDataTable $manutencaoCivilEletricaDataTable
+     * @return Response
+     */
+    public function indexFotos(FotosRDODatatable $fotosRDODatatable, $idManutencaoRdo)
+    {
+        return $fotosRDODatatable->addScope(new PorIdManCivilEletricaScope($idManutencaoRdo))->render('fotosRdo.index');
+    }
+
+    /**
+     * Método para excluir foto de um RDO.
+     *
+     * @param int $idFotoRdo
+     * @return void
+     */
+    public function destroyFoto($idFotoRdo)
+    {
+        $fotoRdo = $this->fotoRdoRepository->find($idFotoRdo);
+
+        if (empty($fotoRdo)) {
+            Flash::error('Foto RDO não encontrada');
+
+            return redirect()->back();
+        }
+
+        $this->fotoRdoRepository->delete($idFotoRdo);
+
+        Flash::success('Foto excluída com sucesso.');
+
+        return redirect(route('manutencoesCivilEletrica.fotos', $fotoRdo->manutencao_id));
     }
 
     /**

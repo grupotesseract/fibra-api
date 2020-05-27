@@ -74,6 +74,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/plantas/rdo/{idRdo}/relatorio-download', 'ManutencaoCivilEletricaController@downloadRelatorio')
         ->name('relatorioRdo.download');
 
+    Route::get('/manutencoesCivilEletrica/{idManutencaoRdo}/fotos', 'ManutencaoCivilEletricaController@indexFotos')
+        ->name('manutencoesCivilEletrica.fotos');
+
+    Route::get('/rdo/fotosRdo/{idFotoRdo}', 'ManutencaoCivilEletricaController@destroyFoto')
+        ->name('fotoRdo.destroy');
+
     Route::get('programacoes/{id}/comentarios', 'ProgramacaoController@getGerenciarComentarios')
         ->name('programacoes.comentarios');
     Route::get('programacoes/{id}/datasManutencoes', 'ProgramacaoController@getDatasManutencoes')
