@@ -9,8 +9,8 @@ use App\DataTables\Scopes\PorIdManCivilEletricaScope;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateManutencaoCivilEletricaRequest;
 use App\Http\Requests\UpdateManutencaoCivilEletricaRequest;
-use App\Repositories\ManutencaoCivilEletricaRepository;
 use App\Repositories\FotoRdoRepository;
+use App\Repositories\ManutencaoCivilEletricaRepository;
 use Flash;
 use Response;
 
@@ -49,7 +49,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
     }
 
     /**
-     * Método para excluir foto de um RDO
+     * Método para excluir foto de um RDO.
      *
      * @param int $idFotoRdo
      * @return void
@@ -60,6 +60,7 @@ class ManutencaoCivilEletricaController extends AppBaseController
 
         if (empty($fotoRdo)) {
             Flash::error('Foto RDO não encontrada');
+
             return redirect()->back();
         }
 
