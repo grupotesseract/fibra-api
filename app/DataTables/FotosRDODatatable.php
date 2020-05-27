@@ -22,7 +22,7 @@ class FotosRDODatatable extends DataTable
             return view('fotosRdo.showPhoto')->with([
                 'UrlParaRelatorio' => $row->UrlParaRelatorio,
             ])->render();
-        })->addColumn('action', 'fotosRdo.datatables_actions')->rawColumns(['foto', 'action']); 
+        })->addColumn('action', 'fotosRdo.datatables_actions')->rawColumns(['foto', 'action']);
     }
 
     /**
@@ -73,7 +73,7 @@ class FotosRDODatatable extends DataTable
     {
         return [
             'id',
-            'foto'
+            'foto',
         ];
     }
 
