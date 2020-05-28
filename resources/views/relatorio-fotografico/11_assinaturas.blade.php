@@ -6,8 +6,8 @@
     </div>
 
     <div class="col-sm text-center">
-        "NOME DO CLIENTE"
-        <small>"EMPRESA"</small>
+        {{$manutencaoCivilEletrica->equipe_cliente}}
+        <small>{{ $manutencaoCivilEletrica->planta->empresa->nome }}</small>
         <small>Gestor do Projeto</small>
     </div>
 </section>

@@ -9,10 +9,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <ol>
-                            <li>N/A</li>
-                            <li></li>
-                        </ol>
+                        {{ $manutencaoCivilEletrica->informacoes_adicionais }}
                     </td>
                 </tr>
             </tbody>

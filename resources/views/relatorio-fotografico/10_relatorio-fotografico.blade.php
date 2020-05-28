@@ -9,19 +9,19 @@
             <tbody class="no-border">
                 <tr>
                     <td>
-                        <figure>
-                            <img src="https://via.placeholder.com/200"
-                                 width="200"
-                                 height="200" />
+                        
+                        @foreach ($manutencaoCivilEletrica->fotos->pluck('URLParaRelatorio')->all() as $foto)
+                            
+                            <figure>
+                                <img src="{{$foto}}"
+                                    width="200"
+                                    height="200" />
 
-                            <figcaption>Exemplo de caption</figcaption>
-                        </figure>
+                                {{-- <figcaption>Exemplo de caption</figcaption> --}}
+                            </figure>
 
-                        <figure>
-                            <img src="https://via.placeholder.com/200"
-                                 width="200"
-                                 height="200" />
-                        </figure>
+                        @endforeach                       
+                        
                     </td>
                 </tr>
             </tbody>
