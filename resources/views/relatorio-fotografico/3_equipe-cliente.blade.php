@@ -4,17 +4,17 @@
             <caption>Equipe de Fiscalização Cliente</caption>
 
             <thead>
-                <th class="text-uppercase text-center">Nome</th>
+                <th class="text-uppercase text-center">{{$manutencaoCivilEletrica->equipe_cliente}}</th>
             </thead>
 
-            <tbody>
+            {{-- <tbody>
                 <tr>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
                 </tr>
-            </tbody>
+            </tbody> --}}
         </table>
     </div>
 </section>
