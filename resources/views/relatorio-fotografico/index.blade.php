@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/pages/relatorio-fotografico.css" />
 </head>
 
+
 <body class="A4 relatorio-fotografico">
 
     {{-- Página 1/2 --}}
