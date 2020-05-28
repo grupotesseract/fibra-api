@@ -54,7 +54,7 @@
 
                             <div class="form-inline wide">
                                 <p><b>Início da Liberação LET:</b> {{! is_null($manutencaoCivilEletrica->data_hora_inicio_let) ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    '}}</p>
-                                <p>&nbsp;&nbsp;<b>Término da Liberação:</b> {{! is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    '}}</p>
+                                <p>&nbsp;&nbsp;&nbsp;<b>Término da Liberação:</b> {{! is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    '}}</p>
                             </div>
 
                             <div class="form-inline">
