@@ -1,19 +1,19 @@
 <section class="row">
     <div class="col-12">
         <div class="box">
-            Local: "selecionar tela"
+            Local: {{ $manutencaoCivilEletrica->planta->nome }}
         </div>
     </div>
 
     <div class="col-12">
         <div class="box">
-            Obra/Atividade: "Selecionar"
+            Obra/Atividade: {{ $manutencaoCivilEletrica->obra_atividade }}
         </div>
     </div>
 
     <div class="col-12">
         <div class="box">
-            23/05/2020 - SÁBADO
+            {{ $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y').' - '.\App\Models\ManutencaoCivilEletrica::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')] }}
         </div>
     </div>
 </section>
