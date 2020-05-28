@@ -7,74 +7,58 @@
                 <tr>
                     <td>
                         <form>
-                            <div class="form-inline">
+                            <div class="form-inline wide">
                                 <label>IT:</label>
-                                <input type="text"
+                                {{-- <input type="text"
                                     class="form-control form-control-plaintext"
-                                    readonly
-                                />
-                            </div>
-
-                            <div class="form-inline">
-                                <label>LEM/LET:</label>
-                                <input type="text"
-                                    class="form-control form-control-plaintext"
-                                    readonly
-                                />
-                            </div>
-
-                            <div class="form-inline">
-                                <label>OS:</label>
-                                <input type="text"
-                                    class="form-control form-control-plaintext"
-                                    readonly
-                                />
+                                    readonly                                    
+                                    value="{{$manutencaoCivilEletrica->it}}"                                    
+                                /> --}}
+                                <p>{{$manutencaoCivilEletrica->it}}</p>
                             </div>
 
                             <div class="form-inline wide">
-                                <label>Início da Liberação LEM/LET:</label>
-                                <input type="text"
+                                <label>LEM:</label>
+                                {{-- <input type="text"
                                     class="form-control form-control-plaintext"
-                                    size="1"
                                     readonly
-                                />
-                                <label>h</label>
-                                <input type="text"
-                                    class="form-control form-control-plaintext"
-                                    size="1"
-                                    readonly
-                                />
-                                <label>min,</label>
+                                    value="{{$manutencaoCivilEletrica->lem}}"
+                                /> --}}
+                                <p>{{$manutencaoCivilEletrica->lem}}</p>
+                            </div>
 
-                                <label>Término da Liberação:</label>
-                                <input type="text"
+                            <div class="form-inline wide">
+                                <label>LET:</label>
+                                {{-- <input type="text"
                                     class="form-control form-control-plaintext"
-                                    size="1"
                                     readonly
-                                />
-                                <label>h</label>
-                                <input type="text"
+                                    value="{{$manutencaoCivilEletrica->let}}"
+                                /> --}}
+                                <p>{{$manutencaoCivilEletrica->let}}</p>
+                            </div>
+
+                            <div class="form-inline wide">
+                                <label>OS:</label>
+                                {{-- <input type="text"
                                     class="form-control form-control-plaintext"
-                                    size="1"
-                                    readonly
-                                />
-                                <label>min.</label>
+                                    readonly                                    
+                                    value="{{$manutencaoCivilEletrica->os}}"
+                                /> --}}
+                                <p>{{$manutencaoCivilEletrica->os}}</p>
+                            </div>
+
+                            <div class="form-inline wide">
+                                <p><b>Início da Liberação LEM:</b> {{! is_null($manutencaoCivilEletrica->data_hora_inicio_lem) ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    '}}</p>
+                                <p>&nbsp;&nbsp;<b>Término da Liberação:</b> {{! is_null($manutencaoCivilEletrica->data_hora_final_lem) ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    '}}</p>
+                            </div>
+
+                            <div class="form-inline wide">
+                                <p><b>Início da Liberação LET:</b> {{! is_null($manutencaoCivilEletrica->data_hora_inicio_let) ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    '}}</p>
+                                <p>&nbsp;&nbsp;&nbsp;<b>Término da Liberação:</b> {{! is_null($manutencaoCivilEletrica->data_hora_final_let) ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    '}}</p>
                             </div>
 
                             <div class="form-inline">
-                                <label>Início da Atividade:</label>
-                                <input type="text"
-                                    class="form-control form-control-plaintext"
-                                    size="1"
-                                    readonly
-                                />
-                                <label>h</label>
-                                <input type="text"
-                                    class="form-control form-control-plaintext"
-                                    size="1"
-                                    readonly
-                                />
-                                <label>min</label>
+                                <p><b>Início da Atividade:</b> {{! is_null($manutencaoCivilEletrica->data_hora_inicio_atividades) ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    '}}</p>
                             </div>
                         </form>
                     </td>

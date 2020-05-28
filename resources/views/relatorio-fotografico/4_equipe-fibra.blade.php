@@ -12,20 +12,17 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>"Selecionar a tabela"</td>
-                    <td>"início"</td>
-                    <td>12:00</td>
-                    <td>13:00</td>
-                    <td>"fim"</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                
+                @foreach ($manutencaoCivilEletrica->usuarios()->with('usuario')->get()->pluck('usuario.nome')->toArray() as $equipe)
+                    <tr>                        
+                        <td>{{$equipe}}</td>
+                        <td>{{! is_null($manutencaoCivilEletrica->data_hora_entrada) ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : ''}}</td>
+                        <td>12:00</td>
+                        <td>13:00</td>
+                        <td>{{! is_null($manutencaoCivilEletrica->data_hora_saida) ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : ''}}</td>
+                    </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>

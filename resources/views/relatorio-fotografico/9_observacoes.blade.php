@@ -9,10 +9,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <ol>
-                            <li>N/A</li>
-                            <li></li>
-                        </ol>
+                        {{ $manutencaoCivilEletrica->observacoes }}
                     </td>
                 </tr>
             </tbody>

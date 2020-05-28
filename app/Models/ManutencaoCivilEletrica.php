@@ -56,6 +56,30 @@ class ManutencaoCivilEletrica extends Model
         'planta_id',
     ];
 
+    const DIASSEMANA = [
+        'Sunday' => 'DOMINGO',
+        'Monday' => 'SEGUNDA-FEIRA',
+        'Tuesday' => 'TERÇA-FEIRA',
+        'Wednesday' => 'QUARTA-FEIRA',
+        'Thursday' => 'QUINTA-FEIRA',
+        'Friday' => 'SEXTA-FEIRA',
+        'Saturday' => 'SÁBADO',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'data_hora_entrada',
+        'data_hora_saida',
+        'data_hora_inicio_lem',
+        'data_hora_final_lem',
+        'data_hora_inicio_let',
+        'data_hora_final_let',
+        'data_hora_inicio_atividades',
+        'planta_id',
+    ];
+
     /**
      * The attributes that should be casted to native types.
      *

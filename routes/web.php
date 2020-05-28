@@ -94,10 +94,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/itemAlterado/consolida/{id}', 'ItemAlteradoController@consolida')
         ->name('itensAlterados.consolida');
 
-    // Route::get('/relatorio-fotografico', function () {
-    //     return view('relatorio-fotografico/index');
-    // });
-
     Route::resource('usuarios', 'UsuarioController');
     Route::resource('tiposMateriais', 'TipoMaterialController');
     Route::resource('empresas', 'EmpresaController');
