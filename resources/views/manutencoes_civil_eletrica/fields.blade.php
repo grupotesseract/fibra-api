@@ -34,7 +34,13 @@
         <!-- LET Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('let', 'LET:') !!}
-            {!! Form::textarea('lem', null, ['class' => 'form-control', 'rows' => 4]) !!}
+            {!! Form::textarea('let', null, ['class' => 'form-control', 'rows' => 4]) !!}
+        </div>
+
+        <!-- OS Field -->
+        <div class="form-group col-sm-12">
+            {!! Form::label('os', 'OS:') !!}
+            {!! Form::textarea('os', null, ['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
         <!-- Obra Atividade Field -->
