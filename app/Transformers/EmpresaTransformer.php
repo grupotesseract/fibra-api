@@ -67,6 +67,7 @@ class EmpresaTransformer extends TransformerAbstract
                         'potencia' => $material->potenciaValor,
                         'tensao' => $material->tensaoValor,
                         'tipoMaterial' => $material->tipoMaterialNome,
+                        'tipoMaterialTipo' => $material->tipoMaterial ? $material->tipoMaterial->tipo : null,
                         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
                     ];
                 }
@@ -96,6 +97,7 @@ class EmpresaTransformer extends TransformerAbstract
                             'tensao' => $estoque->material->tensaoValor,
                             'tipoMaterial' => $estoque->material->tipoMaterialNome,
                             'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
+                            'tipoMaterialAbreviacao' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->abreviacao : null,
                             'quantidade' => $estoque->quantidade_final,
                         ];
 
