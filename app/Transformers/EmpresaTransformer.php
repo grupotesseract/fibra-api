@@ -97,6 +97,7 @@ class EmpresaTransformer extends TransformerAbstract
                             'tensao' => $estoque->material->tensaoValor,
                             'tipoMaterial' => $estoque->material->tipoMaterialNome,
                             'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
+                            'tipoMaterialAbreviacao' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->abreviacao : null,
                             'quantidade' => $estoque->quantidade_final,
                         ];
 
