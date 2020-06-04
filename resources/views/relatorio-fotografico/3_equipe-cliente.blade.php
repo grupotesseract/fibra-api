@@ -4,7 +4,7 @@
             <caption>Equipe de Fiscalização Cliente</caption>
 
             <thead>
-                <th class="text-uppercase text-center">{{$manutencaoCivilEletrica->equipe_cliente}}</th>
+                <th class="text-uppercase text-left">{{$manutencaoCivilEletrica->equipe_cliente}}</th>
             </thead>
 
             {{-- <tbody>

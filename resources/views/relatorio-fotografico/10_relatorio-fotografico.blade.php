@@ -9,19 +9,18 @@
             <tbody class="no-border">
                 <tr>
                     <td>
-                        
-                        @foreach ($manutencaoCivilEletrica->fotos->pluck('URLParaRelatorio')->all() as $foto)
-                            
+
+                        @foreach ($fotos as $foto)
+
                             <figure>
-                                <img src="{{$foto}}"
+                                <img src="{{$foto->urlParaRelatorio}}"
                                     width="200"
                                     height="200" />
 
-                                {{-- <figcaption>Exemplo de caption</figcaption> --}}
                             </figure>
 
-                        @endforeach                       
-                        
+                        @endforeach
+
                     </td>
                 </tr>
             </tbody>
