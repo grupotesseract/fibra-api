@@ -104,7 +104,7 @@ class ProgramacaoRepository extends BaseRepository
                 $qtdadeEntradaMaterial = ! is_null($entradaMaterial) ? $entradaMaterial->quantidade : 0;
 
                 if (! is_null($material->tipoMaterial)) {
-                    if ($material->tipoMaterial->tipo == 'Lâmpada') {
+                    if ($material->tipoMaterial->tipo == 'Lâmpada' || $material->tipoMaterial->tipo == 'Outros') {
                         $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('material_id', $estoque['material_id'])->sum('quantidade_substituida');
                     } elseif ($material->tipoMaterial->tipo == 'Reator') {
                         $qtdeSubstituidaMaterial = $programacao->quantidadesSubstituidas()->where('reator_id', $estoque['material_id'])->sum('quantidade_substituida_reator');
