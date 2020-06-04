@@ -18,7 +18,22 @@ class ItemAlteradoDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'itens_alterados.datatables_actions');
+        return $dataTable
+            ->addColumn('action', 'itens_alterados.datatables_actions')
+            ->addColumn(
+                'quantidade_antiga', function ($row) {
+                    if ($row->material->items()->whereItemId($row->item_id)->first()) {
+                        return $row->material->items()->whereItemId($row->item_id)->first()->pivot->quantidade_instalada;
+                    }
+                }
+            )
+            ->addColumn(
+                'diferenca', function ($row) {
+                    if ($row->material->items()->whereItemId($row->item_id)->first()) {
+                        return $row->quantidade_instalada - $row->material->items()->whereItemId($row->item_id)->first()->pivot->quantidade_instalada;
+                    }
+                }
+            );
     }
 
     /**
@@ -162,6 +177,10 @@ class ItemAlteradoDataTable extends DataTable
                 'visible' => false,
             ],
             'quantidade_instalada',
+            'quantidade_antiga',
+            'diferenca' => [
+                'title' => 'Diferença'
+            ]
         ];
     }
 
