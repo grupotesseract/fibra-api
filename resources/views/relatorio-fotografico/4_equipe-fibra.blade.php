@@ -12,10 +12,10 @@
             </thead>
 
             <tbody>
-                
+
                 @foreach ($manutencaoCivilEletrica->usuarios()->with('usuario')->get()->pluck('usuario.nome')->toArray() as $equipe)
-                    <tr>                        
-                        <td>{{$equipe}}</td>
+                    <tr>
+                        <td class="text-left">{{$equipe}}</td>
                         <td>{{! is_null($manutencaoCivilEletrica->data_hora_entrada) ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : ''}}</td>
                         <td>12:00</td>
                         <td>13:00</td>
