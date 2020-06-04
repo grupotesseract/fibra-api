@@ -34,6 +34,20 @@
         {{-- Documentações Expedidas no Dia --}}
         @include('relatorio-fotografico/5_documentacoes-expedidas')
 
+
+        {{-- <footer>
+            Página <b>1</b> de <b>2</b>
+        </footer> --}}
+
+    </section>
+
+    <section class="sheet">
+        {{-- Logo --}}
+        @include('relatorio-fotografico/1_logo')
+
+        {{-- Cabeçalho --}}
+        @include('relatorio-fotografico/2_cabecalho')
+
         {{-- Atividades Realizadas no Dia --}}
         @include('relatorio-fotografico/6_atividades-realizadas')
 
@@ -45,33 +59,53 @@
 
         {{-- Observações --}}
         @include('relatorio-fotografico/9_observacoes')
-
-        <footer>
-            Página <b>1</b> de <b>2</b>
-        </footer>
-
     </section>
 
     {{-- Página 2/2 --}}
-    <section class="sheet">
+    @foreach ($manutencaoCivilEletrica->fotos->chunk(3) as $chunk)
+        @if ($chunk->count() > 2)
+            <section class="sheet">
 
-        {{-- Logo --}}
-        @include('relatorio-fotografico/1_logo')
+                {{-- Logo --}}
+                @include('relatorio-fotografico/1_logo')
 
-        {{-- Cabeçalho --}}
-        @include('relatorio-fotografico/2_cabecalho')
+                {{-- Cabeçalho --}}
+                @include('relatorio-fotografico/2_cabecalho')
 
-        {{-- Relatório Fotográfico --}}
-        @include('relatorio-fotografico/10_relatorio-fotografico')
+                {{-- Relatório Fotográfico --}}
+                @include('relatorio-fotografico/10_relatorio-fotografico', ['fotos' => $chunk])
 
-        {{-- Assinaturas --}}
-        @include('relatorio-fotografico/11_assinaturas')
 
-        <footer>
-            Página <b>2</b> de <b>2</b>
-        </footer>
+                {{-- <footer>
+                    Página <b>2</b> de <b>2</b>
+                </footer> --}}
 
-    </section>
+            </section>
+        @else
+            <section class="sheet">
+
+                {{-- Logo --}}
+                @include('relatorio-fotografico/1_logo')
+
+                {{-- Cabeçalho --}}
+                @include('relatorio-fotografico/2_cabecalho')
+
+                {{-- Relatório Fotográfico --}}
+                @include('relatorio-fotografico/10_relatorio-fotografico', ['fotos' => $chunk])
+
+                {{-- Assinaturas --}}
+                @include('relatorio-fotografico/11_assinaturas')
+
+                {{-- <footer>
+                    Página <b>2</b> de <b>2</b>
+                </footer> --}}
+
+            </section>
+        @endif
+
+    @endforeach
+
+
 
     <div class="info d-print-none">
         <p>
