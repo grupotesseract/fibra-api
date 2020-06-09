@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\ItemAlterado;
+use App\Models\QuantidadeSubstituida;
 use App\Repositories\BaseRepository;
 
 /**
@@ -47,6 +48,16 @@ class ItemAlteradoRepository extends BaseRepository
      */
     public function consolida($itemAlterado)
     {
+        /*
+            pega registro atual
+            faz o sync
+            insere quantidade substituida
+            subtrai quantidade substituida do estoque
+        */
+
+        $quantidadeAtual = $itemAlterado->material->items()->whereItemId($itemAlterado->item_id)->first()->pivot->quantidade_instalada;
+        $quantidadeAtual = !is_null($quantidadeAtual) ? $quantidadeAtual : 0;
+
         $itemAlterado->item->materiais()->syncWithoutDetaching(
             [
                 $itemAlterado->material_id => [
@@ -54,5 +65,33 @@ class ItemAlteradoRepository extends BaseRepository
                 ],
             ]
         );
+
+        if ($itemAlterado->material->tipoMaterial->tipo == 'Lâmpada') {
+
+            $quantidadeSubstituida = $itemAlterado->programacao->quantidadesSubstituidas()
+                ->where('item_id', $itemAlterado->item_id)
+                ->where('material_id', $itemAlterado->material_id)
+                ->where('base_id', $itemAlterado->material->base_id)
+                ->where('reator_id', $itemAlterado->material->reator_id)
+                ->get();
+
+            if (!$quantidadeSubstituida) {
+                $itemAlterado->programacao->quantidadesSubstituidas()
+                    ->create(
+                        [
+                            'item_id' => $itemAlterado->item_id,
+                            'material_id' => $itemAlterado->material_id,
+                            'quantidade_substituida' => $itemAlterado->quantidade_instalada,
+                            'base_id' => $itemAlterado->material->base_id,
+                            'quantidade_substituida_base' => 1,
+                            'reator_id' => $itemAlterado->material->reator_id,
+                            'quantidade_substituida_reator' => 1,
+                        ]
+                    );
+            }
+
+            //ATUALIZAR/CRIAR REGISTRO DO ESTOQUE PARA MATERIAL,BASE E REATOR - QUANTIDADE ATUAL ESTOQUE - QUANTIDADE SUBSTITUIDA
+
+        }
     }
 }
