@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\AtividadeRealizada;
 use App\Models\Planta;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
@@ -73,8 +74,23 @@ class PlantaRepository extends BaseRepository
 
         DB::transaction(function () use ($input, $planta, &$manutencaoCivilEletrica) {
             $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
-            $manutencaoCivilEletrica->atividadesRealizadas()->createMany($input['atividades_realizadas']);
+
+            foreach ($input['atividades_realizadas'] as $atividadeRealizada) {
+                AtividadeRealizada::where('texto', $atividadeRealizada['texto'])
+                ->where('status', false)
+                ->whereIn('manutencao_id', $planta->manutencoesCivilEletrica->pluck('id')->toArray())
+                ->update(
+                    [
+                        'status' => $atividadeRealizada['status']
+                    ]
+                );
+
+                $manutencaoCivilEletrica->atividadesRealizadas()->create($atividadeRealizada);
+
+            }
+
             $manutencaoCivilEletrica->usuarios()->createMany($input['usuarios_manutencao']);
+
         });
 
         return $manutencaoCivilEletrica;
