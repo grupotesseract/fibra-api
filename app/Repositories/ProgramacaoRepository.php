@@ -77,7 +77,7 @@ class ProgramacaoRepository extends BaseRepository
             $programacao->quantidadesSubstituidas()->createMany($input['quantidadesSubstituidas']);
 
             //ITENS ALTERADOS
-            if (array_key_exists('itensAlterados', $input['programacao'])) {
+            if (array_key_exists('itensAlterados', $input)) {
                 $programacao->itensAlterados()->createMany($input['itensAlterados']);
             }
 

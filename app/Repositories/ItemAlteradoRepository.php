@@ -55,9 +55,6 @@ class ItemAlteradoRepository extends BaseRepository
             subtrai quantidade substituida do estoque
         */
 
-        $quantidadeAtual = $itemAlterado->material->items()->whereItemId($itemAlterado->item_id)->first()->pivot->quantidade_instalada;
-        $quantidadeAtual = !is_null($quantidadeAtual) ? $quantidadeAtual : 0;
-
         $itemAlterado->item->materiais()->syncWithoutDetaching(
             [
                 $itemAlterado->material_id => [
@@ -73,7 +70,8 @@ class ItemAlteradoRepository extends BaseRepository
                 ->where('material_id', $itemAlterado->material_id)
                 ->where('base_id', $itemAlterado->material->base_id)
                 ->where('reator_id', $itemAlterado->material->reator_id)
-                ->get();
+                ->get()
+                ->first();
 
             if (!$quantidadeSubstituida) {
                 $itemAlterado->programacao->quantidadesSubstituidas()
@@ -83,11 +81,20 @@ class ItemAlteradoRepository extends BaseRepository
                             'material_id' => $itemAlterado->material_id,
                             'quantidade_substituida' => $itemAlterado->quantidade_instalada,
                             'base_id' => $itemAlterado->material->base_id,
-                            'quantidade_substituida_base' => 1,
+                            //'quantidade_substituida_base' => 1,
                             'reator_id' => $itemAlterado->material->reator_id,
-                            'quantidade_substituida_reator' => 1,
+                            //'quantidade_substituida_reator' => 1,
                         ]
                     );
+
+                $estoque = $itemAlterado->programacao->estoques()->where('material_id', $itemAlterado->material_id)->get()->first();
+
+                if ($estoque) {
+                    $quantidadeEstoqueAtual = $estoque->quantidade_final;
+                    $estoque->quantidade_final = $quantidadeEstoqueAtual - $itemAlterado->quantidade_instalada;
+                    $estoque->save();
+                }
+
             }
 
             //ATUALIZAR/CRIAR REGISTRO DO ESTOQUE PARA MATERIAL,BASE E REATOR - QUANTIDADE ATUAL ESTOQUE - QUANTIDADE SUBSTITUIDA
