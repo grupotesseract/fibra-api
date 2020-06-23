@@ -179,8 +179,8 @@ class ItemAlteradoDataTable extends DataTable
             'quantidade_instalada',
             'quantidade_antiga',
             'diferenca' => [
-                'title' => 'Diferença'
-            ]
+                'title' => 'Diferença',
+            ],
         ];
     }
 

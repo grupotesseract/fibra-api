@@ -64,7 +64,6 @@ class ItemAlteradoRepository extends BaseRepository
         );
 
         if ($itemAlterado->material->tipoMaterial->tipo == 'Lâmpada') {
-
             $quantidadeSubstituida = $itemAlterado->programacao->quantidadesSubstituidas()
                 ->where('item_id', $itemAlterado->item_id)
                 ->where('material_id', $itemAlterado->material_id)
@@ -73,7 +72,7 @@ class ItemAlteradoRepository extends BaseRepository
                 ->get()
                 ->first();
 
-            if (!$quantidadeSubstituida) {
+            if (! $quantidadeSubstituida) {
                 $itemAlterado->programacao->quantidadesSubstituidas()
                     ->create(
                         [
@@ -94,11 +93,9 @@ class ItemAlteradoRepository extends BaseRepository
                     $estoque->quantidade_final = $quantidadeEstoqueAtual - $itemAlterado->quantidade_instalada;
                     $estoque->save();
                 }
-
             }
 
             //ATUALIZAR/CRIAR REGISTRO DO ESTOQUE PARA MATERIAL,BASE E REATOR - QUANTIDADE ATUAL ESTOQUE - QUANTIDADE SUBSTITUIDA
-
         }
     }
 }
