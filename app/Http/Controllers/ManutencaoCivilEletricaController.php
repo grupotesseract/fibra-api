@@ -204,8 +204,10 @@ class ManutencaoCivilEletricaController extends AppBaseController
             return redirect(route('manutencoesCivilEletrica.index'));
         }
 
-        //$rdo = $this->manutencaoCivilEletricaRepository->relatorioRDO($manutencaoCivilEletrica);
+        $rdo = $this->manutencaoCivilEletricaRepository->relatorioRDO($manutencaoCivilEletrica);
 
-        return view('relatorio-fotografico/index')->with('manutencaoCivilEletrica', $manutencaoCivilEletrica);
+        return response()->download($rdo);
+
+        //return view('relatorio-fotografico/index')->with('manutencaoCivilEletrica', $manutencaoCivilEletrica);
     }
 }
