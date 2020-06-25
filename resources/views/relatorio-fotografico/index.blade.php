@@ -75,6 +75,10 @@
                 {{-- Relatório Fotográfico --}}
                 @include('relatorio-fotografico/10_relatorio-fotografico', ['fotos' => $chunk])
 
+                @if ($loop->last)
+                    {{-- Assinaturas --}}
+                    @include('relatorio-fotografico/11_assinaturas')
+                @endif
 
                 {{-- <footer>
                     Página <b>2</b> de <b>2</b>
