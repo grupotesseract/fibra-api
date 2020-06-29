@@ -55,13 +55,17 @@ class ItemAlteradoRepository extends BaseRepository
             subtrai quantidade substituida do estoque
         */
 
-        $itemAlterado->item->materiais()->syncWithoutDetaching(
-            [
-                $itemAlterado->material_id => [
-                    'quantidade_instalada' => $itemAlterado->quantidade_instalada,
-                ],
-            ]
-        );
+        if ($itemAlterado->quantidade_instalada === 0) {
+            $itemAlterado->item->materiais()->detach($itemAlterado->material_id);
+        } else {
+            $itemAlterado->item->materiais()->syncWithoutDetaching(
+                [
+                    $itemAlterado->material_id => [
+                        'quantidade_instalada' => $itemAlterado->quantidade_instalada,
+                    ],
+                ]
+            );
+        }
 
         if ($itemAlterado->material->tipoMaterial->tipo == 'Lâmpada') {
             $quantidadeSubstituida = $itemAlterado->programacao->quantidadesSubstituidas()
