@@ -90,18 +90,19 @@ class ItemAlteradoRepository extends BaseRepository
                         ]
                     );
 
+                $estoque = $itemAlterado->programacao->estoques()->where('material_id', $itemAlterado->material_id)->get()->first();
+
+                if ($estoque) {
+                    $quantidadeEstoqueAtual = $estoque->quantidade_final;
+                    $estoque->quantidade_final = $quantidadeEstoqueAtual - $itemAlterado->quantidade_instalada;
+                    $estoque->save();
+                }
 
             }
 
             //ATUALIZAR/CRIAR REGISTRO DO ESTOQUE PARA MATERIAL,BASE E REATOR - QUANTIDADE ATUAL ESTOQUE - QUANTIDADE SUBSTITUIDA
         }
 
-        $estoque = $itemAlterado->programacao->estoques()->where('material_id', $itemAlterado->material_id)->get()->first();
 
-        if ($estoque) {
-            $quantidadeEstoqueAtual = $estoque->quantidade_final;
-            $estoque->quantidade_final = $quantidadeEstoqueAtual - $itemAlterado->quantidade_instalada;
-            $estoque->save();
-        }
     }
 }
