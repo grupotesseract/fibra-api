@@ -20,6 +20,7 @@ class UsuarioTransformer extends TransformerAbstract
             'nome' => $usuario->nome,
             'role' => $usuario->roles->first()->name,
             'password' => $usuario->password,
+            'passwordsha256' => $usuario->passwordsha256,
         ];
     }
 }
