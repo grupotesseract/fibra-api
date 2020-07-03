@@ -16,6 +16,7 @@ class AdminUserSeeder extends Seeder
             'email' => env('ADMIN_EMAIL', 'admin@grupotesseract.com.br'),
             'login' => 'admin.tesseract',
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
+            'passwordsha256' => hash('sha256', env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Admin Tesseract',
             'cidade_id' => Cidade::where('nome', 'Bauru')->first()->id,
         ]);
