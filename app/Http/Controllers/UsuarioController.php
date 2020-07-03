@@ -52,6 +52,7 @@ class UsuarioController extends AppBaseController
     {
         $input = $request->all();
         $input['password'] = bcrypt($request->password);
+        $input['passwordsha256'] = hash('sha256', $request->password);
 
         $this->usuarioRepository->create($input);
         Flash::success('Usuário salvo com sucesso.');
@@ -112,6 +113,7 @@ class UsuarioController extends AppBaseController
         $usuario = $this->usuarioRepository->find($id);
         $input = $request->all();
         $input['password'] = bcrypt($request->password);
+        $input['passwordsha256'] = hash('sha256', $request->password);
 
         if (empty($usuario)) {
             Flash::error('Usuário não encontrado');

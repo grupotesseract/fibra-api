@@ -15,6 +15,7 @@ class TecnicoUserSeeder extends Seeder
             'login' => env('ADMIN_EMAIL', 'fvlimafernandes'),
             'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
+            'passwordsha256' => hash('sha256', env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Fernando Lima Fernandes',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
         ]);
@@ -24,6 +25,7 @@ class TecnicoUserSeeder extends Seeder
             'login' => env('ADMIN_EMAIL', 'evandro.carreira'),
             'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
+            'passwordsha256' => hash('sha256', env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Evandro Carreira',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
         ]);
@@ -33,6 +35,7 @@ class TecnicoUserSeeder extends Seeder
             'login' => env('ADMIN_EMAIL', 'renato.gomes'),
             'email' => env('ADMIN_EMAIL', null),
             'password' => bcrypt(env('ADMIN_PASSWORD', '12344321')),
+            'passwordsha256' => hash('sha256', env('ADMIN_PASSWORD', '12344321')),
             'nome' => 'Renato Gomes',
             'cidade_id' => \App\Models\Cidade::where('nome', 'Bauru')->first()->id,
         ]);
