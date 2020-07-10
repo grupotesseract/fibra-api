@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use \PhpOffice\PhpWord\PhpWord;
+
 /**
  * Classe para intermediar a comunicação com o PhpWord facilitando a construçao
  * das seções do documento word.
@@ -15,7 +17,7 @@ class PhpWordHelper
      */
     public static function criarDoc()
     {
-        return new \PhpOffice\PhpWord\PhpWord();
+        return new PhpWord;
     }
 
     /**
@@ -42,7 +44,7 @@ class PhpWordHelper
      */
     public static function addSecaoTitulo($section, $numero, $texto)
     {
-        $section->addText($numero.' - '.$texto, ['size' => 12], ['align' => 'center']);
+        $section->addText($numero . ' - ' . $texto, ['size' => 12], ['align' => 'center']);
     }
 
     /**
