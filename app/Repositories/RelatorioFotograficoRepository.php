@@ -7,13 +7,11 @@ use App\Repositories\BaseRepository;
 
 /**
  * Class RelatorioFotograficoRepository.
+ *
  * @version December 30, 2019, 10:12 pm -03
  */
 class RelatorioFotograficoRepository extends BaseRepository
 {
-    /**
-     * @var array
-     */
     protected $fieldSearchable = [
         'programacao_id',
     ];
@@ -47,7 +45,7 @@ class RelatorioFotograficoRepository extends BaseRepository
         $idsItemsComFoto = $programacao->fotos()->pluck('item_id')->unique();
         $itens = $programacao->planta->itens()->whereIn('id', $idsItemsComFoto)->orderBy('qrcode')->get();
 
-        //Criando doc e container das secoes
+        // Criando doc e container das secoes
         $phpWord = \App\Helpers\PhpWordHelper::criarDoc();
         $section = \App\Helpers\PhpWordHelper::addContainerSecoes($phpWord);
 

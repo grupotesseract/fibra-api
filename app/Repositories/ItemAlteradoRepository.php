@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\ItemAlterado;
+use App\Models\QuantidadeSubstituida;
 use App\Repositories\BaseRepository;
 
 /**
@@ -47,12 +48,58 @@ class ItemAlteradoRepository extends BaseRepository
      */
     public function consolida($itemAlterado)
     {
-        $itemAlterado->item->materiais()->syncWithoutDetaching(
-            [
-                $itemAlterado->material_id => [
-                    'quantidade_instalada' => $itemAlterado->quantidade_instalada,
-                ],
-            ]
-        );
+        /*
+            pega registro atual
+            faz o sync
+            insere quantidade substituida
+            subtrai quantidade substituida do estoque
+        */
+
+        if ($itemAlterado->quantidade_instalada === 0) {
+            $itemAlterado->item->materiais()->detach($itemAlterado->material_id);
+        } else {
+            $itemAlterado->item->materiais()->syncWithoutDetaching(
+                [
+                    $itemAlterado->material_id => [
+                        'quantidade_instalada' => $itemAlterado->quantidade_instalada,
+                    ],
+                ]
+            );
+        }
+
+        if ($itemAlterado->material->tipoMaterial->tipo == 'Lâmpada') {
+            $quantidadeSubstituida = $itemAlterado->programacao->quantidadesSubstituidas()
+                ->where('item_id', $itemAlterado->item_id)
+                ->where('material_id', $itemAlterado->material_id)
+                ->where('base_id', $itemAlterado->material->base_id)
+                ->where('reator_id', $itemAlterado->material->reator_id)
+                ->get()
+                ->first();
+
+            if (! $quantidadeSubstituida) {
+                $itemAlterado->programacao->quantidadesSubstituidas()
+                    ->create(
+                        [
+                            'item_id' => $itemAlterado->item_id,
+                            'material_id' => $itemAlterado->material_id,
+                            'quantidade_substituida' => $itemAlterado->quantidade_instalada,
+                            'base_id' => $itemAlterado->material->base_id,
+                            //'quantidade_substituida_base' => 1,
+                            'reator_id' => $itemAlterado->material->reator_id,
+                            //'quantidade_substituida_reator' => 1,
+                        ]
+                    );
+
+                $estoque = $itemAlterado->programacao->estoques()->where('material_id', $itemAlterado->material_id)->get()->first();
+
+                if ($estoque) {
+                    $quantidadeEstoqueAtual = $estoque->quantidade_final;
+                    $estoque->quantidade_final = $quantidadeEstoqueAtual - $itemAlterado->quantidade_instalada;
+                    $estoque->save();
+                }
+            }
+
+            //ATUALIZAR/CRIAR REGISTRO DO ESTOQUE PARA MATERIAL,BASE E REATOR - QUANTIDADE ATUAL ESTOQUE - QUANTIDADE SUBSTITUIDA
+        }
     }
 }

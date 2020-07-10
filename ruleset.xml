@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="Custom">
+  <description>Custom rules</description>
+
+  <rule ref="PSR2" />
+
+  <rule ref="Zend">
+    <exclude name="Generic.Files.LineLength"/>
+    <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps"/>
+  </rule>
+
+  <rule ref="PEAR">
+    <exclude name="PEAR.Commenting.FileComment.Missing"/>
+    <exclude name="PEAR.NamingConventions.ValidClassName.Invalid" />
+    <exclude name="PEAR."/>
+  </rule>
+
+  <file>app/</file>
+  <exclude-pattern>vendor</exclude-pattern>
+  <exclude-pattern>resources</exclude-pattern>
+  <exclude-pattern>database/</exclude-pattern>
+  <exclude-pattern>storage/</exclude-pattern>
+  <exclude-pattern>node_modules/</exclude-pattern>
+</ruleset>
