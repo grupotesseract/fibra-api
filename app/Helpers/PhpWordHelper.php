@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use PhpOffice\PhpWord\PhpWord;
+
 /**
  * Classe para intermediar a comunicação com o PhpWord facilitando a construçao
  * das seções do documento word.
@@ -11,17 +13,17 @@ class PhpWordHelper
     /**
      * Retorna uma instancia do PhpWord.
      *
-     * @return \PhpOffice\PhpWord\PhpWord
+     * @return PhpOffice\PhpWord\PhpWord
      */
     public static function criarDoc()
     {
-        return new \PhpOffice\PhpWord\PhpWord();
+        return new PhpWord;
     }
 
     /**
      * Retorna uma instancia de section do PhpWord já com as margens do documento.
      *
-     * @return \PhpOffice\PhpWord\Element\Section
+     * @return PhpOffice\PhpWord\Element\Section
      */
     public static function addContainerSecoes($phpWord)
     {
@@ -36,13 +38,13 @@ class PhpWordHelper
     /**
      * Metodo para adicionar o bloco de titulo com numero e nome do item.
      *
-     * @param \PhpOffice\PhpWord\Element\Section
+     * @param PhpOffice\PhpWord\Element\Section
      * @param string $numero
      * @param string $texto
      */
     public static function addSecaoTitulo($section, $numero, $texto)
     {
-        $section->addText($numero.' - '.$texto, ['size' => 12], ['align' => 'center']);
+        $section->addText($numero . ' - ' . $texto, ['size' => 12], ['align' => 'center']);
     }
 
     /**
@@ -50,12 +52,12 @@ class PhpWordHelper
      *
      * Adicionando 3 fotos por linha.
      *
-     * @param \PhpOffice\PhpWord\Element\Section
+     * @param PhpOffice\PhpWord\Element\Section
      * @param Illuminate\Database\Eloquent\Collection $fotos
      */
     public static function addSecaoFotos($section, $fotos)
     {
-        //$section->addTextBreak(1);
+        $section->addTextBreak(1);
 
         foreach ($fotos->chunk(3) as $linhaFotos) {
             $table = $section->addTable();
@@ -92,7 +94,7 @@ class PhpWordHelper
     /**
      * Metodo para salvar o docx no arquivo relatorio.docx.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param PhpOffice\PhpWord\PhpWord $phpWord
      */
     public static function salvarDoc($phpWord, $relatorioFotografico)
     {
