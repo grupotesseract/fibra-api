@@ -12,6 +12,7 @@ class ItemAlteradoDataTable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
+     *
      * @return \Yajra\DataTables\DataTableAbstract
      */
     public function dataTable($query)
@@ -21,14 +22,16 @@ class ItemAlteradoDataTable extends DataTable
         return $dataTable
             ->addColumn('action', 'itens_alterados.datatables_actions')
             ->addColumn(
-                'quantidade_antiga', function ($row) {
+                'quantidade_antiga',
+                function ($row) {
                     if ($row->material->items()->whereItemId($row->item_id)->first()) {
                         return $row->material->items()->whereItemId($row->item_id)->first()->pivot->quantidade_instalada;
                     }
                 }
             )
             ->addColumn(
-                'diferenca', function ($row) {
+                'diferenca',
+                function ($row) {
                     if ($row->material->items()->whereItemId($row->item_id)->first()) {
                         return $row->quantidade_instalada - $row->material->items()->whereItemId($row->item_id)->first()->pivot->quantidade_instalada;
                     }
@@ -40,6 +43,7 @@ class ItemAlteradoDataTable extends DataTable
      * Get query source of dataTable.
      *
      * @param \App\Models\ItemAlterado $model
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(ItemAlterado $model)
@@ -180,7 +184,7 @@ class ItemAlteradoDataTable extends DataTable
             'quantidade_antiga',
             'diferenca' => [
                 'title' => 'Diferença',
-            ],
+            ]
         ];
     }
 
@@ -191,6 +195,6 @@ class ItemAlteradoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'itens_alteradosdatatable_'.time();
+        return 'itens_alteradosdatatable_' . time();
     }
 }
