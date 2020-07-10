@@ -121,7 +121,7 @@ class RDOHelper extends PhpWordHelper
         foreach ($arrEquipeCliente as $nomePessoa) {
             $table->addRow(300);
             $cell = $table->addCell($this->styles->fullWidth);
-            $cell->addText($nomePessoa, $this->styles->tableText, $this->styles->textCenter);
+            $cell->addText($nomePessoa, $this->styles->tableText, $this->styles->textLeft);
         }
 
         $section->addTextBreak(1);
