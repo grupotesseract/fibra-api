@@ -7,13 +7,12 @@ use PhpOffice\PhpWord\Style\Table;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * RDO Helper
+ * RDO Helper.
  *
  * Classe para intermediar a comunicação com o PhpWord
  * facilitando a construção das seções do Relatório Diário de Obra (RDO).
  *
  * @category Helpers
- * @package  Fibra
  */
 class RDOHelper extends PhpWordHelper
 {
