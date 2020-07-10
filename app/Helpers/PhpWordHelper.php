@@ -57,7 +57,7 @@ class PhpWordHelper
      */
     public static function addSecaoFotos($section, $fotos)
     {
-        //$section->addTextBreak(1);
+        $section->addTextBreak(1);
 
         foreach ($fotos->chunk(3) as $linhaFotos) {
             $table = $section->addTable();

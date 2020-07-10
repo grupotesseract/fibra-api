@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use Carbon\Carbon;
 use PhpOffice\PhpWord\Style\Table;
-use PhpOffice\PhpWord\Element\Section;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -63,7 +62,7 @@ class RDOHelper extends PhpWordHelper
         $tableStyle = new Table($this->styles->table);
         $tableStyle->setBorderColor('#ffffff');
         $table = $section->addTable($tableStyle);
-        $table->addRow();
+        $table->addRow(300);
         return $table;
     }
 
@@ -114,16 +113,16 @@ class RDOHelper extends PhpWordHelper
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(350);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->styles->tableHeadText, $this->styles->tableHeadParagraph);
+        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->styles->tableHeadText, $this->styles->textCenter);
 
         // Incluindo uma ultima linha em branco na tabela
         array_push($arrEquipeCliente, ' ');
 
         // Percorre o array e imprime em linhas da tabela.
         foreach ($arrEquipeCliente as $nomePessoa) {
-            $table->addRow();
+            $table->addRow(300);
             $cell = $table->addCell($this->styles->fullWidth);
-            $cell->addText($nomePessoa, $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($nomePessoa, $this->styles->tableText, $this->styles->textCenter);
         }
 
         $section->addTextBreak(1);
@@ -171,57 +170,47 @@ class RDOHelper extends PhpWordHelper
         }
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
+        $table->addRow(350);
 
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText('EQUIPE FIBRA ENGENHARIA', $this->styles->tableHeadText, ['alignment' => 'left']);
+        $cell->addText('EQUIPE FIBRA ENGENHARIA', $this->styles->tableHeadText, $this->styles->textLeft);
         $cell->getStyle()->setGridSpan(5);
 
-        //Estilo da fonte do segundo cabeçalho
-        $estiloSegundoCabecalho = [
-            'name'    => 'Calibri',
-            'allCaps' => true,
-            'bold'    => true,
-            'align'   => 'center',
-            'color'   => '000000',
-            'size'    => 11,
-        ];
-
-        $table->addRow();
+        $table->addRow(300);
 
         $cell = $table->addCell($this->styles->fullWidth * 0.4);
-        $cell->addText('COLABORADOR', $estiloSegundoCabecalho, ['alignment' => 'center']);
+        $cell->addText('COLABORADOR', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         $cell = $table->addCell($this->styles->fullWidth * 0.15);
-        $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
+        $cell->addText('Entrada', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         $cell = $table->addCell($this->styles->fullWidth * 0.15);
-        $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
+        $cell->addText('Saída', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         $cell = $table->addCell($this->styles->fullWidth * 0.15);
-        $cell->addText('Entrada', $estiloSegundoCabecalho, ['alignment' => 'center']);
+        $cell->addText('Entrada', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         $cell = $table->addCell($this->styles->fullWidth * 0.15);
-        $cell->addText('Saída', $estiloSegundoCabecalho, ['alignment' => 'center']);
+        $cell->addText('Saída', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         //itera sob o array e imprime em linhas da tabela.
         foreach ($arrEquipeFibra as $key => $tecnicoHorarios) {
-            $table->addRow();
+            $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.4);
-            $cell->addText($arrEquipeFibra[$key]['nome'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['nome'], $this->styles->tableText, $this->styles->textCenter);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.15);
-            $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->styles->tableText, $this->styles->textCenter);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.15);
-            $cell->addText($arrEquipeFibra[$key]['saida1'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['saida1'], $this->styles->tableText, $this->styles->textCenter);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.15);
-            $cell->addText($arrEquipeFibra[$key]['entrada2'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['entrada2'], $this->styles->tableText, $this->styles->textCenter);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.15);
-            $cell->addText($arrEquipeFibra[$key]['saida2'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrEquipeFibra[$key]['saida2'], $this->styles->tableText, $this->styles->textCenter);
         }
 
         $section->addTextBreak(1);
@@ -259,13 +248,11 @@ class RDOHelper extends PhpWordHelper
     {
         if (!$manutencaoCivilEletrica) {
             $arrLinhasTexto = [
-                '',
                 'IT: ___________________________________.',
                 'LEM/LET: _____________________________. ',
                 'OS: __________________________________. ',
                 'Início da Liberação LEM/LET: ____h____min, Término da Liberação: ____h____min.',
                 'Início da Atividade: ____h____min.',
-                '',
             ];
         } else {
             $inicioLiberacaoLEM = !null === $manutencaoCivilEletrica->data_hora_inicio_lem ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
@@ -274,7 +261,6 @@ class RDOHelper extends PhpWordHelper
             $finalLiberacaoLET  = !null === $manutencaoCivilEletrica->data_hora_final_let ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
             $inicioAtividade    = !null === $manutencaoCivilEletrica->data_hora_inicio_atividades ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
             $arrLinhasTexto     = [
-                '',
                 "IT: $manutencaoCivilEletrica->it.",
                 "LEM: $manutencaoCivilEletrica->lem.",
                 "LET: $manutencaoCivilEletrica->let.",
@@ -282,29 +268,20 @@ class RDOHelper extends PhpWordHelper
                 'Início da Liberação LEM: ' . $inicioLiberacaoLEM . ', Término da Liberação: ' . $finalLiberacaoLEM . '.',
                 'Início da Liberação LET: ' . $inicioLiberacaoLET . ', Término da Liberação: ' . $finalLiberacaoLET . '.',
                 'Início da Atividade: ' . $inicioAtividade,
-                '',
             ];
         }
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
+        $table->addRow(300);
 
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText(
-            'DOCUMENTAÇÕES EXPEDIDAS NO DIA',
-            $this->styles->tableHeadText,
-            ['alignment' => 'left']
-        );
+        $cell->addText('DOCUMENTAÇÕES EXPEDIDAS NO DIA', $this->styles->tableHeadText, $this->styles->textLeft);
 
-        $table->addRow();
+        $table->addRow(300);
         $cell = $table->addCell($this->styles->fullWidth);
 
         foreach ($arrLinhasTexto as $linhaTexto) {
-            $cell->addText(
-                $linhaTexto,
-                $this->styles->tableText,
-                ['alignment' => 'left']
-            );
+            $cell->addText($linhaTexto, $this->styles->tableText, ['align' => 'left']);
         }
 
         $section->addTextBreak(1);
@@ -341,23 +318,24 @@ class RDOHelper extends PhpWordHelper
         }
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
+        $table->addRow(300);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.75, $this->styles->tableHeadCell);
-        $cell->addText('Atividades Realizadas no dia', $this->styles->tableHeadText, ['alignment' => 'center']);
+        $cell = $table->addCell($this->styles->fullWidth * 0.7, $this->styles->tableHeadCell);
+        $cell->addText('Atividades Realizadas no dia', $this->styles->tableHeadText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.25, $this->styles->tableHeadCell);
-        $cell->addText('Status (Em Andamento ou Concluída)', $this->styles->tableHeadText, ['alignment' => 'center']);
+        $cell = $table->addCell($this->styles->fullWidth * 0.3, $this->styles->tableHeadCell);
+        $cell->addText('Status', $this->styles->tableHeadText, $this->styles->textCenter);
+        $cell->addText('(Em Andamento ou Concluída)', $this->styles->tableHeadTextSmall, $this->styles->textCenter);
 
         //itera sob o array e imprime em linhas da tabela.
         foreach ($arrAtividades as $key => $atividade) {
-            $table->addRow();
+            $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.8);
             $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.2);
-            $cell->addText($arrAtividades[$key]['status'], $this->styles->tableText, ['alignment' => 'center']);
+            $cell->addText($arrAtividades[$key]['status'], $this->styles->tableText, $this->styles->textCenter);
         }
 
         $section->addTextBreak(1);
@@ -413,14 +391,15 @@ class RDOHelper extends PhpWordHelper
         }
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
+        $table->addRow(300);
 
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText('RELATÓRIO FOTOGRÁFICO', $this->styles->tableHeadText, ['alignment' => 'left']);
+        $cell->addText('RELATÓRIO FOTOGRÁFICO', $this->styles->tableHeadText, $this->styles->textCenter);
         $section->addTextBreak(1);
 
-        (new Table($this->styles->table))->setBorderColor('ffffff');
-        $table = $section->addTable(new Table($this->styles->table));
+        $tableStyle = new Table($this->styles->table);
+        $tableStyle->setBorderColor('#ffffff');
+        $table = $section->addTable($tableStyle);
 
         foreach ($arrFotos as $urlFoto) {
             $table->addRow(250);
@@ -485,27 +464,24 @@ class RDOHelper extends PhpWordHelper
         ];
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.1, $this->styles->signatureCell);
-        $cell->addText($arrResponsaveis['fibra']['nome'], $this->styles->signatureText, ['alignment' => 'center']);
+        $table->addRow(300);
+        $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
+        $cell->addText($arrResponsaveis['fibra']['nome'], $this->styles->signatureText, $this->styles->textCenter);
+        $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
+        $cell->addText($arrResponsaveis['cliente']['nome'], $this->styles->signatureText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.1, $this->styles->signatureCell);
-        $cell->addText($arrResponsaveis['cliente']['nome'], $this->styles->signatureText, ['alignment' => 'center']);
+        $table->addRow(300);
+        $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
+        $cell->addText($arrResponsaveis['fibra']['empresa'], $this->styles->signatureTextSmall, $this->styles->textCenter);
+        $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
+        $cell->addText($arrResponsaveis['cliente']['empresa'], $this->styles->signatureTextSmall, $this->styles->textCenter);
 
-        $table->addRow();
+        $table->addRow(300);
+        $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
+        $cell->addText('Responsável pela execução', $this->styles->signatureTextSmall, $this->styles->textCenter);
         $cell = $table->addCell($this->styles->fullWidth * 0.1, $semBordas);
-        $cell->addText($arrResponsaveis['fibra']['empresa'], $this->styles->signatureText, ['alignment' => 'center']);
-
-        $cell = $table->addCell($this->styles->fullWidth * 0.1, $semBordas);
-        $cell->addText($arrResponsaveis['cliente']['empresa'], $this->styles->signatureText, ['alignment' => 'center']);
-
-        $table->addRow();
-        $cell = $table->addCell($this->styles->fullWidth * 0.1, $semBordas);
-        $cell->addText('Responsável pela execução', $this->styles->signatureText, ['alignment' => 'center']);
-
-        $cell = $table->addCell($this->styles->fullWidth * 0.1, $semBordas);
-        $cell->addText('Gestor do projeto', $this->styles->signatureText, ['alignment' => 'center']);
+        $cell->addText('Gestor do projeto', $this->styles->signatureTextSmall, $this->styles->textCenter);
     }
 
     /**
@@ -532,14 +508,14 @@ class RDOHelper extends PhpWordHelper
         }
 
         $table = $section->addTable(new Table($this->styles->table));
-        $table->addRow();
+        $table->addRow(300);
 
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText($titulo, $this->styles->tableHeadText, ['alignment' => 'center']);
+        $cell->addText($titulo, $this->styles->tableHeadText, $this->styles->textCenter);
 
         //itera sob o array e imprime em linhas da tabela.
         foreach ($itens as $item) {
-            $table->addRow();
+            $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth);
             $cell->addListItem($item, 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);

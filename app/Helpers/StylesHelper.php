@@ -47,7 +47,7 @@ class StylesHelper
     ];
 
     /**
-     * Estilo do texto nos retângulos azuis.
+     *
      *
      * @var \PhpOffice\PhpWord\Style\Font
      */
@@ -70,7 +70,7 @@ class StylesHelper
     public $table = [
         'width'            => 5000,
         'unit'             => 'pct',
-        'borderColor'      => '#666666',
+        'borderColor'      => '#AAAAAA',
         'borderSize'       => 1,
         'cellMarginTop'    => 0,
         'cellMarginLeft'   => 0,
@@ -90,7 +90,7 @@ class StylesHelper
     ];
 
     /**
-     * Estilo do texto nos retângulos azuis.
+     * Estilo do texto no thead.
      *
      * @var \PhpOffice\PhpWord\Style\Font
      */
@@ -103,11 +103,40 @@ class StylesHelper
     ];
 
     /**
+     * Estilo do caption da tabela.
+     *
+     * @var \PhpOffice\PhpWord\Style\Font
+     */
+    public $tableCaptionText = [
+        'name'    => 'Calibri',
+        'allCaps' => true,
+        'bold'    => true,
+        'align'   => 'center',
+        'color'   => '444444',
+        'size'    => 11,
+    ];
+
+    /**
+     *
+     *
+     * @var \PhpOffice\PhpWord\Style\Font
+     */
+    public $tableHeadTextSmall = [
+        'name'    => 'Calibri',
+        'allCaps' => true,
+        'bold'    => true,
+        'color'   => '#666666',
+        'size'    => 8,
+    ];
+
+    /**
      * Estilo das tabelas.
      *
      * @var \PhpOffice\PhpWord\Style\Cell
      */
     public $tableHeadParagraph = [
+        'spaceBefore' => 0,
+        'spaceAfter' => 0,
         'spacing' => 0
     ];
 
@@ -121,7 +150,7 @@ class StylesHelper
     ];
 
     /**
-     * Estilo do texto nos retângulos azuis.
+     *
      *
      * @var \PhpOffice\PhpWord\Style\Font
      */
@@ -170,24 +199,24 @@ class StylesHelper
     ];
 
     /**
-     * Undocumented variable
+     * Parágrafo do PhpWord centralizado.
      *
-     * @var array
+     * @var array \PhpOffice\PhpWord\Style\Paragraph
      */
-    public $defaultParagraph = [
-        'alignment'   => 'left',
+    public $textCenter = [
+        'alignment'   => 'center',
         'spaceBefore' => 0,
         'spaceAfter'  => 0,
         'spacing'     => 0,
     ];
 
     /**
-     * Parágrafo do PhpWord.
+     * Parágrafo do PhpWord alinhado à esquerda.
      *
      * @var array \PhpOffice\PhpWord\Style\Paragraph
      */
-    public $paragraph = [
-        'alignment'   => 'center',
+    public $textLeft = [
+        'alignment'   => 'left',
         'spaceBefore' => 0,
         'spaceAfter'  => 0,
         'spacing'     => 0,
@@ -207,7 +236,7 @@ class StylesHelper
     // ================================================
 
     /**
-     * Estilo do texto nos retângulos azuis.
+     * Assinatura no rodapé.
      *
      * @var \PhpOffice\PhpWord\Style\Font
      */
@@ -222,6 +251,21 @@ class StylesHelper
     ];
 
     /**
+     * Assinatura um pouco menor.
+     *
+     * @var \PhpOffice\PhpWord\Style\Font
+     */
+    public $signatureTextSmall = [
+        'name'    => 'Calibri',
+        'allCaps' => true,
+        'bold'    => false,
+        'align'   => 'center',
+        'valign'  => 'center',
+        'color'   => '#666666',
+        'size'    => 10,
+    ];
+
+    /**
      * Undocumented variable
      *
      * @var array
@@ -233,7 +277,7 @@ class StylesHelper
         'borderBottomSize'  => 1,
         'borderLeftColor'   => '#ffffff',
         'borderRightColor'  => '#ffffff',
-        'borderTopColor'    => '#444444',
+        'borderTopColor'    => '#ffffff',
         'borderBottomColor' => '#ffffff',
         'valign'            => 'center',
         'cellMargin'        => 30,
