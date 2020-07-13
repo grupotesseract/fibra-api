@@ -54,6 +54,7 @@ class ManutencaoCivilEletrica extends Model
         'let',
         'os',
         'planta_id',
+        'path_imagem',
     ];
 
     const DIASSEMANA = [
@@ -104,6 +105,7 @@ class ManutencaoCivilEletrica extends Model
         'lem' => 'string',
         'let' => 'string',
         'os' => 'string',
+        'path_imagem' => 'string',
     ];
 
     /**
