@@ -65,6 +65,11 @@ class RDOHelper extends PhpWordHelper
         return $table;
     }
 
+    public function criarHeader($section)
+    {
+        return $section->addHeader();
+    }
+
     /**
      * Inclui o logo no cabeçalho.
      *
@@ -384,6 +389,13 @@ class RDOHelper extends PhpWordHelper
 
         if (empty($arrFotos)) {
             $arrFotos = [
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
+                'http://via.placeholder.com/150x150',
                 'http://via.placeholder.com/150x150',
                 'http://via.placeholder.com/150x150',
             ];
