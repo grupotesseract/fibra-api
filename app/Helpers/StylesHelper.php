@@ -156,7 +156,7 @@ class StylesHelper
      */
     public $tableText = [
         'name'          => 'Calibri',
-        'allCaps'       => true,
+        'allCaps'       => false,
         'bold'          => false,
         'align'         => 'left',
         'textAlignment' => 'center',
@@ -242,7 +242,7 @@ class StylesHelper
      */
     public $signatureText = [
         'name'    => 'Calibri',
-        'allCaps' => true,
+        'allCaps' => false,
         'bold'    => false,
         'align'   => 'center',
         'valign'  => 'center',
@@ -257,7 +257,7 @@ class StylesHelper
      */
     public $signatureTextSmall = [
         'name'    => 'Calibri',
-        'allCaps' => true,
+        'allCaps' => false,
         'bold'    => false,
         'align'   => 'center',
         'valign'  => 'center',

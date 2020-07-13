@@ -89,7 +89,6 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
         $cabecalho = $rdo->criarCabecalho($header);
         $rdo->criarCabecalhoLogo($cabecalho, 'left');
         $rdo->criarCabecalhoLogo($cabecalho, 'right', $manutencaoCivilEletrica->planta->empresa->path_imagem);
-
         $rdo->criarSecaoRetanguloAzul($header, 'Local: '.$manutencaoCivilEletrica->planta->nome);
         $rdo->criarSecaoRetanguloAzul($header, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
         $rdo->criarSecaoRetanguloAzul($header, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y').' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
