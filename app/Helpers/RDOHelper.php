@@ -73,9 +73,8 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarCabecalhoLogo($cabecalho, $side = 'left')
+    public function criarCabecalhoLogo($cabecalho, $side = 'left', $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png')
     {
-        $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png';
         $cell = $cabecalho->addCell($this->styles->fullWidth / 2, $this->styles->tableCell);
         $this->styles->logo['alignment'] = $side;
         $cell->addImage($img, $this->styles->logo);
@@ -160,10 +159,10 @@ class RDOHelper extends PhpWordHelper
             foreach ($equipeFibra as $equipe) {
                 $arrEquipeFibra[] = [
                     'nome'     => $equipe,
-                    'entrada1' => !null === $manutencaoCivilEletrica->data_hora_entrada ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
+                    'entrada1' => $manutencaoCivilEletrica->data_hora_entrada ? $manutencaoCivilEletrica->data_hora_entrada->format('H:i') : '',
                     'saida1'   => '12:00',
                     'entrada2' => '13:00',
-                    'saida2'   => !null === $manutencaoCivilEletrica->data_hora_saida ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
+                    'saida2'   => $manutencaoCivilEletrica->data_hora_saida ? $manutencaoCivilEletrica->data_hora_saida->format('H:i') : '',
                 ];
             }
         }
@@ -197,7 +196,7 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.4);
-            $cell->addText($arrEquipeFibra[$key]['nome'], $this->styles->tableText, $this->styles->textCenter);
+            $cell->addText($arrEquipeFibra[$key]['nome'], $this->styles->tableText, $this->styles->textLeft);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.15);
             $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->styles->tableText, $this->styles->textCenter);
@@ -254,16 +253,16 @@ class RDOHelper extends PhpWordHelper
                 'Início da Atividade: ____h____min.',
             ];
         } else {
-            $inicioLiberacaoLEM = !null === $manutencaoCivilEletrica->data_hora_inicio_lem ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
-            $finalLiberacaoLEM  = !null === $manutencaoCivilEletrica->data_hora_final_lem ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    ';
-            $inicioLiberacaoLET = !null === $manutencaoCivilEletrica->data_hora_inicio_let ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
-            $finalLiberacaoLET  = !null === $manutencaoCivilEletrica->data_hora_final_let ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
-            $inicioAtividade    = !null === $manutencaoCivilEletrica->data_hora_inicio_atividades ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
+            $inicioLiberacaoLEM = $manutencaoCivilEletrica->data_hora_inicio_lem ? $manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
+            $finalLiberacaoLEM  = $manutencaoCivilEletrica->data_hora_final_lem ? $manutencaoCivilEletrica->data_hora_final_lem->format('H:i') : '    ';
+            $inicioLiberacaoLET = $manutencaoCivilEletrica->data_hora_inicio_let ? $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
+            $finalLiberacaoLET  = $manutencaoCivilEletrica->data_hora_final_let ? $manutencaoCivilEletrica->data_hora_final_let->format('H:i') : '    ';
+            $inicioAtividade    = $manutencaoCivilEletrica->data_hora_inicio_atividades ? $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
             $arrLinhasTexto     = [
-                "IT: $manutencaoCivilEletrica->it.",
-                "LEM: $manutencaoCivilEletrica->lem.",
-                "LET: $manutencaoCivilEletrica->let.",
-                "OS: $manutencaoCivilEletrica->os.",
+                $manutencaoCivilEletrica->it && $manutencaoCivilEletrica->it !== '' ? "IT: $manutencaoCivilEletrica->it." : '',
+                $manutencaoCivilEletrica->lem && $manutencaoCivilEletrica->lem !== '' ? "LEM: $manutencaoCivilEletrica->lem." : '',
+                $manutencaoCivilEletrica->let && $manutencaoCivilEletrica->let !== '' ? "LET: $manutencaoCivilEletrica->let." : '',
+                $manutencaoCivilEletrica->os && $manutencaoCivilEletrica->os !== '' ? "OS: $manutencaoCivilEletrica->os." : '',
                 'Início da Liberação LEM: ' . $inicioLiberacaoLEM . ', Término da Liberação: ' . $finalLiberacaoLEM . '.',
                 'Início da Liberação LET: ' . $inicioLiberacaoLET . ', Término da Liberação: ' . $finalLiberacaoLET . '.',
                 'Início da Atividade: ' . $inicioAtividade,
