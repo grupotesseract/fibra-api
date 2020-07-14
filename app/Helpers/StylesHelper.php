@@ -147,6 +147,9 @@ class StylesHelper
      */
     public $tableCell = [
         'valign' => 'center',
+        'spaceBefore' => 0,
+        'spaceAfter' => 0,
+        'spacing' => 0
     ];
 
     /**

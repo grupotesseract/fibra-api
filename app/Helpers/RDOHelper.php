@@ -93,13 +93,13 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoRetanguloAzul($section, $texto = '', $semquebra = false)
+    public function criarSecaoRetanguloAzul($section, $texto = '')
     {
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(500);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->blueBox);
         $cell->addText($texto, $this->styles->blueBoxFont, $this->styles->blueBoxParagraph);
-        $this->styles->textBreakSmall['size'] = 3;
+        $this->styles->textBreakSmall['size'] = 1.5;
         $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
     }
 
@@ -113,7 +113,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente = [])
     {
-        $this->styles->textBreakSmall['size'] = 2;
+        $this->styles->textBreakSmall['size'] = 3;
         $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(350);
@@ -126,7 +126,7 @@ class RDOHelper extends PhpWordHelper
         // Percorre o array e imprime em linhas da tabela.
         foreach ($arrEquipeCliente as $nomePessoa) {
             $table->addRow(300);
-            $cell = $table->addCell($this->styles->fullWidth);
+            $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableCell);
             $cell->addText($nomePessoa, $this->styles->tableText, $this->styles->textLeft);
         }
 
