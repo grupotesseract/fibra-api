@@ -93,13 +93,14 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarSecaoRetanguloAzul($section, $texto = '')
+    public function criarSecaoRetanguloAzul($section, $texto = '', $semquebra = false)
     {
-        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(500);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->blueBox);
         $cell->addText($texto, $this->styles->blueBoxFont, $this->styles->blueBoxParagraph);
+        $this->styles->textBreakSmall['size'] = 3;
+        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
     }
 
     /**
@@ -112,11 +113,12 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente = [])
     {
-        $section->addTextBreak(1, $this->styles->textBreak, $this->styles->textBreakParagraph);
+        $this->styles->textBreakSmall['size'] = 2;
+        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(350);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
-        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->styles->tableHeadText, $this->styles->textCenter);
+        $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->styles->tableHeadText, $this->styles->textLeft);
 
         // Incluindo uma ultima linha em branco na tabela
         array_push($arrEquipeCliente, ' ');
@@ -200,19 +202,19 @@ class RDOHelper extends PhpWordHelper
         foreach ($arrEquipeFibra as $key => $tecnicoHorarios) {
             $table->addRow(300);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.4);
+            $cell = $table->addCell($this->styles->fullWidth * 0.4, $this->styles->tableCell);
             $cell->addText($arrEquipeFibra[$key]['nome'], $this->styles->tableText, $this->styles->textLeft);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.15);
+            $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
             $cell->addText($arrEquipeFibra[$key]['entrada1'], $this->styles->tableText, $this->styles->textCenter);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.15);
+            $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
             $cell->addText($arrEquipeFibra[$key]['saida1'], $this->styles->tableText, $this->styles->textCenter);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.15);
+            $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
             $cell->addText($arrEquipeFibra[$key]['entrada2'], $this->styles->tableText, $this->styles->textCenter);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.15);
+            $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
             $cell->addText($arrEquipeFibra[$key]['saida2'], $this->styles->tableText, $this->styles->textCenter);
         }
 
@@ -284,7 +286,9 @@ class RDOHelper extends PhpWordHelper
         $cell = $table->addCell($this->styles->fullWidth);
 
         foreach ($arrLinhasTexto as $linhaTexto) {
-            $cell->addText($linhaTexto, $this->styles->tableText, ['align' => 'left']);
+            if ($linhaTexto && $linhaTexto !== '') {
+                $cell->addText($linhaTexto, $this->styles->tableText, ['align' => 'left']);
+            }
         }
 
         $section->addTextBreak(1);
@@ -334,10 +338,10 @@ class RDOHelper extends PhpWordHelper
         foreach ($arrAtividades as $key => $atividade) {
             $table->addRow(300);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.8);
+            $cell = $table->addCell($this->styles->fullWidth * 0.8, $this->styles->tableCell);
             $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);
 
-            $cell = $table->addCell($this->styles->fullWidth * 0.2);
+            $cell = $table->addCell($this->styles->fullWidth * 0.2, $this->styles->tableCell);
             $cell->addText($arrAtividades[$key]['status'], $this->styles->tableText, $this->styles->textCenter);
         }
 
@@ -384,7 +388,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoFotos($section, $arrFotos = [])
     {
-        $section->addTextBreak(3);
+        $section->addTextBreak(1);
 
         if (empty($arrFotos)) {
             $arrFotos = [
@@ -477,8 +481,12 @@ class RDOHelper extends PhpWordHelper
 
         $table->addRow(300);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
+        $cell->addText('___________________________________', $this->styles->signatureText, $this->styles->textCenter);
+        $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText($arrResponsaveis['fibra']['nome'], $this->styles->signatureText, $this->styles->textCenter);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
+        $cell->addText('___________________________________', $this->styles->signatureText, $this->styles->textCenter);
+        $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText($arrResponsaveis['cliente']['nome'], $this->styles->signatureText, $this->styles->textCenter);
 
         $table->addRow(300);
@@ -527,7 +535,7 @@ class RDOHelper extends PhpWordHelper
         foreach ($itens as $item) {
             $table->addRow(300);
 
-            $cell = $table->addCell($this->styles->fullWidth);
+            $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableCell);
             $cell->addListItem($item, 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);
         }
 
