@@ -78,8 +78,13 @@ class RDOHelper extends PhpWordHelper
      *
      * @return void
      */
-    public function criarCabecalhoLogo($cabecalho, $side = 'left', $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png')
+    public function criarCabecalhoLogo($cabecalho, $side = 'left', $img)
     {
+        if (!$img) {
+            $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png';
+            $this->styles->logo['width'] = 150;
+        }
+
         $cell = $cabecalho->addCell($this->styles->fullWidth / 2, $this->styles->tableCell);
         $this->styles->logo['alignment'] = $side;
         $cell->addImage($img, $this->styles->logo);
@@ -99,7 +104,6 @@ class RDOHelper extends PhpWordHelper
         $table->addRow(500);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->blueBox);
         $cell->addText($texto, $this->styles->blueBoxFont, $this->styles->blueBoxParagraph);
-        $this->styles->textBreakSmall['size'] = 1.5;
         $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
     }
 
@@ -113,8 +117,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente = [])
     {
-        $this->styles->textBreakSmall['size'] = 3;
-        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
+        $section->addTextBreak(2, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(350);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
