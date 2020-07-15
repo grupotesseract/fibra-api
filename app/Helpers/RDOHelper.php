@@ -487,11 +487,11 @@ class RDOHelper extends PhpWordHelper
 
         $table->addRow(300);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
-        $cell->addText('___________________________________', $this->styles->signatureText, $this->styles->textCenter);
+        $cell->addText('____________________________________', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText($arrResponsaveis['fibra']['nome'], $this->styles->signatureText, $this->styles->textCenter);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
-        $cell->addText('___________________________________', $this->styles->signatureText, $this->styles->textCenter);
+        $cell->addText('____________________________________', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText($arrResponsaveis['cliente']['nome'], $this->styles->signatureText, $this->styles->textCenter);
 
