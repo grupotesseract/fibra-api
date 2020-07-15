@@ -84,7 +84,7 @@ class RDOHelper extends PhpWordHelper
         if (!$img) {
             $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png';
         } else {
-            $this->styles->logo['width'] = 80;
+            $this->styles->logo['width'] = 100;
         }
 
         $cell = $cabecalho->addCell($this->styles->fullWidth / 2, $this->styles->tableCell);
