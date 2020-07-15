@@ -19,6 +19,7 @@ class StylesHelper
     public $logo = [
         'alignment'     => 'left',
         'wrappingStyle' => 'inline',
+        'width'         => '150'
     ];
 
     // Blue Boxes
@@ -148,6 +149,7 @@ class StylesHelper
      */
     public $tableCell = [
         'valign' => 'center',
+        'cellMargin' => 30,
     ];
 
     /**

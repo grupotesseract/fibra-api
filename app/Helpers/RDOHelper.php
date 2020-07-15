@@ -80,14 +80,17 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarCabecalhoLogo($cabecalho, $side = 'left', $img)
     {
+
         if (!$img) {
             $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png';
-            $this->styles->logo['width'] = 150;
+        } else {
+            $this->styles->logo['width'] = 80;
         }
 
         $cell = $cabecalho->addCell($this->styles->fullWidth / 2, $this->styles->tableCell);
         $this->styles->logo['alignment'] = $side;
         $cell->addImage($img, $this->styles->logo);
+        $this->styles->logo['width'] = 150;
     }
 
     /**
@@ -290,7 +293,7 @@ class RDOHelper extends PhpWordHelper
 
         foreach ($arrLinhasTexto as $linhaTexto) {
             if ($linhaTexto && $linhaTexto !== '') {
-                $cell->addText($linhaTexto, $this->styles->tableText, ['align' => 'left']);
+                $cell->addText($linhaTexto, $this->styles->tableText, $this->styles->textLeft);
             }
         }
 
@@ -342,7 +345,7 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.8, $this->styles->tableCell);
-            $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);
+            $cell->addListItem($arrAtividades[$key]['atividade'], 0, $this->styles->tableText, $this->styles->list, $this->styles->textLeft);
 
             $cell = $table->addCell($this->styles->fullWidth * 0.2, $this->styles->tableCell);
             $cell->addText($arrAtividades[$key]['status'], $this->styles->tableText, $this->styles->textCenter);
@@ -539,7 +542,7 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableCell);
-            $cell->addListItem($item, 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left', 'textAlignment' => 'center']);
+            $cell->addText($item, $this->styles->tableText, $this->styles->textLeft);
         }
 
         $section->addTextBreak(1);
