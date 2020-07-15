@@ -186,19 +186,19 @@ class RDOHelper extends PhpWordHelper
 
         $table->addRow(300);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.4);
+        $cell = $table->addCell($this->styles->fullWidth * 0.4, $this->styles->tableCell);
         $cell->addText('COLABORADOR', $this->styles->tableCaptionText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.15);
+        $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
         $cell->addText('Entrada', $this->styles->tableCaptionText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.15);
+        $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
         $cell->addText('Saída', $this->styles->tableCaptionText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.15);
+        $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
         $cell->addText('Entrada', $this->styles->tableCaptionText, $this->styles->textCenter);
 
-        $cell = $table->addCell($this->styles->fullWidth * 0.15);
+        $cell = $table->addCell($this->styles->fullWidth * 0.15, $this->styles->tableCell);
         $cell->addText('Saída', $this->styles->tableCaptionText, $this->styles->textCenter);
 
         //itera sob o array e imprime em linhas da tabela.
@@ -539,7 +539,7 @@ class RDOHelper extends PhpWordHelper
             $table->addRow(300);
 
             $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableCell);
-            $cell->addListItem($item, 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left']);
+            $cell->addListItem($item, 0, $this->styles->tableText, $this->styles->list, ['alignment' => 'left', 'textAlignment' => 'center']);
         }
 
         $section->addTextBreak(1);

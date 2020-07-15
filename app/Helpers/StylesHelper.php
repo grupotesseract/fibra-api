@@ -99,6 +99,7 @@ class StylesHelper
         'bold'    => true,
         'color'   => '#444444',
         'size'    => 11,
+        'textAlignment' => 'center',
     ];
 
     /**
@@ -113,6 +114,7 @@ class StylesHelper
         'align'   => 'center',
         'color'   => '444444',
         'size'    => 11,
+        'textAlignment' => 'center',
     ];
 
     /**

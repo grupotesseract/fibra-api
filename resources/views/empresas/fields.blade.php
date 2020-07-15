@@ -22,6 +22,12 @@
     {!! Form::text('endereco', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Endereco Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('path_imagem', 'URL para Logo:') !!}
+    {!! Form::text('path_imagem', null, ['class' => 'form-control']) !!}
+</div>
+
 @if (isset($empresa))
 
     <div class="form-group col-sm-6">
