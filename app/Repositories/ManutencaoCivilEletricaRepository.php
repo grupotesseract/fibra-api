@@ -67,12 +67,13 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
 
         // Página 1
         $section = $rdo::addContainerSecoes($doc);
-        $cabecalho = $rdo->criarCabecalho($section);
-        $rdo->criarCabecalhoLogo($cabecalho, 'left');
+        $header = $rdo->criarHeader($section);
+        $cabecalho = $rdo->criarCabecalho($header);
+        $rdo->criarCabecalhoLogo($cabecalho, 'left', null);
         $rdo->criarCabecalhoLogo($cabecalho, 'right', $manutencaoCivilEletrica->planta->empresa->path_imagem);
-        $rdo->criarSecaoRetanguloAzul($section, 'Local: ' . $manutencaoCivilEletrica->planta->nome);
-        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: ' . $manutencaoCivilEletrica->obra_atividade);
-        $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') . ' - ' . self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
+        $rdo->criarSecaoRetanguloAzul($header, 'Local: ' . $manutencaoCivilEletrica->planta->nome);
+        $rdo->criarSecaoRetanguloAzul($header, 'Obra/Atividade: ' . $manutencaoCivilEletrica->obra_atividade);
+        $rdo->criarSecaoRetanguloAzul($header, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y') . ' - ' . self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoEquipeCliente($section, [$manutencaoCivilEletrica->equipe_cliente]);
         $rdo->criarSecaoEquipeFibra($section, $manutencaoCivilEletrica);
         $rdo->criarSecaoDocumentacoes($section, $manutencaoCivilEletrica);
@@ -84,13 +85,13 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
 
         // Página 2
         $section = $rdo::addContainerSecoes($doc);
-        $cabecalho = $rdo->criarCabecalho($section);
-        $rdo->criarCabecalhoLogo($cabecalho, 'left');
+        $header = $rdo->criarHeader($section);
+        $cabecalho = $rdo->criarCabecalho($header);
+        $rdo->criarCabecalhoLogo($cabecalho, 'left', null);
         $rdo->criarCabecalhoLogo($cabecalho, 'right', $manutencaoCivilEletrica->planta->empresa->path_imagem);
-
-        $rdo->criarSecaoRetanguloAzul($section, 'Local: '.$manutencaoCivilEletrica->planta->nome);
-        $rdo->criarSecaoRetanguloAzul($section, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
-        $rdo->criarSecaoRetanguloAzul($section, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y').' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
+        $rdo->criarSecaoRetanguloAzul($header, 'Local: '.$manutencaoCivilEletrica->planta->nome);
+        $rdo->criarSecaoRetanguloAzul($header, 'Obra/Atividade: '.$manutencaoCivilEletrica->obra_atividade);
+        $rdo->criarSecaoRetanguloAzul($header, $manutencaoCivilEletrica->data_hora_entrada->format('d/m/Y').' - '.self::DIASSEMANA[$manutencaoCivilEletrica->data_hora_entrada->format('l')]);
         $rdo->criarSecaoFotos($section, $arrURLFotos);
         $rdo->criarSecaoResponsaveis($section, $manutencaoCivilEletrica);
         $rdo->criarFooter($section);
