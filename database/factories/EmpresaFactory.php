@@ -10,7 +10,7 @@ $factory->define(Empresa::class, function (Faker $faker) {
         'nome' => $faker->company,
         'email' => $faker->email,
         'telefone' => $faker->phoneNumber,
-        'path_imagem' => 'https://res.cloudinary.com/api-fibra/image/upload/v1594665069/logos/WhatsApp_Image_2020-07-13_at_15.27.56_yinoaz.jpg',
+        'path_imagem' => 'https://res.cloudinary.com/api-fibra/image/upload/v1594812013/logos/WhatsApp_Image_2020-07-14_at_15.59.55_bglevd.jpg',
         'endereco' => $faker->address,
         'cidade_id' => Cidade::inRandomOrder()->first()->id,
         'created_at' => $faker->date('Y-m-d H:i:s'),

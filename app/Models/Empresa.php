@@ -30,6 +30,7 @@ class Empresa extends Model
         'telefone',
         'endereco',
         'cidade_id',
+        'path_imagem'
     ];
 
     /**
@@ -44,6 +45,7 @@ class Empresa extends Model
         'telefone' => 'string',
         'endereco' => 'string',
         'cidade_id' => 'integer',
+        'path_imagem' => 'string'
     ];
 
     /**

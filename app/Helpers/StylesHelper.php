@@ -19,7 +19,7 @@ class StylesHelper
     public $logo = [
         'alignment'     => 'left',
         'wrappingStyle' => 'inline',
-        'width'         => 150,
+        'width'         => '150'
     ];
 
     // Blue Boxes
@@ -100,6 +100,7 @@ class StylesHelper
         'bold'    => true,
         'color'   => '#444444',
         'size'    => 11,
+        'textAlignment' => 'center',
     ];
 
     /**
@@ -114,6 +115,7 @@ class StylesHelper
         'align'   => 'center',
         'color'   => '444444',
         'size'    => 11,
+        'textAlignment' => 'center',
     ];
 
     /**
@@ -147,6 +149,7 @@ class StylesHelper
      */
     public $tableCell = [
         'valign' => 'center',
+        'cellMargin' => 30,
     ];
 
     /**
@@ -183,7 +186,7 @@ class StylesHelper
      * @var \PhpOffice\PhpWord\Style\Font
      */
     public $textBreakSmall = [
-        'size' => 5,
+        'size' => 1.5,
         'name' => 'Calibri',
     ];
 
