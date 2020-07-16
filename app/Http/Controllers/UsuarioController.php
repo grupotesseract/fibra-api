@@ -116,6 +116,8 @@ class UsuarioController extends AppBaseController
         if ($request->password && $request->password !== '') {
             $input['password'] = bcrypt($request->password);
             $input['passwordsha256'] = hash('sha256', $request->password);
+        } else {
+            $input['password'] = $usuario->password;
         }
 
         if (empty($usuario)) {
