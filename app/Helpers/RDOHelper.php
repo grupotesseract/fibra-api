@@ -266,11 +266,11 @@ class RDOHelper extends PhpWordHelper
                 'Início da Atividade: ____h____min.',
             ];
         } else {
-            $inicioLiberacaoLEM = $manutencaoCivilEletrica->data_hora_inicio_lem ? 'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '    ';
-            $finalLiberacaoLEM  = $manutencaoCivilEletrica->data_hora_final_lem ? ', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i'). '.' : '    ';
-            $inicioLiberacaoLET = $manutencaoCivilEletrica->data_hora_inicio_let ? 'Início da Liberação LET: ' . $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '    ';
-            $finalLiberacaoLET  = $manutencaoCivilEletrica->data_hora_final_let ? ', Término da Liberação: ' . $manutencaoCivilEletrica->data_hora_final_let->format('H:i'). '.' : '    ';
-            $inicioAtividade    = $manutencaoCivilEletrica->data_hora_inicio_atividades ? 'Início da Atividade: ' . $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '    ';
+            $inicioLiberacaoLEM = $manutencaoCivilEletrica->data_hora_inicio_lem ? 'Início da Liberação LEM: '.$manutencaoCivilEletrica->data_hora_inicio_lem->format('H:i') : '';
+            $finalLiberacaoLEM  = $manutencaoCivilEletrica->data_hora_final_lem ? ', Término da Liberação: '.$manutencaoCivilEletrica->data_hora_final_lem->format('H:i'). '.' : '';
+            $inicioLiberacaoLET = $manutencaoCivilEletrica->data_hora_inicio_let ? 'Início da Liberação LET: ' . $manutencaoCivilEletrica->data_hora_inicio_let->format('H:i') : '';
+            $finalLiberacaoLET  = $manutencaoCivilEletrica->data_hora_final_let ? ', Término da Liberação: ' . $manutencaoCivilEletrica->data_hora_final_let->format('H:i'). '.' : '';
+            $inicioAtividade    = $manutencaoCivilEletrica->data_hora_inicio_atividades ? 'Início da Atividade: ' . $manutencaoCivilEletrica->data_hora_inicio_atividades->format('H:i') : '';
             $arrLinhasTexto     = [
                 $manutencaoCivilEletrica->it && $manutencaoCivilEletrica->it !== '' ? "IT: $manutencaoCivilEletrica->it." : '',
                 $manutencaoCivilEletrica->lem && $manutencaoCivilEletrica->lem !== '' ? "LEM: $manutencaoCivilEletrica->lem." : '',
