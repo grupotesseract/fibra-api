@@ -118,7 +118,7 @@ class UsuarioController extends AppBaseController
             $input['passwordsha256'] = hash('sha256', $request->password);
         } else {
             $input['password'] = $usuario->password;
-            $input['passwordsha256'] = hash('sha256', $usuario->password);
+            $input['passwordsha256'] = $usuario->passwordsha256;
         }
 
         if (empty($usuario)) {
