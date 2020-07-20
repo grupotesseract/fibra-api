@@ -18,6 +18,8 @@ $factory->define(ItemAlterado::class, function (Faker $faker) {
         'item_id' => $item->id,
         'material_id' => Material::inRandomOrder()->get()->first()->id,
         'quantidade_instalada' => $faker->randomDigitNotNull,
+        'quantidade_base' => $faker->randomDigitNotNull,
+        'quantidade_reator' => $faker->randomDigitNotNull,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
