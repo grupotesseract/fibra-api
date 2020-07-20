@@ -184,7 +184,9 @@ class ItemAlteradoDataTable extends DataTable
             'quantidade_antiga',
             'diferenca' => [
                 'title' => 'Diferença',
-            ]
+            ],
+            'quantidade_base',
+            'quantidade_reator'
         ];
     }
 
