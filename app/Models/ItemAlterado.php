@@ -30,6 +30,8 @@ class ItemAlterado extends Model
         'item_id',
         'material_id',
         'quantidade_instalada',
+        'quantidade_base',
+        'quantidade_reator',
     ];
 
     /**
@@ -43,6 +45,8 @@ class ItemAlterado extends Model
         'item_id' => 'integer',
         'material_id' => 'integer',
         'quantidade_instalada' => 'integer',
+        'quantidade_base' => 'integer',
+        'quantidade_reator' => 'integer',
     ];
 
     /**
