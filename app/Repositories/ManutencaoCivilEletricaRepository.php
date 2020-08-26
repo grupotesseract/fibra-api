@@ -63,7 +63,7 @@ class ManutencaoCivilEletricaRepository extends BaseRepository
     {
         $rdo = new RDOHelper;
         $doc = $rdo::criarDoc();
-        $arrURLFotos = $manutencaoCivilEletrica->fotos->pluck('URLParaRelatorio')->all();
+        $arrURLFotos = $manutencaoCivilEletrica->fotos()->orderBy('id')->get()->pluck('URLParaRelatorio');
 
         // Página 1
         $section = $rdo::addContainerSecoes($doc);
