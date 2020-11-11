@@ -20,6 +20,13 @@ class ItemAlteradoDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
 
         return $dataTable
+            ->setRowAttr([
+                'style' => function ($item) {
+                    if ($item->consolidado) {
+                        return 'background-color: #dbf2e3;';
+                    };
+                }
+            ])
             ->addColumn('action', 'itens_alterados.datatables_actions')
             ->addColumn(
                 'quantidade_antiga',

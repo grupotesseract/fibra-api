@@ -115,5 +115,8 @@ class ItemAlteradoRepository extends BaseRepository
                 }
             }
         }
+
+        $itemAlterado->consolidado = true;
+        $itemAlterado->save();
     }
 }
