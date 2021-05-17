@@ -142,7 +142,7 @@ class EmpresaAPIController extends AppBaseController
             [
                 'plantas.proximaProgramacao',
                 'plantas.itens.materiais.tipoMaterial',
-                'plantas.programacaoAnteriorMaisRecente.estoques',
+                'plantas.programacaoAnteriorMaisRecente.estoques.material.tipoMaterial',
                 'plantas.atividadesRealizadas'
             ]
         )->get();
