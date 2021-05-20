@@ -141,8 +141,9 @@ class EmpresaAPIController extends AppBaseController
         $empresas = Empresa::with(
             [
                 'plantas.proximaProgramacao',
-                'plantas.itens.materiais',
-                'plantas.programacaoAnteriorMaisRecente.estoques',
+                'plantas.itens.materiais.tipoMaterial',
+                'plantas.programacaoAnteriorMaisRecente.estoques.material.tipoMaterial',
+                'plantas.atividadesRealizadas'
             ]
         )->get();
 

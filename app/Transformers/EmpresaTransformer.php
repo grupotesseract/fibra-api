@@ -17,7 +17,6 @@ class EmpresaTransformer extends TransformerAbstract
         $plantasDB = $empresa->plantas;
 
         foreach ($plantasDB as $planta) {
-
             //Programação mais Recente
             $proximaProgramacao = ! is_null($planta->proximaProgramacao) ? [
                 'id' => $planta->proximaProgramacao->id,
@@ -27,36 +26,36 @@ class EmpresaTransformer extends TransformerAbstract
 
             //Itens de uma Planta
             $itens = [];
-            $itenBD = $planta->itens()->orderBy('qrcode')->get();
+            $itenBD = $planta->itens->sortBy('qrcode')->all();
             foreach ($itenBD as $item) {
-
                 //Materiais Instalados de uma Planta
-                $materiaisArray = $item->materiais()->whereHas(
-                    'tipoMaterial', function ($query) {
-                        $query->whereIn('tipo', ['Lâmpada', 'Outros']);
-                    }
-                )->get();
+                // $materiaisArray = $item->materiais()->whereHas(
+                //     'tipoMaterial', function ($query) {
+                //         $query->whereIn('tipo', ['Lâmpada', 'Outros']);
+                //     }
+                // )->get();
+                $materiaisArray = $item->materiais;
                 $materiais = [];
-
-                foreach ($materiaisArray as $material) {
-                    $materiais[] = [
-                        'id' => $material->id,
-                        'nome' => $material->nome,
-                        'base' => $material->baseNome,
-                        'reator' => $material->reatorNome,
-                        'base_id' => $material->base_id,
-                        'reator_id' => $material->reator_id,
-                        'potencia' => $material->potenciaValor,
-                        'tensao' => $material->tensaoValor,
-                        'tipoMaterial' => $material->tipoMaterialNome,
-                        'quantidadeInstalada' => $material->pivot->quantidade_instalada,
-                    ];
-                }
-
-                $todosMateriaisArray = $item->materiais()->get();
                 $todosMateriais = [];
 
-                foreach ($todosMateriaisArray as $material) {
+                foreach ($materiaisArray as $material) {
+                    if (!is_null($material->tipoMaterial)) {
+                        if (in_array($material->tipoMaterial->tipo, ['Lâmpada', 'Outros'])) {
+                            $materiais[] = [
+                                'id' => $material->id,
+                                'nome' => $material->nome,
+                                'base' => $material->baseNome,
+                                'reator' => $material->reatorNome,
+                                'base_id' => $material->base_id,
+                                'reator_id' => $material->reator_id,
+                                'potencia' => $material->potenciaValor,
+                                'tensao' => $material->tensaoValor,
+                                'tipoMaterial' => $material->tipoMaterialNome,
+                                'quantidadeInstalada' => $material->pivot->quantidade_instalada,
+                            ];
+                        }
+                    }
+
                     $todosMateriais[] = [
                         'id' => $material->id,
                         'nome' => $material->nome,
@@ -72,6 +71,25 @@ class EmpresaTransformer extends TransformerAbstract
                     ];
                 }
 
+                // $todosMateriaisArray = $item->materiais()->get();
+                // $todosMateriais = [];
+
+                // foreach ($todosMateriaisArray as $material) {
+                //     $todosMateriais[] = [
+                //         'id' => $material->id,
+                //         'nome' => $material->nome,
+                //         'base' => $material->baseNome,
+                //         'reator' => $material->reatorNome,
+                //         'base_id' => $material->base_id,
+                //         'reator_id' => $material->reator_id,
+                //         'potencia' => $material->potenciaValor,
+                //         'tensao' => $material->tensaoValor,
+                //         'tipoMaterial' => $material->tipoMaterialNome,
+                //         'tipoMaterialTipo' => $material->tipoMaterial ? $material->tipoMaterial->tipo : null,
+                //         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
+                //     ];
+                // }
+
                 $itens[] = [
                     'id' => $item->id,
                     'nome' => $item->nome,
@@ -86,7 +104,8 @@ class EmpresaTransformer extends TransformerAbstract
             $estoquePlanta = [];
             $entradaMateriais = [];
             if (! is_null($planta->programacaoAnteriorMaisRecente)) {
-                foreach ($planta->programacaoAnteriorMaisRecente->estoques as $estoque) {
+                $estoquesProgramacao = $planta->programacaoAnteriorMaisRecente->estoques;
+                foreach ($estoquesProgramacao as $estoque) {
                     if (! is_null($estoque->material)) {
                         $estoquePlanta[] = [
                             'id' => $estoque->material_id,
@@ -116,7 +135,7 @@ class EmpresaTransformer extends TransformerAbstract
             }
 
             //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
-            $atividadesPendentesDB = $planta->atividadesRealizadas()->whereStatus(false)->get();
+            $atividadesPendentesDB = $planta->atividadesRealizadas->where('status', false)->unique('texto');
             $atividadesPendentes = [];
 
             foreach ($atividadesPendentesDB as $atividadePendentesDB) {
