@@ -120,14 +120,14 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoEquipeCliente($section, $arrEquipeCliente = [])
     {
-        $section->addTextBreak(2, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
+        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
         $table = $section->addTable(new Table($this->styles->table));
         $table->addRow(350);
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
         $cell->addText('EQUIPE DE FISCALIZAÇÃO DO CLIENTE', $this->styles->tableHeadText, $this->styles->textLeft);
 
         // Incluindo uma ultima linha em branco na tabela
-        array_push($arrEquipeCliente, ' ');
+        //array_push($arrEquipeCliente, ' ');
 
         // Percorre o array e imprime em linhas da tabela.
         foreach ($arrEquipeCliente as $nomePessoa) {
@@ -394,7 +394,7 @@ class RDOHelper extends PhpWordHelper
      */
     public function criarSecaoFotos($section, $arrFotos = [])
     {
-        $section->addTextBreak(1);
+        //$section->addTextBreak(1);
 
         if (empty($arrFotos)) {
             $arrFotos = [
@@ -415,7 +415,7 @@ class RDOHelper extends PhpWordHelper
 
         $cell = $table->addCell($this->styles->fullWidth, $this->styles->tableHeadCell);
         $cell->addText('RELATÓRIO FOTOGRÁFICO', $this->styles->tableHeadText, $this->styles->textCenter);
-        $section->addTextBreak(1);
+        $section->addTextBreak(1, $this->styles->textBreakSmall, $this->styles->textBreakParagraph);
 
         $tableStyle = new Table($this->styles->table);
         $tableStyle->setBorderColor('#ffffff');
@@ -435,7 +435,7 @@ class RDOHelper extends PhpWordHelper
             $cell->addTextBreak(1);
         }
 
-        $section->addTextBreak(3);
+        $section->addTextBreak(1);
     }
 
     /**
@@ -485,7 +485,7 @@ class RDOHelper extends PhpWordHelper
 
         $table = $section->addTable(new Table($this->styles->table));
 
-        $table->addRow(300);
+        $table->addRow(200);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $this->styles->signatureCell);
         $cell->addText('____________________________________', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
@@ -495,13 +495,13 @@ class RDOHelper extends PhpWordHelper
         $cell->addText('', $this->styles->signatureText, $this->styles->textCenter);
         $cell->addText($arrResponsaveis['cliente']['nome'], $this->styles->signatureText, $this->styles->textCenter);
 
-        $table->addRow(300);
+        $table->addRow(200);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
         $cell->addText($arrResponsaveis['fibra']['empresa'], $this->styles->signatureTextSmall, $this->styles->textCenter);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
         $cell->addText($arrResponsaveis['cliente']['empresa'], $this->styles->signatureTextSmall, $this->styles->textCenter);
 
-        $table->addRow(300);
+        $table->addRow(200);
         $cell = $table->addCell($this->styles->fullWidth * 0.5, $semBordas);
         $cell->addText('Responsável pela execução', $this->styles->signatureTextSmall, $this->styles->textCenter);
         $cell = $table->addCell($this->styles->fullWidth * 0.1, $semBordas);
