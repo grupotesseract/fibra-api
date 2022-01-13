@@ -76,17 +76,18 @@ class PlantaRepository extends BaseRepository
             $manutencaoCivilEletrica = $planta->manutencoesCivilEletrica()->create($input['manutencao_civil_eletrica']);
 
             foreach ($input['atividades_realizadas'] as $atividadeRealizada) {
-                AtividadeRealizada::where('texto', $atividadeRealizada['texto'])
-                ->where('status', false)
-                ->whereIn('manutencao_id', $planta->manutencoesCivilEletrica->pluck('id')->toArray())
-                ->update(
-                    [
-                        'status' => $atividadeRealizada['status']
-                    ]
-                );
+                if (isset($atividadeRealizada['texto'])) {
+                    AtividadeRealizada::where('texto', $atividadeRealizada['texto'])
+                    ->where('status', false)
+                    ->whereIn('manutencao_id', $planta->manutencoesCivilEletrica->pluck('id')->toArray())
+                    ->update(
+                        [
+                            'status' => $atividadeRealizada['status']
+                        ]
+                    );
 
-                $manutencaoCivilEletrica->atividadesRealizadas()->create($atividadeRealizada);
-
+                    $manutencaoCivilEletrica->atividadesRealizadas()->create($atividadeRealizada);
+                }
             }
 
             $manutencaoCivilEletrica->usuarios()->createMany($input['usuarios_manutencao']);
