@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Models\Empresa;
+use App\Models\Material;
 use League\Fractal\TransformerAbstract;
 
 class EmpresaTransformer extends TransformerAbstract
@@ -98,39 +99,46 @@ class EmpresaTransformer extends TransformerAbstract
                     'materiais' => $materiais ?? null,
                     'todosMateriais' => $todosMateriais ?? null,
                 ];
+
+                $itensId[] = $item->id;
             }
 
-            //Informações de Estoque obtidas através da Programação Anterior mais Recente
+            //Informações de Estoque obtidas através da Programação Anterior mais Recente e itens materiais instalados
             $estoquePlanta = [];
             $entradaMateriais = [];
-            if (! is_null($planta->programacaoAnteriorMaisRecente)) {
-                $estoquesProgramacao = $planta->programacaoAnteriorMaisRecente->estoques;
-                foreach ($estoquesProgramacao as $estoque) {
-                    if (! is_null($estoque->material)) {
-                        $estoquePlanta[] = [
-                            'id' => $estoque->material_id,
-                            'nome' => $estoque->material->nome,
-                            'base' => $estoque->material->baseNome,
-                            'reator' => $estoque->material->reatorNome,
-                            'potencia' => $estoque->material->potenciaValor,
-                            'tensao' => $estoque->material->tensaoValor,
-                            'tipoMaterial' => $estoque->material->tipoMaterialNome,
-                            'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
-                            'tipoMaterialAbreviacao' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->abreviacao : null,
-                            'quantidade' => $estoque->quantidade_final,
-                        ];
 
-                        $entradaMateriais[] = [
-                            'id' => $estoque->material_id,
-                            'nome' => $estoque->material->nome,
-                            'base' => $estoque->material->baseNome,
-                            'reator' => $estoque->material->reatorNome,
-                            'potencia' => $estoque->material->potenciaValor,
-                            'tensao' => $estoque->material->tensaoValor,
-                            'tipoMaterial' => $estoque->material->tipoMaterialNome,
-                            'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
-                        ];
-                    }
+            if (isset($itensId)) {
+                $materiaisId = \DB::table('itens_materiais')->whereIn('item_id', $itensId)->pluck('material_id');
+                $materiaisParaEstoque = Material::whereIn('id', $materiaisId)->get();
+
+                if (! is_null($planta->programacaoAnteriorMaisRecente)) {
+                    $estoquesProgramacao = $planta->programacaoAnteriorMaisRecente->estoques;
+                }
+
+                foreach ($materiaisParaEstoque as $materialParaEstoque) {
+                    $estoquePlanta[] = [
+                        'id' => $materialParaEstoque->id,
+                        'nome' => $materialParaEstoque->nome,
+                        'base' => $materialParaEstoque->baseNome,
+                        'reator' => $materialParaEstoque->reatorNome,
+                        'potencia' => $materialParaEstoque->potenciaValor,
+                        'tensao' => $materialParaEstoque->tensaoValor,
+                        'tipoMaterial' => $materialParaEstoque->tipoMaterialNome,
+                        'tipoMaterialTipo' => $materialParaEstoque->tipoMaterial ? $materialParaEstoque->tipoMaterial->tipo : null,
+                        'tipoMaterialAbreviacao' => $materialParaEstoque->tipoMaterial ? $materialParaEstoque->tipoMaterial->abreviacao : null,
+                        'quantidade' => $estoquesProgramacao->where('material_id', $materialParaEstoque->id)->first()->quantidade_final ?? 0,
+                    ];
+
+                    $entradaMateriais[] = [
+                        'id' => $materialParaEstoque->id,
+                        'nome' => $materialParaEstoque->nome,
+                        'base' => $materialParaEstoque->baseNome,
+                        'reator' => $materialParaEstoque->reatorNome,
+                        'potencia' => $materialParaEstoque->potenciaValor,
+                        'tensao' => $materialParaEstoque->tensaoValor,
+                        'tipoMaterial' => $materialParaEstoque->tipoMaterialNome,
+                        'tipoMaterialTipo' => $materialParaEstoque->tipoMaterial ? $materialParaEstoque->tipoMaterial->tipo : null,
+                    ];
                 }
             }
 
