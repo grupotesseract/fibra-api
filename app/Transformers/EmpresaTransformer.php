@@ -29,12 +29,6 @@ class EmpresaTransformer extends TransformerAbstract
             $itens = [];
             $itenBD = $planta->itens->sortBy('qrcode')->all();
             foreach ($itenBD as $item) {
-                //Materiais Instalados de uma Planta
-                // $materiaisArray = $item->materiais()->whereHas(
-                //     'tipoMaterial', function ($query) {
-                //         $query->whereIn('tipo', ['Lâmpada', 'Outros']);
-                //     }
-                // )->get();
                 $materiaisArray = $item->materiais;
                 $materiais = [];
                 $todosMateriais = [];
@@ -122,6 +116,37 @@ class EmpresaTransformer extends TransformerAbstract
                     ];
                 }
             }
+
+            // if (! is_null($planta->programacaoAnteriorMaisRecente)) {
+            //     $estoquesProgramacao = $planta->programacaoAnteriorMaisRecente->estoques;
+            //     foreach ($estoquesProgramacao as $estoque) {
+            //         if (! is_null($estoque->material)) {
+            //             $estoquePlanta[] = [
+            //                 'id' => $estoque->material_id,
+            //                 'nome' => $estoque->material->nome,
+            //                 'base' => $estoque->material->baseNome,
+            //                 'reator' => $estoque->material->reatorNome,
+            //                 'potencia' => $estoque->material->potenciaValor,
+            //                 'tensao' => $estoque->material->tensaoValor,
+            //                 'tipoMaterial' => $estoque->material->tipoMaterialNome,
+            //                 'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
+            //                 'tipoMaterialAbreviacao' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->abreviacao : null,
+            //                 'quantidade' => $estoque->quantidade_final,
+            //             ];
+
+            //             $entradaMateriais[] = [
+            //                 'id' => $estoque->material_id,
+            //                 'nome' => $estoque->material->nome,
+            //                 'base' => $estoque->material->baseNome,
+            //                 'reator' => $estoque->material->reatorNome,
+            //                 'potencia' => $estoque->material->potenciaValor,
+            //                 'tensao' => $estoque->material->tensaoValor,
+            //                 'tipoMaterial' => $estoque->material->tipoMaterialNome,
+            //                 'tipoMaterialTipo' => $estoque->material->tipoMaterial ? $estoque->material->tipoMaterial->tipo : null,
+            //             ];
+            //         }
+            //     }
+            // }
 
             //RETORNANDO ATIVIDADES REALIZADAS PENDENTES
             $atividadesPendentesDB = $planta->atividadesRealizadas->where('status', false)->unique('texto');
