@@ -19,7 +19,7 @@
 
     {!!
         $itensId = $programacao->planta->itens()->pluck('id');
-        $materiaisId = \DB::table('itens_materiais')->whereIn('item_id',$itensId)->pluck('material_id');
+        $materiaisId = \DB::table('itens_materiais')->whereIn('item_id', $itensId)->pluck('material_id');
         $materiaisIdQtde = $programacao->planta->quantidadesMinimas->pluck('material_id');
         $materiaisId = array_merge($materiaisId->toArray(), $materiaisIdQtde->toArray());
 
