@@ -72,25 +72,6 @@ class EmpresaTransformer extends TransformerAbstract
                     ];
                 }
 
-                // $todosMateriaisArray = $item->materiais()->get();
-                // $todosMateriais = [];
-
-                // foreach ($todosMateriaisArray as $material) {
-                //     $todosMateriais[] = [
-                //         'id' => $material->id,
-                //         'nome' => $material->nome,
-                //         'base' => $material->baseNome,
-                //         'reator' => $material->reatorNome,
-                //         'base_id' => $material->base_id,
-                //         'reator_id' => $material->reator_id,
-                //         'potencia' => $material->potenciaValor,
-                //         'tensao' => $material->tensaoValor,
-                //         'tipoMaterial' => $material->tipoMaterialNome,
-                //         'tipoMaterialTipo' => $material->tipoMaterial ? $material->tipoMaterial->tipo : null,
-                //         'quantidadeInstalada' => $material->pivot->quantidade_instalada,
-                //     ];
-                // }
-
                 $itens[] = [
                     'id' => $item->id,
                     'nome' => $item->nome,
