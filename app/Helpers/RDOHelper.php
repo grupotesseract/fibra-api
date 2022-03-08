@@ -82,7 +82,7 @@ class RDOHelper extends PhpWordHelper
     {
 
         if (!$img) {
-            $img = 'http://res.cloudinary.com/api-fibra/image/upload/v1586216618/fibraheader_sbivuy.png';
+            $img = env('URL_LOGO_FIBRA', 'https://res.cloudinary.com/api-fibra/image/upload/c_scale,h_39,w_185/v1646773221/logos/fibraheader_1_moggzs.png');
         } else {
             $this->styles->logo['width'] = 136.5;
         }
