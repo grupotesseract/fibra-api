@@ -116,8 +116,10 @@ class ProgramacaoRepository extends BaseRepository
                 }
 
                 ///ESTOQUE FINAL + ENTRADA - SUBSTITUIÇÃO
-                $qtdadeEstoqueFinalMaterial = $estoque['quantidade_inicial'] + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
+                $qtdadeInicialMaterial = $estoque['quantidade_inicial'] ? $estoque['quantidade_inicial'] : 0;
+                $qtdadeEstoqueFinalMaterial = $qtdadeInicialMaterial + $qtdadeEntradaMaterial - $qtdeSubstituidaMaterial;
                 $input['estoques'][$key]['quantidade_final'] = $qtdadeEstoqueFinalMaterial;
+                $input['estoques'][$key]['quantidade_inicial'] = $qtdadeInicialMaterial;
             }
 
             //PERSISTINDO ESTOQUE CALCULADO
