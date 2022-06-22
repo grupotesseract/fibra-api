@@ -93,7 +93,7 @@ class ProgramacaoRepository extends BaseRepository
             if (array_key_exists('comentarioGeral', $input['programacao'])) {
                 $programacao->comentariosGerais()->create(
                     [
-                        'comentario' => $input['programacao']['comentarioGeral'],
+                        'comentario' => $input['programacao']['comentarioGeral'] ?? '',
                     ]
                 );
             }
